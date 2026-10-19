@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rota.schema.json",
+  "title": "Pasaport rotaları (veri/rotalar.json); mobil uygulamadaki şehir rotalarıyla aynı",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["il", "duraklar"],
+    "properties": {
+      "il": { "$ref": "ortak.schema.json#/$defs/kimlik" },
+      "duraklar": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["eser_id"],
+          "properties": {
+            "eser_id": { "$ref": "ortak.schema.json#/$defs/kimlik" },
+            "damga_ust": { "type": "string" },
+            "damga_alt": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "additionalProperties": false
+  }
+}

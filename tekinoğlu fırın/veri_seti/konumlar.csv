@@ -1,0 +1,392 @@
+id,ad,il,ilce,adres,enlem,boylam,konum_kaynagi,hassasiyet,dogrulandi,taslak
+molla-fenari-camii,Molla Fenârî Camii ve Haziresi,bursa,Osmangazi,"Mollafenari Mahallesi, 12. Dilek Sokak, No: 1, Osmangazi, Bursa",40.176984,29.059007,osm,eser,false,false
+molla-gurani-mescidi,Molla Gürani (Yeşil-Güranlı) Mescidi,bursa,Osmangazi,"Mollagürânî Mahallesi, Güranlı Sokak ve II. Tahtalı Sokak kesişimi, Osmangazi, Bursa",40.184153,29.05547,geocoding,mahalle,false,false
+nakkas-ali-mescidi,Nakkaş Ali Mescidi ve Haziresi,bursa,Osmangazi,"Mollagürânî Mahallesi, Satı Caddesi, No: 22, Osmangazi, Bursa",40.184153,29.05547,geocoding,mahalle,false,false
+nalbantoglu-camii,Nalbantoğlu Camii,bursa,Osmangazi,"Nalbantoğlu Mahallesi, Nalbantoğlu Sokak, No: 2, Osmangazi, Bursa",40.182323,29.063877,osm,eser,false,false
+pasa-camii,Paşa Camii,bursa,Osmangazi,"Alacahırka Mahallesi, Orhaneli Caddesi, No: 39, Osmangazi, Bursa",40.181574,29.046774,geocoding,mahalle,false,false
+ruscuk-camii,Rusçuk Camii,bursa,Osmangazi,"İntizam Mahallesi, Dikyokuş Sokak, No: 15, Osmangazi, Bursa",40.190156,29.055208,osm,eser,false,false
+sati-fakih-camii,Satı Fakih Camii ve Haziresi,bursa,Osmangazi,"Mollagürani Mahallesi, Oruçbey Caddesi, No: 26, Osmangazi, Bursa",40.184153,29.05547,geocoding,mahalle,false,false
+selcuk-hatun-camii,Selçuk Hatun Camii,bursa,Osmangazi,"Kayhan Mahallesi, Selçuk Hatun Sokak, No: 1, Osmangazi, Bursa",40.182325,29.06998,osm,eser,false,false
+selimiye-camii,Selimiye Camii,bursa,Osmangazi,"Selimiye Mahallesi, Değirmen Caddesi, No: 53/1, Osmangazi, Bursa",40.191601,29.053411,osm,eser,false,false
+simkes-sirmakes-camii,Simkeş (Sırmakeş) Camii,bursa,Osmangazi,"Orhan Mahallesi, Gümüşçeken Caddesi, Simkeş Çıkmazı, No: 1, Osmangazi, Bursa",40.183904,29.065919,osm_elle_eslesme,eser,false,false
+sivasiler-tahtali-camii,Sivasiler (Tahtalı) Camii,bursa,Osmangazi,"İbrahim Paşa Mahallesi, Çinkolu Sokak, No: 11, Osmangazi, Bursa",40.178783,29.064854,osm,eser,false,false
+sehabettin-pasa-camii,Şehabettin Paşa Camii,bursa,Osmangazi,"Şehabettin Paşa Mahallesi, Altıparmak Caddesi, No: 2-4, Osmangazi, Bursa",40.188736,29.057373,osm,eser,false,false
+sehadet-kale-saray-camii,Şehadet (Kale-Saray) Camii,bursa,Osmangazi,"Hasta Yurdu Caddesi, No: 15, Osmangazi, Bursa",40.186318,29.055982,osm,eser,false,false
+sehrekustu-pars-bey-camii,Şehreküstü (Pars Bey) Camii,bursa,Osmangazi,"Şehreküstü Mahallesi, 1. Yurdakul Sokak, No: 4, Osmangazi, Bursa",40.187643,29.060724,osm,eser,false,false
+seker-hoca-camii,Şeker Hoca Camii,bursa,Osmangazi,"Nalbantoğlu Mahallesi, Şeker Hoca Caddesi, Cami Aralığı 2. Sokak, No: 1, Osmangazi, Bursa",40.182926,29.061929,osm,eser,false,false
+serafettin-pasa-okcular-camii-ve-haziresi,Şerafettin Paşa (Okçular) Camii ve Haziresi,bursa,Osmangazi,"Alacamescid Mahallesi, 4. Okul Sokak, No: 14, Osmangazi, Bursa",40.184269,29.068009,osm,eser,false,false
+seyh-hamit-somuncu-baba-ayazma-camii-ve-haziresi,Şeyh Hamit (Somuncu Baba-Ayazma) Camii ve Haziresi,bursa,Osmangazi,"Mollafenâri Mahallesi, 3. Hamam veya Dar Sokak, No: 29A, Osmangazi, Bursa",40.177754,29.058886,osm,eser,false,false
+seyh-konevi-camii,Şeyh Konevi Camii,bursa,Osmangazi,"İvazpaşa Mahallesi, 1. Konyalı Sokak, No: 14, Osmangazi, Bursa",40.178722,29.057262,osm,eser,false,false
+seyh-pasa-dibekli-camii,Şeyh Paşa (Dibekli) Camii,bursa,Osmangazi,"Osmangazi Mahallesi, Satı Caddesi, Osmangazi, Bursa",40.186082,29.056958,geocoding,mahalle,false,false
+tahtali-hatipzade-mescidi,Tahtalı (Hatipzade) Mescidi,bursa,Osmangazi,"Alaaddin Mahallesi, 1. Zindankapı Sokağı, No: 25/1, Osmangazi, Bursa",40.185307,29.050341,geocoding,mahalle,false,false
+tavukcu-mescidi,Tavukçu Mescidi,bursa,Osmangazi,"Şehreküstü Mahallesi, Tavukçu Sokak, No: 9/A, Osmangazi, Bursa",40.186153,29.060151,geocoding,mahalle,false,false
+tuzpazari-camii,Tuzpazarı Camii,bursa,Osmangazi,"Orhanbey Mahallesi, Tuzpazarı Caddesi, No: 53, Osmangazi, Bursa",40.184958,29.065683,osm,eser,false,false
+uc-kuzular-kozlar-camii-ve-kabri,Üç Kuzular (Kozlar) Camii ve Kabri,bursa,Osmangazi,"Molla Fenâri Mahallesi, 1. Dere Sokak, No: 10, Osmangazi, Bursa",40.177109,29.056597,osm,eser,false,false
+hz-uftade-camii,Hz. Üftâde Camii,bursa,Osmangazi,"Kavaklı Mahallesi, Üftade Sokak, No: 10, Osmangazi, Bursa",40.182961,29.057758,osm,eser,false,false
+hz-uftade-tekke-camii,Hz. Üftâde Tekke Camii,bursa,Osmangazi,"Molla Fenari Mahallesi, Derman Caddesi, No: 28, Osmangazi, Bursa",40.178081,29.054237,osm,eser,false,false
+veled-i-enbiya-enbiyaoglu-camii,Veled-i Enbiya (Enbiyaoğlu) Camii,bursa,Osmangazi,"Reyhan Mahallesi, Reyhan Caddesi, No: 8, Osmangazi, Bursa",40.187081,29.06232,geocoding,mahalle,false,false
+veled-i-habib-camii,Veled-i Habib Camii,bursa,Osmangazi,"Alipaşa Mahallesi, İnebey Caddesi ile Maksem Caddesi'nin birleştiği yer, Osmangazi, Bursa",40.179424,29.061672,osm,eser,false,false
+veled-i-sarayi-mescidi,Veled-i Sarayi Mescidi,bursa,Osmangazi,"Şehreküstü Mahallesi, Ahmet Hamdi Tanpınar Caddesi, No: 34, Osmangazi, Bursa",40.188237,29.058648,osm_elle_eslesme,eser,false,false
+veled-i-yanic-camii,"Veled-i Yaniç Camii, Çeşme ve Haziresi",bursa,Osmangazi,"Osmangazi Mahallesi, 2. Yaniç Sokak, No: 3, Osmangazi, Bursa",40.185031,29.056449,osm,eser,false,false
+veled-i-veziri-camii,Veled-i Veziri Camii ve Haziresi,bursa,Osmangazi,"Ali Paşa Mahallesi, Veziri Caddesi No: 35, Osmangazi, Bursa",40.182082,29.05836,osm_elle_eslesme,eser,false,false
+veli-semseddin-camii,Veli Şemseddin (Yahni Kapan) Camii ve Haziresi,bursa,Osmangazi,"Maksem Mahallesi, Öğreten Caddesi, Osmangazi, Bursa",40.180134,29.063016,osm,eser,false,false
+veziri-camii,Veziri (Konuralp-Üç Kurnalı) Camii,bursa,Osmangazi,"Alipaşa Mahallesi, Veziri Caddesi No: 43, Osmangazi, Bursa",40.180233,29.05902,geocoding,mahalle,false,false
+yeni-bezzaz-camii,Yeni Bezzâz (Reyhan) Camii,bursa,Osmangazi,"Reyhan Mahallesi, İsmail Hakkı Caddesi, No: 3, Osmangazi, Bursa",40.186673,29.063712,osm,eser,false,false
+yeni-kaplica-mescidi,Yeni Kaplıca (Gazi Akdemir) Mescidi,bursa,Osmangazi,"Gaziakdemir Mahallesi, Yeni Kaplıca Caddesi No: 7, Osmangazi, Bursa",40.19695,29.043809,geocoding,mahalle,false,false
+yer-kapi-camii,Yer Kapı (Kara Ali Paşa - Bab-ı Zemin) Camii,bursa,Osmangazi,"Kavaklı Mahallesi, Yerkapı Caddesi, No: 1, Osmangazi, Bursa",40.183813,29.057849,geocoding,mahalle,false,false
+yigit-kohne-camii,Yiğit Köhne Camii ve Haziresi,bursa,Osmangazi,"Kayhan Mahallesi, Cumhuriyet Caddesi No: 29, Osmangazi, Bursa",40.183325,29.069604,geocoding,mahalle,false,false
+zagferanlik-mescidi,Zağferanlık Mescidi,bursa,Osmangazi,"Reyhan Mahallesi, Bekir Dede Sokak, No: 18, Osmangazi, Bursa",40.187935,29.062739,osm_elle_eslesme,eser,false,false
+adliye-koyu-camii,Adliye Köyü Camii,bursa,Gemlik,"Adliye Mahallesi, Kenar Sokak, Gemlik, Bursa",40.388038,29.206873,geocoding,mahalle,false,false
+balikpazari-camii,Balıkpazarı (Yeni) Camii (Panagia Pazariotissa),bursa,Gemlik,"Balıkpazarı Mahallesi, Avukat Özgür Aksoy Caddesi, Gemlik, Bursa",40.434299,29.152833,osm,eser,false,false
+kucukkumla-eski-camii,Küçükkumla Eski (Hacı Muhyi) Camii,bursa,Gemlik,"Şükrü Alemdar Mahallesi, Küçük Kumla, Gemlik, Bursa",40.438001,29.15757,geocoding,mahalle,false,false
+gursu-orta-camii,Orta Camii,bursa,Gürsu,"İstiklal Mahallesi, Fatih Caddesi, No: 66, Gürsu, Bursa",40.216275,29.206545,geocoding,mahalle,false,false
+orhan-gazi-kulliyesi,Orhan Bey Külliyesi,bursa,Osmangazi,,40.183933,29.064113,osm,eser,false,false
+hudavendigar-kulliyesi,I. Murad Hüdavendigâr Külliyesi,bursa,Osmangazi,,40.202366,29.021103,osm,eser,false,false
+hamzabey-kulliyesi,Hamzabey Külliyesi,bursa,Osmangazi,,40.192173,29.041663,osm,eser,false,false
+timurtas-pasa-kulliyesi,Timurtaş Paşa Külliyesi,bursa,Osmangazi,,40.268497,29.099166,osm,eser,false,false
+yildirim-kulliyesi,Yıldırım Külliyesi,bursa,Yıldırım,,40.187475,29.082431,osm,eser,false,false
+emir-sultan-kulliyesi,Emir Sultan Külliyesi,bursa,Yıldırım,,40.18114,29.081031,osm,eser,false,false
+umurbey-kulliyesi,Umurbey Külliyesi,bursa,Yıldırım,,40.177755,29.071353,geocoding,eser,false,false
+bursa-ulu-cami,Ulu Cami,bursa,Osmangazi,,40.183923,29.061882,osm,eser,false,true
+yesil-cami,Yeşil Cami,bursa,Yıldırım,,40.1817,29.0727,claude,yaklasik,false,true
+koza-han,Koza Han,bursa,Osmangazi,,40.184361,29.063522,osm,eser,false,true
+habib-i-neccar-camii-ve-kulliyesi-hatay,Habib-i Neccar Camii ve Külliyesi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+ulu-camii-ve-kulliyesi-hatay,Ulu Camii ve Külliyesi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+sokullu-mehmet-pasa-kulliyesi-hatay,Sokullu Mehmet Paşa Külliyesi,hatay,Dörtyol,,36.84,36.226,geocoding,ilce,false,false
+meydan-camii-ve-kulliyesi-hatay,Meydan Camii ve Külliyesi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+kanuni-sultan-suleyman-kervansarayi-hatay,Kanuni Sultan Süleyman Kervansarayı,hatay,Belen,,36.489,36.195,geocoding,ilce,false,false
+seyh-ali-cami-ve-kulliyesi-hatay,Şeyh Ali Cami ve Külliyesi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+mustafa-sevki-pasa-camii-ve-kulliyesi-hatay,Mustafa Şevki Paşa Camii ve Külliyesi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+ali-cavus-mescidi-hatay,Ali Çavuş Mescidi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+affan-ertugrul-camii-hatay,Affan (Ertuğrul) Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+agca-mescit-hatay,Ağca Mescit,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+ahmediye-camii-hatay,Ahmediye Camii,hatay,Antakya,,36.203431,36.163491,geocoding,eser,false,false
+debruz-mescidi-hatay,Debruz Mescidi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+deveci-bekiroglu-camii-hatay,Deveci Bekiroğlu Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+emirler-camii-hatay,Emirler Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+hedbeli-mescidi-hatay,Hedbeli Mescidi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+halil-aga-camii-hatay,Halil Ağa Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+hunkar-mescidi-hatay,Hünkar Mescidi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+kiremitli-camii-hatay,Kiremitli Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+karhane-mescidi-hatay,Karhane Mescidi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+kantara-camii-hatay,Kantara Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+kurt-fakih-tufaki-camii-hatay,Kürt Fakih (Tufaki) Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+mahremiye-camii-hatay,Mahremiye Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+nihat-aga-mescidi-hatay,Nihat Ağa Mescidi,hatay,Antakya,,36.21694,36.137896,geocoding,adres,false,false
+nakip-camii-hatay,Nakip Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+osmaniye-camii-hatay,Osmaniye Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+orhanli-camii-hatay,Orhanlı Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+rifataga-civelek-mescidi-hatay,Rıfatağa (Civelek) Mescidi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+sarimiye-camii-hatay,Sarımiye Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+sofular-camii-hatay,Sofular Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+seyh-muhammet-camii-hatay,Şeyh Muhammet Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+senkoy-seyh-ahmet-kuseyri-camii-hatay,Şenköy Şeyh Ahmet Kuseyri Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+sekercik-camii-hatay,Şekercik Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+uctum-mescidi-hatay,Uçtum Mescidi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+zuveroglu-camii-hatay,Züveroğlu Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+caferiye-mescid-hatay,Caferiye Mescid,hatay,Antakya,,36.198658,36.166014,geocoding,adres,false,false
+degirmenyolu-mescid-okul-hatay,Değirmenyolu Mescid-okul,hatay,Defne,,36.19,36.15,geocoding,ilce,false,false
+fatikli-camii-hatay,Fatikli Camii,hatay,Altınözü,,36.113,36.247,geocoding,ilce,false,false
+mustafali-camii-hatay,Mustafalı Camii,hatay,Erzin,,36.957495,36.19274,geocoding,eser,false,false
+narduzu-camii-hatay,Nardüzü Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+yenisehir-camii-hatay,Yenişehir Camii,hatay,Reyhanlı,,36.241742,36.566519,geocoding,eser,false,false
+ebul-futtuh-camii-hatay,Ebul Futtuh Camii,hatay,Samandağ,,36.084,35.979,geocoding,ilce,false,false
+kasimbey-camii-hatay,Kasımbey Camii,hatay,Yayladağı,,35.903,36.061,geocoding,ilce,false,false
+selvili-camii-hatay,Selvili Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+semerciler-camii-hatay,Semerciler Camii,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+terzi-mehmet-camii-hatay,Terzi Mehmet Camii,hatay,Samandağ,,36.085053,35.980641,geocoding,eser,false,false
+kaptanpasa-camii-minaresi-hatay,Kaptanpaşa Camii Minaresi,hatay,İskenderun,,36.587,36.173,geocoding,ilce,false,false
+seyh-abdurrahman-turbesi-hatay,Şeyh Abdurrahman Türbesi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+seyh-hidir-turbesi-hatay,Şeyh Hıdır Türbesi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+seyh-hizir-turbesi-hatay,Şeyh Hızır Türbesi,hatay,Arsuz,,36.412,35.887,geocoding,ilce,false,false
+seyh-hizir-makami-hatay,Şeyh Hızır Makamı,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+el-arabi-turbesi-hatay,El Arabi Türbesi,hatay,Defne,,36.19,36.15,geocoding,ilce,false,false
+seyh-ibrahim-ve-seyh-ali-turbesi-hatay,Şeyh İbrahim ve Şeyh Ali Türbesi,hatay,Defne,,36.19,36.15,geocoding,ilce,false,false
+seyh-hidir-turbesi-hatay-2,Şeyh Hıdır Türbesi,hatay,Defne,,36.19,36.15,geocoding,ilce,false,false
+seyh-hasan-turbesi-hatay,Şeyh Hasan Türbesi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+beyazid-i-bestami-turbesi-hatay,Beyazid-i Bestami Türbesi,hatay,Kırıkhan,,36.531845,36.365009,geocoding,eser,false,false
+seyh-turhan-reyhani-turbesi-hatay,Şeyh Turhan Reyhani Türbesi,hatay,İskenderun,,36.587,36.173,geocoding,ilce,false,false
+seyh-kasem-turbesi-hatay,Şeyh Kasem Türbesi,hatay,Defne,,36.19,36.15,geocoding,ilce,false,false
+seyh-isa-turbesi-hatay,Şeyh İsa Türbesi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+seyh-hizir-turbesi-hatay-2,Şeyh Hızır Türbesi,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+koyunoglu-seyh-ali-issuvayre-turbesi-hatay,Koyunoğlu Şeyh Ali İssüvayre Türbesi,hatay,Samandağ,,36.084,35.979,geocoding,ilce,false,false
+seyh-hasan-mekzun-el-sincari-makami-hatay,Şeyh Hasan Mekzun El Sincari Makamı,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+seyh-hasan-gatelli-turbesi-hatay,Şeyh Hasan Gatelli Türbesi,hatay,Defne,,36.19,36.15,geocoding,ilce,false,false
+mizrakli-seyh-hasan-el-hekim-turbesi-hatay,Mızraklı Şeyh Hasan El Hekim Türbesi,hatay,Samandağ,,36.084,35.979,geocoding,ilce,false,false
+suryani-katolik-kilisesi-hatay,Süryani Katolik Kilisesi,hatay,İskenderun,,36.587,36.173,geocoding,ilce,false,false
+maryo-hanna-kilisesi-hatay,Maryo Hanna Kilisesi,hatay,Arsuz,,36.412,35.887,geocoding,ilce,false,false
+rum-katolik-kilisesi-hatay,Rum Katolik Kilisesi,hatay,İskenderun,,36.588385,36.170874,geocoding,mahalle,false,false
+rum-ortodoks-kilisesi-hatay,Rum Ortodoks Kilisesi,hatay,Yayladağı,,35.903,36.061,geocoding,ilce,false,false
+yogunoluk-koyu-ermeni-kilisesi-hatay,Yoğunoluk Köyü Ermeni Kilisesi,hatay,Samandağ,,36.084,35.979,geocoding,ilce,false,false
+butik-otel-hatay,Butik Otel,hatay,İskenderun,,36.587,36.173,geocoding,ilce,false,false
+reyhanli-yenisehir-degirmeni-hatay,Reyhanlı Yenişehir Değirmeni,hatay,Reyhanlı,,36.268,36.567,geocoding,ilce,false,false
+kurtulus-beyhan-hamami-hatay,Kurtuluş (Beyhan) Hamamı,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+kursunlu-han-hatay,Kurşunlu Han,hatay,Antakya,,36.203074,36.16388,geocoding,eser,false,false
+kircaoglu-hoyugu-hatay,Kırcaoğlu Höyüğü,hatay,Kumlu,,36.378521,36.529973,geocoding,eser,false,false
+samandag-vakifli-koyu-konut-hatay,Samandağ Vakıflı Köyü Konut,hatay,Samandağ,,36.084,35.979,geocoding,ilce,false,false
+vakif-kultur-konaklari-hatay,Vakıf Kültür Konakları,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+4-mintika-78-parsel-eski-ev-hatay,4. Mıntıka 78 Parsel Eski Ev,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+3-mintika-466-parsel-konut-hatay,3. Mıntıka 466 Parsel Konut,hatay,Antakya,,36.2025,36.1605,geocoding,ilce,false,false
+mevlana-turbesi-muze-konya,Mevlâna Türbesi (Müze),konya,Karatay,"Mevlâna Külliyesi Hz. Mevlâna’nın türbesinin etrafında yaptırılmış olan semahane, mescit, derviş hücreleri, matbah-ı şerif, meydan-ı şerif, şadırvan, Şeb-i Arus çeşmesi, selsebil ile bahçede yer alan altı adet türbeden oluşmaktadır.",37.8716,32.505,geocoding,ilce,false,false
+bulgur-dede-mescidi-konya,Bulgur Dede Mescidi,konya,Meram,"Mescit, Meram İlçesi, Sephavan Mahallesi, Bulgur Dede Sokak’ta bulunmaktadır ve konum olarak Aziziye Camii’nin batısında yer almaktadır.",37.869256,32.500133,geocoding,eser,false,false
+sukran-mescidi-konya,Şükran Mescidi,konya,Meram,"Mescit, Meram ilçesi, Şükran Mahallesi, Hotuz Sokak, No. 2’de yer almaktadır.",37.870173,32.498241,geocoding,eser,false,false
+gazezler-camii-konya,Gazezler Camii,konya,Meram,"Cami Meram, Sahibiata Mahallesi, Furgan Dede Caddesi, No. 47’de yer almaktadır.",37.866066,32.495941,geocoding,adres,false,false
+karakurt-camii-konya,Karakurt Camii,konya,Meram,"Cami, Meram, Karakurt Mahallesi, Birhan Sokak, No. 11’de yer almaktadır.",37.865625,32.498641,geocoding,eser,false,false
+komurculer-camii-konya,Kömürcüler Camii,konya,Meram,"Cami Meram İlçesi, Uluğbey Mahallesi, Gazezler Sokak, No. 13’te yer almaktadır.",37.83649,32.495587,geocoding,mahalle,false,false
+furgan-dede-mescidi-konya,Furgan Dede Mescidi,konya,Meram,"Mescit, Meram, Akbaş Mahallesi, Kamani Mehmet Paşa Sokak, No. 9’da yer almaktadır.",37.865747,32.492593,geocoding,mahalle,false,false
+anber-reis-feridiye-camii-konya,Anber Reis (Feridiye) Camii,konya,Meram,"Cami, Meram, Anıt Meydanı, Şeyh Sadrettin Mahallesi, Ferit Paşa Caddesi, No. 2’de yer almaktadır.",37.869208,32.482611,geocoding,mahalle,false,false
+seyh-ebul-vefa-camii-konya,Şeyh Ebul Vefa Camii,konya,Meram,"Cami Meram, Selam Mahallesi, Dere Caddesi, No. 28’de yer almaktadır.",37.855117,32.420912,geocoding,eser,false,false
+ayanbey-camii-konya,Ayanbey Camii,konya,Meram,"Cami, Meram, Ayanbey Sokak, No. 2’de yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+askan-camii-konya,Aşkan Camii,konya,Meram,"Cami, Meram, Aşkan Mahallesi, Aşkan Caddesi üzerinde yer almaktadır.",37.861786,32.441463,geocoding,adres,false,false
+ekmekkocu-mescidi-konya,Ekmekkoçu Mescidi,konya,Meram,"Mescit, Meram, Ekmekkoçu Mahallesi, Kubbeli Sokak’ta bulunmaktadır.",37.834662,32.501778,geocoding,mahalle,false,false
+buyukkovanagzi-haci-haydar-efendi-camii-konya,Büyükkovanağzı (Hacı Haydar Efendi) Camii,konya,Meram,"Cami, Meram, Büyük Kovanağzı Mahallesi, Küçük Kovanağzı Caddesi, No. 16’da yer almaktadır.",37.846055,32.462582,geocoding,mahalle,false,false
+yukari-camii-ve-haziresi-saglik-beldesi-konya,Yukarı Camii ve Haziresi (Sağlık Beldesi),konya,Meram,"Cami, Meram İlçesi, Sağlık Köyü’nün merkezinde yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+karaagac-koyu-camii-konya,Karaağaç Köyü Camii,konya,Meram,"Cami Meram, Karaağaç Köyü merkezindedir.",37.865,32.48,geocoding,ilce,false,false
+dayhane-camii-ve-mustemilati-konya,Dayhane Camii ve Müştemilatı,konya,Meram,"Cami Meram, Yeşildere Mahallesinde yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+sadreddin-konevi-camii-konya,Sadreddin Konevi Camii,konya,Meram,"Cami, Meram, Şeyh Sadreddin Mahallesi, Turgutoğlu Sokak üzerinde yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+karatay-emir-kemalettin-mescidi-konya,Karatay (Emir Kemalettin) Mescidi,konya,Meram,"Mescit, Meram, Armağan Mahallesi, Hoca Fakih Caddesi No. 59’da yer almaktadır.",37.872023,32.465893,geocoding,eser,false,false
+hoca-fakih-ahmet-fakih-camii-ve-turbesi-konya,Hoca Fakih ( Ahmet Fakih ) Camii ve Türbesi,konya,Meram,"Cami, Meram, Armağan Mahallesi, Hoca Fakih Caddesi No. 57’de yer almaktadır.",37.868493,32.468509,geocoding,mahalle,false,false
+saatci-camii-konya,Saatçi Camii,konya,Meram,"Cami, Hoşhavanata Saatçi Mahallesi, Baruthane Caddesi’nde yer almaktadır.",37.865693,32.496812,geocoding,eser,false,false
+abdulaziz-camii-konya,Abdülaziz Camii,konya,Meram,"Cami, Meram, Kadı İzzet Sokak No. 20’de yer almaktadır.",37.869274,32.48864,geocoding,eser,false,false
+tahir-pasa-tursunoglu-dursun-fakih-camii-konya,Tahir Paşa (Tursunoğlu / Dursun Fakih) Camii,konya,Meram,"Cami, Meram, Sahibiata Mahallesi, Mimar Muzaffer Caddesi, No. 39’da yer almaktadır.",37.870912,32.493624,geocoding,adres,false,false
+tahir-ile-zuhre-don-baba-pir-ahi-sultan-mescit-ve-turbesi-konya,Tahir ile Zühre (Dön Baba-Pir Ahi Sultan) Mescit ve Türbesi,konya,Meram,"Mescit, Meram, Beyhekim Mahallesi, Çukur Meydan’da bulunmaktadır.",37.865,32.48,geocoding,ilce,false,false
+hoca-hasan-camii-konya,Hoca Hasan Camii,konya,Meram,"Cami, Meram, Abdülaziz Mahallesi, Kazım Karabekir Caddesi, No. 15’te yer almaktadır.",37.869274,32.48864,geocoding,mahalle,false,false
+abdulmumin-yediler-megaribe-mescidi-ve-mezari-konya,Abdulmümin (Yediler- Megaribe) Mescidi ve Mezarı,konya,Meram,"Mescit, Meram, Abdülaziz Mahallesi, Aslanağzı Sokak’ta yer almaktadır.",37.869274,32.48864,geocoding,mahalle,false,false
+gokyurt-koyu-camii-konya,Gökyurt Köyü Camii,konya,Meram,"Cami, Meram, Gökyurt Köyü merkezindedir.",37.865,32.48,geocoding,ilce,false,false
+tellioglu-sungurbey-camii-konya,Tellioğlu (Sungurbey) Camii,konya,Meram,"Mescit Meram,	 Sungur Mahallesi, Telli Mescit	 Sokak üzerinde, Hacı Fettah Mezarlığı’nın kuzeydoğusunda yer almaktadır.",37.865155,32.498677,geocoding,mahalle,false,false
+sahip-ata-larende-camii-konya,Sahip Ata (Larende) Camii,konya,Meram,"yapılmasını büyük sultan kölelerin azat edicisi, Arap ve Acem sultanların efendisi, dünya ve dinin izzeti, fetih babası, Keyhüsrev oğlu Keykâvus’un saltanat günlerinde (Allah saltanatını daim etsin) Allah’ın rahmetine muhtaç, zayıf kul, Hacı Ebubekir oğlu Hüseyin oğlu Ali 656 yılında emretmiştir.",37.865,32.48,geocoding,ilce,false,false
+meram-kapu-kapi-ihyaiyye-camii-konya,Meram Kapu (Kapı-İhyaiyye) Camii,konya,Meram,"Cami, Meram, Sehpevan Mahallesi, Kapı Cami Sokağı üzerinde yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+haci-hasan-camii-konya,Hacı Hasan Camii,konya,Meram,"Cami, Şükran Mahallesi, Vali Muammer Bey Caddesi, No. 48’de yer almaktadır.",37.869761,32.496859,geocoding,mahalle,false,false
+seyh-osman-rumi-camii-konya,Şeyh Osman Rûmi Camii,konya,Meram,"Cami, Meram, Sahip Ata Mahallesi, Yavuz Selim Caddesi üzerinde yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+ihtiyarettin-mescidi-konya,İhtiyarettin Mescidi,konya,Meram,"Mescit, Meram, İhtiyarettin Mahallesi, Kale Sokak, No. 22’de yer almaktadır.",37.868288,32.495548,geocoding,mahalle,false,false
+iplikci-altinapa-camii-konya,İplikçi (Altınapa) Camii,konya,Meram,"Cami, Meram, Kürkçü Mahallesi, Mevlâna Caddesi, No. 16’da yer almaktadır.",37.87124,32.495465,geocoding,mahalle,false,false
+tarhana-mescidi-konya,Tarhana Mescidi,konya,Meram,"Mescit Meram, Hacı Fettah Mahallesi, Tahtatepen Sokak üzerinde yer almaktadır.",37.863642,32.498871,geocoding,eser,false,false
+veznedar-huseyin-efendi-asri-camii-konya,Veznedar Hüseyin Efendi (Asri) Camii,konya,Meram,"Cami, Meram, Kürkçü Mahallesi, Karahöyüklü Sokak, No. 5’te yer almaktadır.",37.87124,32.495465,geocoding,mahalle,false,false
+kadi-mursel-camii-konya,Kadı Mürsel Camii,konya,Meram,"Meram İlçesi, Mimar Muzaffer Caddesi No: 5’de bulunmaktadır.",37.870912,32.493624,geocoding,adres,false,false
+salih-pasa-dedemoglu-camii-konya,Salih Paşa (Dedemoğlu) Camii,konya,Meram,"Cami Meram, Kayısılıburun Sokak üzerinde yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+aksinne-kumbetli-gunbentli-mescidi-konya,Aksinne Kümbetli (Günbentli) Mescidi,konya,Meram,"Mescit, Meram, Aksinne Mahallesi, Parmakçı Mescidi Sokak, No. 23’te yer almaktadır.",37.86023,32.490477,geocoding,mahalle,false,false
+nasuh-bey-camii-canbazzade-nasuh-bey-darul-huffazi-konya,Nasuh Bey Camii (Canbazzade Nasuh Bey Dârü’l-Huffazı),konya,Meram,"Cami, Meram İlçesi, Abdülaziz Mahallesi, Abdülmümin Sokak, No. 7’de yer almaktadır.",37.869274,32.48864,geocoding,mahalle,false,false
+yolcuoglu-gazioglu-camii-konya,Yolcuoğlu (Gazioğlu) Camii,konya,Meram,"Cami, Meram, Fahrunnisa Mahallesi, Baruthane Caddesi, No. 65’te yer almaktadır.",37.859971,32.499099,geocoding,mahalle,false,false
+gurb-i-cedidi-kosova-mescidi-konya,Gurb-i Cedidi (Kosova) Mescidi,konya,Meram,"Mescit, Meram, Gurbi Cedit Mahallesi, Kosova Sokak, No. 15’te yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+kalecik-mescidi-konya,Kalecik Mescidi,konya,Meram,"Mescit, Meram, Kale Celp Mahallesi Hisar Sokak üzerinde, İplikçi Camii’nin güneyinde yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+emir-halil-camii-konya,Emir Halil Camii,konya,Meram,"Cami, Meram, Hoca Faruk Mahallesi, Abdullah Çavuş Sokak, No. 30’ da yer almaktadır.",37.863676,32.494322,geocoding,eser,false,false
+tahtatepen-ubeyt-haci-adil-camii-konya,Tahtatepen Ubeyt (Hacı Adil) Camii,konya,Meram,"Cami Meram, Ubeyt Mahallesi, Tahtatepen Caddesi üzerinde ve Hacı Fettah Mezarlığının doğusunda yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+asagi-mahalle-kiziloren-kandemir-mescidi-konya,Aşağı Mahalle (Kızılören Kandemir) Mescidi,konya,Meram,"Mescit, Meram, Kızılören Kasabasında yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+fahrunnisa-caybasi-mescit-ve-turbesi-konya,Fahrünnisa (Çaybaşı) Mescit ve Türbesi,konya,Meram,"Cami, Meram, Uluırmak Mahallesi, Çaybaşı Caddesi’nde yer almaktadır.",37.859744,32.497197,geocoding,adres,false,false
+hasbey-darul-huffaz-mescidi-konya,Hasbey (Dar’ül Huffaz) Mescidi,konya,Meram,"Mescit, Meram, Mücellit Mahallesi, Ayine Sokak, No. 2’de yer almaktadır.",37.852359,32.420236,geocoding,eser,false,false
+erdemsah-kale-i-cerp-mescidi-konya,Erdemşah (Kale-i Cerp) Mescidi,konya,Meram,"Mescit, Meram, Kale-i Cerp Mahallesi, Sakarya Sokak üzerinde yer almaktadır.",37.870218,32.49575,geocoding,mahalle,false,false
+kurkcu-mescidi-konya,Kürkçü Mescidi,konya,Meram,"Mescit, Meram, Kürkçü Mahallesi, Gürcü Hatun Sokak, No. 23’te yer almaktadır.",37.87124,32.495465,geocoding,eser,false,false
+sultan-selim-selimiye-camii-konya,Sultan Selim (Selimiye) Camii,konya,Karatay,"Cami, Karatay, Müze Alanı Caddesi üzerinde bulunmaktadır.",37.870397,32.504136,geocoding,eser,false,false
+nuriye-camii-konya,Nuriye Camii,konya,Karatay,"Cami, Konya, Karatay, Tercüman Mahallesi, Sultan Veled Caddesi üzerinde yer almaktadır.",37.87526,32.498896,geocoding,mahalle,false,false
+dolap-battal-mescidi-konya,Dolap Battal Mescidi,konya,Karatay,"Mescit, Karatay, Dolap Mektep Mahallesi, Dolap Mektep Sokak’ta yer almaktadır.",37.871195,32.509522,geocoding,mahalle,false,false
+haci-veyis-camii-ve-cesmesi-konya,Hacı Veyis Camii ve Çeşmesi,konya,Karatay,"Cami, Karatay, Aslanlı Kışla Caddesi üzerinde yer almaktadır.",37.870688,32.509115,geocoding,adres,false,false
+selahaddin-kececiler-camii-konya,Selahaddin (Keçeciler) Camii,konya,Karatay,"Cami, Karatay, Keçeciler Mahallesi, Keçeciler Caddesinde yer alır.",37.880398,32.506946,geocoding,adres,false,false
+karacihan-camii-konya,Karacihan Camii,konya,Karatay,"Cami Karatay, Karacihan Mahallesi, Karakayış Caddesi üzerinde yer almaktadır.",37.887118,32.504239,geocoding,mahalle,false,false
+garip-nasrullah-camii-konya,Garip Nasrullah Camii,konya,Karatay,"Cami, Karatay, Hasandede Mescit Mahallesi, Sedirler Caddesi’nde yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+haci-omerler-camii-konya,Hacı Ömerler Camii,konya,Karatay,"Cami, Karatay, Sarıyakup Mahallesi, Mahmut Dede Sokağı üzerinde yer almaktadır.",37.864791,32.507845,geocoding,eser,false,false
+obruk-koyu-camii-konya,Obruk Köyü Camii,konya,Karatay,"Cami, Karatay, Obruk Köyü merkezinde bulunmaktadır.",37.8716,32.505,geocoding,ilce,false,false
+civiloglu-camii-konya,Cıvıloğlu Camii,konya,Karatay,"Cami, Karatay Belediyesi’nin batısında, Fakıh Dede Mahallesi, Mengüç Caddesi üzerinde bulunmaktadır.",37.865949,32.504417,geocoding,mahalle,false,false
+burhan-dede-camii-konya,Burhan Dede Camii,konya,Karatay,"Cami, Karatay, Uluırmak Burhandede Mahallesi, Karaman Caddesi’nde yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+igdeli-sultan-camii-konya,İğdeli Sultan Camii,konya,Karatay,"Cami, Karatay, Keçeciler Mahallesi, Araplar Caddesi’nde yer almaktadır.",37.883156,32.505282,geocoding,adres,false,false
+karakayis-sari-camii-konya,Karakayış Sarı Camii,konya,Karatay,"Cami, Karatay, Karakayış Mahallesi, Karakayış Caddesi üzerinde yer almaktadır.",37.899952,32.518801,geocoding,mahalle,false,false
+tahtali-mescidi-konya,Tahtalı Mescidi,konya,Karatay,"Mescit, Sırçalı Mescit’in güneyinde, Hocahabib (Aziziye) Mahallesi, Kadılar Sokak’ta yer almaktadır.",37.872459,32.501327,geocoding,adres,false,false
+durak-fakih-camii-konya,Durak Fakih Camii,konya,Karatay,"Cami Karatay, Aziziye Mahallesi, Mor Sokak üzerinde yer almaktadır.",37.873059,32.505189,geocoding,eser,false,false
+cukur-camii-konya,Çukur Camii,konya,Karatay,"Cami, Karatay, Yunusoğlu Mahallesi, Mengüç Caddesinde yer almaktadır.",37.867436,32.505762,geocoding,eser,false,false
+toraman-mescidi-konya,Toraman Mescidi,konya,Karatay,"Mescit, Karatay, Sarnıç Mahallesi, Şeyh Ulema Recep Ağa Caddesi üzerindedir.",37.8716,32.505,geocoding,ilce,false,false
+sarnic-camii-konya,Sarnıç Camii,konya,Karatay,"Cami, Karatay, Sarnıç Mahallesi, Sedirler Caddesi üzerinde yer almaktadır.",37.876546,32.512011,geocoding,eser,false,false
+araplar-ak-camii-konya,Araplar (Ak) Camii,konya,Karatay,"Cami, Karatay, Büyüksinan Mahallesi, Büyüksinan Caddesi üzerinde yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+bagevliya-cami-ve-cesmesi-konya,Bağevliya Cami ve Çeşmesi,konya,Karatay,"Cami, Karatay, Nakipoğlu Mahallesi, Bağevliya Sokak üzerindedir.",37.8716,32.505,geocoding,ilce,false,false
+muftu-abdullah-mescidi-konya,Müftü Abdullah Mescidi,konya,Karatay,"Mescit, Karatay, Ovalıoğlu Mahallesi, Köprübaşı Caddesi üzerindedir.",37.8716,32.505,geocoding,ilce,false,false
+ovaloglu-celik-mehmet-pasa-camii-konya,Ovaloğlu (Çelik Mehmet Paşa) Camii,konya,Karatay,"Cami, Karatay, Ovaloğlu Mahallesi, Çelik Paşa Sokak üzerinde yer almaktadır.",37.876474,32.505583,geocoding,mahalle,false,false
+kinaci-camii-mescit-konya,Kınacı Camii (Mescit),konya,Karatay,"Cami, Karatay, Mihmandar Mahallesi, Şerafettin Caddesi üzerinde yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+meydan-i-ahmet-camii-konya,Meydan-ı Ahmet Camii,konya,Karatay,"Cami Karatay, Çifte Merdiven Mahallesi, Doktor Abdullah Selim Sokak üzerinde yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+kadi-izzettin-karpuzoglu-camii-konya,Kadı İzzettin (Karpuzoğlu) Camii,konya,Karatay,"Cami, Karatay, Çifte Merdiven Mahallesi, Şerafeddin Caddesi üzerinde yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+sitte-i-banu-mescidi-konya,Sitte-i Banu Mescidi,konya,Karatay,"Mescit, Karatay, Çifte Merdiven Mahallesi, Abdulkadir Erdoğan Sokak üzerinde yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+hatuniye-guduk-minare-akincilar-mahmut-mescidi-konya,Hatuniye (Güdük Minare - Akıncılar Mahmut) Mescidi,konya,Karatay,"Mescit, Karatay, Mihmandar Mahallesi, Hatuniye Sokak üzerindedir.",37.8716,32.505,geocoding,ilce,false,false
+sems-i-tebrizi-camii-ve-turbesi-konya,Şems-i Tebrizi Camii ve Türbesi,konya,Karatay,"Cami Karatay, Şems Mahallesi, Şems Caddesi üzerinde, Şerafeddin Camii’nin kuzeyinde yer almaktadır.",37.87364,32.497729,geocoding,adres,false,false
+sircali-demirci-haci-mescidi-konya,Sırçalı (Demirci Hacı) Mescidi,konya,Karatay,"Mescit Karatay, Sırçalı Mescit Mahallesi, Kuzgunkavak Caddesi üzerinde yer almakta, İsmet Paşa İlkokulu’nun kuzeyinde bulunmaktadır.",37.874472,32.502275,geocoding,mahalle,false,false
+cimilli-sari-mescidi-konya,Cimilli (Sarı) Mescidi,konya,Karatay,"Mescit, Karatay, Sırçalı Mescit Mahallesi, Köprübaşı Caddesi üzerindedir.",37.8716,32.505,geocoding,ilce,false,false
+zenburi-mescidi-konya,Zenburi Mescidi,konya,Karatay,"Mescit, Karatay, Zenburi Mahallesi, Müftüler Sokak üzerinde yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+ickaraarslan-mescidi-konya,İçkaraarslan Mescidi,konya,Karatay,"Mescit, Karatay, Babasultan Mahallesi, Apalılar Sokak üzerindedir.",37.8716,32.505,geocoding,ilce,false,false
+sari-yakup-camii-konya,Sarı Yakup Camii,konya,Karatay,"Cami, Karatay, Dedemoğlu Mahallesi, Han Sokak üzerinde yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+haci-mustafa-aga-koprubasi-mustafa-aga-camii-konya,Hacı Mustafa Ağa (Köprübaşı Mustafa Ağa) Camii,konya,Karatay,"Cami Karatay, Aziziye Mahallesi, Köprübaşı Mevkii’nde yer alır.",37.870914,32.507638,geocoding,mahalle,false,false
+asmali-hatip-sultan-mescidi-konya,Asmalı Hatip Sultan Mescidi,konya,Karatay,"Mescit, Karatay, Civar Mahallesi, Şehit Nazım Bey Caddesi üzerinde yer almaktadır.",37.873713,32.4947,geocoding,mahalle,false,false
+pisili-pir-esat-mescit-ve-turbesi-konya,Pisili (Pir Esat) Mescit ve Türbesi,konya,Karatay,"Mescit, Karatay, Adak Sokak üzerinde yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+mengene-camii-konya,Mengene Camii,konya,Karatay,"Cami Karatay, Kocabekir Mahallesi, Büyük Kumköprü Caddesi üzerindedir.",37.845804,32.515219,geocoding,eser,false,false
+alemdar-camii-konya,Alemdar Camii,konya,Karatay,"Cami, Karatay, Küçük Sinan Mahallesi, Araplar Caddesi üzerinde yer almaktadır.",37.886484,32.50747,geocoding,eser,false,false
+saksaganlar-camii-konya,Saksağanlar Camii,konya,Karatay,"Cami, Karatay, Küçük Kayacık Mahallesi, Yeni Kayacık Sokak üzerinde yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+dolap-mektep-mescidi-konya,Dolap Mektep Mescidi,konya,Karatay,"Mescit Karatay, Dolap Mektep Mahallesi, Dolap Mektep Sokak’ta yer almaktadır.",37.871195,32.509522,geocoding,eser,false,false
+polatlar-haci-cemal-hatip-camii-konya,Polatlar (Hacı Cemal-Hatip) Camii,konya,Karatay,"Cami, Karatay, Sedir Mahallesinde yer almaktadır.",37.856377,32.543132,geocoding,mahalle,false,false
+seyh-ulema-recep-aga-camii-konya,Şeyh Ulema Recep Ağa Camii,konya,Karatay,"Cami, Karatay, Şeyh Ulemâ Recep Ağa Caddesi üzerinde yer almaktadır.",37.874854,32.511126,geocoding,adres,false,false
+yanik-sedirler-kenan-dede-camii-konya,Yanık (Sedirler - Kenan Dede) Camii,konya,Karatay,"Cami, Karatay, Hacı Hasan Baş Caddesi’nde, Aliyenler Mezarlığı’nın kuzeybatısında yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+digin-camii-konya,Diğin Camii,konya,Karatay,"Cami, Karatay İlçesi’nde, İstanbul, Aziziye ve Köprübaşı Caddelerinin kesiştiği köşede yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+hamzaoglu-camii-konya,Hamzaoğlu Camii,konya,Karatay,"Cami Karatay, Doğuş Mahallesi, Rüstem Şirvani Sokak’ta yer almaktadır.",37.862388,32.50998,geocoding,eser,false,false
+hanedan-camii-konya,Hanedan Camii,konya,Karatay,"Cami Karatay, Şeyh Ulema Çavuşoğlu Mahallesinde yer almaktadır.",37.873462,32.519682,geocoding,mahalle,false,false
+cayir-camii-konya,Çayır Camii,konya,Karatay,"Cami Karatay, Cemil Çiçek Caddesi üzerinde yer almaktadır.",37.861559,32.532428,geocoding,adres,false,false
+haci-ivaz-camii-konya,Hacı İvaz Camii,konya,Karatay,"Cami, Karatay, Polatlar Mahallesi, Sedirler Caddesi üzerinde yer almaktadır.",37.878131,32.514448,geocoding,eser,false,false
+sutcu-camii-konya,Sütçü Camii,konya,Karatay,"Cami, Karatay, Sütçü Mahallesi, Sütçü Sokak üzerinde yer almaktadır.",37.883542,32.517101,geocoding,mahalle,false,false
+cataloglu-camii-konya,Çataloğlu Camii,konya,Karatay,"Cami, Karatay, Hacı Cemil Mahallesi, Hacı Hasan Başı Caddesi üzerinde yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+topraklik-hasan-efendi-camii-konya,Topraklık Hasan Efendi Camii,konya,Karatay,"Cami, Karatay, Kerimler Caddesi üzerinde yer almaktadır.",37.866353,32.510366,geocoding,adres,false,false
+cavusoglu-camii-konya,Çavuşoğlu Camii,konya,Karatay,"Cami Karatay, Şeyh Ulema Recep Ağa Mahallesi, Şeyh Ulema Yahşi Caddesi üzerinde yer almaktadır.",37.87725,32.52356,geocoding,mahalle,false,false
+namik-pasa-camii-konya,Namık Paşa Camii,konya,Karatay,"Cami, Karatay, Çelebi Mahallesi, Dolappare Caddesi üzerinde yer almaktadır.",37.869751,32.511934,geocoding,mahalle,false,false
+halkabegus-mescidi-ve-turbesi-konya,Halkabegüş Mescidi ve Türbesi,konya,Karatay,"Cami, Karatay, Kalenderhâne Mahallesinde, Musalla Mezarlığı ve Konya Kalesi’nin Halkabegüş Kapısı yakınında bulunmaktadır.",37.883599,32.49893,geocoding,mahalle,false,false
+tolluoglu-camii-konya,Tolluoğlu Camii,konya,Karatay,"Cami, Karatay, Fakıh Dede (günümüzde Akçeşme) Mahallesi, Garaj Caddesi üzerinde yer almaktadır.",37.864475,32.502745,geocoding,adres,false,false
+seyh-ulema-yusuf-aga-camii-konya,Şeyh Ulema Yusuf Ağa Camii,konya,Karatay,"Cami, Karatay, Şeyh Ulema Mahallesi’nde, Şeyh Alaman Mezarlığı’nın kuzey doğusunda yer almaktadır.",37.874633,32.513343,geocoding,mahalle,false,false
+aziziye-camii-konya,Aziziye Camii,konya,Karatay,"Konya tarihi kent merkezi, Karatay ilçesinde bulunan Aziziye Camii, III. derece arkeolojik sit alanı içerisindedir.",37.869981,32.500798,geocoding,eser,false,false
+besare-bey-mescidi-konya,Beşare Bey Mescidi,konya,Selçuklu,"The masjid is located in Selçuklu, Ferhuniye Neighborhood, Başarabey Street No 3. It is to the north of Alâeddin Hill.",37.876,32.49,geocoding,ilce,false,false
+ak-sazi-bey-camii-konya,Ak (Şazi Bey) Camii,konya,Selçuklu,"Cami, Selçuklu, Ferhuniye Mahallesi, Alâeddin Bulvarı, No. 21’de yer almaktadır.",37.876562,32.489835,geocoding,mahalle,false,false
+sakahane-hidir-ilyas-davut-aga-mescidi-konya,Sakahane (Hıdır İlyas - Davut Ağa) Mescidi,konya,Selçuklu,"Mescit, Selçuklu, Ferhuniye Mahallesi, Sultan Mesut Sokak’ta yer almaktadır.",37.87511,32.491379,geocoding,eser,false,false
+zevle-sultan-mescidi-konya,Zevle Sultan Mescidi,konya,Selçuklu,"Mescit Selçuklu, Hamidiye Mahallesi, Abdülezel Caddesi, No. 17’de yer almaktadır.",37.873365,32.489097,geocoding,eser,false,false
+basarakavak-zahide-hatun-camii-konya,(Başarakavak) Zahide Hatun Camii,konya,Selçuklu,"Cami, Selçuklu İlçesi, Başarakavak Kasabasında yer almaktadır.",37.876,32.49,geocoding,ilce,false,false
+tatkoy-merkez-camii-konya,Tatköy Merkez Camii,konya,Selçuklu,"Cami Selçuklu, Tatköy (Köyü) Mahallesinin ulu camisidir.",37.876,32.49,geocoding,ilce,false,false
+beyhekim-mescit-ve-turbesi-konya,Beyhekim Mescit ve Türbesi,konya,Selçuklu,"Mescit, Selçuklu, Şair Yurdakul Sokak, No. 2’de yer almaktadır.",37.871885,32.488603,geocoding,adres,false,false
+sultan-alaeddin-ulu-camii-konya,Sultan Alâeddin (Ulu) Camii,konya,Selçuklu,"İç Kale, Konya şehrinin ortasında, Alâeddin Tepesi denilen höyük üzerinde yer almaktadır.",37.876,32.49,geocoding,ilce,false,false
+ihsaniye-ulu-camii-minaresi-konya,İhsaniye Ulu Camii Minaresi,konya,Selçuklu,"Minare, Selçuklu, İhsaniye Mahallesi, İhsaniye Ulu Camii bitişiğinde yer almaktadır.",37.872105,32.485056,geocoding,mahalle,false,false
+kurucay-eski-camii-konya,Kuruçay Eski Camii,konya,Ahırlı,"Cami, Ahırlı İlçesi, Kuruçay Köyü’ndedir.",37.239,32.118,geocoding,ilce,false,false
+avdan-beldesi-buyuk-eski-camii-konya,Avdan Beldesi Büyük (Eski) Camii,konya,Akören,"Cami Akören, Avdan Mahallesinde yer almaktadır.",37.289282,32.305929,geocoding,mahalle,false,false
+buyuk-camii-konya,Büyük Camii,konya,Akören,"Cami, Akören ilçe merkezinde yer almaktadır ve ilçenin ulu camisidir.",37.453205,32.371468,geocoding,eser,false,false
+altinkalem-cevlek-mescidi-konya,Altınkalem (Cevlek) Mescidi,konya,Akşehir,"Mescit, Altınkalem Mahallesi, Mescit Sokak’ta yer almaktadır.",38.357,31.416,geocoding,ilce,false,false
+cinaralti-camii-konya,Çınaraltı Camii,konya,Akşehir,"Cami, Akşehir Merkez Anıt Mahallesindedir.",38.355489,31.40865,geocoding,eser,false,false
+dogrugoz-beldesi-merkez-camii-konya,Doğrugöz Beldesi Merkez Camii,konya,Akşehir,"Cami, Akşehir, Doğrugöz Beldesi, Köyiçi Mevkii’nde yer almaktadır.",38.357,31.416,geocoding,ilce,false,false
+ferruhsah-seyit-mahmut-hayrani-mescidi-konya,Ferruhşah (Seyit Mahmut Hayrani) Mescidi,konya,Akşehir,"Mescit, Akşehir, Anıt Mahallesi, Türbe Sokağı, Seyyid Mahmut Hayrani haziresi içerisinde yer almaktadır.",38.356962,31.408135,geocoding,mahalle,false,false
+guduk-minare-camii-konya,Güdük Minare Camii,konya,Akşehir,"Cami, Selçuk Mahallesi, Güdük Minare Sokak üzerinde yer almaktadır.",38.357225,31.409535,geocoding,eser,false,false
+haci-hamza-hafiz-hatip-ali-mescidi-konya,Hacı Hamza (Hafız Hatip Ali) Mescidi,konya,Akşehir,"Mescit, Akşehir, Yıldırım Mahallesi, Hacı Hamza Sokak üzerindedir.",38.357,31.416,geocoding,ilce,false,false
+hidirlik-hizirlik-hidir-dede-mescidi-konya,Hıdırlık (Hızırlık - Hıdır Dede) Mescidi,konya,Akşehir,"Mescit, Akşehir merkez, Kızılca Mahalle, Hıdırlık Mesire yerinin içerisinde yer almaktadır.",38.348762,31.414795,geocoding,eser,false,false
+imaret-hasan-pasa-camii-konya,İmaret (Hasan Paşa) Camii,konya,Akşehir,"Cami, Akşehir, Kileci Mahallesi, İmaret Sokak üzerinde bulunmaktadır.",38.354497,31.413926,geocoding,mahalle,false,false
+iplikci-ambardar-kerim-aga-camii-konya,İplikçi (Ambardar Kerim Ağa) Camii,konya,Akşehir,"Cami, Kuşçu Mahallesi, çarşı içindedir.",38.357818,31.413318,geocoding,eser,false,false
+kalayci-mescidi-konya,Kalaycı Mescidi,konya,Akşehir,"Mescit, Akşehir, Kuşçu Mahallesi, Kalaycı Sokak üzerinde yer almaktadır.",38.355687,31.412348,geocoding,eser,false,false
+kizilca-mescit-konya,Kızılca Mescit,konya,Akşehir,"Mescit, Akşehir, Kızılca Mahallesi, İbre Sokak üzerindedir.",38.357,31.416,geocoding,ilce,false,false
+kileci-mescidi-konya,Kileci Mescidi,konya,Akşehir,"Mescit, Kileci Mahallesi, Bayram Sokak üzerinde yer almaktadır.",38.354497,31.413926,geocoding,mahalle,false,false
+kucuk-ayasofya-mescidi-konya,Küçük Ayasofya Mescidi,konya,Akşehir,"Mescit, Eski Kale, Orta Hamam Sokak üzerinde yer almaktadır.",38.357,31.416,geocoding,ilce,false,false
+ortakoy-beldesi-merkez-camii-konya,Ortaköy Beldesi Merkez Camii,konya,Akşehir,"Cami Akşehir, Ortaköy Beldesi merkezinde yer almaktadır.",38.357,31.416,geocoding,ilce,false,false
+tahtakale-mescidi-konya,Tahtakale Mescidi,konya,Akşehir,"Mescit, Akşehir, Kuşçu Mahallesi, Çarşı Sokak’ta bulunan dükkanların arasında, Akşehir Kalesi’nin yakınlarındadır.",38.357,31.416,geocoding,ilce,false,false
+ulu-sultan-alaattin-camii-konya,Ulu (Sultan Alaattin) Camii,konya,Akşehir,Akşehir Ulu (Sultan Alaattin) Camii kendi ismini taşıyan cadde üzerindedir.,38.356283,31.411408,geocoding,eser,false,false
+ali-pasa-camii-konya,Ali Paşa Camii,konya,Altınekin,Cami Altınekin ilçe merkezinde yer almaktadır.,38.308,32.869,geocoding,ilce,false,false
+bayindir-koyu-camii-konya,Bayındır Köyü Camii,konya,Beyşehir,"Cami, Konya-Beyşehir yolu üzerindeki Bayındır Köyü merkezinde yer almaktadır.",37.677,31.725,geocoding,ilce,false,false
+cuma-orta-camii-konya,Cuma (Orta) Camii,konya,Beyşehir,"Cami, Beyşehir, Hacıarmağan Mahallesinde yer almaktadır.",37.677,31.725,geocoding,ilce,false,false
+demirli-mescit-konya,Demirli Mescit,konya,Beyşehir,"Mescit, Beyşehir, İçerişehir Mahallesi, Demirli Sokak üzerinde yer almaktadır.",37.677,31.725,geocoding,ilce,false,false
+emen-eski-camii-konya,Emen Eski Camii,konya,Beyşehir,"Cami Beyşehir, Emen Köyündedir.",37.677,31.725,geocoding,ilce,false,false
+gedik-ahmet-pasa-camii-konya,Gedik Ahmet Paşa Camii,konya,Beyşehir,"Cami, Beyşehir, Üstünler Köyü’nde yer almaktadır.",37.581092,31.585012,geocoding,eser,false,false
+hamidiye-camii-konya,Hamidiye Camii,konya,Beyşehir,"Cami, Beyşehir, Nazımbey Caddesi, Hamidiye Mahallesinde yer almaktadır.",37.676224,31.732931,geocoding,eser,false,false
+hizir-ali-pasa-bayafsar-camii-konya,Hızır Ali Paşa (Bayafşar) Camii,konya,Beyşehir,"Cami, Beyşehir, Bayafşar Kasabası merkezinde yer almaktadır.",37.677,31.725,geocoding,ilce,false,false
+lutfullah-carsi-camii-minaresi-konya,Lütfullah Çarşı Camii Minaresi,konya,Beyşehir,"Minare, Beyşehir, Evsât Mahallesinde, çarşı içerisinde, günümüzde yenilenmiş olan Çarşı Camisi’nin kuzey doğusunda bulunmaktadır.",37.677,31.725,geocoding,ilce,false,false
+hisarlik-beldesi-asarlik-camii-konya,Hisarlık Beldesi Asarlık Camii,konya,Bozkır,"Cami Bozkır, Hisarlık Mahallesinde eski mezarlık içerisinde yer almaktadır.",37.15316,32.345078,geocoding,mahalle,false,false
+siristat-buyuk-camii-konya,Sırıstat (Büyük) Camii,konya,Bozkır,"Cami, Bozkır, Çarşı İçi Mahallesinde, Çarşamba Suyu ve Taş Köprü yakınında yer almaktadır.",37.189,32.247,geocoding,ilce,false,false
+sogut-buyuk-cami-konya,Söğüt Büyük Cami,konya,Bozkır,"Cami, Bozkır, Söğüt Mahallesinde yer almaktadır.",37.097292,32.328803,geocoding,mahalle,false,false
+ucpinar-beldesi-kursunlu-camii-konya,Üçpınar Beldesi Kurşunlu Camii,konya,Bozkır,Son cemaat yeri yuvarlak kemerli ayaklarla üç bölüme ayrılmıştır.,37.189,32.247,geocoding,ilce,false,false
+ulu-carsi-merkez-camii-konya,Ulu (Çarşı - Merkez) Camii,konya,Çeltik,"Cami Çeltik, Mevlâna Bulvarı üzerinde yer almaktadır.",39.023,31.791,geocoding,ilce,false,false
+karamanoglu-ibrahim-bey-camii-konya,Karamanoğlu İbrahim Bey Camii,konya,Çumra,"Cami, Çumra, İçeriçumra Köyü, Minarealtı Mahallesinde, Konya yolu üzerinde yer almaktadır.",37.573,32.774,geocoding,ilce,false,false
+ciftlikozu-beldesi-camii-konya,Çiftliközü Beldesi Camii,konya,Derbent,"Cami, Derbent, Çiftliközü Beldesi merkezinde yer almaktadır.",38.012,32.018,geocoding,ilce,false,false
+baskoy-ulu-camii-konya,Başköy - Ulu Camii,konya,Doğanhisar,"Cami, Doğanhisar, Başköy Mahallesinin ulu camisidir.",38.141753,31.756505,geocoding,eser,false,false
+karaaga-beldesi-eski-ulu-camii-konya,Karaağa Beldesi Eski (Ulu) Camii,konya,Doğanhisar,"Cami, Doğanhisar, Karaağa Mahallesinde bulunmaktadır.",38.182601,31.616084,geocoding,mahalle,false,false
+orta-camii-konya,Orta Camii,konya,Doğanhisar,"Cami, Doğanhisar, Harman Mahallesindedir.",38.148124,31.674441,geocoding,eser,false,false
+pazar-carsi-camii-konya,Pazar (Çarşı) Camii,konya,Doğanhisar,"Cami, Doğanhisar ilçe merkezindedir.",38.145,31.676,geocoding,ilce,false,false
+ayaslar-ulu-yukari-camii-konya,Ayaslar Ulu (Yukarı) Camii,konya,Doğanhisar,"Cami, Doğanhisar, Ayaslar Mahallesindedir.",38.145,31.676,geocoding,ilce,false,false
+ulu-camii-konya,Ulu Camii,konya,Doğanhisar,"Ulu Camii, Doğanhisar merkez, Pazar Mahallesi, Ulu Camii Caddesi üzerinde yer almaktadır.",38.184431,31.606284,geocoding,eser,false,false
+yegin-camii-konya,Yeğin Camii,konya,Doğanhisar,"Doğanhisar, Yeğin Mahallesi merkezinde bulunan cami eğimli bir arazi üzerine inşa edilmiştir.",38.146008,31.675427,geocoding,eser,false,false
+agalar-boyaci-ali-mescidi-konya,Ağalar (Boyacı Ali) Mescidi,konya,Ereğli,"Mescit, Ereğli, Boyacı Ali Mahallesi, İstasyon Caddesi üzerinde yer almaktadır.",37.513,34.047,geocoding,ilce,false,false
+buyukdede-taskilise-camii-konya,Büyükdede (Taşkilise) Camii,konya,Ereğli,"Cami, Ereğli, Büyükdede Köyü’nde yer almaktadır.",37.414766,34.131978,geocoding,eser,false,false
+kutoren-eski-camii-konya,Kutören Eski Camii,konya,Ereğli,"Cami Ereğli, Kutören kasaba mezarlığı içinde yer alır.",37.513,34.047,geocoding,ilce,false,false
+ulu-kible-camii-konya,Ulu (Kıble) Camii,konya,Ereğli,"Cami Ereğli ilçe merkezinde, Cami-i Kebir Mahallesinde yer almaktadır.",37.825667,34.246162,geocoding,eser,false,false
+zengen-beldesi-eski-camii-konya,Zengen Beldesi Eski Camii,konya,Ereğli,"Cami Ereğli, Zengen Köyü, Mustafa Kemal Paşa Mahallesindedir.",37.513,34.047,geocoding,ilce,false,false
+cavus-eski-merkez-cami-konya,Çavuş (Eski) Merkez Cami,konya,Hüyük,Cami Hüyük İlçesi Çavuş Köyü’nde yer almaktadır.,37.962956,31.563775,geocoding,eser,false,false
+cukurkent-koyu-camii-konya,Çukurkent Köyü Camii,konya,Hüyük,"Cami Hüyük, Çukurkent Köyü, Köyiçi Mevkii’ndedir.",37.954,31.597,geocoding,ilce,false,false
+beykonak-dedigi-sultan-mescit-ve-tekkesi-konya,Beykonak Dediği Sultan Mescit ve Tekkesi,konya,Ilgın,"Beykonak Dediği Sultan Mescit ve Tekkesi, Anadolu Selçuklu Sultanı II. Kılıç Arslan’ın oğlu I. Keyhüsrev zamanına, H. 576 / M. 1180 yılına ait önemli bir yapıdır.",38.279,31.913,geocoding,ilce,false,false
+behlul-bey-camii-konya,Behlül Bey Camii,konya,Ilgın,,38.279,31.913,geocoding,ilce,false,true
+fazil-camii-konya,Fazıl Camii,konya,Ilgın,"Cami, Ilgın, Yukarı Çiğil Beldesi’nde bulunmaktadır.",38.058443,31.89031,geocoding,eser,false,false
+ibrahim-pasa-camii-argithani-konya,İbrahim Paşa Camii (Argıthanı),konya,Ilgın,"Nevşehirli İbrahim Paşa Ilgın’a bağlı Argıthan Kasabasında cami, mektep, medrese, 16 ocaklı han, 14 dükkânlı çarşı, 6 çeşme ve kuyudan müteşekkil külliyeyi H. 1133 / M.1720 senesinde yaptırmıştır.",38.290581,31.713745,geocoding,eser,false,false
+pir-huseyin-ulu-cukur-camii-konya,Pir Hüseyin (Ulu - Çukur) Camii,konya,Ilgın,"Ilgın merkezinde, çarşı içerisinde kendi ismiyle anılan mahallede bulunan cami zeminden 1,5 m aşağıda kaldığı için halk tarafından “Çukur Camii” adıyla anılmaktadır.",38.279,31.913,geocoding,ilce,false,false
+sihcarullah-zincirli-camii-konya,Şıhcarullah (Zincirli) Camii,konya,Ilgın,"Cami, Ilgın, Şıhcarullah Mahallesinde bulunmaktadır.",38.279136,31.92176,geocoding,eser,false,false
+yukari-cigil-beldesi-merkez-camii-kebir-camii-konya,Yukarı Çiğil Beldesi Merkez (Camii Kebir) Camii,konya,Ilgın,"Cami Ilgın, Yukarı Çiğil Beldesinde yer almaktadır.",38.279,31.913,geocoding,ilce,false,false
+cavundur-camii-konya,Çavundur Camii,konya,Kadınhanı,"Cami Kadınhanı, Ünveren Mahallesi, Menekşe Sokak’tadır.",38.239,32.211,geocoding,ilce,false,false
+haci-mehmetli-camii-konya,Hacı Mehmetli Camii,konya,Kadınhanı,"Cami, Kadınhanı merkez, Doğanlar Mahallesi, Şirin Sokak üzerinde yer almaktadır.",38.239,32.211,geocoding,ilce,false,false
+ibrahim-bey-carsi-camii-konya,İbrahim Bey (Çarşı) Camii,konya,Kadınhanı,"Cami, Kadınhanı, Konya Caddesi üzerinde yer almaktadır.",38.238616,32.228593,geocoding,adres,false,false
+kabacali-camii-konya,Kabacalı Camii,konya,Kadınhanı,"Cami Kadınhanı, Kayabaşı Mahallesinde, tepelik bir konumda yer almaktadır.",38.236956,32.222488,geocoding,eser,false,false
+karamanli-haci-mustafa-camii-konya,Karamanlı Hacı Mustafa Camii,konya,Kadınhanı,"Cami Kadınhanı, Güngören Mahallesi, Konya Caddesi üzerinde yer almaktadır.",38.239,32.211,geocoding,ilce,false,false
+pinarbasi-camii-konya,Pınarbaşı Camii,konya,Kadınhanı,"Cami Kadınhanı, Güngören Mahallesinde bulunur.",38.233476,32.218798,geocoding,eser,false,false
+cetmi-camii-konya,Çetmi Camii,konya,Karapınar,"Cami Karapınar, Çetmi Mahallesinde yer almaktadır.",37.711848,33.547765,geocoding,eser,false,false
+resadiye-camii-konya,Reşadiye Camii,konya,Karapınar,"Cami Karapınar, Adalet Sokak’ta yer almaktadır.",37.716,33.55,geocoding,ilce,false,false
+yagmapinar-mescidi-konya,Yağmapınar Mescidi,konya,Karapınar,"Cami Karapınar ilçesinde, Emirgazi ve Ardistama yolları üzerinde, Yağmapınar Mahallesinde hazire içerisinde yer almaktadır.",37.827102,33.725618,geocoding,mahalle,false,false
+kucuk-alioglu-camii-konya,Küçük Alioğlu Camii,konya,Sarayönü,"Cami Sarayönü, Hatıp Mahallesi, Pir Hüseyin Bey Caddesi üzerindedir.",38.268308,32.406854,geocoding,mahalle,false,false
+pir-huseyin-bey-yukari-camii-konya,Pir Hüseyin Bey (Yukarı) Camii,konya,Sarayönü,"Cami Sarayönü İlçesi, Yukarı Mahalle, Pir Hüseyin Bey Caddesi’nde yer almaktadır.",38.268304,32.408642,geocoding,eser,false,false
+muallimhane-sofuhane-camii-ve-turbesi-konya,Muallimhane (Sofuhane) Camii ve Türbesi,konya,Seydişehir,"Cami Seydişehir, Sofuhane Mahallesinde, Hükümet Meydanı’nın güneyinde yer almaktadır.",37.418896,31.844001,geocoding,mahalle,false,false
+seyyid-harun-veli-camii-konya,Seyyid Harun Veli Camii,konya,Seydişehir,Cami Seydişehir İlçe Merkezinde yer almaktadır.,37.41676,31.846541,geocoding,eser,false,false
+uzun-seyh-sih-camii-konya,Uzun Şeyh (Şıh) Camii,konya,Taşkent,Cami Taşkent İlçe merkezinde yer almaktadır.,36.924,32.49,geocoding,ilce,false,false
+piribeyli-beldesi-merkez-camii-konya,Piribeyli Beldesi Merkez Camii,konya,Yunak,"Cami, Yunak, Piribeyli Kasabasında yer almaktadır.",38.815,31.733,geocoding,ilce,false,false
+esrefoglu-suleyman-bey-kulliyesi-konya,Eşrefoğlu Süleyman Bey Külliyesi,konya,Beyşehir,"Külliye, Beyşehir ilçe merkezinde yer almaktadır.",37.677,31.725,geocoding,ilce,false,false
+sultan-ii-selim-kulliyesi-konya,Sultan II. Selim Külliyesi,konya,Karapınar,Mimar Sinan’ın Karapınar’da inşa ettiği menzil külliyesi Konya’nın Karapınar ilçesinde yer almaktadır.,37.716,33.55,geocoding,ilce,false,false
+lala-mustafa-pasa-kulliyesi-konya,Lala Mustafa Paşa Külliyesi,konya,Ilgın,"Ilgın şehir merkezindeki külliye, Sultan Murad zamanında Kıbrıs Fâtihi Lala Mustafa Paşa tarafından H. 984 / M.1576 yılında yaptırılmıştır.",38.279,31.913,geocoding,ilce,false,false
+sircali-medrese-konya,Sırçalı Medrese,konya,Meram,"Medrese, Meram, Gazi Alemşah Mahallesinde, kendi adıyla anılan Sırçalı Medrese Caddesi, No. 16’da yer almaktadır.",37.87005,32.494127,geocoding,eser,false,false
+kemaliye-kucuk-karatay-medresesi-konya,Kemaliye (Küçük Karatay) Medresesi,konya,Karatay,"“Kemaliye” ya da “Küçük Karatay” olarak da bilinen Selçuklu devri medresesinden günümüze gelebilen tek eyvan kalıntısı, Karatay, Ankara Caddesi üzerinde, Kız Öğretmen Okulu’nun (Konya Büyükşehir Belediyesi Taş Bina) güneybatı köşesinde yer almaktadır.",37.934924,32.537062,geocoding,adres,false,false
+karatay-medresesi-konya,Karatay Medresesi,konya,Karatay,"Medrese, Selçuklu, Ankara Caddesi, No. 1’de, Alâeddin Tepesi’nin kuzey eteğinde yer almaktadır.",37.934924,32.537062,geocoding,adres,false,false
+ali-efendi-darulhuffazi-muallimhane-konya,Ali Efendi Darülhuffazı (Muallimhâne),konya,Karatay,"Belgelerde darülhuffaz, darülkurra, medrese veya muallimhane adlarıyla anılan yapı, Karatay, Şerefşirin Mahallesi’nde, Şerafettin Camii’nin (XVII. yy. başı) hemen kuzeydoğusunda yer almaktadır.",37.8716,32.505,geocoding,ilce,false,false
+ali-gav-zaviyesi-mahmudiye-medresesi-konya,Ali Gav (Zaviyesi) Mahmudiye Medresesi,konya,Selçuklu,"Alâeddin Tepesi’nin kuzeyinde ve Karatay Medresesi’ne yaklaşık 150 m uzaklıkta bulunan yapı ismini, bir rivayete göre XV. yüzyılda medresede şeyhlik yapmış, Hacı Bayram-ı Veli ahfadından Ali Gav Baba’dan almıştır.",37.876,32.49,geocoding,ilce,false,false
+ince-minareli-medrese-sahip-ata-darulhadis-konya,İnce Minareli Medrese (Sahip Ata Darülhadis),konya,Selçuklu,"Medrese, Selçuklu, Beyhekim Mahallesi, Alâeddin Bulvarı, No. 15’te bulunmaktadır.",37.985409,32.492439,geocoding,mahalle,false,false
+tas-halkali-sahip-ata-medrese-konya,Taş (Halkalı - Sahip Ata) Medrese,konya,Akşehir,"Medrese, Altunkalem Mahallesi, Dr. Aziz Perkûn Sokak, No. 8’de yer almaktadır.",38.359798,31.409443,geocoding,eser,false,false
+ismail-aga-medresesi-tas-medrese-konya,İsmail Ağa Medresesi (Taş Medrese),konya,Beyşehir,Beyşehir ilçesinde bulunan medrese Pisidya bölgesinde Selçuklu çağında bir uç beyliği olarak kurulan Eşrefoğulları’nın başkentindedir.,37.677,31.725,geocoding,ilce,false,false
+cemal-ali-dede-turut-turbesi-konya,Cemal Ali Dede (Turut) Türbesi,konya,Meram,"Türbe, Meram İlçesi, Yaka Mahallesi, Dere Caddesi üzerinde No. 13’te yer almaktadır.",37.868654,32.435008,geocoding,mahalle,false,false
+atesbaz-veli-kumbeti-ve-zaviyesi-konya,Ateşbaz Veli Kümbeti ve Zaviyesi,konya,Meram,"Ateşbaz Veli Türbesi Meram, Ateşbaz Veli Mahallesi, Ateşbaz Sokak’ta yer almaktadır.",37.859944,32.443092,geocoding,adres,false,false
+tavus-baba-turbesi-konya,Tavus Baba Türbesi,konya,Meram,"Türbe, Meram, Durunday Mahallesi, Tavusbaba Sokak üzerinde yer almaktadır.",37.85233,32.419947,geocoding,eser,false,false
+turgutoglu-turbesi-konya,Turgutoğlu Türbesi,konya,Meram,"Türbe, Meram, Konevi Mahallesi, Turgutoğlu Sokak üzerindedir.",37.865,32.48,geocoding,ilce,false,false
+sahip-ata-hanikahi-ve-turbesi-konya,Sahip Ata Hanikahı ve Türbesi,konya,Meram,"Sahip Ata Külliyesi, Meram, Sahibiata Mahallesi, Taşcami Uzunharmanlar Caddesi üzerinde yer almaktadır.",37.864423,32.494013,geocoding,adres,false,false
+seyh-hasan-i-rumi-turbesi-konya,Şeyh Hasan-ı Rûmi Türbesi,konya,Meram,"Türbe, Meram, Sahip Ata Külliyesi’nin kuzeyinde, Gülbahçe Sokak üzerinde yer almaktadır.",37.835761,32.441511,geocoding,adres,false,false
+seyh-osman-rumi-turbesi-konya,Şeyh Osman Rûmi Türbesi,konya,Meram,"Türbe Meram, Gülbahçe Sokak üzerinde yer almaktadır.",37.835761,32.441511,geocoding,adres,false,false
+emir-nurettin-sephevan-kumbeti-konya,Emir Nurettin (Sephevan) Kümbeti,konya,Meram,"Kümbet Meram, Sahip Ata Mahallesi, Kurs Sokak üzerinde yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+sadr-sedir-sultan-turbesi-konya,Sadr (Sedir) Sultan Türbesi,konya,Karatay,"Türbe Meram, Köprübaşı Mahallesi, Sedirler Caddesi üzerindedir.",37.8716,32.505,geocoding,ilce,false,false
+seyh-aliman-alaman-isgalaman-yahsi-turbesi-konya,Şeyh Aliman (Alaman-İşgalaman) Yahşi Türbesi,konya,Karatay,"Türbe Karatay, Çelebi Mahallesi, Şeyh Ulema Recep Ağa Caddesi üzerinde yer almaktadır.",37.869751,32.511934,geocoding,mahalle,false,false
+arap-dede-turbesi-konya,Arap Dede Türbesi,konya,Karatay,"Türbe, Karatay, Sedirler Mahallesi, Sedirler Sarnıç Camii’nin doğusundadır.",37.8716,32.505,geocoding,ilce,false,false
+seyfettin-kara-sungur-kumbeti-konya,Seyfettin Kara Sungur Kümbeti,konya,Karatay,"Yapının gövdesinde taş ve tuğla malzeme birlikte kullanılmış, giriş cephesi mermer malzemeden, kubbe ile külahı ise tuğla malzemeden yapılmıştır.",37.8716,32.505,geocoding,ilce,false,false
+ishak-pasa-turbesi-konya,İshak Paşa Türbesi,konya,Karatay,"İshak Paşa Türbesi Şems Parkı’nın içerisinde, Şems Tebrizi Türbesi’nin kuzey doğusunda yer almaktadır.",37.873959,32.497691,geocoding,eser,false,false
+ic-karaaslan-necmettin-karaarslan-kumbeti-konya,İç Karaaslan (Necmettin Karaarslan) Kümbeti,konya,Karatay,"Kümbet, Karatay, Şems Tebrizi Mahallesi, Yeşilgözler Sokak üzerindedir.",37.8716,32.505,geocoding,ilce,false,false
+burhaneddin-fakih-dede-turbesi-konya,Burhaneddin Fakih Dede Türbesi,konya,Karatay,"Karatay, Akçeşme Mahallesi, Pir Esat Caddesi üzerinde yer alan türbe Pir Esad Türbesi’nin kuzeyinde bulunmaktadır. H. 860 / M. 1456 senesinde Karamanoğlu döneminde yapılmıştır.",37.868,32.506429,geocoding,mahalle,false,false
+emir-ebu-ishak-kazeruni-tekkesi-turbesi-konya,Emir Ebu İshak Kazerûni Tekkesi (Türbesi),konya,Selçuklu,"Türbe Selçuklu, İhsaniye Mahallesi, Ertuğrul Sokak üzerinde yer almaktadır.",37.872722,32.488444,geocoding,adres,false,false
+sut-tekkesi-ferhuniye-mescidi-ve-keykavus-kizi-turbesi-konya,Süt Tekkesi (Ferhuniye Mescidi) ve Keykavus Kızı Türbesi,konya,Selçuklu,"Türbe, Selçuklu, Ferhuniye Mahallesi, Sultan Mesut Sokak üzerinde yer almaktadır.",37.875678,32.491319,geocoding,adres,false,false
+kalenderhane-kalender-baba-turbesi-konya,Kalenderhane (Kalender Baba) Türbesi,konya,Selçuklu,"Türbe, Selçuklu, Feritpaşa Mahallesi, Ankara Caddesindedir.",37.876,32.49,geocoding,ilce,false,false
+ulas-baba-kumbeti-konya,Ulaş Baba Kümbeti,konya,Selçuklu,"Türbe Selçuklu, Ferhuniye Mahallesi, Parsana Caddesi üzerinde yer almaktadır.",37.881333,32.490073,geocoding,adres,false,false
+kesikbas-kumbeti-konya,Kesikbaş Kümbeti,konya,Selçuklu,"Selçuklu, Feritpaşa Mahallesi, Ankara Caddesi üzerindedir.",37.876,32.49,geocoding,ilce,false,false
+ii-kilicarslan-kumbeti-kumbet-hane-konya,II. Kılıçarslan Kümbeti (Kümbet-Hane),konya,Selçuklu,"Türbe, Alâeddin Tepesi’nde, Alaaddin Camii avlusunda yer almaktadır.",37.876,32.49,geocoding,ilce,false,false
+i-izzettin-keykavus-yarim-anonim-kumbeti-konya,I. İzzettin Keykavus (Yarım-Anonim) Kümbeti,konya,Selçuklu,"Türbe, Alâeddin Tepesi, Alâeddin Camii avlusunda yer alan iki türbe içerisinden yapımı yarım bırakılmış olanıdır.",37.876,32.49,geocoding,ilce,false,false
+tacul-vezir-kumbeti-konya,Tacül Vezir Kümbeti,konya,Selçuklu,"Tacül Vezir Türbesi, Selçuklu, Ferhuniye Mahallesi, Sultanşah Caddesi üzerindedir.",37.876,32.49,geocoding,ilce,false,false
+emirgazi-emrullah-gazi-turbesi-konya,Emirgazi (Emrullah Gazi) Türbesi,konya,Ahırlı,"Türbe, Emirgazi, 87036 Sokak, Emirgazi Şehitliği içerisinde yer almaktadır.",37.239,32.118,geocoding,ilce,false,false
+mustafa-turabi-kazan-dede-turbesi-konya,Mustafa Turabi (Kazan Dede) Türbesi,konya,Akşehir,"Türbe, Akşehir, Altunkalem Mahallesi, Dr. Aziz Perkün Caddesi’nde yer almaktadır.",38.360647,31.407194,geocoding,adres,false,false
+seyit-mahmut-hayrani-turbesi-konya,Seyit Mahmut Hayrani Türbesi,konya,Akşehir,"Seyyid Mahmut Hayrani Türbesi, Anıt Mahallesi, Seyyid Mahmut Hayrani Sokak’ta yer almaktadır.",38.356962,31.408135,geocoding,mahalle,false,false
+seyh-eyup-yagli-dede-turbesi-konya,Şeyh Eyüp (Yağlı Dede) Türbesi,konya,Akşehir,"Şeyh Eyüp (Yağlı Dede) Türbesi, Akşehir İlçesi, Kızılca Mahallesi, Mektep Sokak’ta yer almaktadır.",38.352305,31.410953,geocoding,mahalle,false,false
+tacettin-dede-turbesi-konya,Tacettin Dede Türbesi,konya,Akşehir,"Türbe, Akşehir İlçesi, Kızılca Mahallesi, Topçu Sokak’ta yer almaktadır.",38.352305,31.410953,geocoding,mahalle,false,false
+yarim-anonim-turbe-konya,Yarım (Anonim) Türbe,konya,Beyşehir,"Beyşehir İlçesi, İçerişehir Mahallesinde Eşrefoğlu Camii’nin kuzeydoğu cephesinde yer almaktadır.",37.677,31.725,geocoding,ilce,false,false
+yazlica-koyu-kuzucu-sultan-kumbeti-konya,Yazlıca Köyü Kuzucu Sultan Kümbeti,konya,Doğanhisar,Türbe Yazlıca Köyü’ndedir.,38.145,31.676,geocoding,ilce,false,false
+halife-sultan-turbesi-konya,Halife Sultan Türbesi,konya,Seydişehir,"Seydişehir İlçesi, Seyitharun Mahallesi, 153096 Sokak, Seyyid Harun Camii’nin kuzeydoğu köşesine bitişik olarak inşa edilen iki türbeden cami duvarına bitişik olan yapıdır.",37.419,31.849,geocoding,ilce,false,false
+seyit-harun-veli-turbesi-konya,Seyit Harun Veli Türbesi,konya,Seydişehir,"Türbe Seydişehir, Seyitharun Mahallesi, 153096 Sokak üzerinde yer almaktadır.",37.415913,31.845171,geocoding,mahalle,false,false
+sultan-hatun-turbesi-konya,Sultan Hatun Türbesi,konya,Seydişehir,"Türbe Seydişehir, Seyitharun Mahallesi, 153096 Sokak üzerinde, Seyyid Harun Veli Camii’nin kuzeyinde yer almaktadır.",37.415913,31.845171,geocoding,mahalle,false,false
+sahip-ata-sultan-hamami-konya,Sahip Ata (Sultan) Hamamı,konya,Meram,"Hamam Meram, Şükran Mahallesi, Taşcami Uzunharmanlar Caddesi’nin üzerinde, Sahip Ata yapılar grubunun doğu tarafında 881 ada, 42 numaralı parsel üzerinde bulunmaktadır.",37.869761,32.496859,geocoding,mahalle,false,false
+hatipoglu-hasbeyoglu-hamami-konya,Hatipoğlu (Hasbeyoğlu) Hamamı,konya,Meram,"Hamam, Meram, Yorgancı Mahallesi’nde, Meram Köprüsü’nün güney tarafında 645 ada, 1 numaralı parsel üzerinde bulunmaktadır.",37.845763,32.424709,geocoding,mahalle,false,false
+mahkeme-yeni-hamami-konya,Mahkeme (Yeni) Hamamı,konya,Karatay,"Hamam, Karatay ilçesi, Şemsi Tebrizi Mahallesi’nde, Şerafeddin Camii’nin kuzeybatısında, 256 ada, 16 numaralı parsel üzerinde yer almaktadır.",37.872782,32.498175,geocoding,eser,false,false
+sifa-hamami-konya,Şifa Hamamı,konya,Akşehir,"Hamam, Akşehir, Selçuk Mahallesi, Müze Caddesinde bulunmaktadır.",38.358333,31.414796,geocoding,eser,false,false
+rustem-pasa-sifa-hamami-konya,Rüstem Paşa (Şifa) Hamamı,konya,Ereğli,"Hamam, Ereğli, Selçuklu Mahallesi, Hamam Sokak üzerinde yer almaktadır.",37.513242,34.049392,geocoding,mahalle,false,false
+seyyit-harun-veli-hamami-konya,Seyyit Harun Veli Hamamı,konya,Seydişehir,"Hamam, Seydişehir, Keçikapı Mahallesi, 1608. Sokak üzerinde bulunmaktadır.",37.419,31.849,geocoding,ilce,false,false
+hoca-fakih-cesmesi-konya,Hoca Fakih Çeşmesi,konya,Meram,"Çeşme, Meram, Armağan Mahallesi, Hocafakih Caddesi üzerinde bulunmaktadır.",37.868493,32.468509,geocoding,mahalle,false,false
+safaci-cesmesi-konya,Safacı Çeşmesi,konya,Selçuklu,"Çeşme, Selçuklu, Alâeddin Bulvarı üzerinde, Ak Camii’nin (Şazibey Camii) güneybatı köşesinde bulunmaktadır.",37.873428,32.492786,geocoding,adres,false,false
+haci-veyis-cesmesi-konya,Hacı Veyis Çeşmesi,konya,Karatay,"Çeşme, Karatay, Aslanlı Kışla Caddesi üzerinde bulunmaktadır.",37.870688,32.509115,geocoding,adres,false,false
+bagevliya-camii-cesmesi-konya,Bağevliya Camii Çeşmesi,konya,Karatay,"Çeşme, Karatay, Bağevliya Sokak, Bağevliya Camii’nin önünde bulunmaktadır.",37.877817,32.504793,geocoding,adres,false,false
+karakayis-sari-cami-cesmesi-konya,Karakayış Sarı Cami Çeşmesi,konya,Karatay,"Çeşme, Karatay, Karakayış Caddesi ve Karacaoğlan Sokağı’nın kesiştiği köşede yer alan Sarı Camii’nin batısında bulunmaktadır.",37.899952,32.518801,geocoding,adres,false,false
+kucuk-ayasofya-mescidi-cesmesi-konya,Küçük Ayasofya Mescidi Çeşmesi,konya,Akşehir,"Çeşme, Akşehir, Eski Kale Mahallesi, Süleymanağa Sokak, 13 numarada bulunmaktadır.",38.354849,31.40992,geocoding,mahalle,false,false
+hocacihan-sarnici-konya,Hocacihan Sarnıcı,konya,Meram,"Sarnıç, Meram, Yaka Mahallesi, Aziz Mahmut Hüdai Caddesi ve Ezgi Sokak’ın birleştiği köşede yer almaktadır.",37.879173,32.435465,geocoding,adres,false,false
+deli-osman-hani-konya,Deli Osman Hanı,konya,Meram,"Han, Meram, Seydişehir yolu üzerinde yer alan Bozağaç Camii’nin yakınında yer almaktadır.",37.865,32.48,geocoding,ilce,false,false
+akyokus-hoca-cihan-hani-konya,Akyokuş (Hoca Cihan) Hanı,konya,Meram,"Han, Meram, Yunus Emre Mahallesi, Konya-Beyşehir yolu üzerindedir.",37.865,32.48,geocoding,ilce,false,false
+kiziloren-kurucesme-hani-konya,Kızılören (Kuruçeşme) Hanı,konya,Meram,"Han, Meram, Kızılören Köyü sınırları içerisinde Konya-Beyşehir yolunun 32. km’sinde, yoldan 200 m içerde yer alır.",37.865,32.48,geocoding,ilce,false,false
+emir-kandemir-hani-konya,Emir Kandemir Hanı,konya,Meram,"Han, Meram, Kızılören Köyü yakınında, Konya- Beyşehir yolu üzerinde Altunapa ve Kuruçeşme hanlarından sonra gelen yapıdır.",37.865,32.48,geocoding,ilce,false,false
+inlice-han-konya,İnlice Han,konya,Meram,"Han, Meram, Mesudiye Mevkii, İnlice Kasabası yolu üzerindedir.",37.865,32.48,geocoding,ilce,false,false
+sukran-mescidi-zemin-kat-dukkan-ve-magaza-konya,Şükran Mescidi Zemin Kat Dükkân ve Mağaza,konya,Meram,"Dükkân ve mağaza, Meram, Şükran Mahallesi, Hotuz Sokak’ta, Şükran Mescidi’nin alt katında yer almaktadır.",37.869761,32.496859,geocoding,mahalle,false,false
+vakif-is-hani-vakiflar-bolge-mudurlugu-hizmet-binasi-konya,Vakıf İş Hanı (Vakıflar Bölge Müdürlüğü Hizmet Binası),konya,Karatay,"Han, Meram, Mevlâna Caddesi, Şems-i Tebrizi Mahallesinde, Hükümet Konağı’nın kuzeyindedir.",37.8716,32.505,geocoding,ilce,false,false
+elikesik-han-konya,Elikesik Han,konya,Selçuklu,"Han, Konya-Derbent yolu üzerinde, Aladağlar arasında Başara Vadisi yolu üzerinde, Kalburcu/Güney Köyü içerisinde yer alır.",37.876,32.49,geocoding,ilce,false,false
+dokuzun-derbent-sadiye-igdisleri-hani-konya,Dokuzun (Derbent-Şadiye-İğdişleri) Hanı,konya,Selçuklu,"Yapı, Konya-Afyon yolu üzerinde, Konya merkeze 24 km mesafede, Şadiye Köyü’nde yer almaktadır.",37.876,32.49,geocoding,ilce,false,false
+zazadin-sadeddin-kopek-hani-konya,Zazadin (Sadeddin Köpek) Hanı,konya,Selçuklu,"Han, Konya- Aksaray yolunun 22. km’sinde, Tömek Köyü’ne yakın bir konumda yer almaktadır.",37.876,32.49,geocoding,ilce,false,false
+horozlu-ruzbe-han-konya,Horozlu (Rûzbe) Han,konya,Selçuklu,"Han, Konya’ya en yakın handır.",37.929945,32.527535,geocoding,eser,false,false
+dedeler-hani-konya,Dedeler Hanı,konya,Altınekin,"Han, Altınekin, Dedeler Kasabası’nın merkezinde bulunmaktadır.",38.308,32.869,geocoding,ilce,false,false
+zalmanda-hani-konya,Zalmanda Hanı,konya,Altınekin,"Han, Altınekin ilçesine bağlı Koçkaya Köyü’nün yaklaşık olarak 10 km güneyinde yer almaktadır.",38.308,32.869,geocoding,ilce,false,false
+zivarik-han-konya,Zıvarık Han,konya,Altınekin,"Han, Altınekin ilçesinin merkezinde bulunmaktadır.",38.308,32.869,geocoding,ilce,false,false
+cagalzade-bedesteni-konya,Cağalzade Bedesteni,konya,Ereğli,"Bedesten, Ereğli’de, çarşı içinde bulunmaktadır.",37.513,34.047,geocoding,ilce,false,false
+rustem-pasa-kervansarayi-konya,Rüstem Paşa Kervansarayı,konya,Ereğli,"Kervansaray, Ereğli’de yer almaktadır.",37.513,34.047,geocoding,ilce,false,false
+raziye-hatun-sultan-kervansarayi-konya,Râziye (Hatun) Sultan Kervansarayı,konya,Kadınhanı,"Kervansaray, Kadınhanı ilçe merkezinde yer almaktadır.",38.239,32.211,geocoding,ilce,false,false
+kazan-hoyugu-koyu-tas-han-konya,Kazan Höyüğü Köyü Taş Han,konya,Karapınar,"Yapı, Karapınar-Ereğli arasında, Kazan Höyüğü Köyü’nde yer almaktadır.",37.716,33.55,geocoding,ilce,false,false
+yusuf-aga-abit-celebi-kutuphanesi-konya,Yusuf Ağa (Abit Çelebi) Kütüphanesi,konya,Karatay,"Kütüphane, Karatay, Müze Alanı Caddesi, No. 5 adresinde, Sultan Selim Camii’nin güney batı köşesinde yer almaktadır.",37.870277,32.50388,geocoding,eser,false,false
+konut-konya,Konut,konya,Akşehir,"Konut, Akşehir, Eski Kale Mahallesi’nde, Ayasofya Mescidi’nin yanında yer almaktadır.",38.354849,31.40992,geocoding,mahalle,false,false

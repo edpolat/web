@@ -1,0 +1,15 @@
+[
+  {
+    "id": "orhan-gazi-vakfi",
+    "ad": {
+      "tr": "Orhan Gazi Vakfı",
+      "en": "Endowment of Orhan Gazi"
+    },
+    "vakif": "Orhan Gazi",
+    "kaynak_idleri": [
+      "vk-bursa-envanter-c1-2"
+    ],
+    "akislar": [],
+    "sartlar": []
+  }
+]

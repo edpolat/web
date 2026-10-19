@@ -1,0 +1,50 @@
+[
+  {
+    "id": "vk-bursa-envanter-c1-2",
+    "tur": "envanter_kitabi",
+    "baslik": "Bursa Vakıf Eserleri, I. ve II. Cilt (Osmangazi, Yıldırım)",
+    "yayinci": "Vakıf Katılım",
+    "yil": 2025,
+    "not": "Kitabın web sürümü bölümlerinden alındı (Web Sürümü.zip). Sayfa numaraları kitaba aittir."
+  },
+  {
+    "id": "vk-bursa-envanter-c3",
+    "tur": "envanter_kitabi",
+    "baslik": "Bursa Vakıf Eserleri, III. Cilt (Diğer İlçeler)",
+    "yayinci": "Vakıf Katılım",
+    "yil": 2025,
+    "not": "Kitabın web sürümü bölümlerinden alındı (Web Sürümü.zip). Sayfa numaraları kitaba aittir."
+  },
+  {
+    "id": "unesco-1452",
+    "tur": "kurum_sitesi",
+    "baslik": "Bursa and Cumalıkızık: the Birth of the Ottoman Empire",
+    "yayinci": "UNESCO World Heritage Centre",
+    "yil": 2014,
+    "url": "https://whc.unesco.org/en/list/1452"
+  },
+  {
+    "id": "vk-konya-envanter-c1",
+    "tur": "envanter_kitabi",
+    "baslik": "Konya Vakıf Eserleri Envanteri, I. Cilt",
+    "yayinci": "Vakıf Katılım",
+    "yil": 2024,
+    "not": "Kitabın web PDF'inden (konya-envanteri-1_cilt-web.pdf) yazı tipine göre otomatik ayrıştırıldı. Sayfa numaraları kitaba aittir. Konumlar ilçe merkezidir; konum_bul.py ile adresten düzeltilir."
+  },
+  {
+    "id": "vk-konya-envanter-c2",
+    "tur": "envanter_kitabi",
+    "baslik": "Konya Vakıf Eserleri Envanteri, II. Cilt",
+    "yayinci": "Vakıf Katılım",
+    "yil": 2024,
+    "not": "Kitabın web PDF'inden (konya-envanteri-2_cilt-web.pdf) yazı tipine göre otomatik ayrıştırıldı. Sayfa numaraları kitaba aittir. Konumlar ilçe merkezidir; konum_bul.py ile adresten düzeltilir."
+  },
+  {
+    "id": "vk-hatay-envanter",
+    "tur": "envanter_kitabi",
+    "baslik": "Hatay İli Vakıf Eserleri",
+    "yayinci": "Vakıf Katılım",
+    "yil": 2022,
+    "not": "Kitabın PDF'inden (hatay-vakif-eserleri.pdf) otomatik ayrıştırıldı. Kitap 2023 depremlerinden önce yayımlandı. Konumlar ilçe merkezidir."
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "bursa-700-yil",
+    "ad": {
+      "tr": "Bursa Vakıf Eserleri Fotoğraf Sergisi"
+    },
+    "sehir": "Bursa",
+    "yer": "Tophane Meydanı; yıl boyunca Orhangazi, Çarşıbaşı, Emir Sultan ve UNESCO meydanları ile Cumhuriyet Caddesi",
+    "harita": "Tophane Meydanı, Osmangazi, Bursa",
+    "baslangic": "2026-04-07",
+    "bitis": "2026-12-31",
+    "aciklama": {
+      "tr": "Bursa'nın fethinin 700. yılı için Bursa Valiliği ile birlikte. Envanter kitabından seçilmiş 276 fotoğraf açık havada."
+    },
+    "url": "https://www.yenisafak.com/hayat/vakif-eserleri-sergilendi-4812779"
+  },
+  {
+    "id": "bir-ruyanin-izinde",
+    "ad": {
+      "tr": "Bir Rüyanın İzinde"
+    },
+    "sehir": "Bursa",
+    "yer": "Tayyare Kültür Merkezi",
+    "harita": "Tayyare Kültür Merkezi, Bursa",
+    "baslangic": "2026-09-17",
+    "aciklama": {
+      "tr": "Bursa Vakıf Eserleri kitabından seçilen 320 eserin fotoğraflarıyla fotoğraf ve deneyim sergisi."
+    },
+    "url": "https://www.ekonomigazetesi.com/sehirler/vakif-katilim-bursanin-vakif-mirasini-gelecege-tasiyor-87828"
+  },
+  {
+    "id": "istanbulu-goren-ruya-bursa",
+    "ad": {
+      "tr": "İstanbul'u Gören Rüya: Bursa"
+    },
+    "sehir": "İstanbul",
+    "yer": "Üsküdar Mimar Sinan Sanat Galerisi",
+    "harita": "Mimar Sinan Sanat Galerisi, Üsküdar, İstanbul",
+    "baslangic": "2026-09-04",
+    "bitis": "2026-09-30",
+    "aciklama": {
+      "tr": "Bursa'daki 385 vakıf eserini belgeleyen yaklaşık 35 bin kareden seçilen 87 fotoğraf."
+    },
+    "url": "https://www.dha.com.tr/video/vakif-eserleri-bursanin-tarihi-mirasini-fotograflarla-istanbula-tasidi-video-2939085"
+  },
+  {
+    "id": "ayna",
+    "ad": {
+      "tr": "AYNA – Anadolu Göğünün İpek Mahyası"
+    },
+    "sehir": "Konya",
+    "yer": "Depo No:4",
+    "harita": "Depo No 4, Konya",
+    "baslangic": "2025-09-19",
+    "bitis": "2026-06-30",
+    "aciklama": {
+      "tr": "Konya vakıf eserleri fotoğraf ve deneyim sergisi; Konya Büyükşehir Belediyesi tarafından Vakıf Eserleri Envanter Projesi kapsamında hazırlandı."
+    },
+    "url": "https://www.gazetebirlik.com/kultur-sanat/konyanin-bin-yillik-hafizasi-gun-yuzune-cikiyor-ayna-vakif-eserleri-sergisi-ziyarete-acildi/905178"
+  },
+  {
+    "id": "konya-fotograf-sergisi-istanbul",
+    "ad": {
+      "tr": "Konya Vakıf Eserleri Fotoğraf Sergisi"
+    },
+    "sehir": "İstanbul",
+    "yer": "Üsküdar Mimar Sinan Galerisi",
+    "harita": "Mimar Sinan Sanat Galerisi, Üsküdar, İstanbul",
+    "baslangic": "2025-01-24",
+    "bitis": "2025-03-10",
+    "aciklama": {
+      "tr": "İki ciltlik Konya Vakıf Eserleri Envanteri'nden seçilen 546 fotoğraf."
+    },
+    "url": "https://www.turkgun.com/kultur-sanat/vakif-katilimin-konya-vakif-eserleri-fotograf-sergisi-mimar-sinan-galerisinde-sanatseverlerle-bulustu/263268"
+  },
+  {
+    "id": "5-subat-hatay",
+    "ad": {
+      "tr": "5 Şubat Hatay"
+    }
+  }
+]

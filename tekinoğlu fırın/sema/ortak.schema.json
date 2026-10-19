@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ortak.schema.json",
+  "title": "Ortak tanımlar",
+  "$defs": {
+    "kimlik": {
+      "description": "Küçük harf, rakam ve tire. Örn: orhan-gazi-kulliyesi",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "cokDilli": {
+      "description": "Dil kodu -> metin. tr zorunlu; en hedef, eksikse arayüz tr gösterir.",
+      "type": "object",
+      "required": [
+        "tr"
+      ],
+      "properties": {
+        "tr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "konum": {
+      "type": "object",
+      "required": [
+        "enlem",
+        "boylam",
+        "dogrulandi"
+      ],
+      "properties": {
+        "enlem": {
+          "type": "number",
+          "minimum": 35,
+          "maximum": 43
+        },
+        "boylam": {
+          "type": "number",
+          "minimum": 25,
+          "maximum": 45
+        },
+        "dogrulandi": {
+          "type": "boolean",
+          "description": "Otomatik bulunan koordinat elle kontrol edildi mi?"
+        },
+        "yontem": {
+          "enum": [
+            "kitap",
+            "geocoding",
+            "elle",
+            "osm"
+          ]
+        },
+        "hassasiyet": {
+          "enum": [
+            "eser",
+            "adres",
+            "mahalle",
+            "ilce"
+          ],
+          "description": "Konumun neyi gösterdiği: eserin kendisi, sokak adresi ya da yalnız mahalle/ilçe merkezi"
+        }
+      },
+      "additionalProperties": false
+    },
+    "olgu": {
+      "description": "Kartta etiketle gösterilen ve yapay zekânın beslendiği tek cümlelik bilgi.",
+      "type": "object",
+      "required": [
+        "metin",
+        "durum",
+        "kategori"
+      ],
+      "properties": {
+        "metin": {
+          "$ref": "#/$defs/cokDilli"
+        },
+        "kategori": {
+          "type": "string",
+          "description": "ayarlar.json > olgu_kategorileri"
+        },
+        "durum": {
+          "type": "string",
+          "description": "ayarlar.json > olgu_durumlari"
+        },
+        "kaynak_id": {
+          "$ref": "#/$defs/kimlik"
+        },
+        "sayfa": {
+          "type": "string",
+          "description": "Örn: \"112\" veya \"112-114\""
+        }
+      },
+      "if": {
+        "properties": {
+          "durum": {
+            "const": "kaynakli"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "kaynak_id"
+        ]
+      },
+      "additionalProperties": false
+    },
+    "gorsel": {
+      "type": "object",
+      "required": [
+        "dosya",
+        "alt",
+        "lisans",
+        "atif"
+      ],
+      "properties": {
+        "dosya": {
+          "type": "string",
+          "description": "Göreli yol veya URL. Arayüz önizleme için _kucuk.webp türetir."
+        },
+        "alt": {
+          "$ref": "#/$defs/cokDilli",
+          "description": "Ekran okuyucu için alternatif metin"
+        },
+        "aciklama": {
+          "$ref": "#/$defs/cokDilli"
+        },
+        "lisans": {
+          "type": "string"
+        },
+        "atif": {
+          "type": "string"
+        },
+        "kaynak_id": {
+          "$ref": "#/$defs/kimlik"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

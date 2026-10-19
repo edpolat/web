@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "il.schema.json",
+  "title": "İl dosyası (veri/iller/<il>.json)",
+  "description": "Yeni bir şehir = bu şemaya uyan tek bir dosya. Kod değişmez.",
+  "type": "object",
+  "required": ["il", "eserler"],
+  "properties": {
+    "il": {
+      "type": "object",
+      "required": ["id", "ad", "merkez"],
+      "properties": {
+        "id": { "$ref": "ortak.schema.json#/$defs/kimlik" },
+        "ad": { "$ref": "ortak.schema.json#/$defs/cokDilli" },
+        "merkez": { "$ref": "ortak.schema.json#/$defs/konum" },
+        "yakinlastirma": { "type": "integer", "minimum": 5, "maximum": 18 },
+        "envanter_kaynak_id": { "$ref": "ortak.schema.json#/$defs/kimlik" },
+        "envanter_yili": { "type": "integer" },
+        "toplam_eser": { "type": "integer", "description": "Envanterdeki toplam sayı (sitedeki kayıt sayısından fazla olabilir)" }
+      },
+      "additionalProperties": false
+    },
+    "eserler": { "type": "array", "items": { "$ref": "eser.schema.json" } }
+  },
+  "additionalProperties": false
+}

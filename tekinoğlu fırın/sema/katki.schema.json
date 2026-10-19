@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "katki.schema.json",
+  "title": "Katkı (veri/kuyruk/<id>.json)",
+  "description": "Web'den ya da uygulamadan gelen, onay bekleyen değişiklik. POST /api/katki gövdesi id, durum, gonderildi ve karar dışındaki alanlardır. Onaylanınca veri/iller/<il>.json dosyasına yazılır.",
+  "type": "object",
+  "required": ["id", "tur", "eser_id", "il", "nereden", "ekleyen", "kaynak_id", "durum", "gonderildi"],
+  "properties": {
+    "id": { "$ref": "ortak.schema.json#/$defs/kimlik" },
+    "tur": {
+      "enum": ["olgu", "eser_ekle", "eser_duzenle"],
+      "description": "olgu: esere tek kaynaklı bilgi eklenir (herkes). eser_ekle / eser_duzenle: yönetim panelinden."
+    },
+    "eser_id": { "$ref": "ortak.schema.json#/$defs/kimlik" },
+    "il": { "$ref": "ortak.schema.json#/$defs/kimlik" },
+    "nereden": { "enum": ["web", "uygulama"] },
+    "ekleyen": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "kaynak_id": {
+      "$ref": "ortak.schema.json#/$defs/kimlik",
+      "description": "Bilginin dayandığı kaynak (kaynaklar.json). Kaynaksız katkı kabul edilmez."
+    },
+    "sayfa": { "type": "string", "maxLength": 40 },
+    "not": { "type": "string", "maxLength": 2000, "description": "Ekleyenin onaylayana notu" },
+    "olgu": {
+      "type": "object",
+      "description": "tur = olgu. Durum her zaman 'kaynakli' olarak yazılır; kaynak_id ve sayfa üstteki alanlardan gelir.",
+      "required": ["metin", "kategori"],
+      "properties": {
+        "metin": { "$ref": "ortak.schema.json#/$defs/cokDilli" },
+        "kategori": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "degisiklik": {
+      "type": "object",
+      "description": "tur = eser_ekle: yeni eserin tamamı. tur = eser_duzenle: yalnız değişen üst düzey eser alanları; null alanı siler."
+    },
+    "onceki": {
+      "type": "object",
+      "description": "tur = eser_duzenle: değişen alanların gönderildiği andaki eski değerleri (null = yoktu)."
+    },
+    "durum": { "enum": ["bekliyor", "onaylandi", "reddedildi"] },
+    "gonderildi": { "type": "string", "format": "date-time" },
+    "karar": {
+      "type": "object",
+      "required": ["tarih"],
+      "properties": {
+        "tarih": { "type": "string", "format": "date-time" },
+        "not": { "type": "string", "maxLength": 2000 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    { "if": { "properties": { "tur": { "const": "olgu" } } }, "then": { "required": ["olgu"] } },
+    { "if": { "properties": { "tur": { "enum": ["eser_ekle", "eser_duzenle"] } } }, "then": { "required": ["degisiklik"] } }
+  ],
+  "additionalProperties": false
+}

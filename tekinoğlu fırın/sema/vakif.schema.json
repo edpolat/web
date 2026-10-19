@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vakif.schema.json",
+  "title": "Vakıflar (veri/vakiflar.json)",
+  "description": "Hayır ağı ve oyun senaryosu bu kayıtlardan beslenir. Gelir/gider yoksa yalnızca kart, harita ve arama çalışır.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "ad", "kaynak_idleri"],
+    "properties": {
+      "id": { "$ref": "ortak.schema.json#/$defs/kimlik" },
+      "ad": { "$ref": "ortak.schema.json#/$defs/cokDilli" },
+      "vakif": { "type": "string", "description": "Vakfı kuran kişi" },
+      "vakfiye_tarihi": { "type": "integer" },
+      "kaynak_idleri": { "type": "array", "minItems": 1, "items": { "$ref": "ortak.schema.json#/$defs/kimlik" } },
+      "akislar": {
+        "type": "array",
+        "description": "Hayır ağındaki çizgiler: gelir getiren mülkten hizmet veren esere.",
+        "items": {
+          "type": "object",
+          "required": ["yon", "dugum", "kaynak_id"],
+          "properties": {
+            "yon": { "enum": ["gelir", "gider"] },
+            "dugum": {
+              "type": "object",
+              "description": "eser_id varsa sitedeki esere bağlanır; yoksa yalnız ad ve tür gösterilir (örn. kaybolmuş dükkânlar).",
+              "properties": {
+                "eser_id": { "$ref": "ortak.schema.json#/$defs/kimlik" },
+                "ad": { "$ref": "ortak.schema.json#/$defs/cokDilli" },
+                "tur": { "type": "string" }
+              },
+              "anyOf": [{ "required": ["eser_id"] }, { "required": ["ad"] }],
+              "additionalProperties": false
+            },
+            "hedef_eser_id": { "$ref": "ortak.schema.json#/$defs/kimlik", "description": "Gelirin harcandığı eser (gider için boş kalabilir)" },
+            "miktar": { "type": "number" },
+            "birim": { "type": "string", "description": "Örn: akçe/yıl" },
+            "aciklama": { "$ref": "ortak.schema.json#/$defs/cokDilli" },
+            "kaynak_id": { "$ref": "ortak.schema.json#/$defs/kimlik" },
+            "sayfa": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "sartlar": {
+        "type": "array",
+        "description": "Vakfiye şartları; oyundaki kurallar buradan gelir.",
+        "items": {
+          "type": "object",
+          "required": ["metin", "kaynak_id"],
+          "properties": {
+            "metin": { "$ref": "ortak.schema.json#/$defs/cokDilli" },
+            "kaynak_id": { "$ref": "ortak.schema.json#/$defs/kimlik" },
+            "sayfa": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "additionalProperties": false
+  }
+}

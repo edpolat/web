@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sergi.schema.json",
+  "title": "Sergiler (veri/sergiler.json)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "ad"
+    ],
+    "properties": {
+      "id": {
+        "$ref": "ortak.schema.json#/$defs/kimlik"
+      },
+      "ad": {
+        "$ref": "ortak.schema.json#/$defs/cokDilli"
+      },
+      "yer": {
+        "type": "string"
+      },
+      "baslangic": {
+        "type": "string",
+        "format": "date"
+      },
+      "bitis": {
+        "type": "string",
+        "format": "date",
+        "description": "Yoksa bitiş tarihi açıklanmadı"
+      },
+      "aciklama": {
+        "$ref": "ortak.schema.json#/$defs/cokDilli"
+      },
+      "url": {
+        "type": "string"
+      },
+      "kaynak_id": {
+        "$ref": "ortak.schema.json#/$defs/kimlik"
+      },
+      "sehir": {
+        "type": "string",
+        "description": "Serginin açıldığı şehir (eser şehri olmak zorunda değil)"
+      },
+      "harita": {
+        "type": "string",
+        "description": "Harita aramasında kullanılacak adres"
+      }
+    },
+    "additionalProperties": false
+  }
+}

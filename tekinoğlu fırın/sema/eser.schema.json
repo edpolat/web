@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "eser.schema.json",
+  "title": "Eser",
+  "type": "object",
+  "required": [
+    "id",
+    "ad",
+    "tur",
+    "olgular"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "ortak.schema.json#/$defs/kimlik"
+    },
+    "ad": {
+      "$ref": "ortak.schema.json#/$defs/cokDilli"
+    },
+    "tur": {
+      "type": "string",
+      "description": "ayarlar.json > eser_turleri"
+    },
+    "ilce": {
+      "type": "string"
+    },
+    "adres": {
+      "$ref": "ortak.schema.json#/$defs/cokDilli",
+      "description": "Kitaptaki açık adres; koordinat bulmak için kullanılır"
+    },
+    "konum": {
+      "$ref": "ortak.schema.json#/$defs/konum"
+    },
+    "donem": {
+      "type": "object",
+      "properties": {
+        "yapim_yili": {
+          "type": "integer"
+        },
+        "yapim_yili_hicri": {
+          "type": "integer"
+        },
+        "yaklasik": {
+          "type": "boolean"
+        },
+        "metin": {
+          "$ref": "ortak.schema.json#/$defs/cokDilli"
+        }
+      },
+      "additionalProperties": false
+    },
+    "banisi": {
+      "type": "string",
+      "description": "Yaptıran kişi"
+    },
+    "mimar": {
+      "type": "string"
+    },
+    "tarihce": {
+      "$ref": "ortak.schema.json#/$defs/cokDilli"
+    },
+    "mimari": {
+      "type": "object",
+      "description": "Eser kartındaki 'Mimari ve teknik detaylar' bölümü",
+      "properties": {
+        "metin": {
+          "$ref": "ortak.schema.json#/$defs/cokDilli"
+        },
+        "plan": {
+          "type": "string"
+        },
+        "malzeme": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ust_ortu": {
+          "type": "string"
+        },
+        "onarimlar": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "yil"
+            ],
+            "properties": {
+              "yil": {
+                "type": "integer"
+              },
+              "aciklama": {
+                "$ref": "ortak.schema.json#/$defs/cokDilli"
+              },
+              "kaynak_id": {
+                "$ref": "ortak.schema.json#/$defs/kimlik"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "olgular": {
+      "type": "array",
+      "items": {
+        "$ref": "ortak.schema.json#/$defs/olgu"
+      }
+    },
+    "gorseller": {
+      "type": "array",
+      "items": {
+        "$ref": "ortak.schema.json#/$defs/gorsel"
+      }
+    },
+    "sergi_idleri": {
+      "type": "array",
+      "items": {
+        "$ref": "ortak.schema.json#/$defs/kimlik"
+      }
+    },
+    "vakif_id": {
+      "$ref": "ortak.schema.json#/$defs/kimlik"
+    },
+    "kulliye_id": {
+      "$ref": "ortak.schema.json#/$defs/kimlik",
+      "description": "Bağlı olduğu külliyenin eser id'si"
+    },
+    "envanter": {
+      "type": "object",
+      "description": "Envanter kitabındaki yeri",
+      "properties": {
+        "kaynak_id": {
+          "$ref": "ortak.schema.json#/$defs/kimlik"
+        },
+        "sayfa": {
+          "type": "string"
+        },
+        "envanter_no": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "taslak": {
+      "type": "boolean",
+      "description": "true ise yayına alınmaz"
+    }
+  },
+  "additionalProperties": false
+}

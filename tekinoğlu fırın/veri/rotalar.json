@@ -1,0 +1,107 @@
+[
+  {
+    "il": "bursa",
+    "duraklar": [
+      {
+        "eser_id": "veled-i-yanic-camii",
+        "damga_ust": "VELED-İ YANİÇ",
+        "damga_alt": "BURSA · 1440"
+      },
+      {
+        "eser_id": "selcuk-hatun-camii",
+        "damga_ust": "SELÇUK HATUN",
+        "damga_alt": "BURSA · 1450"
+      },
+      {
+        "eser_id": "sehadet-kale-saray-camii",
+        "damga_ust": "ŞEHADET CAMİİ",
+        "damga_alt": "BURSA · 1366"
+      },
+      {
+        "eser_id": "uc-kuzular-kozlar-camii-ve-kabri",
+        "damga_ust": "ÜÇ KUZULAR",
+        "damga_alt": "BURSA"
+      },
+      {
+        "eser_id": "seyh-pasa-dibekli-camii",
+        "damga_ust": "DİBEKLİ CAMİİ",
+        "damga_alt": "BURSA · 1439"
+      },
+      {
+        "eser_id": "nakkas-ali-mescidi",
+        "damga_ust": "NAKKAŞ ALİ",
+        "damga_alt": "BURSA · 15. YY"
+      }
+    ]
+  },
+  {
+    "il": "konya",
+    "duraklar": [
+      {
+        "eser_id": "mevlana-turbesi-muze-konya",
+        "damga_ust": "MEVLÂNA",
+        "damga_alt": "KONYA · KARATAY"
+      },
+      {
+        "eser_id": "sultan-alaeddin-ulu-camii-konya",
+        "damga_ust": "ALÂEDDİN CAMİİ",
+        "damga_alt": "KONYA · SELÇUKLU"
+      },
+      {
+        "eser_id": "karatay-medresesi-konya",
+        "damga_ust": "KARATAY",
+        "damga_alt": "KONYA · MEDRESE"
+      },
+      {
+        "eser_id": "ince-minareli-medrese-sahip-ata-darulhadis-konya",
+        "damga_ust": "İNCE MİNARELİ",
+        "damga_alt": "KONYA · MEDRESE"
+      },
+      {
+        "eser_id": "sircali-medrese-konya",
+        "damga_ust": "SIRÇALI",
+        "damga_alt": "KONYA · 1242"
+      },
+      {
+        "eser_id": "aziziye-camii-konya",
+        "damga_ust": "AZİZİYE",
+        "damga_alt": "KONYA · KARATAY"
+      }
+    ]
+  },
+  {
+    "il": "hatay",
+    "duraklar": [
+      {
+        "eser_id": "habib-i-neccar-camii-ve-kulliyesi-hatay",
+        "damga_ust": "HABİB-İ NECCAR",
+        "damga_alt": "HATAY · ANTAKYA"
+      },
+      {
+        "eser_id": "ulu-camii-ve-kulliyesi-hatay",
+        "damga_ust": "ULU CAMİ",
+        "damga_alt": "HATAY · ANTAKYA"
+      },
+      {
+        "eser_id": "sarimiye-camii-hatay",
+        "damga_ust": "SARIMİYE",
+        "damga_alt": "HATAY · ANTAKYA"
+      },
+      {
+        "eser_id": "kursunlu-han-hatay",
+        "damga_ust": "KURŞUNLU HAN",
+        "damga_alt": "HATAY · ANTAKYA"
+      },
+      {
+        "eser_id": "kanuni-sultan-suleyman-kervansarayi-hatay",
+        "damga_ust": "KERVANSARAY",
+        "damga_alt": "HATAY · BELEN"
+      },
+      {
+        "eser_id": "sokullu-mehmet-pasa-kulliyesi-hatay",
+        "damga_ust": "SOKULLU",
+        "damga_alt": "HATAY · PAYAS"
+      }
+    ]
+  }
+]

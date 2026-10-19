@@ -1,0 +1,40 @@
+{
+  "diller": [
+    { "kod": "tr", "ad": "Türkçe", "varsayilan": true },
+    { "kod": "en", "ad": "English" }
+  ],
+  "eser_turleri": [
+    { "id": "cami", "ad": { "tr": "Cami", "en": "Mosque" } },
+    { "id": "mescit", "ad": { "tr": "Mescit", "en": "Masjid" } },
+    { "id": "kulliye", "ad": { "tr": "Külliye", "en": "Complex" } },
+    { "id": "medrese", "ad": { "tr": "Medrese", "en": "Madrasa" } },
+    { "id": "imaret", "ad": { "tr": "İmaret", "en": "Public kitchen" } },
+    { "id": "hamam", "ad": { "tr": "Hamam", "en": "Bathhouse" } },
+    { "id": "han", "ad": { "tr": "Han", "en": "Inn" } },
+    { "id": "bedesten-carsi", "ad": { "tr": "Bedesten / Çarşı", "en": "Covered market" } },
+    { "id": "turbe", "ad": { "tr": "Türbe", "en": "Tomb" } },
+    { "id": "cesme", "ad": { "tr": "Çeşme", "en": "Fountain" } },
+    { "id": "sebil", "ad": { "tr": "Sebil", "en": "Sebil" } },
+    { "id": "zaviye-tekke", "ad": { "tr": "Zaviye / Tekke", "en": "Dervish lodge" } },
+    { "id": "kopru", "ad": { "tr": "Köprü", "en": "Bridge" } },
+    { "id": "kutuphane", "ad": { "tr": "Kütüphane", "en": "Library" } },
+    { "id": "darussifa", "ad": { "tr": "Darüşşifa", "en": "Hospital" } },
+    { "id": "kilise", "ad": { "tr": "Kilise", "en": "Church" } },
+    { "id": "sinagog", "ad": { "tr": "Sinagog", "en": "Synagogue" } },
+    { "id": "diger", "ad": { "tr": "Diğer", "en": "Other" } }
+  ],
+  "olgu_durumlari": [
+    { "id": "kaynakli", "ad": { "tr": "Kaynaklı", "en": "Sourced" }, "yayinda": true },
+    { "id": "ai_yorumu", "ad": { "tr": "AI yorumu", "en": "AI interpretation" }, "yayinda": true },
+    { "id": "belirsiz", "ad": { "tr": "Belirsiz", "en": "Unknown" }, "yayinda": true },
+    { "id": "dogrulanacak", "ad": { "tr": "Doğrulanacak", "en": "To be verified" }, "yayinda": false }
+  ],
+  "olgu_kategorileri": [
+    { "id": "tarihce", "ad": { "tr": "Tarihçe", "en": "History" } },
+    { "id": "mimari", "ad": { "tr": "Mimari", "en": "Architecture" } },
+    { "id": "vakif", "ad": { "tr": "Vakıf", "en": "Endowment" } },
+    { "id": "gelir_gider", "ad": { "tr": "Gelir ve gider", "en": "Income and expenses" } },
+    { "id": "onarim", "ad": { "tr": "Onarım", "en": "Restoration" } },
+    { "id": "gunumuz", "ad": { "tr": "Günümüz", "en": "Today" } }
+  ]
+}

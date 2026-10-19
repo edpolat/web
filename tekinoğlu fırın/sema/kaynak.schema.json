@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kaynak.schema.json",
+  "title": "Kaynaklar (veri/kaynaklar.json)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "tur", "baslik"],
+    "properties": {
+      "id": { "$ref": "ortak.schema.json#/$defs/kimlik" },
+      "tur": { "enum": ["envanter_kitabi", "vakfiye", "akademik", "kurum_sitesi", "arsiv", "diger"] },
+      "baslik": { "type": "string" },
+      "yazar": { "type": "string" },
+      "yayinci": { "type": "string" },
+      "yil": { "type": "integer" },
+      "url": { "type": "string" },
+      "lisans": { "type": "string" },
+      "not": { "type": "string" }
+    },
+    "additionalProperties": false
+  }
+}
