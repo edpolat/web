@@ -269,6 +269,23 @@ function htmlCoz(t: string): string {
   });
 }
 
+/** "394" ile "394-397" birlikte geldiğinde yalnız aralığı bırakır; aynı sayfayı iki kez yazmaz. */
+export function sayfaSadelestir(sayfalar: string[]): string[] {
+  const aralik = (s: string) => {
+    const [a, b] = s.split(/[-–]/).map((x) => parseInt(x, 10));
+    return Number.isFinite(a) ? [a, Number.isFinite(b) ? b : a] : null;
+  };
+  const tekil = [...new Set(sayfalar)];
+  return tekil.filter((s, i) => {
+    const r = aralik(s);
+    if (!r) return true;
+    return !tekil.some((t, j) => {
+      const q = j !== i && aralik(t);
+      return q && q[0] <= r[0] && r[1] <= q[1] && (q[0] !== r[0] || q[1] !== r[1]);
+    });
+  });
+}
+
 /**
  * Model çıktısını arayüzün cevap biçimine çevirir. Var olmayan kayıt numaraları atılır; dayanağı kalmayan
  * cümle (modelin genel bilgisi) "ai_yorumu" olur. Birden çok kayda dayanan cümle en zayıf kaydın durumunu alır.
@@ -283,7 +300,7 @@ export function yzCevabi(cikti: YzCiktisi, liste: Kayit[]): Cevap {
       if (!dayanak.length) return { metin: c.metin.trim(), durum: "ai_yorumu" };
       const durum = dayanak.map((k) => k.durum).sort((a, b) => DURUM_SIRASI.indexOf(b) - DURUM_SIRASI.indexOf(a))[0];
       const ilk = dayanak.find((k) => k.kaynak_id) ?? dayanak[0];
-      const sayfalar = [...new Set(dayanak.filter((k) => k.kaynak_id === ilk.kaynak_id && k.sayfa).map((k) => k.sayfa))];
+      const sayfalar = sayfaSadelestir(dayanak.filter((k) => k.kaynak_id === ilk.kaynak_id && k.sayfa).map((k) => k.sayfa!));
       return {
         metin: c.metin.trim(),
         durum,

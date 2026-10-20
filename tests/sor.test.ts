@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { describe, expect, it } from "vitest";
-import { cevapla, kayitlar, yzCevabi } from "../lib/sunucu/sor";
+import { cevapla, kayitlar, sayfaSadelestir, yzCevabi } from "../lib/sunucu/sor";
 import type { Eser } from "../lib/tipler";
 
 const bursa = JSON.parse(fs.readFileSync("veri/iller/bursa.json", "utf-8")) as { eserler: Eser[] };
@@ -121,6 +121,11 @@ describe("Bu esere sor: yapay zekâ bağlamı", () => {
     );
     expect(c.cumleler.map((x) => x.durum)).toEqual([olgu.durum, "ai_yorumu", "ai_yorumu"]);
     expect(c.cumleler[2].kaynak_id).toBeUndefined();
+  });
+
+  it("aralığın içinde kalan sayfayı tekrar yazmaz", () => {
+    expect(sayfaSadelestir(["394", "394-397"])).toEqual(["394-397"]);
+    expect(sayfaSadelestir(["421", "423"])).toEqual(["421", "423"]);
   });
 
   it("modelin yazdığı HTML kodlarını harfe çevirir", () => {
