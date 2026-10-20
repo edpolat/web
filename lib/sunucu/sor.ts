@@ -64,7 +64,10 @@ function kavramlar(s: string): Set<string> {
 const ZAMAN_SORUSU = /\b(ne zaman|hangi yil|kac yil|kacinci|when|what year|which year)\b/;
 const YIL = /\b(1[0-9]{3}|20[0-9]{2})\b/;
 
-function puan(soru: string, soruKavram: Set<string>, olgu: Olgu): number {
+/** Eşleştirmenin baktığı tek bilgi: bir olgu ya da tarihçe/mimari metninden bir cümle. */
+type Aday = Pick<Olgu, "metin" | "durum" | "kaynak_id" | "sayfa"> & { kategori?: string };
+
+function puan(soru: string, soruKavram: Set<string>, olgu: Aday): number {
   const olguKavram = new Set([...kavramlar(olgu.metin.tr), ...kavramlar(olgu.metin.en ?? "")]);
   let p = 0;
   for (const k of soruKavram) if (olguKavram.has(k)) p += GENEL.has(k) ? 0.25 : 1;
@@ -88,9 +91,42 @@ const NOTLAR = {
   mimarYok: { tr: "Kaynaklarda mimarın adı geçmiyor. Yaptıranla ilgili kayıt:", en: "The sources do not name an architect. On who had it built:" },
 };
 
-type SoruEseri = Pick<Eser, "olgular"> & Partial<Pick<Eser, "banisi" | "mimar" | "envanter">>;
+type SoruEseri = Pick<Eser, "olgular"> &
+  Partial<Pick<Eser, "banisi" | "mimar" | "envanter" | "adres" | "ilce" | "tarihce" | "mimari">> & { il?: string };
 
-function cumle(o: Pick<Olgu, "metin" | "durum" | "kaynak_id" | "sayfa">, dil: Dil): CevapCumlesi {
+/** Envanter kitabından gelen alanların (tarihçe, mimari, adres, künye) kaynağı. */
+function envanterKaynagi(eser: SoruEseri) {
+  return eser.envanter?.kaynak_id
+    ? { durum: "kaynakli", kaynak_id: eser.envanter.kaynak_id, sayfa: eser.envanter.sayfa }
+    : { durum: "belirsiz" };
+}
+
+/** Metni cümlelere böler; İngilizce cümle sayısı tutmazsa yalnız Türkçe kalır. */
+function cumlelereBol(m: CokDilli): CokDilli[] {
+  // "Muhammed b. Hamza" gibi kısaltmalarda bölmemek için noktadan önce en az iki harf ya da rakam aranır.
+  const bol = (t: string) => t.split(/\n+|(?<=[a-zçğıöşüâîû0-9)”"]{2}[.!?])\s+(?=[A-ZÇĞİÖŞÜ0-9“"])/u).map((x) => x.trim()).filter((x) => x.length > 15);
+  const tr = bol(m.tr);
+  const en = m.en ? bol(m.en) : [];
+  return tr.map((c, i) => ({ tr: c, ...(en.length === tr.length ? { en: en[i] } : {}) }));
+}
+
+/**
+ * Olguların yanında eser sayfasında görünen öteki bilgiler: tarihçe ve mimari metninin cümleleri, onarımlar.
+ * Olgular kitabın seçilmiş cümleleri olduğu için önce onlar denenir; bunlar yalnız eşleşme yoksa ya da daha iyiyse çıkar.
+ */
+function ekAdaylar(eser: SoruEseri): Aday[] {
+  const env = envanterKaynagi(eser);
+  const liste: Aday[] = [];
+  for (const m of [eser.tarihce, eser.mimari?.metin]) if (m) for (const c of cumlelereBol(m)) liste.push({ metin: c, ...env });
+  for (const o of eser.mimari?.onarimlar ?? []) {
+    if (o.aciklama) liste.push({ metin: { tr: `${o.yil}: ${o.aciklama.tr}`, en: o.aciklama.en && `${o.yil}: ${o.aciklama.en}` }, kategori: "onarim", ...env });
+  }
+  return liste;
+}
+
+const KONUM_SORUSU = /\b(nerede|neresi|nereye|nasil gidil|adres|konum|hangi (ilce|mahalle|sehir|semt)|where|address|located|location)/;
+
+function cumle(o: Aday, dil: Dil): CevapCumlesi {
   return { metin: metin(o.metin, dil), durum: o.durum, kaynak_id: o.kaynak_id, sayfa: o.sayfa };
 }
 
@@ -100,9 +136,7 @@ function yapanCevabi(eser: SoruEseri, sade: string, soruKavram: Set<string>, dil
   const yapimSoruldu = soruKavram.has("#3") || /\b(yap|eser)/.test(sade);
   if (!KIM_SORUSU.test(sade) || !(mimarSoruldu || yapimSoruldu)) return null;
   const yayinda = eser.olgular.filter((o) => YAYINDA.has(o.durum));
-  const env = eser.envanter?.kaynak_id
-    ? { durum: "kaynakli", kaynak_id: eser.envanter.kaynak_id, sayfa: eser.envanter.sayfa }
-    : { durum: "belirsiz" };
+  const env = envanterKaynagi(eser);
   const kunye = (tr: string, en: string, ad: string) => ({ metin: { tr: `${tr}: ${ad}`, en: `${en}: ${ad}` }, ...env });
 
   if (mimarSoruldu) {
@@ -116,13 +150,22 @@ function yapanCevabi(eser: SoruEseri, sade: string, soruKavram: Set<string>, dil
   const banilar = yayinda
     .filter((o) => BANI_KAYDI.test(o.metin.tr) && !(BASKA_IS.test(o.metin.tr) && !/bân[iî]|bani|yaptır/iu.test(o.metin.tr)))
     .sort((a, b) => Number(YAPTIRAN_ADIYLA.test(b.metin.tr)) - Number(YAPTIRAN_ADIYLA.test(a.metin.tr)));
-  const secilen = [...(eser.banisi ? [kunye("Banisi", "Founder", eser.banisi)] : []), ...banilar].slice(0, 2);
+  // Künyedeki banisi, onu adıyla anan bir olgu varsa tekrar edilmez.
+  const banisiGecen = eser.banisi && banilar.some((o) => sadelestir(o.metin.tr).includes(sadelestir(eser.banisi!)));
+  const secilen = [...(eser.banisi && !banisiGecen ? [kunye("Banisi", "Founder", eser.banisi)] : []), ...banilar].slice(0, 2);
   if (!secilen.length) return mimarSoruldu ? { bulundu: false, cumleler: [], yontem: "eslesme" } : null;
   return {
     bulundu: true,
     yontem: "eslesme",
     cumleler: [...(mimarSoruldu ? [{ metin: metin(NOTLAR.mimarYok, dil), durum: "not" }] : []), ...secilen.map((o) => cumle(o, dil))],
   };
+}
+
+function benzer(a: string, b: string): boolean {
+  const ka = new Set(sozcukler(a));
+  const kb = new Set(sozcukler(b));
+  const ortak = [...ka].filter((w) => kb.has(w)).length;
+  return ortak / Math.max(1, Math.min(ka.size, kb.size)) >= 0.6;
 }
 
 export function cevapla(eser: SoruEseri, soru: string, dil: Dil): Cevap {
@@ -132,14 +175,27 @@ export function cevapla(eser: SoruEseri, soru: string, dil: Dil): Cevap {
   if (yapan) return yapan;
   // "Kimin eseri?" yaptıran sorusudur; "eser" sözcüğü tek başına eşleşme saymaz.
   if (KIM_SORUSU.test(sade) && /\beser/.test(sade)) soruKavram.add("#3");
-  const adaylar = eser.olgular
-    .filter((o) => YAYINDA.has(o.durum))
-    .map((o) => ({ o, p: puan(sade, soruKavram, o) }))
-    .filter((x) => x.p > 0)
+  if (KONUM_SORUSU.test(sade) && (eser.adres || eser.ilce)) {
+    const il = eser.il ? eser.il.charAt(0).toLocaleUpperCase("tr") + eser.il.slice(1) : "";
+    const yer = eser.adres ?? {
+      tr: [eser.ilce && `${eser.ilce} ilçesinde`, il && `(${il})`].filter(Boolean).join(" ") + " bulunuyor.",
+      en: `It is in ${[eser.ilce, il].filter(Boolean).join(", ")}.`,
+    };
+    return { bulundu: true, yontem: "eslesme", cumleler: [cumle({ metin: yer, ...envanterKaynagi(eser) }, dil)] };
+  }
+  // Olgular eşit puanda öne geçsin diye küçük bir üstünlük alır.
+  const adaylar = [
+    ...eser.olgular.filter((o) => YAYINDA.has(o.durum)).map((o) => ({ o: o as Aday, p: puan(sade, soruKavram, o) + 0.1 })),
+    ...ekAdaylar(eser).map((o) => ({ o, p: puan(sade, soruKavram, o) })),
+  ]
+    .filter((x) => x.p > 0.1)
     .sort((a, b) => b.p - a.p);
   if (!adaylar.length) return { bulundu: false, cumleler: [], yontem: "eslesme" };
   // En iyi cevap ve ona yakın puan alan en fazla bir olgu daha.
-  const secilen = adaylar.filter((x, i) => i === 0 || (i === 1 && x.p >= adaylar[0].p * 0.8));
+  // Olgu ile tarihçede aynı cümle çoğu zaman iki kez geçer; birbirine çok benzeyen ikinci cümle atılır.
+  const secilen = adaylar
+    .filter((x, i, t) => !t.slice(0, i).some((y) => benzer(y.o.metin.tr, x.o.metin.tr)))
+    .filter((x, i) => i === 0 || (i === 1 && x.p >= adaylar[0].p * 0.8));
   return {
     bulundu: true,
     yontem: "eslesme",
@@ -197,13 +253,30 @@ export type YzCiktisi = { bulundu: boolean; cumleler: { metin: string; kayitlar:
 
 const DURUM_SIRASI = ["kaynakli", "ai_yorumu", "belirsiz"];
 
+// Model bazen "bânî" yerine "b&acirc;n&icirc;" gibi HTML kodu yazıyor; düz harfe çevrilir.
+const HTML_KODLARI: Record<string, string> = {
+  amp: "&", quot: '"', apos: "'", lt: "<", gt: ">", nbsp: " ",
+  acirc: "â", icirc: "î", ucirc: "û", Acirc: "Â", Icirc: "Î", Ucirc: "Û",
+  ccedil: "ç", Ccedil: "Ç", ouml: "ö", Ouml: "Ö", uuml: "ü", Uuml: "Ü",
+};
+function htmlCoz(t: string): string {
+  return t.replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (tam, k: string) => {
+    if (k[0] === "#") {
+      const n = k[1] === "x" || k[1] === "X" ? parseInt(k.slice(2), 16) : parseInt(k.slice(1), 10);
+      return Number.isFinite(n) ? String.fromCodePoint(n) : tam;
+    }
+    return HTML_KODLARI[k] ?? tam;
+  });
+}
+
 /**
  * Model çıktısını arayüzün cevap biçimine çevirir. Var olmayan kayıt numaraları atılır; dayanağı kalmayan
- * cümle "ai_yorumu" olur. Birden çok kayda dayanan cümle en zayıf kaydın durumunu alır.
+ * cümle (modelin genel bilgisi) "ai_yorumu" olur. Birden çok kayda dayanan cümle en zayıf kaydın durumunu alır.
  */
 export function yzCevabi(cikti: YzCiktisi, liste: Kayit[]): Cevap {
   const numara = new Map(liste.map((k) => [k.no, k]));
   const cumleler: CevapCumlesi[] = cikti.cumleler
+    .map((c) => ({ ...c, metin: htmlCoz(c.metin) }))
     .filter((c) => c.metin.trim())
     .map((c) => {
       const dayanak = [...new Set(c.kayitlar)].map((n) => numara.get(n)).filter((k): k is Kayit => !!k);
@@ -218,7 +291,7 @@ export function yzCevabi(cikti: YzCiktisi, liste: Kayit[]): Cevap {
         ...(sayfalar.length ? { sayfa: sayfalar.join(", ") } : {}),
       };
     });
-  const kaynakli = cumleler.some((c) => c.durum !== "ai_yorumu");
-  if (!cikti.bulundu || !kaynakli) return { bulundu: false, cumleler: [], yontem: "yapay_zeka" };
+  // Kayda dayanmayan cümleler de gösterilir; arayüz onları "AI yorumu" etiketiyle ayırır.
+  if (!cikti.bulundu || !cumleler.length) return { bulundu: false, cumleler: [], yontem: "yapay_zeka" };
   return { bulundu: true, cumleler, yontem: "yapay_zeka" };
 }

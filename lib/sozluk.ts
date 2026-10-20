@@ -173,7 +173,7 @@ const sozluk = {
     },
     sor: {
       baslik: "Bu esere sor",
-      aciklama: "Sorunu kendi cümlelerinle sorabilirsin. Cevaplar yalnız bu sayfadaki kaynaklı kayıtlardan gelir, her cümlenin kaynağı ve sayfası yanında yazar. Kayıtlarda olmayanı uydurmaz.",
+      aciklama: "Sorunu kendi cümlelerinle sorabilirsin. Cevaplar önce bu sayfadaki kaynaklı kayıtlardan gelir, her cümlenin kaynağı ve sayfası yanında yazar. Kayıtlarda olmayan bilgi \"AI yorumu\" etiketiyle ayrıca belirtilir.",
       etiket: "Sorunuz",
       yer: "Bir soru yazın…",
       gonder: "Sor",
@@ -479,7 +479,7 @@ const sozluk = {
     },
     sor: {
       baslik: "Ask about this work",
-      aciklama: "Ask in your own words. Answers come only from the sourced records on this page, with the source and page next to each sentence. Nothing outside them is made up.",
+      aciklama: "Ask in your own words. Answers come first from the sourced records on this page, with the source and page next to each sentence. Anything not in the records is marked \"AI interpretation\".",
       etiket: "Your question",
       yer: "Type a question…",
       gonder: "Ask",

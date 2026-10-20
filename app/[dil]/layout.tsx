@@ -36,7 +36,8 @@ export default async function Yerlesim({
       <head>
         <script dangerouslySetInnerHTML={{ __html: ERISIM_BETIGI }} />
       </head>
-      <body>
+      {/* Tarayıcı eklentileri (ör. Video Speed Controller) body'ye sınıf ekliyor; bu uyarıyı bastır. */}
+      <body suppressHydrationWarning>
         <a className="atla" href="#icerik">
           {t.icerigeGec}
         </a>

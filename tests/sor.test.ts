@@ -17,7 +17,6 @@ describe("Bu esere sor", () => {
 
   it("onarım tarihini s.423'ten verir", () => {
     const c = cevapla(sehadet, "Ne zaman onarıldı?", "tr");
-    expect(c.cumleler).toHaveLength(1);
     expect(c.cumleler[0].metin).toContain("1962");
     expect(c.cumleler[0].sayfa).toBe("423");
   });
@@ -31,8 +30,8 @@ describe("Bu esere sor", () => {
     for (const [soru, dil] of [["Mimarı kim?", "tr"], ["Who was the architect?", "en"]] as const) {
       const c = cevapla(sehadet, soru, dil);
       expect(c.cumleler[0].durum).toBe("not");
-      expect(c.cumleler[1].metin).toContain("Sultan I. Murad");
-      expect(c.cumleler[1].kaynak_id).toBe(sehadet.envanter?.kaynak_id);
+      expect(c.cumleler[1].metin).toMatch(/Sultan (I\. )?Murad/);
+      expect(c.cumleler[1].kaynak_id).toBeTruthy();
     }
   });
 
@@ -65,6 +64,27 @@ describe("Bu esere sor", () => {
   it("yayında olmayan (doğrulanacak) olguyu kullanmaz", () => {
     const eser = { olgular: [{ metin: { tr: "Cami 1500 yılında onarıldı." }, kategori: "onarim", durum: "dogrulanacak" }] };
     expect(cevapla(eser, "Ne zaman onarıldı?", "tr").bulundu).toBe(false);
+  });
+});
+
+describe("Bu esere sor: sayfadaki öteki bilgiler", () => {
+  const fenari = bursa.eserler.find((e) => e.id === "molla-fenari-camii")!;
+
+  it("konum sorusunu adresten cevaplar", () => {
+    const c = cevapla(fenari, "Nerede?", "tr");
+    expect(c.cumleler[0].metin).toContain("Dilek Sokak");
+    expect(c.cumleler[0].kaynak_id).toBe(fenari.envanter?.kaynak_id);
+  });
+
+  it("olgularda olmayanı tarihçe ve mimari metninden bulur", () => {
+    const c = cevapla(fenari, "Minaresi nasıl?", "tr");
+    expect(c.bulundu).toBe(true);
+    expect(cevapla(fenari, "Neden bu ad verilmiş?", "tr").cumleler[0].metin).toContain("Muhammed b. Hamza");
+  });
+
+  it("aynı bilgiyi iki kez vermez", () => {
+    const c = cevapla(fenari, "Kim yaptırdı?", "tr");
+    expect(c.cumleler.filter((x) => x.metin.includes("Şemseddin"))).toHaveLength(1);
   });
 });
 
@@ -103,8 +123,15 @@ describe("Bu esere sor: yapay zekâ bağlamı", () => {
     expect(c.cumleler[2].kaynak_id).toBeUndefined();
   });
 
-  it("yalnız AI yorumundan oluşan cevabı 'bilgi yok' sayar", () => {
-    expect(yzCevabi({ bulundu: true, cumleler: [{ metin: "Mimar Sinan yapmıştır.", kayitlar: [] }] }, liste).bulundu).toBe(false);
+  it("modelin yazdığı HTML kodlarını harfe çevirir", () => {
+    const c = yzCevabi({ bulundu: true, cumleler: [{ metin: "Caminin b&acirc;n&icirc;si &#39;belli&#39; değil.", kayitlar: [] }] }, liste);
+    expect(c.cumleler[0].metin).toBe("Caminin bânîsi 'belli' değil.");
+  });
+
+  it("kayda dayanmayan cevabı AI yorumu olarak gösterir", () => {
+    const c = yzCevabi({ bulundu: true, cumleler: [{ metin: "Bu dönemde camiler genelde vakıfla kurulurdu.", kayitlar: [] }] }, liste);
+    expect(c.bulundu).toBe(true);
+    expect(c.cumleler[0]).toEqual({ metin: "Bu dönemde camiler genelde vakıfla kurulurdu.", durum: "ai_yorumu" });
     expect(yzCevabi({ bulundu: false, cumleler: [] }, liste).bulundu).toBe(false);
   });
 });

@@ -2,7 +2,7 @@
 // ANTHROPIC_API_KEY tanımlıysa Claude soruyu anlayıp kaynak göstererek cevaplar; yoksa ya da hata olursa eşleştirme.
 import { gecerliDil } from "@/lib/metin";
 import { cevapla } from "@/lib/sunucu/sor";
-import { yapayZekaylaCevapla, type GecmisMesaj } from "@/lib/sunucu/sor-yz";
+import { sonCikti, yapayZekaAcik, yapayZekaDurumu, yapayZekaylaCevapla, type GecmisMesaj } from "@/lib/sunucu/sor-yz";
 import { eserBul } from "@/lib/veri";
 
 const GECMIS_SINIRI = 4;
@@ -14,6 +14,27 @@ const CORS = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Access-Control-Allow-Headers": "content-type",
 };
+
+/**
+ * Tarayıcıda /api/sor açılınca yapay zekânın durumunu gösterir: hangi sağlayıcı, deneme sorusu
+ * yapay zekâdan mı eşleştirmeden mi cevaplandı, başarısızsa neden. Anahtarı göstermez.
+ */
+export async function GET(istek: Request) {
+  const adres = new URL(istek.url).searchParams;
+  const eser = eserBul(adres.get("eser") ?? "molla-fenari-camii");
+  const soru = (adres.get("soru") ?? "Bu cami nerede ve kim yaptırmış?").slice(0, 300);
+  const deneme = eser ? await yapayZekaylaCevapla(eser, soru, "tr") : null;
+  return Response.json(
+    {
+      ...yapayZekaDurumu(),
+      soru,
+      deneme_cevabi: deneme ? (deneme.bulundu ? "yapay zekâ cevap verdi" : "yapay zekâ 'bilgi yok' dedi") : "yapay zekâ cevap vermedi, eşleştirme kullanılır",
+      model_ciktisi: deneme ? sonCikti : null,
+      eslestirme: eser ? cevapla(eser, soru, "tr") : null,
+    },
+    { headers: CORS },
+  );
+}
 
 export function OPTIONS() {
   return new Response(null, { status: 204, headers: CORS });
@@ -42,5 +63,10 @@ export async function POST(istek: Request) {
   if (!eser) return Response.json({ hata: "Eser bulunamadı." }, { status: 404, headers: CORS });
   const dil = typeof govde.dil === "string" && gecerliDil(govde.dil) ? govde.dil : "tr";
   const yz = await yapayZekaylaCevapla(eser, soru.trim(), dil, gecmisOku(govde.gecmis));
-  return Response.json(yz ?? cevapla(eser, soru, dil), { headers: CORS });
+  // Yapay zekâ açıksa cevabı her zaman o verir: sayfadaki bilgi kaynaklı, sayfada olmayan "AI yorumu".
+  // Ulaşılamazsa (yoğunluk, zaman aşımı) eşleştirmeye düşülmez, ziyaretçiye "tekrar dene" denir;
+  // iki farklı yöntemin karışık cevapları kafa karıştırıyordu. Eşleştirme yalnız anahtar hiç yoksa çalışır.
+  if (yz) return Response.json(yz, { headers: CORS });
+  if (yapayZekaAcik()) return Response.json({ hata: "Yapay zekâ şu an cevap veremedi." }, { status: 503, headers: CORS });
+  return Response.json(cevapla(eser, soru, dil), { headers: CORS });
 }
