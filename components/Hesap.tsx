@@ -41,19 +41,20 @@ export default function Hesap({
 
   async function yukle(o: BulutOturumu) {
     try {
-      setUye({ ...o, pullar: await pullariGetir(o) });
+      setUye({ ...o, pullar: await pullariGetir() });
     } catch {
       // Oturum süresi dolmuş ya da yenilenemiyor: yeniden giriş istenir.
-      await cikisYap(null);
+      await cikisYap();
       setUye(null);
       setSekme("gir");
     }
   }
 
   useEffect(() => {
-    const o = bulutHazir ? kayitliOturum() : null;
-    if (o) void yukle(o);
-    else setUye(null);
+    if (!bulutHazir) return setUye(null);
+    void kayitliOturum()
+      .then((o) => (o ? yukle(o) : setUye(null)))
+      .catch(() => setUye(null));
   }, []);
 
   async function gonder(e: React.FormEvent<HTMLFormElement>) {
@@ -79,7 +80,7 @@ export default function Hesap({
   }
 
   async function cik() {
-    await cikisYap(uye ?? null);
+    await cikisYap();
     setUye(null);
     setSekme("gir");
   }
