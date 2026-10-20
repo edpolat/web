@@ -54,6 +54,8 @@ Proje üç parçaya ayrılır. Her parçanın sahibi kendi klasörlerinde serbes
 - Gelen her kayıt `sema/` ile doğrulanmadan kaydedilmez. Onaylanmamış katkı yayına girmez.
 - Yapay zekâ: model yalnızca ilgili eserin kayıtlarıyla beslenir ve cevabındaki her cümle için kaynak kimliği verir. Kimliksiz cümle "AI yorumu" olarak işaretlenir; veride olmayan soruya "Kaynaklarımızda bu bilgi yok" der. API anahtarı yalnızca sunucuda, `.env.local` içinde tutulur. Sağlayıcı sırası (`lib/sunucu/sor-yz.ts`): `ANTHROPIC_API_KEY` varsa Claude, yoksa `GEMINI_API_KEY` varsa Gemini (ücretsiz kota, model `GEMINI_MODEL`, varsayılan `gemini-flash-latest`), ikisi de yoksa eşleştirme (`lib/sunucu/sor.ts`).
 
+- Yönetim panelinde YZ desteği (Aşama 6): yalnız editöre bilgi verir, hiçbir kaydı onaylamaz/reddetmez/değiştirmez. Tek anahtar `AI_ENABLED=true` (yoksa kapalı, panel aynen çalışır ve kutuda "YZ analizi yapılamadı" yazar), günlük sınır `YZ_GUNLUK_LIMIT`. Bütün LLM çağrıları `lib/sunucu/yz-servis.ts`'de (model değişirse yalnız orası); saf kurallar (maskeleme, sayfa seçme, alıntı kontrolü, şemalar) `lib/yz.ts`; akış `lib/sunucu/yz-analiz.ts` (Next.js `after()` ile yanıttan sonra; yarım kalan analizi Onay bekleyenler sayfası tetikler); tablolar `supabase/006_yz.sql`. Testler LLM'i taklit eder (`tests/yz.test.ts`).
+
 ### Frontend
 
 - Next.js 16 App Router: `params` ve `searchParams` Promise'tir, `await` edilir. `useSearchParams` kullanan bileşen `<Suspense>` içinde olmalı.

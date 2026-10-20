@@ -531,3 +531,27 @@ html[data-altyazi="kapali"] .altyazi-seridi { display: none; }
 .tablo .eylemler { white-space: nowrap; }
 .tablo .eylemler a + a { margin-left: .6rem; }
 [role="tabpanel"][hidden] { display: none; }
+
+/* YZ kaynak analizi kutusu (yönetim > onay bekleyenler). Renk dışında simge ve yazıyla da ayırt edilir. */
+.yz-kutu { border: 1px solid var(--cizgi); border-left: 4px solid var(--soluk); border-radius: 6px; padding: .6rem .8rem; margin: .75rem 0; background: var(--zemin); }
+.yz-kutu h4 { margin: 0 0 .4rem; font-size: .95rem; color: var(--lacivert); }
+.yz-kutu.yz-destekliyor { border-left-color: #1e7a46; }
+.yz-kutu.yz-celisiyor { border-left-color: #b3261e; }
+.yz-kutu blockquote { margin: .4rem 0; padding: .3rem .6rem; border-left: 3px solid var(--cizgi); background: var(--yuzey); font-style: italic; white-space: pre-wrap; }
+.yz-kutu .yz-not { font-size: .8rem; color: var(--soluk); margin: .5rem 0 0; }
+.yz-kutu .dugmeler { margin-top: .4rem; }
+.etiket-yz-destekliyor { color: #fff; background: #1e7a46; border-color: #1e7a46; }
+.etiket-yz-celisiyor { color: #fff; background: #b3261e; border-color: #b3261e; }
+.etiket-yz-bulunamadi { color: var(--metin); background: #e4e4e4; border-color: #9a9a9a; }
+.etiket-yz-uyari { color: var(--metin); background: var(--sari); border-color: var(--sari); }
+/* YZ ön eleme etiketleri */
+.yz-etiketler { display: flex; flex-wrap: wrap; gap: .3rem; margin: .2rem 0 .4rem; }
+.etiket-yze-degerli { color: #fff; background: #1e7a46; border-color: #1e7a46; }
+.etiket-yze-spam, .etiket-yze-anlamsiz { color: #fff; background: #b3261e; border-color: #b3261e; }
+.etiket-yze-mevcut_bilgiyle_celisiyor { color: var(--metin); background: #ffd9d4; border-color: #b3261e; }
+.etiket-yze-kaynaksiz, .etiket-yze-kaynak_alakasiz { color: var(--metin); background: var(--uyari); border-color: var(--sari); }
+.etiket-yze-mevcut_bilgiyle_ayni, .etiket-yze-benzer { color: var(--metin); background: #e4e4e4; border-color: #9a9a9a; }
+.etiket-oncelik-yuksek { color: #fff; background: var(--lacivert); border-color: var(--lacivert); }
+.etiket-oncelik-normal { color: var(--lacivert); }
+.etiket-oncelik-dusuk { color: var(--soluk); border-style: dashed; }
+.yz-kutu fieldset { border: 1px solid var(--cizgi); border-radius: 6px; padding: .4rem .6rem; }

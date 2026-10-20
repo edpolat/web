@@ -5,18 +5,25 @@ import KaynakKunye from "@/components/KaynakKunye";
 import { KaynakDogrula } from "@/components/KaynakPaneli";
 import OneriKarti from "@/components/OneriKarti";
 import { SurumKarti, type GosterilenSurum } from "@/components/SurumListesi";
+import YzElemeKutusu from "@/components/YzElemeKutusu";
+import YzKaynakKutusu, { type GosterilenAnaliz } from "@/components/YzKaynakKutusu";
 import type { KutuphaneKaynagi } from "@/lib/kaynak";
 import { gecerliDil, metin } from "@/lib/metin";
 import { mevcutDeger, type OneriSatiri } from "@/lib/oneri";
 import { s } from "@/lib/sozluk";
 import { kaynakListesi } from "@/lib/sunucu/kaynak-depo";
+import { hesapIstemcisi } from "@/lib/sunucu/kimlik";
 import { oneriler as oneriListesi } from "@/lib/sunucu/oneri-depo";
 import { panelKimligi } from "@/lib/sunucu/oturum";
 import { yayindakiHal } from "@/lib/sunucu/panel";
 import { surumler } from "@/lib/sunucu/surum-depo";
 import { surumuGoster } from "@/lib/sunucu/surum-goster";
+import { arkaPlanda, type ArkaPlanIsi } from "@/lib/sunucu/yz-analiz";
+import { sonAnalizler, sonDuzeltmeler, type AnalizSatiri, type EtiketDuzeltmesi } from "@/lib/sunucu/yz-depo";
+import { yzAcik } from "@/lib/sunucu/yz-servis";
 import { ayarlar, yayindakiEserler, yayindakiKaynaklar } from "@/lib/veri";
 import { izinli } from "@/lib/yetki";
+import { ETIKETLER, benzerOneriler, siraPuani, type ElemeCevabi, type Etiket, type GecerliEtiket } from "@/lib/yz";
 
 export const metadata: Metadata = { robots: { index: false } };
 
@@ -41,7 +48,7 @@ export default async function Inceleme({
   searchParams,
 }: {
   params: Promise<{ dil: string }>;
-  searchParams: Promise<{ tur?: string; sira?: string }>;
+  searchParams: Promise<{ tur?: string; sira?: string; etiket?: string }>;
 }) {
   const { dil } = await params;
   if (!gecerliDil(dil)) notFound();
@@ -51,16 +58,22 @@ export default async function Inceleme({
   if (!eserYetkisi && !kaynakYetkisi) redirect(`/${dil}/yonetim`);
   const t = s(dil);
   const u = t.kutuphane;
-  const { tur, sira } = await searchParams;
+  const { tur, sira, etiket } = await searchParams;
   const yeniOnce = sira === "yeni";
-  const secili: Tur | undefined = TURLER.find((x) => x === tur);
+  const oncelikle = sira === "oncelik";
+  // YZ etiketine göre süzme yalnız öneriler içindir.
+  const seciliEtiket: Etiket | "benzer" | undefined = [...ETIKETLER, "benzer" as const].find((x) => x === etiket);
+  const secili: Tur | undefined = seciliEtiket ? "oneri" : TURLER.find((x) => x === tur);
 
   let eserler: GosterilenSurum[] | undefined;
   let eserHatasi = "";
+  // Kaynakla gelen sürümler YZ kaynak analizine girer.
+  const kaynakliSurumler = new Set<number>();
   if (eserYetkisi) {
     try {
       const kaynakMap = await yayindakiKaynaklar();
       const bekleyen = await surumler({ durum: "incelemede" });
+      for (const x of bekleyen) if (x.kaynak_id) kaynakliSurumler.add(x.id);
       eserler = await Promise.all(
         bekleyen.map(async (x) => {
           const simdi = await yayindakiHal(x.eser_id);
@@ -91,6 +104,65 @@ export default async function Inceleme({
       oneriHatasi = hata(h);
     }
   }
+  // YZ kaynak analizi: sonuçlar okunur; hiç analizi olmayanlar (en çok 3) sayfa yanıtından sonra arka planda başlatılır.
+  // YZ'nin her hatası burada yutulur, liste ve karar düğmeleri her durumda çalışır.
+  const yzAcikMi = yzAcik();
+  let oneriAnalizleri = new Map<number, AnalizSatiri>();
+  let surumAnalizleri = new Map<number, AnalizSatiri>();
+  let elemeAnalizleri = new Map<number, AnalizSatiri>();
+  let duzeltmeler = new Map<number, EtiketDuzeltmesi>();
+  const baslatilan = new Set<string>();
+  if (eserYetkisi) {
+    const vt = await hesapIstemcisi().catch(() => null);
+    if (vt) {
+      const tumOneriler = (oneriler ?? []).map((o) => o.id);
+      const kaynakliOneriler = (oneriler ?? []).filter((o) => !o.kaynaksiz).map((o) => o.id);
+      [oneriAnalizleri, surumAnalizleri, elemeAnalizleri, duzeltmeler] = await Promise.all([
+        sonAnalizler(vt, "kaynak", "oneri", kaynakliOneriler),
+        sonAnalizler(vt, "kaynak", "surum", [...kaynakliSurumler]),
+        sonAnalizler(vt, "eleme", "oneri", tumOneriler),
+        sonDuzeltmeler(vt, tumOneriler),
+      ]);
+      if (yzAcikMi) {
+        // Önerinin kaynak analizi ön elemeden önce gelir (ön eleme onun sonucunu da kullanır). En çok 4 iş.
+        const eksik: ArkaPlanIsi[] = [
+          ...kaynakliOneriler.filter((id) => !oneriAnalizleri.has(id)).map((id) => ({ analiz: "kaynak" as const, tur: "oneri" as const, id })),
+          ...tumOneriler.filter((id) => !elemeAnalizleri.has(id)).map((id) => ({ analiz: "eleme" as const, tur: "oneri" as const, id })),
+          ...[...kaynakliSurumler].filter((id) => !surumAnalizleri.has(id)).map((id) => ({ analiz: "kaynak" as const, tur: "surum" as const, id })),
+        ].slice(0, 4);
+        arkaPlanda(vt, eksik);
+        for (const x of eksik) baslatilan.add(`${x.analiz}-${x.tur}-${x.id}`);
+      }
+    }
+  }
+  // Ön eleme: geçerli etiket (editör düzelttiyse onunki), tekrar tespiti (kodla).
+  const gecerliEtiket = (id: number): GecerliEtiket | undefined => {
+    const d = duzeltmeler.get(id);
+    if (d) return { etiketler: d.etiketler as Etiket[], oncelik: d.oncelik, kaynak: "editor" };
+    const a = elemeAnalizleri.get(id);
+    const c = a?.durum === "tamam" ? (a.sonuc as ElemeCevabi) : undefined;
+    return c && { etiketler: c.etiketler, oncelik: c.oncelik, kaynak: "yz" };
+  };
+  const benzerler = benzerOneriler(oneriler ?? []);
+  const etiketUyar = (o: OneriSatiri) =>
+    !seciliEtiket || (seciliEtiket === "benzer" ? (benzerler.get(o.id)?.length ?? 0) > 0 : (gecerliEtiket(o.id)?.etiketler.includes(seciliEtiket) ?? false));
+  const gosterilen = (a?: AnalizSatiri): GosterilenAnaliz | undefined =>
+    a && { id: a.id, durum: a.durum, sonuc: a.sonuc as GosterilenAnaliz["sonuc"], hata: a.hata, model: a.model };
+  const yzKutusu = (tur: "oneri" | "surum", id: number, a?: AnalizSatiri) => (
+    <YzKaynakKutusu
+      dil={dil}
+      hedefTur={tur}
+      hedefId={id}
+      analiz={gosterilen(a)}
+      acik={yzAcikMi}
+      basladi={baslatilan.has(`kaynak-${tur}-${id}`)}
+      yenilenebilir={eserYetkisi}
+    />
+  );
+  const tamamlanan = (a?: AnalizSatiri) => (a?.durum === "tamam" ? [a.id] : []);
+  const elemeKutusuAnalizi = (a?: AnalizSatiri) =>
+    a && { id: a.id, durum: a.durum, sonuc: a.sonuc as ElemeCevabi | null, hata: a.hata, model: a.model };
+
   const eserMap = new Map((await yayindakiEserler()).map((e) => [e.id, e]));
   const kaynakAdlari = await yayindakiKaynaklar();
   const kategoriler = ayarlar().olgu_kategorileri.map((k) => ({ id: k.id, ad: metin(k.ad, dil) }));
@@ -99,13 +171,23 @@ export default async function Inceleme({
   const kayitlar: Kayit[] = [
     ...(!secili || secili === "eser" ? (eserler ?? []).map((x): Kayit => ({ tur: "eser", zaman: x.olusturuldu, surum: x })) : []),
     ...(!secili || secili === "kaynak" ? (kaynaklar ?? []).map((k): Kayit => ({ tur: "kaynak", zaman: k.eklendi, kaynak: k })) : []),
-    ...(!secili || secili === "oneri" ? (oneriler ?? []).map((o): Kayit => ({ tur: "oneri", zaman: o.olusturuldu, oneri: o })) : []),
-  ].sort((a, b) => (yeniOnce ? -1 : 1) * (Date.parse(a.zaman) - Date.parse(b.zaman)));
+    ...(!secili || secili === "oneri" ? (oneriler ?? []).filter(etiketUyar).map((o): Kayit => ({ tur: "oneri", zaman: o.olusturuldu, oneri: o })) : []),
+  ]
+    // Spam etiketli öneri hep en sonda (silinmez, gizlenmez); "Önceliğe göre" seçiliyse önce öncelik, sonra tarih.
+    .map((x) => ({ x, puan: x.tur === "oneri" ? siraPuani(gecerliEtiket(x.oneri.id), oncelikle) : oncelikle ? 1 : 0 }))
+    .sort((a, b) => a.puan - b.puan || (yeniOnce ? -1 : 1) * (Date.parse(a.x.zaman) - Date.parse(b.x.zaman)))
+    .map((y) => y.x);
+  const etiketSayilari = new Map<string, number>();
+  for (const o of oneriler ?? []) {
+    for (const e of gecerliEtiket(o.id)?.etiketler ?? []) etiketSayilari.set(e, (etiketSayilari.get(e) ?? 0) + 1);
+    if (benzerler.get(o.id)?.length) etiketSayilari.set("benzer", (etiketSayilari.get("benzer") ?? 0) + 1);
+  }
 
-  const adres = (x: { tur?: Tur; sira?: string }) => {
+  const adres = (x: { tur?: Tur; sira?: string; etiket?: string }) => {
     const q = new URLSearchParams();
-    if (x.tur) q.set("tur", x.tur);
+    if (x.tur && !x.etiket) q.set("tur", x.tur);
     if (x.sira) q.set("sira", x.sira);
+    if (x.etiket) q.set("etiket", x.etiket);
     const yazi = q.toString();
     return `/${dil}/yonetim/inceleme${yazi ? `?${yazi}` : ""}`;
   };
@@ -113,7 +195,8 @@ export default async function Inceleme({
   if (eserYetkisi) cipler.push(["eser", t.surum.onayTurleri.eser, sayi.eser]);
   if (kaynakYetkisi) cipler.push(["kaynak", t.surum.onayTurleri.kaynak, sayi.kaynak]);
   if (eserYetkisi) cipler.push(["oneri", t.surum.onayTurleri.oneri, sayi.oneri]);
-  const yeniSira = yeniOnce ? "yeni" : undefined;
+  const yeniSira = yeniOnce ? "yeni" : oncelikle ? "oncelik" : undefined;
+  const y = t.yz;
 
   return (
     <section>
@@ -124,21 +207,40 @@ export default async function Inceleme({
       <p className="not">{t.surum.incelemeAciklama}</p>
       <nav className="cipler" aria-label={u.suz}>
         {cipler.map(([cipTuru, ad, n]) => (
-          <Link key={ad} className="cip" aria-pressed={secili === cipTuru} href={adres({ tur: cipTuru, sira: yeniSira })}>
+          <Link key={ad} className="cip" aria-pressed={!seciliEtiket && secili === cipTuru} href={adres({ tur: cipTuru, sira: yeniSira })}>
             {ad} ({n})
           </Link>
         ))}
       </nav>
       <p className="not">
         {t.surum.sira}:{" "}
-        <Link aria-current={!yeniOnce || undefined} href={adres({ tur: secili })}>
+        <Link aria-current={(!yeniOnce && !oncelikle) || undefined} href={adres({ tur: secili, etiket: seciliEtiket })}>
           {t.surum.eskidenYeniye}
         </Link>
         {" · "}
-        <Link aria-current={yeniOnce || undefined} href={adres({ tur: secili, sira: "yeni" })}>
+        <Link aria-current={yeniOnce || undefined} href={adres({ tur: secili, sira: "yeni", etiket: seciliEtiket })}>
           {t.surum.yenidenEskiye}
         </Link>
+        {eserYetkisi && (
+          <>
+            {" · "}
+            <Link aria-current={oncelikle || undefined} href={adres({ tur: secili, sira: "oncelik", etiket: seciliEtiket })}>
+              {y.siraOncelik}
+            </Link>
+          </>
+        )}
       </p>
+      {eserYetkisi && (oneriler?.length ?? 0) > 0 && (
+        <nav className="cipler" aria-label={y.etiketSuz}>
+          <span className="not">{y.etiketSuz}:</span>
+          {[...ETIKETLER, "benzer" as const].map((e) => (
+            <Link key={e} className="cip" aria-pressed={seciliEtiket === e} href={adres({ sira: yeniSira, etiket: seciliEtiket === e ? undefined : e })}>
+              {y.etiketler[e]} ({etiketSayilari.get(e) ?? 0})
+            </Link>
+          ))}
+        </nav>
+      )}
+      {(etiketSayilari.get("spam") ?? 0) > 0 && <p className="not">{y.spamNot}</p>}
       {eserHatasi && (
         <p className="hata">
           {t.surum.tabloYok} <small>({eserHatasi})</small>
@@ -166,9 +268,33 @@ export default async function Inceleme({
             kaynakAd={x.oneri.kaynak_id ? kaynakAdlari.get(x.oneri.kaynak_id)?.baslik : undefined}
             kategoriler={kategoriler}
             kutuphaneYetkisi={kaynakYetkisi}
+            yz={x.oneri.kaynaksiz ? undefined : yzKutusu("oneri", x.oneri.id, oneriAnalizleri.get(x.oneri.id))}
+            yzAnalizleri={[...tamamlanan(oneriAnalizleri.get(x.oneri.id)), ...tamamlanan(elemeAnalizleri.get(x.oneri.id))]}
+            yzEleme={
+              <YzElemeKutusu
+                dil={dil}
+                oneriId={x.oneri.id}
+                analiz={elemeKutusuAnalizi(elemeAnalizleri.get(x.oneri.id))}
+                gecerli={gecerliEtiket(x.oneri.id)}
+                duzelten={duzeltmeler.get(x.oneri.id)?.kim_ad}
+                benzer={benzerler.get(x.oneri.id) ?? []}
+                acik={yzAcikMi}
+                basladi={baslatilan.has(`eleme-oneri-${x.oneri.id}`)}
+                yetkili={eserYetkisi}
+              />
+            }
           />
         ) : x.tur === "eser" ? (
-          <SurumKarti key={`e-${x.surum.id}`} dil={dil} k={x.surum} eylemler={["karar"]} eserAdresi turEtiketi={t.surum.onayTuru.eser} />
+          <SurumKarti
+            key={`e-${x.surum.id}`}
+            dil={dil}
+            k={x.surum}
+            eylemler={["karar"]}
+            eserAdresi
+            turEtiketi={t.surum.onayTuru.eser}
+            ek={kaynakliSurumler.has(x.surum.id) ? yzKutusu("surum", x.surum.id, surumAnalizleri.get(x.surum.id)) : undefined}
+            yzAnalizleri={tamamlanan(surumAnalizleri.get(x.surum.id))}
+          />
         ) : (
           <article key={`k-${x.kaynak.id}`} className="katki" aria-labelledby={`kaynak-${x.kaynak.id}`}>
             <p className="katki-ust">

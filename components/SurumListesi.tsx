@@ -55,6 +55,8 @@ export function SurumKarti({
   eylemler,
   eserAdresi,
   turEtiketi,
+  ek,
+  yzAnalizleri = [],
 }: {
   dil: Dil;
   k: GosterilenSurum;
@@ -62,6 +64,10 @@ export function SurumKarti({
   eserAdresi: boolean;
   /** Karışık listelerde (onay bekleyenler) kaydın türü. */
   turEtiketi?: string;
+  /** Kartın karar formundan önce gösterilen ek bölüm (YZ kaynak analizi). */
+  ek?: React.ReactNode;
+  /** Editörün gördüğü YZ analizleri: kararla birlikte denetim kaydına yazılır. */
+  yzAnalizleri?: number[];
 }) {
   const t = s(dil);
   const u = t.surum;
@@ -137,6 +143,7 @@ export function SurumKarti({
           )}
         </p>
       )}
+      {ek}
       {eylemler.includes("karar") && k.durum === "incelemede" && (
         <div className="form">
           <label>
@@ -144,10 +151,10 @@ export function SurumKarti({
             <input value={gerekce} onChange={(e) => setGerekce(e.target.value)} maxLength={2000} />
           </label>
           <div className="dugmeler">
-            <button type="button" disabled={bekle} onClick={() => yap({ islem: "onayla", id: k.id, gerekce })}>
+            <button type="button" disabled={bekle} onClick={() => yap({ islem: "onayla", id: k.id, gerekce, yz_analizleri: yzAnalizleri })}>
               {u.onayla}
             </button>
-            <button type="button" className="ikincil" disabled={bekle || !gerekce.trim()} onClick={() => yap({ islem: "reddet", id: k.id, gerekce })}>
+            <button type="button" className="ikincil" disabled={bekle || !gerekce.trim()} onClick={() => yap({ islem: "reddet", id: k.id, gerekce, yz_analizleri: yzAnalizleri })}>
               {u.reddet}
             </button>
           </div>

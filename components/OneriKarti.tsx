@@ -18,6 +18,12 @@ type Props = {
   kategoriler: { id: string; ad: string }[];
   /** Önerinin bağlantısını/dosyasını kütüphaneye ekleyebilir mi (kaynak.dogrula). */
   kutuphaneYetkisi: boolean;
+  /** YZ kaynak analizi kutusu (yalnız bilgi verir). */
+  yz?: React.ReactNode;
+  /** YZ ön eleme kutusu (etiketler, öncelik, benzer öneriler). */
+  yzEleme?: React.ReactNode;
+  /** Editörün gördüğü YZ analizleri: kararla birlikte denetim kaydına "YZ önerisi görüldü" yazılır. */
+  yzAnalizleri?: number[];
 };
 
 const tarih = (iso: string, dil: Dil) =>
@@ -31,7 +37,7 @@ async function gonder(govde: Record<string, unknown>): Promise<string | undefine
 }
 
 /** Onay bekleyenler listesindeki bilgi önerisi: öneri, kaynağı ve kabul/ret formu. */
-export default function OneriKarti({ dil, oneri: o, eserAd, mevcut, kaynakAd, kategoriler, kutuphaneYetkisi }: Props) {
+export default function OneriKarti({ dil, oneri: o, eserAd, mevcut, kaynakAd, kategoriler, kutuphaneYetkisi, yz, yzEleme, yzAnalizleri = [] }: Props) {
   const t = s(dil);
   const u = t.oneri;
   const k = t.kutuphane;
@@ -59,6 +65,7 @@ export default function OneriKarti({ dil, oneri: o, eserAd, mevcut, kaynakAd, ka
     yap({
       islem: "kabul",
       id: o.id,
+      yz_analizleri: yzAnalizleri,
       alan,
       deger: v.get("deger"),
       kategori: v.get("kategori"),
@@ -107,6 +114,8 @@ export default function OneriKarti({ dil, oneri: o, eserAd, mevcut, kaynakAd, ka
           {o.kaynaksiz && u.kaynaksiz}
         </dd>
       </dl>
+      {yzEleme}
+      {yz}
 
       <form className="form" onSubmit={kabul}>
         <div className="form-satir">
@@ -190,7 +199,7 @@ export default function OneriKarti({ dil, oneri: o, eserAd, mevcut, kaynakAd, ka
           </button>
         </div>
       </form>
-      <RetFormu u={u} bekle={bekle} reddet={(gerekce) => yap({ islem: "reddet", id: o.id, gerekce })} />
+      <RetFormu u={u} bekle={bekle} reddet={(gerekce) => yap({ islem: "reddet", id: o.id, gerekce, yz_analizleri: yzAnalizleri })} />
       {hata && <p role="alert">{hata}</p>}
     </article>
   );

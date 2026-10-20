@@ -5,9 +5,11 @@ import type { Eser } from "../tipler";
 import { yayindakiIller, yayindakiKaynaklar } from "../veri";
 import { KatkiHatasi, type Depo } from "./katki";
 import { depoOku } from "./kuyruk";
-import { kimlik } from "./kimlik";
+import { hesapIstemcisi, kimlik } from "./kimlik";
 import { yetkili } from "./oturum";
 import { alanFarklari, surumHazirla, yayinaUygunMu } from "./surum";
+import { arkaPlanda } from "./yz-analiz";
+import { yzKararKaydet } from "./yz-depo";
 import { surumGonder, surumIncelemeye, surumKarar, surumOku, surumYayinla, surumler, yayiniYenile, yayindakiSurumler } from "./surum-depo";
 
 /** Onay kuyruğundaki doğrulama deposunun yayındaki hâli (JSON + onaylı sürümler). */
@@ -46,10 +48,13 @@ export async function panelIslemi(govde: Record<string, unknown>): Promise<Recor
       const hazir = surumHazirla(govde, await yayindakiDepo(), ben.ad);
       const temel = ekle ? null : (await yayindakiHal(hazir.eser_id)).surum;
       const id = await surumGonder(hazir, temel, govde.taslak === true);
+      // Kaynakla gelen düzenleme incelemeye girdiyse YZ kaynak analizi yanıttan sonra çalışır (YZ kapalıysa hiçbir şey olmaz).
+      if (govde.taslak !== true) arkaPlanda(await hesapIstemcisi(), [{ analiz: "kaynak", tur: "surum", id }]);
       return { id, eser_id: hazir.eser_id };
     }
     case "incelemeye": {
       await surumIncelemeye(sayi(govde.id));
+      arkaPlanda(await hesapIstemcisi(), [{ analiz: "kaynak", tur: "surum", id: sayi(govde.id) }]);
       return { tamam: true };
     }
     case "onayla":
@@ -61,12 +66,14 @@ export async function panelIslemi(govde: Record<string, unknown>): Promise<Recor
       if (govde.islem === "reddet") {
         if (!gerekce) throw new KatkiHatasi("Reddetmek için gerekçe yazmalısın.");
         await surumKarar(surum.id, false, gerekce, []);
+        await yzKararKaydet(await hesapIstemcisi(), govde.yz_analizleri, "reddetti");
         return { tamam: true };
       }
       yayinaUygunMu(surum, await yayindakiDepo());
       const { eser } = await yayindakiHal(surum.eser_id);
       await surumKarar(surum.id, true, gerekce, alanFarklari(eser, surum.veri));
       yayiniYenile();
+      await yzKararKaydet(await hesapIstemcisi(), govde.yz_analizleri, "onayladi");
       return { tamam: true };
     }
     case "geri_al": {

@@ -4,9 +4,11 @@ import { KAYNAK_TURLERI, KaynakHatasi, NITELIKLER, type KaynakTuru, type Nitelik
 import { OneriHatasi, oneriIstegi } from "@/lib/oneri";
 import { KatkiHatasi } from "@/lib/sunucu/katki";
 import { dosyaDenetle, yuklemeAdresi } from "@/lib/sunucu/kaynak-depo";
-import { kimlik } from "@/lib/sunucu/kimlik";
+import { hesapIstemcisi, kimlik } from "@/lib/sunucu/kimlik";
 import { oneriGonder, oneriKabul, oneriReddet, oneriler } from "@/lib/sunucu/oneri-depo";
 import { yetkili } from "@/lib/sunucu/oturum";
+import { arkaPlanda, oneriIsleri } from "@/lib/sunucu/yz-analiz";
+import { sunucuIstemcisi, yzKararKaydet } from "@/lib/sunucu/yz-depo";
 import { yayindakiEser } from "@/lib/veri";
 
 // Mobil uygulama (başka alan adı) da çağırır. Kimlik çerezle değil Bearer jetonla geldiği için her kaynağa açık.
@@ -33,7 +35,10 @@ async function islem(g: Record<string, unknown>): Promise<Record<string, unknown
       const istek = oneriIstegi(g);
       if (!(await yayindakiEser(istek.eser_id))) throw new OneriHatasi("Eser bulunamadı.");
       const dosya = istek.dosya_yolu ? await dosyaDenetle(istek.dosya_yolu) : undefined;
-      return { id: await oneriGonder(istek, dosya) };
+      const id = await oneriGonder(istek, dosya);
+      // YZ kaynak analizi (kaynaklıysa) ve ön eleme yanıt döndükten sonra arka planda (sunucu anahtarı varsa; yoksa editör paneli açınca).
+      arkaPlanda(sunucuIstemcisi(), oneriIsleri(id, Boolean(istek.kaynak_id || istek.url || istek.dosya_yolu)));
+      return { id };
     }
     case "kabul":
     case "reddet": {
@@ -42,6 +47,7 @@ async function islem(g: Record<string, unknown>): Promise<Record<string, unknown
       if (g.islem === "reddet") {
         if (!metin(g.gerekce)) throw new OneriHatasi("Reddetmek için gerekçe yazmalısın.");
         await oneriReddet(id, metin(g.gerekce));
+        await yzKararKaydet(await hesapIstemcisi(), g.yz_analizleri, "reddetti");
         return { tamam: true };
       }
       const k = typeof g.kutuphane === "object" && g.kutuphane !== null ? (g.kutuphane as Record<string, unknown>) : undefined;
@@ -61,6 +67,7 @@ async function islem(g: Record<string, unknown>): Promise<Record<string, unknown
           herkese_acik: k.herkese_acik === true,
         },
       });
+      await yzKararKaydet(await hesapIstemcisi(), g.yz_analizleri, "onayladi");
       return { surum };
     }
   }
