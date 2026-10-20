@@ -7,6 +7,7 @@ import { sadelestir } from "../filtre";
 import { metin } from "../metin";
 import type { CokDilli, Dil, Eser, Olgu } from "../tipler";
 
+/** durum "not": kaynağa dayanmayan, sistemin kendi kısa açıklaması ("Kaynaklarda mimarın adı geçmiyor."). */
 export type CevapCumlesi = { metin: string; durum: string; kaynak_id?: string; sayfa?: string };
 export type Cevap = { bulundu: boolean; cumleler: CevapCumlesi[]; yontem: "eslesme" | "yapay_zeka" };
 
@@ -28,7 +29,7 @@ const KAVRAMLAR: string[][] = [
   ["onari", "onarl", "onarm", "onarim", "resto", "tamir", "repai", "renov", "yenil"],
   ["isim", "ismi", "adi", "adini", "denir", "deniy", "denil", "deniyo", "verilm", "anili", "named", "name", "calle", "known"],
   ["mimar", "archi"],
-  ["bani", "banis", "yaptir", "insa", "ettir", "built", "found", "commi"],
+  ["bani", "banis", "yaptir", "insa", "ettir", "kurucu", "yapan", "yapmi", "built", "found", "commi"],
   ["deprem", "earth", "yikil", "yikim", "destr", "colla"],
   ["kucuk", "ucte", "oran", "aslin", "small", "third", "origi"],
   ["bugun", "gunum", "today", "prese"],
@@ -73,9 +74,64 @@ function puan(soru: string, soruKavram: Set<string>, olgu: Olgu): number {
   return p;
 }
 
-export function cevapla(eser: Pick<Eser, "olgular">, soru: string, dil: Dil): Cevap {
+// "Kim yaptırdı / Mimarı kim / Kimin eseri" soruları. Ziyaretçi için mimar ile yaptıran (bânî) çoğu zaman
+// aynı soru; kayıtlarda mimar yoksa yaptıran verilir ve mimarın geçmediği söylenir.
+const KIM_SORUSU = /\b(kim|kimin|kimler|kimdir|kimmis|who|whose|whom)\b/;
+const MIMAR_SORUSU = /\b(mimar|archit)/;
+// Olgu metninde kişi olarak mimar: "Mimar Sinan", "mimarı ...". "mimari özellikleri" eşleşmez.
+const MIMAR_KISI = /(^|[^\p{L}])mimar(ı|\s)/iu;
+const BANI_KAYDI = /bân[iî]|bani(si|sinin|sini)\b|yaptır|inşa ettir|tarafından[^.]{0,60}(inşa|yapıl|kurul)/iu;
+// Yaptıranı değil onarımı ya da kazıyı yapanı anlatan cümleler ("Müze Müdürlüğü tarafından yapılan kazı").
+const BASKA_IS = /onar|restor|tamir|kazı|yenile/iu;
+const YAPTIRAN_ADIYLA = /tarafından|bân[iî]s[iı] [A-ZÇĞİÖŞÜ]/u;
+const NOTLAR = {
+  mimarYok: { tr: "Kaynaklarda mimarın adı geçmiyor. Yaptıranla ilgili kayıt:", en: "The sources do not name an architect. On who had it built:" },
+};
+
+type SoruEseri = Pick<Eser, "olgular"> & Partial<Pick<Eser, "banisi" | "mimar" | "envanter">>;
+
+function cumle(o: Pick<Olgu, "metin" | "durum" | "kaynak_id" | "sayfa">, dil: Dil): CevapCumlesi {
+  return { metin: metin(o.metin, dil), durum: o.durum, kaynak_id: o.kaynak_id, sayfa: o.sayfa };
+}
+
+/** Kim yaptı sorusunun cevabı; soru bu türden değilse ya da kayıt yoksa null. */
+function yapanCevabi(eser: SoruEseri, sade: string, soruKavram: Set<string>, dil: Dil): Cevap | null {
+  const mimarSoruldu = MIMAR_SORUSU.test(sade);
+  const yapimSoruldu = soruKavram.has("#3") || /\b(yap|eser)/.test(sade);
+  if (!KIM_SORUSU.test(sade) || !(mimarSoruldu || yapimSoruldu)) return null;
+  const yayinda = eser.olgular.filter((o) => YAYINDA.has(o.durum));
+  const env = eser.envanter?.kaynak_id
+    ? { durum: "kaynakli", kaynak_id: eser.envanter.kaynak_id, sayfa: eser.envanter.sayfa }
+    : { durum: "belirsiz" };
+  const kunye = (tr: string, en: string, ad: string) => ({ metin: { tr: `${tr}: ${ad}`, en: `${en}: ${ad}` }, ...env });
+
+  if (mimarSoruldu) {
+    const mimarlar = [
+      ...(eser.mimar ? [kunye("Mimarı", "Architect", eser.mimar)] : []),
+      ...yayinda.filter((o) => MIMAR_KISI.test(o.metin.tr)),
+    ].slice(0, 2);
+    if (mimarlar.length) return { bulundu: true, yontem: "eslesme", cumleler: mimarlar.map((o) => cumle(o, dil)) };
+  }
+  // Önce "... tarafından yaptırılmıştır" gibi yaptıranı adıyla veren cümleler, sonra "banisi bilinmemektedir".
+  const banilar = yayinda
+    .filter((o) => BANI_KAYDI.test(o.metin.tr) && !(BASKA_IS.test(o.metin.tr) && !/bân[iî]|bani|yaptır/iu.test(o.metin.tr)))
+    .sort((a, b) => Number(YAPTIRAN_ADIYLA.test(b.metin.tr)) - Number(YAPTIRAN_ADIYLA.test(a.metin.tr)));
+  const secilen = [...(eser.banisi ? [kunye("Banisi", "Founder", eser.banisi)] : []), ...banilar].slice(0, 2);
+  if (!secilen.length) return mimarSoruldu ? { bulundu: false, cumleler: [], yontem: "eslesme" } : null;
+  return {
+    bulundu: true,
+    yontem: "eslesme",
+    cumleler: [...(mimarSoruldu ? [{ metin: metin(NOTLAR.mimarYok, dil), durum: "not" }] : []), ...secilen.map((o) => cumle(o, dil))],
+  };
+}
+
+export function cevapla(eser: SoruEseri, soru: string, dil: Dil): Cevap {
   const sade = sadelestir(soru);
   const soruKavram = kavramlar(soru);
+  const yapan = yapanCevabi(eser, sade, soruKavram, dil);
+  if (yapan) return yapan;
+  // "Kimin eseri?" yaptıran sorusudur; "eser" sözcüğü tek başına eşleşme saymaz.
+  if (KIM_SORUSU.test(sade) && /\beser/.test(sade)) soruKavram.add("#3");
   const adaylar = eser.olgular
     .filter((o) => YAYINDA.has(o.durum))
     .map((o) => ({ o, p: puan(sade, soruKavram, o) }))
@@ -87,7 +143,7 @@ export function cevapla(eser: Pick<Eser, "olgular">, soru: string, dil: Dil): Ce
   return {
     bulundu: true,
     yontem: "eslesme",
-    cumleler: secilen.map(({ o }) => ({ metin: metin(o.metin, dil), durum: o.durum, kaynak_id: o.kaynak_id, sayfa: o.sayfa })),
+    cumleler: secilen.map(({ o }) => cumle(o, dil)),
   };
 }
 

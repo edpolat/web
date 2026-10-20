@@ -10,6 +10,7 @@ import Galeri from "@/components/Galeri";
 import Dinle, { type OkunacakParca } from "@/components/Dinle";
 import SoruPaneli from "@/components/SoruPaneli";
 import { katkilar } from "@/lib/sunucu/kuyruk";
+import { cevapla } from "@/lib/sunucu/sor";
 
 type Params = Promise<{ dil: string; id: string }>;
 
@@ -310,7 +311,12 @@ export default async function EserKarti({ params }: { params: Params }) {
       )}
     </article>
     <aside className="eser-yan">
-      <SoruPaneli dil={dil} eserId={eser.id} durumAdlari={durumAdlari} />
+      <SoruPaneli
+        dil={dil}
+        eserId={eser.id}
+        durumAdlari={durumAdlari}
+        ornekler={t.sor.ornekler.filter((o) => cevapla(eser, o, dil).bulundu)}
+      />
     </aside>
     </div>
   );

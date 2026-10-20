@@ -52,7 +52,7 @@ Proje üç parçaya ayrılır. Her parçanın sahibi kendi klasörlerinde serbes
 - Yönetim girişi tek şifre: `.env.local` > `VAKFIYE_YONETIM_SIFRESI`. Geliştirmede tanımlı değilse şifre `vakfiye`; yayında şifre yoksa panel kapalı.
 - Konum düzenleme (`/tr/duzenle/konum` + `app/api/konum`) yalnız geliştirmede çalışır ve kuyruğa girmez, doğrudan yazar.
 - Gelen her kayıt `sema/` ile doğrulanmadan kaydedilmez. Onaylanmamış katkı yayına girmez.
-- Yapay zekâ: model yalnızca ilgili eserin kayıtlarıyla beslenir ve cevabındaki her cümle için kaynak kimliği verir. Kimliksiz cümle "AI yorumu" olarak işaretlenir; veride olmayan soruya "Kaynaklarımızda bu bilgi yok" der. API anahtarı yalnızca sunucuda, `.env.local` içinde tutulur.
+- Yapay zekâ: model yalnızca ilgili eserin kayıtlarıyla beslenir ve cevabındaki her cümle için kaynak kimliği verir. Kimliksiz cümle "AI yorumu" olarak işaretlenir; veride olmayan soruya "Kaynaklarımızda bu bilgi yok" der. API anahtarı yalnızca sunucuda, `.env.local` içinde tutulur. Sağlayıcı sırası (`lib/sunucu/sor-yz.ts`): `ANTHROPIC_API_KEY` varsa Claude, yoksa `GEMINI_API_KEY` varsa Gemini (ücretsiz kota, model `GEMINI_MODEL`, varsayılan `gemini-flash-latest`), ikisi de yoksa eşleştirme (`lib/sunucu/sor.ts`).
 
 ### Frontend
 

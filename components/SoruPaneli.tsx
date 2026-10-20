@@ -16,7 +16,18 @@ function gecmis(mesajlar: Mesaj[]) {
 }
 
 /** "Bu esere sor" sohbeti. Uygulamayla aynı uç noktayı (POST /api/sor) kullanır. */
-export default function SoruPaneli({ dil, eserId, durumAdlari }: { dil: Dil; eserId: string; durumAdlari: Record<string, string> }) {
+export default function SoruPaneli({
+  dil,
+  eserId,
+  durumAdlari,
+  ornekler,
+}: {
+  dil: Dil;
+  eserId: string;
+  durumAdlari: Record<string, string>;
+  /** Bu eserin kayıtlarıyla cevaplanabilen örnek sorular (sunucuda süzülür). */
+  ornekler: string[];
+}) {
   const t = s(dil);
   const [mesajlar, setMesajlar] = useState<Mesaj[]>([]);
   const [soru, setSoru] = useState("");
@@ -79,7 +90,7 @@ export default function SoruPaneli({ dil, eserId, durumAdlari }: { dil: Dil; ese
                       {t.durumIsareti[c.durum]} {durumAdlari[c.durum]}
                       {c.sayfa ? ` · ${t.sayfaKisa(c.sayfa)}` : ""}
                     </a>
-                  ) : (
+                  ) : c.durum === "not" ? null : (
                     <span className={`etiket etiket-${c.durum}`}>
                       {t.durumIsareti[c.durum]} {durumAdlari[c.durum]}
                     </span>
@@ -91,11 +102,11 @@ export default function SoruPaneli({ dil, eserId, durumAdlari }: { dil: Dil; ese
         ))}
       </ol>
 
-      {mesajlar.length === 0 && (
+      {mesajlar.length === 0 && ornekler.length > 0 && (
         <div className="ornek-sorular">
           <p className="not">{t.sor.ornekBaslik}</p>
           <ul>
-            {t.sor.ornekler.map((o) => (
+            {ornekler.map((o) => (
               <li key={o}>
                 <button type="button" className="cip" onClick={() => sor(o)}>
                   {o}

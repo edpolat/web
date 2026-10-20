@@ -27,9 +27,33 @@ describe("Bu esere sor", () => {
     expect(c.cumleler[0].metin).toContain("üçte biri");
   });
 
+  it("mimar kayıtlarda yoksa uydurmaz, yaptıranı söyler", () => {
+    for (const [soru, dil] of [["Mimarı kim?", "tr"], ["Who was the architect?", "en"]] as const) {
+      const c = cevapla(sehadet, soru, dil);
+      expect(c.cumleler[0].durum).toBe("not");
+      expect(c.cumleler[1].metin).toContain("Sultan I. Murad");
+      expect(c.cumleler[1].kaynak_id).toBe(sehadet.envanter?.kaynak_id);
+    }
+  });
+
+  it("kim yaptırdı sorusunu yaptıranı adıyla veren olgudan cevaplar", () => {
+    const eser = {
+      olgular: [
+        { metin: { tr: "1996'da Müze Müdürlüğü tarafından kazı yapılmıştır." }, kategori: "onarim", durum: "kaynakli" },
+        { metin: { tr: "Cami Ahmet Necip Efendi tarafından yaptırılmıştır." }, kategori: "tarihce", durum: "kaynakli", sayfa: "81" },
+      ],
+    };
+    for (const soru of ["Kim yaptırdı?", "Kimin eseri?", "Kim yapmış?", "Mimarı kim?"]) {
+      const c = cevapla(eser, soru, "tr");
+      expect(c.cumleler.map((x) => x.metin).join(" ")).toContain("Ahmet Necip");
+      expect(c.cumleler.some((x) => x.metin.includes("Müze"))).toBe(false);
+    }
+  });
+
   it("kayıtlarda olmayanı uydurmaz", () => {
-    expect(cevapla(sehadet, "Mimarı kim?", "tr").bulundu).toBe(false);
-    expect(cevapla(sehadet, "Who was the architect?", "en").bulundu).toBe(false);
+    const eser = { olgular: [{ metin: { tr: "Cami kare planlıdır, mimari özellikleri sadedir." }, kategori: "mimari", durum: "kaynakli" }] };
+    expect(cevapla(eser, "Mimarı kim?", "tr").bulundu).toBe(false);
+    expect(cevapla(eser, "Who was the architect?", "en").bulundu).toBe(false);
   });
 
   it("İngilizce soruya kitabın İngilizce metniyle cevap verir", () => {
