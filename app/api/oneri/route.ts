@@ -9,6 +9,18 @@ import { oneriGonder, oneriKabul, oneriReddet, oneriler } from "@/lib/sunucu/one
 import { yetkili } from "@/lib/sunucu/oturum";
 import { yayindakiEser } from "@/lib/veri";
 
+// Mobil uygulama (başka alan adı) da çağırır. Kimlik çerezle değil Bearer jetonla geldiği için her kaynağa açık.
+const CORS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "content-type, authorization",
+};
+const json = (veri: unknown, durum = 200) => Response.json(veri, { status: durum, headers: CORS });
+
+export function OPTIONS() {
+  return new Response(null, { status: 204, headers: CORS });
+}
+
 const metin = (x: unknown) => (typeof x === "string" ? x.trim() : "");
 const sayi = (x: unknown) => (typeof x === "number" && Number.isInteger(x) ? x : NaN);
 
@@ -59,10 +71,10 @@ async function islem(g: Record<string, unknown>): Promise<Record<string, unknown
 export async function GET(istek: Request) {
   const eser = new URL(istek.url).searchParams.get("eser") ?? undefined;
   try {
-    if (!(await kimlik())) return Response.json({ oneriler: [] });
-    return Response.json({ oneriler: await oneriler({ benim: true, eser_id: eser }) });
+    if (!(await kimlik())) return json({ oneriler: [] });
+    return json({ oneriler: await oneriler({ benim: true, eser_id: eser }) });
   } catch (hata) {
-    if (hata instanceof OneriHatasi) return Response.json({ hata: hata.message }, { status: 400 });
+    if (hata instanceof OneriHatasi) return json({ hata: hata.message }, 400);
     throw hata;
   }
 }
@@ -72,14 +84,14 @@ export async function POST(istek: Request) {
   try {
     govde = await istek.json();
   } catch {
-    return Response.json({ hata: "Geçersiz JSON." }, { status: 400 });
+    return json({ hata: "Geçersiz JSON." }, 400);
   }
-  if (typeof govde !== "object" || govde === null) return Response.json({ hata: "Geçersiz istek." }, { status: 400 });
+  if (typeof govde !== "object" || govde === null) return json({ hata: "Geçersiz istek." }, 400);
   try {
-    return Response.json(await islem(govde as Record<string, unknown>));
+    return json(await islem(govde as Record<string, unknown>));
   } catch (hata) {
-    if (hata instanceof OneriHatasi || hata instanceof KaynakHatasi) return Response.json({ hata: hata.message }, { status: 400 });
-    if (hata instanceof KatkiHatasi) return Response.json({ hata: hata.message, ayrinti: hata.ayrinti }, { status: 400 });
+    if (hata instanceof OneriHatasi || hata instanceof KaynakHatasi) return json({ hata: hata.message }, 400);
+    if (hata instanceof KatkiHatasi) return json({ hata: hata.message, ayrinti: hata.ayrinti }, 400);
     throw hata;
   }
 }
