@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   BulutHatasi,
@@ -13,7 +12,7 @@ import {
   type BulutHataKodu,
   type BulutOturumu,
 } from "@/lib/bulut";
-import { metin } from "@/lib/metin";
+import Pasaport from "@/components/Pasaport";
 import { s } from "@/lib/sozluk";
 import type { CokDilli, Dil, Rota } from "@/lib/tipler";
 
@@ -91,45 +90,15 @@ export default function Hesap({
     const adlar = new Map(eserler.map((e) => [e.id, e.ad]));
     return (
       <section className="hesap" aria-labelledby="hesap-baslik">
-        <div className="profil">
-          <span className="profil-harf" aria-hidden="true">
-            {uye.ad.charAt(0).toLocaleUpperCase("tr")}
-          </span>
-          <span>
-            <strong id="hesap-baslik">{u.hosGeldin(uye.ad.split(" ")[0])}</strong>
-            <small>{uye.eposta}</small>
-          </span>
-        </div>
-        <h2>{u.pullar}</h2>
-        <p>{u.pulSayisi(uye.pullar.length)}</p>
-        <ul className="rota-ilerleme">
-          {rotalar.map((r) => {
-            const alinan = r.duraklar.filter((d) => uye.pullar.includes(d.eser_id)).length;
-            return (
-              <li key={r.il}>
-                <strong>{u.rota(metin(iller.find((i) => i.id === r.il)?.ad, dil) || r.il)}</strong>
-                <span>
-                  {alinan} / {r.duraklar.length}
-                </span>
-                <progress max={r.duraklar.length} value={alinan} />
-              </li>
-            );
-          })}
-        </ul>
-        {uye.pullar.length > 0 && (
-          <ul className="pul-listesi">
-            {uye.pullar.map((id) => (
-              <li key={id}>
-                <Link href={`/${dil}/eser/${id}`}>{metin(adlar.get(id), dil) || id}</Link>
-              </li>
-            ))}
-          </ul>
-        )}
-        <div className="dugmeler">
-          <button type="button" className="ikincil" onClick={cik}>
+        <div className="pasaport-kart pasaport-sahibi">
+          <span className="kart-baslik">{u.pasaportSahibi}</span>
+          <h1 id="hesap-baslik">{uye.ad}</h1>
+          <small>{uye.eposta}</small>
+          <button type="button" className="dugme ikincil" onClick={cik}>
             {t.cikisYap}
           </button>
         </div>
+        <Pasaport dil={dil} pullar={uye.pullar} rotalar={rotalar} iller={iller} adlar={adlar} />
       </section>
     );
   }

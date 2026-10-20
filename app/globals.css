@@ -5,6 +5,7 @@
   --turkuaz: #00b4d8;    /* aktif sekme, vurgu çizgileri (metinde kullanılmaz) */
   --yesil: #123d3a;      /* vakıf kimliği, kaynaklı etiketi */
   --sari: #fcbd00;       /* rozet ve mühürler, idareli */
+  --damga: #b4462f;      /* pasaport damgası mürekkebi (mobil uygulamayla aynı) */
   --zemin: #f5f1e8;      /* sıcak taş */
   --yuzey: #ffffff;
   --metin: #1b263b;
@@ -434,6 +435,48 @@ html[data-altyazi="kapali"] .altyazi-seridi { display: none; }
 .sergi-durum { font-weight: 700; padding: .1rem .55rem; border-radius: 999px; background: #eae3d3; color: var(--metin); }
 .sergi-durum-acik { background: var(--yesil, #123d3a); color: #fff; }
 .sergi-durum-yakinda { background: var(--sari, #fcbd00); color: #1b263b; }
-.rota-ilerleme { list-style: none; padding: 0; display: grid; gap: .5rem; margin: 0 0 1rem; }
-.rota-ilerleme li { display: grid; grid-template-columns: 1fr auto; gap: .2rem .75rem; align-items: center; }
-.rota-ilerleme progress { grid-column: 1 / -1; width: 100%; height: .5rem; accent-color: var(--yesil); }
+
+/* Pasaport (mobil uygulamanın pasaport sekmesiyle aynı görünüm: kartlar, rota seçici, damgalar, rozetler) */
+.hesap .pasaport-kart {
+  background: var(--yuzey); border: 1px solid var(--cizgi); border-radius: 18px;
+  padding: 14px 16px; margin: 0 0 12px; display: flex; flex-direction: column; gap: 8px;
+}
+.kart-baslik { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: var(--yesil); }
+.pasaport-sahibi h1 { margin: 0; font-size: 1.35rem; }
+.pasaport-sahibi small { color: var(--soluk); }
+.pasaport-sahibi button { align-self: flex-start; margin-top: 4px; }
+.rota-secici { display: flex; gap: 6px; background: #eae3d3; border-radius: 12px; padding: 4px; margin: 0 0 12px; }
+.rota-secici button {
+  flex: 1; border: 0; background: transparent; padding: 9px; border-radius: 9px; cursor: pointer;
+  font: inherit; font-weight: 700; color: var(--metin);
+}
+.rota-secici button[aria-pressed="true"] { background: var(--yuzey); color: var(--lacivert); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.pul-sayac { display: flex; justify-content: space-between; align-items: baseline; }
+.pasaport-ilerleme { height: 6px; border-radius: 99px; background: #eee8da; overflow: hidden; }
+.pasaport-ilerleme i { display: block; height: 100%; background: var(--sari); border-radius: 99px; transition: width .4s; }
+.pullar-izgara { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.pul {
+  aspect-ratio: 1; border-radius: 50%; border: 2px dashed #cfc6b3;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; font-size: 12px; line-height: 1.25; color: #6f6857; text-decoration: none;
+  padding: 10px; overflow: hidden;
+}
+.pul:hover { border-color: var(--mavi); color: var(--lacivert); }
+.pul.alindi { border: 0; padding: 0; color: var(--damga); }
+.pul.alindi svg { width: 100%; height: 100%; transform: rotate(-8deg); animation: damga-bas .5s ease-out; }
+@keyframes damga-bas {
+  0%   { transform: scale(1.6) rotate(-8deg); opacity: 0; }
+  60%  { transform: scale(.92) rotate(-8deg); opacity: 1; }
+  100% { transform: scale(1) rotate(-8deg); }
+}
+@media (prefers-reduced-motion: reduce) { .pul.alindi svg { animation: none; } }
+.rozetler { list-style: none; margin: 0; padding: 0; }
+.rozet-satir { display: flex; align-items: center; gap: 12px; padding: 8px 0; color: #6f6857; }
+.rozet-satir + .rozet-satir { border-top: 1px solid #f0ebe0; }
+.rozet-satir > span:last-child { display: flex; flex-direction: column; line-height: 1.3; }
+.rozet-simge {
+  width: 40px; height: 40px; flex: none; border-radius: 50%; display: grid; place-items: center;
+  background: #eee8da; font-size: 20px; filter: grayscale(1); opacity: .6;
+}
+.rozet-satir.kazanildi { color: var(--metin); }
+.rozet-satir.kazanildi .rozet-simge { background: var(--sari); filter: none; opacity: 1; }
