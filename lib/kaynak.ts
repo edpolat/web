@@ -24,7 +24,10 @@ export const VARSAYILAN_NITELIK: Record<KaynakTuru, Nitelik> = {
 };
 
 export const DOSYA_KOVASI = "kaynak-dosyalari";
+/** Halkın öneriyle yüklediği dosyanın sınırı. */
 export const EN_BUYUK_DOSYA = 10 * 1024 * 1024;
+/** Panel kullanıcısının kaynak kütüphanesine yüklediği dosyanın sınırı (envanter kitabı bölümleri büyük). Kova sınırı da bu (008). */
+export const EN_BUYUK_KAYNAK_DOSYASI = 50 * 1024 * 1024;
 export const DOSYA_TURLERI = { "application/pdf": "pdf", "image/jpeg": "jpg", "image/png": "png" } as const;
 export type DosyaTuru = keyof typeof DOSYA_TURLERI;
 

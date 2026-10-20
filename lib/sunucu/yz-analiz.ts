@@ -10,7 +10,7 @@ import { DOSYA_KOVASI, type KutuphaneKaynagi } from "../kaynak";
 import { mevcutDeger, type OneriSatiri } from "../oneri";
 import { s } from "../sozluk";
 import type { Eser, Kaynak, Olgu } from "../tipler";
-import { kaynaklar, yayindakiEser, yayindakiKaynaklar } from "../veri";
+import { kaynakMetni, kaynaklar, yayindakiEser, yayindakiKaynaklar } from "../veri";
 import { maskele, type KaynakAnalizi } from "../yz";
 import { KAYNAK_TURLERI } from "../kaynak";
 import { elemeAnalizEt } from "./yz-eleme";
@@ -51,7 +51,15 @@ function indir(vt: SupabaseClient, yol: string): () => Promise<CikanMetin> {
 async function kaynakTanimi(vt: SupabaseClient, kaynak_id: string): Promise<KaynakTanimi | null> {
   const { data } = await vt.from("kaynak_kutuphanesi").select("*").eq("id", kaynak_id).maybeSingle();
   const k = data as KutuphaneKaynagi | null;
-  if (k?.dosya_yolu) return { anahtar: `kutuphane:${k.id}`, getir: indir(vt, k.dosya_yolu), adres: `/api/kaynak/dosya/${k.id}`, halktan: false };
+  const dosya = k?.dosya_yolu ? `/api/kaynak/dosya/${k.id}` : null;
+  // Sitenin varsayılan kaynakları (envanter kitapları): metin veri/kaynak-metinleri'nde, sayfa numaraları kitabınki.
+  // Kitabın PDF'i kütüphanedeyse düğme onu açar (pdf_sayfa ile doğru sayfada); metin yine buradan okunur.
+  const yerel = kaynakMetni(kaynak_id);
+  if (yerel?.length) {
+    const sayfalar = yerel;
+    return { anahtar: `yerel:${kaynak_id}`, getir: async () => ({ durum: "tamam", sayfali: true, sayfalar }), adres: dosya, halktan: false };
+  }
+  if (k?.dosya_yolu) return { anahtar: `kutuphane:${k.id}`, getir: indir(vt, k.dosya_yolu), adres: dosya, halktan: false };
   const url = k?.url ?? kaynaklar().get(kaynak_id)?.url ?? (await yayindakiKaynaklar()).get(kaynak_id)?.url;
   if (url && /^https?:\/\//.test(url)) return { anahtar: `url:${crypto.createHash("sha256").update(url).digest("hex")}`, getir: () => baglantiMetni(url), adres: url, halktan: false };
   return null;
@@ -119,6 +127,8 @@ export function kaynakOzeti(h: Hedef): string {
 }
 
 async function metinGetir(vt: SupabaseClient, k: KaynakTanimi): Promise<CikanMetin> {
+  // Sitenin kendi dosyasındaki metin zaten hazır; veritabanına kopyalanmaz.
+  if (k.anahtar.startsWith("yerel:")) return k.getir();
   const onceki = await kaynakMetniOku(vt, k.anahtar).catch(() => undefined);
   if (onceki) return onceki;
   const yeni = await k.getir();
@@ -144,7 +154,7 @@ export async function kaynakAnalizi(vt: SupabaseClient, tur: HedefTuru, id: numb
     analizId = await analizBaslat(vt, { tur: "kaynak", hedef_tur: tur, hedef_id: id, eser_id: h.eser_id, ozet });
     if (analizId === null) return;
     if (!h.kaynak) {
-      const sonuc: KaynakAnalizi = { metin: "kaynak_yok", aciklama: "Kaynağın dosyası ya da bağlantısı yok; metin okunamadı, manuel inceleme gerekli." };
+      const sonuc: KaynakAnalizi = { metin: "kaynak_yok", aciklama: "Bu kaynağın sitede metni, dosyası ya da bağlantısı yok (ör. yalnız künyesi girilmiş basılı kitap); metin okunamadı, manuel inceleme gerekli." };
       return analizBitir(vt, analizId, { durum: "tamam", sonuc });
     }
     const metin = await metinGetir(vt, h.kaynak);

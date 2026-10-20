@@ -1,6 +1,6 @@
 // Kaynak kütüphanesi işlemleri (hesapla giriş gerekli): yükleme adresi al, kaynak ekle, doğrula, bilgiye bağla.
 // İzin hem burada hem Supabase fonksiyonlarında denetlenir.
-import { KaynakHatasi, KAYNAK_DURUMLARI, kaynakIstegi, type KaynakDurumu } from "@/lib/kaynak";
+import { EN_BUYUK_KAYNAK_DOSYASI, KaynakHatasi, KAYNAK_DURUMLARI, kaynakIstegi, type KaynakDurumu } from "@/lib/kaynak";
 import { bilgiKaynagiEkle, dosyaDenetle, kaynakDogrula, kaynakEkle, yuklemeAdresi } from "@/lib/sunucu/kaynak-depo";
 import { yetkili } from "@/lib/sunucu/oturum";
 
@@ -11,11 +11,11 @@ async function islem(g: Record<string, unknown>): Promise<Record<string, unknown
   switch (g.islem) {
     case "yukleme_adresi":
       if (!ekleyebilir) throw new KaynakHatasi("Bu işlem için yetkin yok.");
-      return yuklemeAdresi(g.tur, g.boyut);
+      return yuklemeAdresi(g.tur, g.boyut, EN_BUYUK_KAYNAK_DOSYASI);
     case "ekle": {
       if (!ekleyebilir) throw new KaynakHatasi("Bu işlem için yetkin yok.");
       const istek = kaynakIstegi(g);
-      const dosya = istek.dosya_yolu ? await dosyaDenetle(istek.dosya_yolu) : undefined;
+      const dosya = istek.dosya_yolu ? await dosyaDenetle(istek.dosya_yolu, EN_BUYUK_KAYNAK_DOSYASI) : undefined;
       return { id: await kaynakEkle(istek, dosya) };
     }
     case "dogrula": {

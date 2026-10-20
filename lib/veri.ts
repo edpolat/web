@@ -77,6 +77,19 @@ export async function yayindakiKesifEserleri(): Promise<KesifEseri[]> {
   return kesifEserleri(await yayindakiEserler());
 }
 
+/**
+ * Varsayılan kaynağın (ör. envanter kitabı) sayfa sayfa metni: veri/kaynak-metinleri/<kaynak_id>.json
+ * (araclar/kaynak_metni_al.py üretir). YZ kaynak analizi bunu okur; dosya yoksa undefined.
+ */
+export function kaynakMetni(kaynak_id: string): { sayfa: number; metin: string; pdf_sayfa?: number }[] | undefined {
+  if (!/^[a-z0-9-]{1,80}$/.test(kaynak_id)) return undefined;
+  try {
+    return oku<{ sayfalar: { sayfa: number; metin: string; pdf_sayfa?: number }[] }>(path.join("kaynak-metinleri", `${kaynak_id}.json`)).sayfalar;
+  } catch {
+    return undefined;
+  }
+}
+
 export function kaynaklar(): Map<string, Kaynak> {
   return new Map(oku<Kaynak[]>("kaynaklar.json").map((k) => [k.id, k]));
 }

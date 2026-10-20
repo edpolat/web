@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { kucukGorsel } from "@/lib/gorsel";
 import { s } from "@/lib/sozluk";
@@ -29,6 +30,7 @@ const doluysa = <T extends object>(o: T): T | null => (Object.keys(o).length ? o
  */
 export default function EserFormu({ dil, eser, iller, turler, kaynaklar }: Props) {
   const t = s(dil);
+  const router = useRouter();
   const [kaynak, setKaynak] = useState("");
   const [durum, setDurum] = useState<{ tur: "tamam" | "hata"; metin: string }>();
   const [gonderiliyor, setGonderiliyor] = useState(false);
@@ -100,7 +102,9 @@ export default function EserFormu({ dil, eser, iller, turler, kaynaklar }: Props
       });
       const veri = (await yanit.json()) as { hata?: string; ayrinti?: string[] };
       if (!yanit.ok) throw new Error([veri.hata, ...(veri.ayrinti ?? [])].filter(Boolean).join(" "));
-      setDurum({ tur: "tamam", metin: taslak ? t.surum.taslakKaydedildi : t.surum.incelemeyeGitti });
+      // İncelemeye giden düzenlemeden sonra eserler listesine dönülür (orada "incelemeye gönderildi" notu çıkar).
+      if (!taslak) return router.push(`/${dil}/yonetim/eserler?gonderildi=1`);
+      setDurum({ tur: "tamam", metin: t.surum.taslakKaydedildi });
     } catch (hata) {
       setDurum({ tur: "hata", metin: `${t.gonderilemedi} ${hata instanceof Error ? hata.message : ""}` });
     } finally {

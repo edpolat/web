@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { dosyaYukle } from "@/lib/bulut";
-import { DOSYA_TURLERI, EN_BUYUK_DOSYA, KAYNAK_TURLERI, NITELIKLER, VARSAYILAN_NITELIK, type KaynakTuru } from "@/lib/kaynak";
+import { DOSYA_TURLERI, EN_BUYUK_KAYNAK_DOSYASI, KAYNAK_TURLERI, NITELIKLER, VARSAYILAN_NITELIK, type KaynakTuru } from "@/lib/kaynak";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
 
@@ -14,7 +14,7 @@ async function istek(govde: Record<string, unknown>): Promise<Record<string, unk
 }
 
 /**
- * Kaynak ekleme: bağlantı ya da dosya. Dosya önce tarayıcıda denetlenir (tür, 10 MB), sunucudan alınan
+ * Kaynak ekleme: bağlantı ya da dosya. Dosya önce tarayıcıda denetlenir (tür, 50 MB), sunucudan alınan
  * tek kullanımlık adrese doğrudan Supabase'e yüklenir, sonra sunucu içeriğine bakıp kaydı oluşturur.
  */
 export function KaynakFormu({ dil }: { dil: Dil }) {
@@ -38,7 +38,7 @@ export function KaynakFormu({ dil }: { dil: Dil }) {
         const dosya = v.get("dosya");
         if (!(dosya instanceof File) || !dosya.size) throw new Error(t.dosya);
         if (!(dosya.type in DOSYA_TURLERI)) throw new Error(t.dosyaTuruYanlis);
-        if (dosya.size > EN_BUYUK_DOSYA) throw new Error(t.dosyaBuyuk);
+        if (dosya.size > EN_BUYUK_KAYNAK_DOSYASI) throw new Error(t.dosyaBuyukKaynak);
         const { yol, jeton } = (await istek({ islem: "yukleme_adresi", tur: dosya.type, boyut: dosya.size })) as { yol: string; jeton: string };
         await dosyaYukle(yol, jeton, dosya);
         dosya_yolu = yol;

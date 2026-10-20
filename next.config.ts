@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
     return [{ source: "/", destination: "/tr", permanent: false }];
   },
   images: { formats: ["image/webp"] },
+  // YZ kaynak analizinin okuduğu kitap metinleri sunucu fonksiyonlarıyla birlikte yüklensin (Vercel).
+  outputFileTracingIncludes: { "/**": ["./veri/kaynak-metinleri/**"] },
 };
 
 export default nextConfig;

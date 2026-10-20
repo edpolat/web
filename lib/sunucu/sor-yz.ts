@@ -137,10 +137,12 @@ async function claudeIle(c: Anthropic, eser: Eser, liste: Kayit[], istem: string
 
 // Takma adlar Google'ın güncel modellerine gider; .env.local > GEMINI_MODEL / GEMINI_YEDEK_MODEL ile değiştirilebilir.
 // Ana model hızlı "Flash-Lite": Flash uzun düşünüp sık sık zaman aşımına düşüyordu. Lite yoğunluk (503),
-// kota (429) ya da zaman aşımı verirse Flash denenir.
+// kota (429) ya da zaman aşımı verirse Flash denenir. Her modelin günlük ücretsiz kotası ayrıdır; ikisi de dolarsa
+// son çare Gemma: aynı anahtarla çalışır, günlük kotası Flash'tan çok daha geniştir ama JSON modu ve sistem talimatı
+// desteklemediği için talimat ve şema mesajın içine yazılır, cevap metinden ayıklanır.
 const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-flash-lite-latest";
 const GEMINI_YEDEK = process.env.GEMINI_YEDEK_MODEL || "gemini-flash-latest";
-const GECICI_HATA = new Set([429, 500, 503]);
+const GEMMA_MODEL = process.env.GEMMA_MODEL || "gemma-3-27b-it";
 
 // Gemini'nin şema biçimi (OpenAPI alt kümesi): additionalProperties desteklenmez.
 const GEMINI_SEMA = {
@@ -159,53 +161,67 @@ const GEMINI_SEMA = {
   required: ["bulundu", "cumleler"],
 };
 
+const GEMMA_BICIM = `Cevabını YALNIZCA şu biçimde tek bir JSON nesnesi olarak ver, başka hiçbir şey yazma:
+{"bulundu": true, "cumleler": [{"metin": "...", "kayitlar": [1, 2]}]}`;
+
+/** Gemma cevabı ```json ... ``` içinde ya da açıklamalı gelebilir; ilk { ile son } arasını alır. */
+function jsonAyikla(metin: string): string {
+  const bas = metin.indexOf("{");
+  const son = metin.lastIndexOf("}");
+  return bas >= 0 && son > bas ? metin.slice(bas, son + 1) : metin;
+}
+
 async function geminiIle(anahtar: string, eser: Eser, liste: Kayit[], istem: string): Promise<Cevap | null> {
-  const govde = JSON.stringify({
-    systemInstruction: { parts: [{ text: `${SISTEM}\n\n${baglam(eser, liste)}` }] },
-    contents: [{ role: "user", parts: [{ text: istem }] }],
-    generationConfig: { temperature: 0.2, maxOutputTokens: 8000, responseMimeType: "application/json", responseSchema: GEMINI_SEMA },
-  });
-  const iste = (model: string) =>
-    fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-      method: "POST",
-      headers: { "content-type": "application/json", "x-goog-api-key": anahtar },
-      body: govde,
-      signal: AbortSignal.timeout(20_000),
-    });
-  try {
-    let yanit: Response | null = null;
-    for (const model of [GEMINI_MODEL, GEMINI_YEDEK]) {
-      try {
-        yanit = await iste(model);
-      } catch (hata) {
-        hataKaydet(`Gemini ${model}: ${String(hata)}`);
-        yanit = null;
+  const sistem = `${SISTEM}\n\n${baglam(eser, liste)}`;
+  const govde = (model: string) =>
+    model.startsWith("gemma")
+      ? {
+          contents: [{ role: "user", parts: [{ text: `${sistem}\n\n${GEMMA_BICIM}\n\n${istem}` }] }],
+          generationConfig: { temperature: 0.2, maxOutputTokens: 2000 },
+        }
+      : {
+          systemInstruction: { parts: [{ text: sistem }] },
+          contents: [{ role: "user", parts: [{ text: istem }] }],
+          generationConfig: { temperature: 0.2, maxOutputTokens: 8000, responseMimeType: "application/json", responseSchema: GEMINI_SEMA },
+        };
+  const hatalar: string[] = [];
+  // Bir model başarısız olursa (kota, yoğunluk, zaman aşımı, model adı artık yok) sıradakine geçilir.
+  for (const model of [GEMINI_MODEL, GEMINI_YEDEK, GEMMA_MODEL]) {
+    try {
+      const yanit = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+        method: "POST",
+        headers: { "content-type": "application/json", "x-goog-api-key": anahtar },
+        body: JSON.stringify(govde(model)),
+        signal: AbortSignal.timeout(20_000),
+      });
+      if (!yanit.ok) {
+        const hataMetni = await yanit.text();
+        hatalar.push(yanit.status === 429 ? `${model}: ücretsiz kota doldu (429)` : `${model}: hata ${yanit.status} ${hataMetni.slice(0, 200)}`);
+        if (yanit.status === 400 && /API key/i.test(hataMetni)) break; // anahtar geçersizse diğer modeller de olmaz
         continue;
       }
-      if (yanit.ok || !GECICI_HATA.has(yanit.status)) break;
-      hataKaydet(`Gemini ${model} geçici hata ${yanit.status}, yedek model deneniyor.`);
+      const veri = (await yanit.json()) as {
+        candidates?: { finishReason?: string; content?: { parts?: { text?: string }[] } }[];
+      };
+      const aday = veri.candidates?.[0];
+      if (aday?.finishReason !== "STOP") {
+        hatalar.push(`${model}: cevap tamamlanmadı (${aday?.finishReason ?? "aday yok"})`);
+        continue;
+      }
+      const metin = (aday.content?.parts ?? []).map((p) => p.text ?? "").join("");
+      const cikti = JSON.parse(jsonAyikla(metin)) as YzCiktisi;
+      if (typeof cikti?.bulundu !== "boolean" || !Array.isArray(cikti.cumleler)) {
+        hatalar.push(`${model}: cevap beklenen biçimde değil`);
+        continue;
+      }
+      cikti.cumleler = cikti.cumleler.filter((c) => typeof c?.metin === "string").map((c) => ({ metin: c.metin, kayitlar: Array.isArray(c.kayitlar) ? c.kayitlar.filter(Number.isInteger) : [] }));
+      sonHata = hatalar.length ? `Kullanılan: ${model}. Önceki denemeler: ${hatalar.join(" | ")}` : null;
+      sonCikti = cikti;
+      return yzCevabi(cikti, liste);
+    } catch (hata) {
+      hatalar.push(`${model}: ${String(hata)}`);
     }
-    if (!yanit) return null;
-    if (!yanit.ok) {
-      const hataMetni = await yanit.text();
-      if (yanit.status === 429) hataKaydet("Gemini ücretsiz kotası doldu (429).");
-      else hataKaydet(`Gemini hatası ${yanit.status}: ${hataMetni.slice(0, 300)}`);
-      return null;
-    }
-    const veri = (await yanit.json()) as {
-      candidates?: { finishReason?: string; content?: { parts?: { text?: string }[] } }[];
-    };
-    const aday = veri.candidates?.[0];
-    if (aday?.finishReason !== "STOP") {
-      hataKaydet(`Gemini cevabı tamamlanmadı (${aday?.finishReason ?? "aday yok"})`);
-      return null;
-    }
-    const metin = (aday.content?.parts ?? []).map((p) => p.text ?? "").join("");
-    sonHata = null;
-    sonCikti = JSON.parse(metin) as YzCiktisi;
-    return yzCevabi(sonCikti, liste);
-  } catch (hata) {
-    hataKaydet(`Gemini: ${String(hata)}`);
-    return null;
   }
+  hataKaydet(`Gemini: ${hatalar.join(" | ")}`);
+  return null;
 }

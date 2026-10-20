@@ -83,11 +83,11 @@ export async function bilgiKaynaklari(suzgec: { eser_id?: string; kaynak_id?: st
  * Tek kullanımlık yükleme adresi. Dosya tarayıcıdan doğrudan Supabase'e gider (Vercel istek sınırı ~4,5 MB);
  * adı sunucuda rastgele verilir: <kullanıcı kimliği>/<rastgele>.<uzantı>.
  */
-export async function yuklemeAdresi(tur: unknown, boyut: unknown): Promise<{ yol: string; jeton: string }> {
+export async function yuklemeAdresi(tur: unknown, boyut: unknown, sinir = EN_BUYUK_DOSYA): Promise<{ yol: string; jeton: string }> {
   const ben = await kimlik();
   if (!ben) throw new KaynakHatasi("Giriş gerekli.");
   if (typeof tur !== "string" || !(tur in DOSYA_TURLERI)) throw new KaynakHatasi("Yalnız PDF, JPG ve PNG yüklenebilir.");
-  if (typeof boyut !== "number" || boyut <= 0 || boyut > EN_BUYUK_DOSYA) throw new KaynakHatasi("Dosya en fazla 10 MB olabilir.");
+  if (typeof boyut !== "number" || boyut <= 0 || boyut > sinir) throw new KaynakHatasi(`Dosya en fazla ${sinir / 1024 / 1024} MB olabilir.`);
   const yol = `${ben.id}/${crypto.randomBytes(16).toString("hex")}.${DOSYA_TURLERI[tur as DosyaTuru]}`;
   const { data, error } = await (await vt()).storage.from(DOSYA_KOVASI).createSignedUploadUrl(yol);
   denetle(error);
@@ -95,16 +95,16 @@ export async function yuklemeAdresi(tur: unknown, boyut: unknown): Promise<{ yol
 }
 
 /** Yüklenen dosyayı içeriğinden denetler: boyut ve gerçek tür (uzantıyla uyuşmalı). Uymazsa siler ve hata verir. */
-export async function dosyaDenetle(yol: string): Promise<{ tur: DosyaTuru; boyut: number }> {
+export async function dosyaDenetle(yol: string, sinir = EN_BUYUK_DOSYA): Promise<{ tur: DosyaTuru; boyut: number }> {
   const istemci = await vt();
   const { data, error } = await istemci.storage.from(DOSYA_KOVASI).download(yol);
   if (error || !data) throw new KaynakHatasi("Yüklenen dosya bulunamadı.");
   const baytlar = new Uint8Array(await data.arrayBuffer());
   const tur = dosyaTuruBul(baytlar);
   const uzanti = yol.split(".").pop();
-  if (!tur || DOSYA_TURLERI[tur] !== uzanti || baytlar.length > EN_BUYUK_DOSYA) {
+  if (!tur || DOSYA_TURLERI[tur] !== uzanti || baytlar.length > sinir) {
     await istemci.storage.from(DOSYA_KOVASI).remove([yol]);
-    throw new KaynakHatasi("Dosyanın içeriği PDF, JPG ya da PNG değil (ya da 10 MB'tan büyük); dosya silindi.");
+    throw new KaynakHatasi(`Dosyanın içeriği PDF, JPG ya da PNG değil (ya da ${sinir / 1024 / 1024} MB'tan büyük); dosya silindi.`);
   }
   return { tur, boyut: baytlar.length };
 }

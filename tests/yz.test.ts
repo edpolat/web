@@ -111,6 +111,13 @@ describe("uydurma kontrolü (alıntı belgede var mı)", () => {
     expect(sayfaAdresi(yanlisSayfa)).toBe("/api/oneri/dosya/7#page=2");
     expect(kaynakSonucu({ ...gecerliCevap, sonuc: "bulunamadi", pasaj: "", sayfa: null }, belge, ek)).toMatchObject({ pasaj_dogrulandi: true });
   });
+
+  it("kitap numarası PDF sırasından farklıysa düğme PDF'in doğru sayfasını açar", () => {
+    const kitap = belge.map((x) => ({ ...x, sayfa: x.sayfa + 324, pdf_sayfa: x.sayfa + 3 }));
+    const a = kaynakSonucu({ ...gecerliCevap, sayfa: 326 }, kitap, { sayfali: true, kaynak_adresi: "/api/kaynak/dosya/vk-bursa-envanter-c3", incelenen: [326] });
+    expect(a).toMatchObject({ bulunan_sayfa: 326, pdf_sayfa: 5 });
+    expect(sayfaAdresi(a)).toBe("/api/kaynak/dosya/vk-bursa-envanter-c3#page=5");
+  });
 });
 
 describe("uzun belgede sayfa seçme", () => {
@@ -329,5 +336,20 @@ describe("6B: öneri ön eleme", () => {
     expect(puan("yuksek")).toBeLessThan(puan("normal"));
     expect(puan("normal")).toBeLessThan(puan("dusuk"));
     expect(siraPuani(undefined, true)).toBe(puan("normal"));
+  });
+});
+
+describe("varsayılan kaynakların metni (veri/kaynak-metinleri)", () => {
+  it("Bursa kitabının sayfaları kitabın sayfa numarasıyla okunur ve alıntı doğrulanır", async () => {
+    const { kaynakMetni } = await import("../lib/veri");
+    const sayfalar = kaynakMetni("vk-bursa-envanter-c1-2");
+    expect(sayfalar?.length).toBeGreaterThan(50);
+    const s394 = sayfalar!.find((s) => s.sayfa === 394);
+    expect(s394?.metin).toContain("Molla Fenârî");
+    // Satır sonunda bölünmüş kelimeler ("al- maktadır") alıntı kontrolünü bozmaz.
+    expect(pasajBul("Osmangazi ilçesi, Mollafenari Mahallesi, 12. Dilek Sokak, No:1’de yer almaktadır.", sayfalar!)).toBe(394);
+    expect(kaynakMetni("vk-bursa-envanter-c3")?.some((s) => s.sayfa === 325)).toBe(true);
+    expect(kaynakMetni("vk-hatay-envanter")).toBeUndefined();
+    expect(kaynakMetni("../iller/bursa")).toBeUndefined();
   });
 });

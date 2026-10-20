@@ -4,6 +4,8 @@
 //   AI_ENABLED=true          YZ özelliklerinin tamamı açık (yoksa ya da başka bir değerse kapalı)
 //   YZ_GUNLUK_LIMIT=200      günlük toplam çağrı üst sınırı (sayaç Supabase'de: yz_cagri_hakki)
 //   GEMINI_MODEL, GEMINI_YEDEK_MODEL  isteğe bağlı model adları
+//   GEMINI_PANEL_API_KEY     isteğe bağlı: panel için ayrı AI Studio projesinin anahtarı. Ücretsiz kota proje başınadır;
+//                            ayrı anahtar olunca panel analizleri ziyaretçilerin "Bu esere sor" kotasını tüketmez.
 // YZ kapalıysa, sınır dolduysa ya da cevap gelmezse { tamam: false } döner; çağıran taraf "YZ analizi yapılamadı" gösterir.
 import "server-only";
 import { semayaUygun, type Sema } from "../yz";
@@ -12,10 +14,11 @@ const ANA_MODEL = () => process.env.GEMINI_MODEL || "gemini-flash-lite-latest";
 const YEDEK_MODEL = () => process.env.GEMINI_YEDEK_MODEL || "gemini-flash-latest";
 const GECICI_HATA = new Set([429, 500, 502, 503, 504]);
 const ZAMAN_ASIMI = 25_000;
+const ANAHTAR = () => process.env.GEMINI_PANEL_API_KEY || process.env.GEMINI_API_KEY;
 
 /** YZ özellikleri açık mı: AI_ENABLED=true ve anahtar tanımlı. */
 export function yzAcik(): boolean {
-  return process.env.AI_ENABLED === "true" && !!process.env.GEMINI_API_KEY;
+  return process.env.AI_ENABLED === "true" && !!ANAHTAR();
 }
 
 export function gunlukLimit(): number {
@@ -49,7 +52,7 @@ export function geminiSemasi(s: Sema): Record<string, unknown> {
 type Ham = { tamam: true; metin: string; model: string } | { tamam: false; neden: string; model?: string };
 
 async function geminiCagir(istek: YzIstegi): Promise<Ham> {
-  const anahtar = process.env.GEMINI_API_KEY!;
+  const anahtar = ANAHTAR()!;
   const govde = JSON.stringify({
     systemInstruction: { parts: [{ text: istek.sistem }] },
     contents: [{ role: "user", parts: [{ text: istek.veri }] }],

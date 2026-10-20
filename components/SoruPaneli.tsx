@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Cevap } from "@/lib/sunucu/sor";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
@@ -33,6 +33,15 @@ export default function SoruPaneli({
   const [soru, setSoru] = useState("");
   const [bekliyor, setBekliyor] = useState(false);
   const sonMesaj = useRef<HTMLLIElement>(null);
+  const sohbet = useRef<HTMLOListElement>(null);
+
+  // Yeni soru ya da cevap gelince sohbet en alta kayar (sayfa da son balonu gösterir).
+  useEffect(() => {
+    if (mesajlar.length === 0) return;
+    const kutu = sohbet.current;
+    if (kutu) kutu.scrollTo({ top: kutu.scrollHeight, behavior: "smooth" });
+    sonMesaj.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }, [mesajlar]);
 
   async function sor(metin: string) {
     const temiz = metin.trim();
@@ -53,7 +62,6 @@ export default function SoruPaneli({
     }
     setMesajlar((m) => [...m.slice(0, -1), yeni]);
     setBekliyor(false);
-    requestAnimationFrame(() => sonMesaj.current?.scrollIntoView({ block: "nearest", behavior: "smooth" }));
   }
 
   return (
@@ -63,7 +71,7 @@ export default function SoruPaneli({
       </h2>
       <p className="not">{t.sor.aciklama}</p>
 
-      <ol className="sohbet" aria-live="polite">
+      <ol className="sohbet" ref={sohbet} aria-live="polite">
         {mesajlar.map((m, i) => (
           <li key={i} ref={i === mesajlar.length - 1 ? sonMesaj : undefined}>
             <p className="balon-soru">

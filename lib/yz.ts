@@ -3,7 +3,8 @@
 // LLM çağrısı lib/sunucu/yz-servis.ts'de, akış lib/sunucu/yz-analiz.ts'de. Tablolar: supabase/006_yz.sql
 import Ajv from "ajv";
 
-export type Sayfa = { sayfa: number; metin: string };
+/** pdf_sayfa: kitap numarası (sayfa) PDF'in sırasından farklıysa o sayfanın PDF'teki sırası. */
+export type Sayfa = { sayfa: number; metin: string; pdf_sayfa?: number };
 
 // --- Kişisel veri maskeleme ---
 
@@ -245,6 +246,8 @@ export type KaynakAnalizi =
       /** "Kaynakta bu sayfayı aç" düğmesinin adresi (sayfa numarası eklenmeden). */
       kaynak_adresi: string | null;
       incelenen_sayfalar: number[];
+      /** Gösterilen sayfanın PDF'teki sırası (kitap numarası farklıysa; "#page=" bunu kullanır). */
+      pdf_sayfa?: number;
     });
 
 /** LLM cevabını alıntı kontrolünden geçirip saklanacak sonuca çevirir. */
@@ -256,8 +259,10 @@ export function kaynakSonucu(
   const bulunan = cevap.pasaj.trim() ? pasajBul(cevap.pasaj, sayfalar, cevap.sayfa) : null;
   // "bulunamadi" sonucunda alıntı beklenmez; diğerlerinde alıntı belgede yoksa sonuç doğrulanamadı sayılır.
   const dogrulandi = cevap.sonuc === "bulunamadi" ? !cevap.pasaj.trim() || bulunan !== null : bulunan !== null;
+  const pdf = sayfalar.find((x) => x.sayfa === (bulunan ?? cevap.sayfa))?.pdf_sayfa;
   return {
     ...cevap,
+    ...(pdf ? { pdf_sayfa: pdf } : {}),
     metin: "tamam",
     pasaj_dogrulandi: dogrulandi,
     bulunan_sayfa: bulunan,
@@ -271,7 +276,8 @@ export function kaynakSonucu(
 export function sayfaAdresi(a: KaynakAnalizi): string | null {
   if (a.metin !== "tamam" || !a.kaynak_adresi) return null;
   const sayfa = a.bulunan_sayfa ?? a.sayfa;
-  return a.sayfali && sayfa ? `${a.kaynak_adresi}#page=${sayfa}` : a.kaynak_adresi;
+  if (!a.sayfali || !sayfa) return a.kaynak_adresi;
+  return `${a.kaynak_adresi}#page=${a.pdf_sayfa ?? sayfa}`;
 }
 
 // --- 6B: öneri kuyruğunda ön eleme ---

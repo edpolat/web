@@ -14,7 +14,7 @@ export const metadata: Metadata = { robots: { index: false } };
 const DURUMLAR = ["yayinda", "taslak", "incelemede", "arsivlendi"] as const;
 const GOSTERILEN = 200;
 
-type Arama = { q?: string; durum?: string; tur?: string; il?: string; donem?: string };
+type Arama = { q?: string; durum?: string; tur?: string; il?: string; donem?: string; gonderildi?: string };
 type Satir = { eser: Eser; il: string; arsivde: boolean; incelemede: boolean };
 
 const yuzyil = (e: Eser) => (e.donem?.yapim_yili ? Math.floor((e.donem.yapim_yili - 1) / 100) + 1 : undefined);
@@ -65,6 +65,11 @@ export default async function Eserler({ params, searchParams }: { params: Promis
   return (
     <section>
       <h1>{p.eserler}</h1>
+      {a.gonderildi && (
+        <p className="uyari" role="status">
+          {t.surum.incelemeyeGitti}
+        </p>
+      )}
       <p className="not">{p.eserlerAciklama}</p>
       {izinli(ben, "eser.ekle") && (
         <p className="dugmeler">
