@@ -3,7 +3,7 @@ import Hesap from "@/components/Hesap";
 import { gecerliDil } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
-import { iller, rotalar, tumEserler } from "@/lib/veri";
+import { iller, rotalar, yayindakiEserler } from "@/lib/veri";
 
 export async function generateMetadata({ params }: { params: Promise<{ dil: string }> }) {
   const { dil } = await params;
@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ dil: stri
 export default async function HesapSayfasi({ params }: { params: Promise<{ dil: string }> }) {
   const { dil } = await params;
   if (!gecerliDil(dil)) notFound();
-  const eserler = tumEserler().map((e) => ({ id: e.id, ad: e.ad }));
+  const eserler = (await yayindakiEserler()).map((e) => ({ id: e.id, ad: e.ad }));
   return (
     <div className="dar-sayfa">
       <Hesap

@@ -1,10 +1,11 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { cikisYap } from "@/lib/bulut";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
 
-/** Yönetim paneli şifre formu; giriş başarılıysa sayfayı yeniler. */
+/** Geliştirme ortamındaki tek şifreli giriş formu; giriş başarılıysa sayfayı yeniler. */
 export function GirisFormu({ dil }: { dil: Dil }) {
   const t = s(dil);
   const router = useRouter();
@@ -42,7 +43,11 @@ export function CikisDugmesi({ dil }: { dil: Dil }) {
         type="button"
         className="ikincil"
         onClick={async () => {
-          await fetch("/api/yonetim/giris", { method: "DELETE" });
+          await cikisYap();
+          await Promise.all([
+            fetch("/api/yonetim/giris", { method: "DELETE" }),
+            fetch("/api/yonetim/oturum", { method: "DELETE" }),
+          ]);
           router.refresh();
         }}
       >

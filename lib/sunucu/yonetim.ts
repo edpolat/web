@@ -1,13 +1,13 @@
-// Yönetim paneli girişi: tek şifre, sunucuda .env.local içinde (VAKFIYE_YONETIM_SIFRESI). Girişte imzalı çerez verilir.
+// Geliştirme ortamı için tek şifreli yönetim girişi (VAKFIYE_YONETIM_SIFRESI, yoksa "vakfiye"). Girişte imzalı çerez verilir.
+// Yayında kapalıdır: panele herkes kendi hesabıyla girer (lib/sunucu/kimlik.ts, lib/yetki.ts).
 import crypto from "node:crypto";
 
 export const CEREZ = "vakfiye_yonetim";
 
-/** Geliştirmede şifre tanımlı değilse "vakfiye" kabul edilir; yayında şifresiz panel kapalıdır. */
+/** Geliştirmede şifre tanımlı değilse "vakfiye" kabul edilir; yayında şifreli giriş kapalıdır. */
 export function yonetimSifresi(): string | undefined {
-  const s = process.env.VAKFIYE_YONETIM_SIFRESI;
-  if (s) return s;
-  return process.env.NODE_ENV === "production" ? undefined : "vakfiye";
+  if (process.env.NODE_ENV === "production") return undefined;
+  return process.env.VAKFIYE_YONETIM_SIFRESI || "vakfiye";
 }
 
 /** Çerez değeri şifreden türetilir: şifre değişince eski girişler geçersiz olur. */

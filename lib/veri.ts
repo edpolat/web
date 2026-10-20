@@ -3,6 +3,10 @@
 import "server-only";
 import fs from "node:fs";
 import path from "node:path";
+import { kaynagaCevir } from "./kaynak";
+import { dogrulanmisKaynaklar } from "./sunucu/kaynak-depo";
+import { katmanla } from "./sunucu/surum";
+import { yayindakiSurumler } from "./sunucu/surum-depo";
 import type { Ayarlar, Eser, Il, IlliEser, KesifEseri, Kaynak, Rota, Sergi, Vakif } from "./tipler";
 
 const VERI = path.join(process.cwd(), "veri");
@@ -26,15 +30,15 @@ export function iller(): { il: Il; eserler: Eser[] }[] {
     .map((d) => oku<{ il: Il; eserler: Eser[] }>(path.join("iller", d)));
 }
 
-export function tumEserler(): IlliEser[] {
-  return iller().flatMap(({ il, eserler }) =>
+export function tumEserler(kaynak = iller()): IlliEser[] {
+  return kaynak.flatMap(({ il, eserler }) =>
     eserler.filter((e) => taslakGoster || !e.taslak).map((e) => ({ ...e, il: il.id })),
   );
 }
 
 /** Keşfet sayfasının kartları: fotoğraflı eserler önce, sonra ada göre. */
-export function kesifEserleri(): KesifEseri[] {
-  return tumEserler()
+export function kesifEserleri(eserler = tumEserler()): KesifEseri[] {
+  return eserler
     .map((e) => ({
       id: e.id,
       il: e.il,
@@ -55,8 +59,33 @@ export function eserBul(id: string): IlliEser | undefined {
   return tumEserler().find((e) => e.id === id);
 }
 
+// Yayındaki hâl: JSON dosyaları + panelde onaylanmış sürümler (Supabase). Ziyaretçi sayfaları bunları kullanır.
+
+export async function yayindakiIller(): Promise<{ il: Il; eserler: Eser[] }[]> {
+  return katmanla(iller(), await yayindakiSurumler());
+}
+
+export async function yayindakiEserler(): Promise<IlliEser[]> {
+  return tumEserler(await yayindakiIller());
+}
+
+export async function yayindakiEser(id: string): Promise<IlliEser | undefined> {
+  return (await yayindakiEserler()).find((e) => e.id === id);
+}
+
+export async function yayindakiKesifEserleri(): Promise<KesifEseri[]> {
+  return kesifEserleri(await yayindakiEserler());
+}
+
 export function kaynaklar(): Map<string, Kaynak> {
   return new Map(oku<Kaynak[]>("kaynaklar.json").map((k) => [k.id, k]));
+}
+
+/** veri/kaynaklar.json + kaynak kütüphanesinin doğrulanmış kayıtları (aynı kimlikte JSON'daki kalır). */
+export async function yayindakiKaynaklar(): Promise<Map<string, Kaynak>> {
+  const tumu = kaynaklar();
+  for (const k of await dogrulanmisKaynaklar()) if (!tumu.has(k.id)) tumu.set(k.id, kaynagaCevir(k));
+  return tumu;
 }
 
 export function sergiler(): Map<string, Sergi> {

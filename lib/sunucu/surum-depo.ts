@@ -1,0 +1,134 @@
+// Eser sürümlerinin Supabase katmanı (tablo: eser_surumleri, supabase/002_surumler.sql).
+// Site yayındaki sürümleri anonim anahtarla okur (beş dakikalık önbellek); panel işlemleri giriş yapan kişinin adına çalışır.
+// Supabase ayarlı değilse ya da ulaşılamazsa site JSON dosyalarıyla aynen çalışır.
+import "server-only";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { createClient } from "@supabase/supabase-js";
+import { hesapIstemcisi } from "./kimlik";
+import { KatkiHatasi } from "./katki";
+import { sonYayindakiler, type AlanFarki, type HazirSurum, type SurumSatiri, type YayindakiSurum } from "./surum";
+
+const ADRES = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
+const ANAHTAR = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
+export const SURUM_ETIKETI = "eser-surumleri";
+
+const herkese = () =>
+  createClient(ADRES, ANAHTAR, {
+    auth: { persistSession: false, autoRefreshToken: false },
+    global: { fetch: (adres, secenek) => fetch(adres, { ...secenek, next: { revalidate: 300, tags: [SURUM_ETIKETI] } }) },
+  });
+
+/** Her eserin en son yayındaki sürümü; hata olursa boş (site JSON'la devam eder). */
+export async function yayindakiSurumler(): Promise<Map<string, YayindakiSurum>> {
+  if (!ADRES || !ANAHTAR) return new Map();
+  try {
+    const { data, error } = await herkese()
+      .from("eser_surumleri")
+      .select("id, eser_id, il, veri, arsivlendi, karar_tarihi")
+      .eq("durum", "yayinda")
+      .order("karar_tarihi", { ascending: false })
+      .limit(5000);
+    if (error) return new Map();
+    return sonYayindakiler((data ?? []) as YayindakiSurum[]);
+  } catch {
+    return new Map();
+  }
+}
+
+/** Onaydan sonra yayındaki hâl bir sonraki ziyarette görünsün. */
+export function yayiniYenile() {
+  revalidateTag(SURUM_ETIKETI, "max");
+  revalidatePath("/[dil]", "layout");
+}
+
+async function vt() {
+  const istemci = await hesapIstemcisi();
+  if (!istemci) throw new KatkiHatasi("Giriş gerekli.");
+  return istemci;
+}
+
+function denetle(error: { message: string; code?: string } | null): void {
+  if (error) throw new KatkiHatasi(error.code === "42501" ? "Bu işlem için yetkin yok." : error.message);
+}
+
+/** Panelde görünen sürümler: süzgeç verilmezse en yeniler. Satır güvenliği kişinin görebileceklerini sınırlar. */
+export async function surumler(suzgec: { durum?: SurumSatiri["durum"]; eser_id?: string; ekleyen?: string } = {}): Promise<SurumSatiri[]> {
+  let sorgu = (await vt()).from("eser_surumleri").select("*").order("id", { ascending: false }).limit(500);
+  if (suzgec.durum) sorgu = sorgu.eq("durum", suzgec.durum);
+  if (suzgec.eser_id) sorgu = sorgu.eq("eser_id", suzgec.eser_id);
+  if (suzgec.ekleyen) sorgu = sorgu.eq("ekleyen", suzgec.ekleyen);
+  const { data, error } = await sorgu;
+  denetle(error);
+  return (data ?? []) as SurumSatiri[];
+}
+
+export async function surumOku(id: number): Promise<SurumSatiri | undefined> {
+  const { data, error } = await (await vt()).from("eser_surumleri").select("*").eq("id", id).maybeSingle();
+  denetle(error);
+  return (data ?? undefined) as SurumSatiri | undefined;
+}
+
+export type DenetimSatiri = {
+  id: number;
+  kim_ad: string | null;
+  ne_zaman: string;
+  islem: string;
+  hedef: string | null;
+  surum_id: number | null;
+  alan: string | null;
+  eski: unknown;
+  yeni: unknown;
+  gerekce: string | null;
+};
+
+export async function denetimKaydi(hedef?: string, sinir = 200): Promise<DenetimSatiri[]> {
+  let sorgu = (await vt()).from("denetim_kaydi").select("*").order("id", { ascending: false }).limit(sinir);
+  if (hedef) sorgu = sorgu.eq("hedef", hedef);
+  const { data, error } = await sorgu;
+  denetle(error);
+  return (data ?? []) as DenetimSatiri[];
+}
+
+export async function surumGonder(s: HazirSurum, temel: number | null, taslak: boolean): Promise<number> {
+  const { data, error } = await (await vt()).rpc("surum_gonder", {
+    p_eser: s.eser_id,
+    p_il: s.il,
+    p_veri: s.veri,
+    p_islem: s.islem,
+    p_temel: temel,
+    p_kaynak: s.kaynak_id,
+    p_sayfa: s.sayfa ?? null,
+    p_not: s.aciklama ?? null,
+    p_taslak: taslak,
+  });
+  denetle(error);
+  return data as number;
+}
+
+export async function surumIncelemeye(id: number): Promise<void> {
+  denetle((await (await vt()).rpc("surum_incelemeye", { p_id: id })).error);
+}
+
+export async function surumKarar(id: number, onay: boolean, gerekce: string, degisiklikler: AlanFarki[]): Promise<void> {
+  denetle((await (await vt()).rpc("surum_karar", { p_id: id, p_onay: onay, p_gerekce: gerekce, p_degisiklikler: degisiklikler })).error);
+}
+
+export async function surumYayinla(
+  s: Pick<SurumSatiri, "eser_id" | "il" | "veri">,
+  islem: "geri_al" | "arsivle" | "arsivden_cikar",
+  temel: number | null,
+  gerekce: string,
+  degisiklikler: AlanFarki[],
+): Promise<number> {
+  const { data, error } = await (await vt()).rpc("surum_yayinla", {
+    p_eser: s.eser_id,
+    p_il: s.il,
+    p_veri: s.veri,
+    p_islem: islem,
+    p_temel: temel,
+    p_gerekce: gerekce,
+    p_degisiklikler: degisiklikler,
+  });
+  denetle(error);
+  return data as number;
+}

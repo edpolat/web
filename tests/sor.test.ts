@@ -123,6 +123,11 @@ describe("Bu esere sor: yapay zekâ bağlamı", () => {
     expect(c.cumleler[2].kaynak_id).toBeUndefined();
   });
 
+  it("'kayıtlarda geçmiyor' açıklamasını etiketsiz gösterir", () => {
+    const c = yzCevabi({ bulundu: true, cumleler: [{ metin: "Kayıtlarda yapım tarihi geçmiyor.", kayitlar: [] }, { metin: "Bu dönemde vakıflar yaygındı.", kayitlar: [] }] }, liste);
+    expect(c.cumleler.map((x) => x.durum)).toEqual(["not", "ai_yorumu"]);
+  });
+
   it("aralığın içinde kalan sayfayı tekrar yazmaz", () => {
     expect(sayfaSadelestir(["394", "394-397"])).toEqual(["394-397"]);
     expect(sayfaSadelestir(["421", "423"])).toEqual(["421", "423"]);

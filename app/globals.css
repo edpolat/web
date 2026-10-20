@@ -480,3 +480,54 @@ html[data-altyazi="kapali"] .altyazi-seridi { display: none; }
 }
 .rozet-satir.kazanildi { color: var(--metin); }
 .rozet-satir.kazanildi .rozet-simge { background: var(--sari); filter: none; opacity: 1; }
+
+/* Yönetim paneli tabloları (kullanıcılar, ileride geçmiş ve kaynaklar) */
+.tablo { width: 100%; border-collapse: collapse; margin: .5rem 0 1rem; background: var(--yuzey); }
+.tablo th, .tablo td { text-align: left; vertical-align: top; padding: .55rem .6rem; border-bottom: 1px solid var(--cizgi); }
+.tablo th { color: var(--lacivert); font-weight: 600; }
+.tablo small { color: var(--soluk); }
+.panel-kim { display: flex; flex-wrap: wrap; gap: .4rem .8rem; align-items: center; margin: 0 0 1rem; }
+.panel-kim .rozet { background: var(--sari); color: var(--metin); border-radius: 999px; padding: .1rem .6rem; font-size: .85rem; }
+/* Sürüm durumları ve karşılaştırmada yeni değer vurgusu */
+.etiket-surum-taslak { color: var(--soluk); border-style: dashed; }
+.etiket-surum-incelemede { color: var(--metin); background: var(--sari); border-color: var(--sari); }
+.etiket-surum-yayinda { color: var(--kaynakli); background: var(--kaynakli-zemin); }
+.etiket-surum-reddedildi { color: var(--damga); }
+.etiket-surum-arsivlendi { color: var(--soluk); background: var(--zemin); }
+.fark .yeni { background: var(--kaynakli-zemin); }
+/* Kaynak kütüphanesi */
+.etiket-kaynak-dogrulanmamis { color: var(--metin); background: var(--sari); border-color: var(--sari); }
+.etiket-kaynak-dogrulandi { color: var(--kaynakli); background: var(--kaynakli-zemin); }
+.etiket-kaynak-reddedildi { color: var(--damga); }
+.kaynak-onizleme { width: 100%; height: 75vh; border: 1px solid var(--cizgi); border-radius: 8px; background: var(--yuzey); }
+.kaynak-onizleme-gorsel { max-width: 100%; height: auto; border: 1px solid var(--cizgi); border-radius: 8px; }
+.tur-etiketi { font-size: .8rem; font-weight: 600; padding: .05rem .5rem; border-radius: 4px; background: var(--lacivert); color: #fff; white-space: nowrap; }
+.etiket-oneri-bekliyor { color: var(--metin); background: var(--sari); border-color: var(--sari); }
+.etiket-oneri-kabul { color: var(--kaynakli); background: var(--kaynakli-zemin); }
+.etiket-oneri-reddedildi { color: var(--damga); }
+.etiket-kaynaksiz { color: var(--damga); border-style: dashed; }
+
+/* Yönetim paneli: menü, sekmeli form, özet kutuları, filtreler */
+.panel-menu { border-bottom: 1px solid var(--cizgi); margin: 0 0 1.25rem; }
+.panel-menu ul { display: flex; flex-wrap: wrap; gap: .25rem; list-style: none; margin: 0; padding: 0; }
+.panel-menu a { display: inline-flex; align-items: center; gap: .35rem; min-height: 44px; padding: 0 .75rem; color: var(--soluk); border-bottom: 3px solid transparent; font-weight: 500; text-decoration: none; }
+.panel-menu a:hover { color: var(--lacivert); }
+.panel-menu a[aria-current="page"] { color: var(--lacivert); border-bottom-color: var(--turkuaz); font-weight: 700; }
+.panel-menu .sayac { background: var(--sari); color: var(--metin); border-radius: 999px; padding: 0 .45rem; font-size: .8rem; font-weight: 700; }
+.panel-sekmeler { display: flex; flex-wrap: wrap; background: #eae3d3; border-radius: 12px; padding: 4px; gap: 2px; }
+.panel-sekmeler button { flex: 1; border: 0; background: transparent; padding: .6rem .75rem; border-radius: 9px; font: inherit; font-weight: 600; color: var(--metin); cursor: pointer; white-space: nowrap; }
+.panel-sekmeler button[aria-selected="true"] { background: #fff; color: var(--lacivert); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.ozet-kutulari { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: .75rem; margin: 1rem 0 1.5rem; }
+.ozet-kutusu { display: flex; flex-direction: column; gap: .25rem; background: var(--yuzey); border: 1px solid var(--cizgi); border-radius: 10px; padding: .9rem 1rem; color: var(--metin); text-decoration: none; }
+.ozet-kutusu:hover { border-color: var(--mavi); }
+.ozet-kutusu strong { font-family: var(--baslik-yazi); font-size: 2rem; color: var(--lacivert); line-height: 1; }
+.ozet-kutusu span { color: var(--soluk); font-size: .9rem; }
+.panel-filtre { display: flex; flex-wrap: wrap; gap: .75rem; align-items: flex-end; margin: 1rem 0; }
+.panel-filtre label { display: flex; flex-direction: column; gap: .25rem; font-size: .9rem; color: var(--soluk); }
+.panel-filtre input, .panel-filtre select { font: inherit; padding: .45rem .6rem; border: 1px solid var(--cizgi); border-radius: 6px; background: var(--yuzey); color: var(--metin); min-height: 40px; }
+.panel-filtre input[type="search"] { min-width: 16rem; }
+.bilgi-listesi { padding-left: 1.1rem; display: grid; gap: .5rem; }
+.bilgi-listesi small { color: var(--soluk); }
+.tablo .eylemler { white-space: nowrap; }
+.tablo .eylemler a + a { margin-left: .6rem; }
+[role="tabpanel"][hidden] { display: none; }

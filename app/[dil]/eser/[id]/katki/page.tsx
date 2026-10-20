@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import BilgiEkle from "@/components/BilgiEkle";
 import { gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
-import { ayarlar, eserBul, kaynaklar } from "@/lib/veri";
+import { ayarlar, kaynaklar, yayindakiEser } from "@/lib/veri";
 
 type Params = Promise<{ dil: string; id: string }>;
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = { robots: { index: false } };
 export default async function BilgiEkleSayfasi({ params }: { params: Params }) {
   const { dil, id } = await params;
   if (!gecerliDil(dil)) notFound();
-  const eser = eserBul(id);
+  const eser = await yayindakiEser(id);
   if (!eser) notFound();
   const t = s(dil);
   return (

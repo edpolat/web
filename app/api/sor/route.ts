@@ -3,7 +3,7 @@
 import { gecerliDil } from "@/lib/metin";
 import { cevapla } from "@/lib/sunucu/sor";
 import { sonCikti, yapayZekaAcik, yapayZekaDurumu, yapayZekaylaCevapla, type GecmisMesaj } from "@/lib/sunucu/sor-yz";
-import { eserBul } from "@/lib/veri";
+import { yayindakiEser } from "@/lib/veri";
 
 const GECMIS_SINIRI = 4;
 
@@ -21,7 +21,7 @@ const CORS = {
  */
 export async function GET(istek: Request) {
   const adres = new URL(istek.url).searchParams;
-  const eser = eserBul(adres.get("eser") ?? "molla-fenari-camii");
+  const eser = await yayindakiEser(adres.get("eser") ?? "molla-fenari-camii");
   const soru = (adres.get("soru") ?? "Bu cami nerede ve kim yaptırmış?").slice(0, 300);
   const deneme = eser ? await yapayZekaylaCevapla(eser, soru, "tr") : null;
   return Response.json(
@@ -59,7 +59,7 @@ export async function POST(istek: Request) {
   if (typeof eser_id !== "string" || typeof soru !== "string" || !soru.trim() || soru.length > 300) {
     return Response.json({ hata: "eser_id ve 1-300 karakterlik soru gerekli." }, { status: 400, headers: CORS });
   }
-  const eser = eserBul(eser_id);
+  const eser = await yayindakiEser(eser_id);
   if (!eser) return Response.json({ hata: "Eser bulunamadı." }, { status: 404, headers: CORS });
   const dil = typeof govde.dil === "string" && gecerliDil(govde.dil) ? govde.dil : "tr";
   const yz = await yapayZekaylaCevapla(eser, soru.trim(), dil, gecmisOku(govde.gecmis));

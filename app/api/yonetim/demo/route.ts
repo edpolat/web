@@ -1,10 +1,10 @@
 // Yönetim: demo başlangıcını kaydet ya da demoyu sıfırla.
 import { revalidatePath } from "next/cache";
 import { demoKaydet, demoSifirla } from "@/lib/sunucu/demo";
-import { yoneticiMi } from "@/lib/sunucu/oturum";
+import { yetkili } from "@/lib/sunucu/oturum";
 
 export async function POST(istek: Request) {
-  if (!(await yoneticiMi())) return Response.json({ hata: "Yönetim girişi gerekli." }, { status: 401 });
+  if (!(await yetkili("eser.onayla"))) return Response.json({ hata: "Yönetim girişi gerekli." }, { status: 401 });
   let govde: { islem?: unknown };
   try {
     govde = await istek.json();

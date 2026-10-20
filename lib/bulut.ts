@@ -93,3 +93,24 @@ export async function pullariGetir(): Promise<string[]> {
 export async function cikisYap(): Promise<void> {
   await vt().auth.signOut().catch(() => {});
 }
+
+/** Oturum her değiştiğinde (açılış, giriş, yenileme, çıkış) güncel erişim jetonunu bildirir; aboneliği bırakan fonksiyonu döner. */
+export function oturumIzle(bildir: (jeton: string | null) => void): () => void {
+  // Supabase, olay içinde başka Supabase çağrısı beklemeyi önermiyor; bildirim bir sonraki adımda yapılır.
+  const { data } = vt().auth.onAuthStateChange((_olay, oturum) => {
+    setTimeout(() => bildir(oturum?.access_token ?? null), 0);
+  });
+  return () => data.subscription.unsubscribe();
+}
+
+/** Sunucunun verdiği tek kullanımlık adrese kaynak dosyasını yükler (Supabase Storage, "kaynak-dosyalari"). */
+export async function dosyaYukle(yol: string, jeton: string, dosya: File): Promise<void> {
+  const { error } = await vt().storage.from("kaynak-dosyalari").uploadToSignedUrl(yol, jeton, dosya, { contentType: dosya.type });
+  if (error) throw new Error(error.message);
+}
+
+/** Açık oturumun erişim jetonu (API isteklerinde "Authorization: Bearer"); oturum yoksa null. */
+export async function erisimJetonu(): Promise<string | null> {
+  const { data } = await vt().auth.getSession();
+  return data.session?.access_token ?? null;
+}

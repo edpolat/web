@@ -269,6 +269,8 @@ function htmlCoz(t: string): string {
   });
 }
 
+const KAYIT_YOK_NOTU = /^\s*(kayıtlarda|kaynaklarda|kaynaklarımızda|the (records|sources))\b.{0,80}\b(geçmiyor|yok|bulunmuyor|yer almıyor|belirtilmiyor|do not|don't|not)\b[^.]*\.?\s*$/iu;
+
 /** "394" ile "394-397" birlikte geldiğinde yalnız aralığı bırakır; aynı sayfayı iki kez yazmaz. */
 export function sayfaSadelestir(sayfalar: string[]): string[] {
   const aralik = (s: string) => {
@@ -297,7 +299,8 @@ export function yzCevabi(cikti: YzCiktisi, liste: Kayit[]): Cevap {
     .filter((c) => c.metin.trim())
     .map((c) => {
       const dayanak = [...new Set(c.kayitlar)].map((n) => numara.get(n)).filter((k): k is Kayit => !!k);
-      if (!dayanak.length) return { metin: c.metin.trim(), durum: "ai_yorumu" };
+      // "Kayıtlarda yapım tarihi geçmiyor." gibi cümleler bilgi değil açıklamadır; etiketsiz gösterilir.
+      if (!dayanak.length) return { metin: c.metin.trim(), durum: KAYIT_YOK_NOTU.test(c.metin) ? "not" : "ai_yorumu" };
       const durum = dayanak.map((k) => k.durum).sort((a, b) => DURUM_SIRASI.indexOf(b) - DURUM_SIRASI.indexOf(a))[0];
       const ilk = dayanak.find((k) => k.kaynak_id) ?? dayanak[0];
       const sayfalar = sayfaSadelestir(dayanak.filter((k) => k.kaynak_id === ilk.kaynak_id && k.sayfa).map((k) => k.sayfa!));

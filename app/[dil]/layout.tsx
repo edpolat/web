@@ -6,6 +6,7 @@ import { DILLER, gecerliDil } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import DilDegistir from "@/components/DilDegistir";
 import UstMenu from "@/components/UstMenu";
+import YonetimBaglantisi from "@/components/YonetimBaglantisi";
 import ErisimPaneli from "@/components/ErisimPaneli";
 import { ERISIM_BETIGI } from "@/lib/erisim";
 import "leaflet/dist/leaflet.css";
@@ -61,9 +62,7 @@ export default async function Yerlesim({
             <Link href={`/${dil}/hesap`} className="sekme-yonetim">
               {t.hesabim}
             </Link>
-            <Link href={`/${dil}/yonetim`} className="sekme-yonetim">
-              {t.yonetim}
-            </Link>
+            <YonetimBaglantisi dil={dil} ad={t.yonetim} />
             <Suspense>
               <DilDegistir dil={dil} etiket={t.dilDegistir} />
             </Suspense>

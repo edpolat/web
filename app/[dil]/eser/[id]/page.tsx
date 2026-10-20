@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DILLER, ceviriEksik, gecerliDil, metin } from "@/lib/metin";
-import { ayarlar, eserBul, iller, kaynaklar, sergiler, tumEserler, vakiflar } from "@/lib/veri";
+import { ayarlar, iller, sergiler, tumEserler, vakiflar, yayindakiEser, yayindakiKaynaklar } from "@/lib/veri";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
 import HaritaYukle from "@/components/HaritaYukle";
@@ -33,14 +33,14 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { dil, id } = await params;
-  const eser = gecerliDil(dil) ? eserBul(id) : undefined;
+  const eser = gecerliDil(dil) ? await yayindakiEser(id) : undefined;
   return eser ? { title: metin(eser.ad, dil as Dil) } : {};
 }
 
 export default async function EserKarti({ params }: { params: Params }) {
   const { dil, id } = await params;
   if (!gecerliDil(dil)) notFound();
-  const eser = eserBul(id);
+  const eser = await yayindakiEser(id);
   if (!eser) notFound();
 
   const t = s(dil);
@@ -48,7 +48,7 @@ export default async function EserKarti({ params }: { params: Params }) {
   const tur = ay.eser_turleri.find((x) => x.id === eser.tur);
   const il = iller().find((x) => x.il.id === eser.il)?.il;
   const durumlar = new Map(ay.olgu_durumlari.map((d) => [d.id, d]));
-  const kaynakMap = kaynaklar();
+  const kaynakMap = await yayindakiKaynaklar();
   const sergiMap = sergiler();
   const vakif = eser.vakif_id ? vakiflar().get(eser.vakif_id) : undefined;
 
@@ -140,7 +140,7 @@ export default async function EserKarti({ params }: { params: Params }) {
 
       <div className="eser-eylemler">
         <Dinle dil={dil} parcalar={okunacak} />
-        <Link className="dugme ikincil" href={`/${dil}/eser/${eser.id}/katki`}>
+        <Link className="dugme ikincil" href={`/${dil}/eser/${eser.id}/oner`}>
           + {t.bilgiEkle}
         </Link>
         <a className="dugme ikincil sor-baglanti" href="#sor-baslik">

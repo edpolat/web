@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { gecerliDil } from "@/lib/metin";
-import { ayarlar, iller, kesifEserleri } from "@/lib/veri";
+import { ayarlar, iller, yayindakiKesifEserleri } from "@/lib/veri";
 import { s } from "@/lib/sozluk";
 import Kesif from "@/components/Kesif";
 import Muhur from "@/components/Muhur";
@@ -10,7 +10,7 @@ export default async function AnaSayfa({ params }: { params: Promise<{ dil: stri
   const { dil } = await params;
   if (!gecerliDil(dil)) notFound();
   const t = s(dil);
-  const eserler = kesifEserleri();
+  const eserler = await yayindakiKesifEserleri();
   const kullanilanTurler = new Set(eserler.map((e) => e.tur));
   const sehirler = iller().map(({ il }) => il);
   const sayilar = [

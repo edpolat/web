@@ -1,18 +1,18 @@
-// Onay kuyruğu (yalnız yönetim girişiyle). GET bekleyen ve karar verilmiş katkıları, POST kararı işler.
+// Onay kuyruğu (yalnız eser.onayla izniyle). GET bekleyen ve karar verilmiş katkıları, POST kararı işler.
 import { revalidatePath } from "next/cache";
 import { KatkiHatasi } from "@/lib/sunucu/katki";
 import { kararVer, katkilar } from "@/lib/sunucu/kuyruk";
-import { yoneticiMi } from "@/lib/sunucu/oturum";
+import { yetkili } from "@/lib/sunucu/oturum";
 
-const yetkisiz = () => Response.json({ hata: "Yönetim girişi gerekli." }, { status: 401 });
+const yetkisiz = () => Response.json({ hata: "Onaylama izni gerekli." }, { status: 401 });
 
 export async function GET() {
-  if (!(await yoneticiMi())) return yetkisiz();
+  if (!(await yetkili("eser.onayla"))) return yetkisiz();
   return Response.json(katkilar());
 }
 
 export async function POST(istek: Request) {
-  if (!(await yoneticiMi())) return yetkisiz();
+  if (!(await yetkili("eser.onayla"))) return yetkisiz();
   let govde: { id?: unknown; karar?: unknown; not?: unknown };
   try {
     govde = await istek.json();

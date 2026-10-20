@@ -17,7 +17,7 @@ export const gecerliKimlik = (s: unknown): s is string => typeof s === "string" 
 
 /** Yönetim panelinde düzenlenebilen üst düzey alanlar. id, olgular ve gorseller düzenlemeyle değişmez. */
 export const DUZENLENEBILIR = [
-  "ad", "tur", "ilce", "adres", "donem", "banisi", "mimar", "tarihce", "mimari", "taslak",
+  "ad", "tur", "ilce", "adres", "konum", "donem", "banisi", "mimar", "tarihce", "mimari", "taslak",
 ] as const satisfies readonly (keyof Eser)[];
 
 const HARFLER: Record<string, string> = { ç: "c", ğ: "g", ı: "i", ö: "o", ş: "s", ü: "u", â: "a", î: "i", û: "u" };
@@ -50,7 +50,7 @@ function sirali(x: unknown): unknown {
   }
   return x;
 }
-const esit = (a: unknown, b: unknown) => JSON.stringify(sirali(a ?? null)) === JSON.stringify(sirali(b ?? null));
+export const esit = (a: unknown, b: unknown) => JSON.stringify(sirali(a ?? null)) === JSON.stringify(sirali(b ?? null));
 const nesne = (x: unknown): x is Record<string, unknown> => typeof x === "object" && x !== null && !Array.isArray(x);
 const yazi = (x: unknown) => (typeof x === "string" && x.trim() ? x.trim() : undefined);
 
