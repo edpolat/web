@@ -26,7 +26,7 @@ tests/                        vitest
 
 Sitede hiçbir değişiklik doğrudan yayına girmez; önce onay kuyruğuna düşer.
 
-- **Bilgi ekle** (`/tr/eser/<id>/katki`, eser sayfasındaki düğme): herkes esere tek cümlelik bilgi önerebilir. Kaynak seçilmeden gönderilemez.
+- **Bilgi ekle** (`/tr/eser/<id>/oner`, eser sayfasındaki düğme): herkes esere tek cümlelik bilgi önerebilir. Kaynak seçilmeden gönderilemez.
 - **Yönetim paneli** (`/tr/yonetim`, şifreyle): yeni eser ekleme, var olan eserin adını, türünü, adresini, yapım bilgisini, banisini, mimarını, tarihçe ve mimari metnini düzenleme. Her değişiklik bir kaynağa dayanmak zorunda.
 - **Onay kuyruğu** (`/tr/yonetim/onay`): bekleyen katkılar nereden geldiği (web / uygulama), kim gönderdiği, ne zaman ve hangi kaynağa dayandığıyla; eski ve yeni değer yan yana. Onaylanan katkı şemayla yeniden doğrulanıp `veri/iller/<il>.json` dosyasına yazılır, reddedilen notuyla saklanır.
 
