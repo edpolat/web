@@ -1,12 +1,19 @@
 // Halktan bilgi önerisinin ortak kuralları (tarayıcı ve sunucu). Tablo: supabase/005_oneriler.sql
 import { KAYNAK_TURLERI, type KaynakTuru } from "./kaynak";
-import type { Eser } from "./tipler";
+import type { CokDilli, Dil, Eser } from "./tipler";
 
 /** Önerilebilen bilgiler. "diger"i kabul eden kişi uygulanacak alanı seçer. */
 export const ONERI_ALANLARI = ["olgu", "banisi", "mimar", "yapim_yili", "adres", "ad", "diger"] as const;
 export type OneriAlani = (typeof ONERI_ALANLARI)[number];
 export const UYGULANABILIR = ONERI_ALANLARI.filter((a) => a !== "diger") as Exclude<OneriAlani, "diger">[];
 export type UygulanacakAlan = (typeof UYGULANABILIR)[number];
+
+/** İki dilli (TR/EN) metin alanları: öneren dili seçer, kabul eden iki dili de görür. "diger" de bir metin olabilir. */
+export const IKI_DILLI = ["olgu", "ad", "adres", "diger"] as const satisfies readonly OneriAlani[];
+export const ikiDilli = (alan: string) => (IKI_DILLI as readonly string[]).includes(alan);
+/** "Diğer dildeki metne uyum için" yalnız var olan bir metni düzelten alanlarda anlamlı (yeni bilgi eklemede değil). */
+export const UYUM_ALANLARI = ["ad", "adres", "diger"] as const satisfies readonly OneriAlani[];
+export const uyumAlani = (alan: string) => (UYUM_ALANLARI as readonly string[]).includes(alan);
 
 /** Kişi başına günlük öneri sınırı (veritabanında da zorlanır; panelde rolü olanlara sınır yok). */
 export const GUNLUK_ONERI = 20;
@@ -40,6 +47,9 @@ export type OneriSatiri = {
   ret_gerekcesi: string | null;
   surum_id: number | null;
   eklenen_kaynak_id: string | null;
+  /** Önerinin dili ve "diğer dile uyum için" işareti (supabase/009_dil_uyumu.sql; öncesinde sütun yok, tr sayılır). */
+  dil?: Dil;
+  dil_uyumu?: boolean;
 };
 
 const yazi = (x: unknown, en: number) => (typeof x === "string" && x.trim() ? x.trim().slice(0, en) : null);
@@ -55,6 +65,9 @@ export type OneriIstegi = {
   kaynak_turu: KaynakTuru | null;
   dosya_yolu: string | null;
   hak_onayi: boolean;
+  /** Önerilen metnin dili (iki dilli alanlarda; diğerlerinde tr). */
+  dil: Dil;
+  dil_uyumu: boolean;
 };
 
 /** Öneri formunu denetler. Kaynak: doğrulanmış kaynak, kendi bağlantısı, kendi dosyası ya da yok (kaynaksız). */
@@ -66,7 +79,21 @@ export function oneriIstegi(g: Record<string, unknown>): OneriIstegi {
   const onerilen = yazi(g.onerilen, 2000);
   if (!onerilen) throw new OneriHatasi("Önerini yaz.");
   const secim = KAYNAK_SECIMLERI.find((k) => k === g.kaynak) ?? "yok";
-  const istek: OneriIstegi = { eser_id, alan, onerilen, kaynak_id: null, konum: null, url: null, kaynak_turu: null, dosya_yolu: null, hak_onayi: g.hak_onayi === true };
+  const dil: Dil = ikiDilli(alan) && g.dil === "en" ? "en" : "tr";
+  const dil_uyumu = uyumAlani(alan) && g.dil_uyumu === true;
+  const istek: OneriIstegi = {
+    eser_id,
+    alan,
+    onerilen,
+    kaynak_id: null,
+    konum: null,
+    url: null,
+    kaynak_turu: null,
+    dosya_yolu: null,
+    hak_onayi: g.hak_onayi === true,
+    dil,
+    dil_uyumu,
+  };
   if (secim === "kutuphane") {
     istek.kaynak_id = yazi(g.kaynak_id, 100);
     if (!istek.kaynak_id) throw new OneriHatasi("Listeden bir kaynak seç.");
@@ -87,8 +114,13 @@ export function oneriIstegi(g: Record<string, unknown>): OneriIstegi {
   return istek;
 }
 
+/** Eserin iki dilli metinlerinin şu anki hâli (onay ekranında Türkçe ve İngilizce kutuları için). */
+export function mevcutMetinler(eser: Eser | undefined): Partial<Record<"ad" | "adres", CokDilli>> {
+  return { ...(eser?.ad ? { ad: eser.ad } : {}), ...(eser?.adres ? { adres: eser.adres } : {}) };
+}
+
 /** Eserin şu anki değeri (onay ekranında önerinin yanında gösterilir). */
-export function mevcutDeger(eser: Eser | undefined, alan: OneriAlani): string {
+export function mevcutDeger(eser: Eser | undefined, alan: OneriAlani, dil: Dil = "tr"): string {
   if (!eser) return "";
   switch (alan) {
     case "banisi":
@@ -98,7 +130,7 @@ export function mevcutDeger(eser: Eser | undefined, alan: OneriAlani): string {
       return eser.donem?.yapim_yili ? String(eser.donem.yapim_yili) : "";
     case "adres":
     case "ad":
-      return eser[alan]?.tr ?? "";
+      return eser[alan]?.[dil] ?? "";
     default:
       return "";
   }
@@ -106,24 +138,26 @@ export function mevcutDeger(eser: Eser | undefined, alan: OneriAlani): string {
 
 /**
  * Kabul edilen öneriyi eserin bir kopyasına uygular. olgu: yeni bilgi eklenir (kaynak varsa "kaynakli", yoksa "belirsiz").
- * Diğer alanlarda değer değişir; çok dilli alanlarda Türkçe değişir, İngilizce olduğu gibi kalır.
+ * Diğer alanlarda değer değişir. Çok dilli alanlarda (ad, adres, olgu) Türkçe değer zorunludur; ek.en verilirse
+ * İngilizce de değişir, verilmezse olduğu gibi kalır (yeni bilgide İngilizce yoktur).
  */
 export function oneriyiUygula(
   eser: Eser,
   alan: string,
   deger: string,
-  ek: { kategori?: string; kaynak_id?: string | null; konum?: string | null } = {},
+  ek: { kategori?: string; kaynak_id?: string | null; konum?: string | null; en?: string | null } = {},
 ): Eser {
   const yeni = structuredClone(eser);
   const d = deger.trim();
   if (!d) throw new OneriHatasi("Uygulanacak değer boş olamaz.");
+  const en = ek.en?.trim();
   switch (alan) {
     case "olgu":
       if (!ek.kategori) throw new OneriHatasi("Bilginin kategorisini seç.");
       yeni.olgular = [
         ...yeni.olgular,
         {
-          metin: { tr: d },
+          metin: { tr: d, ...(en ? { en } : {}) },
           kategori: ek.kategori,
           durum: ek.kaynak_id ? "kaynakli" : "belirsiz",
           ...(ek.kaynak_id ? { kaynak_id: ek.kaynak_id } : {}),
@@ -143,7 +177,7 @@ export function oneriyiUygula(
     }
     case "adres":
     case "ad":
-      yeni[alan] = { ...yeni[alan], tr: d };
+      yeni[alan] = { ...yeni[alan], tr: d, ...(en ? { en } : {}) };
       return yeni;
   }
   throw new OneriHatasi("Uygulanacak alanı seç.");

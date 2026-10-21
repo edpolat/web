@@ -16,3 +16,11 @@ export function metin(m: CokDilli | undefined, dil: Dil): string {
 export function ceviriEksik(m: CokDilli | undefined, dil: Dil): boolean {
   return !!m && dil !== "tr" && !m[dil];
 }
+
+const SIRALAYICI = new Intl.Collator("tr");
+
+/** Eser adlarını alfabetik karşılaştırır; baştaki "(Başarakavak) " gibi parantez yok sayılır. */
+export function adSirala(a: string, b: string): number {
+  const anahtar = (s: string) => s.replace(/^\s*\([^)]*\)\s*/, "");
+  return SIRALAYICI.compare(anahtar(a), anahtar(b)) || SIRALAYICI.compare(a, b);
+}

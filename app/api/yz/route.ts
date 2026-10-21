@@ -2,8 +2,10 @@
 // YZ yalnız bilgi verir; bu uç hiçbir kaydı onaylamaz, reddetmez, silmez ya da değiştirmez.
 import { hesapIstemcisi } from "@/lib/sunucu/kimlik";
 import { yetkili } from "@/lib/sunucu/oturum";
+import { EN_FAZLA_CIFT, EN_UZUN_METIN } from "@/lib/dil-uyumu";
 import { elemeAnalizi, kaynakAnalizi } from "@/lib/sunucu/yz-analiz";
-import { etiketDuzelt, sonAnalizler, type HedefTuru } from "@/lib/sunucu/yz-depo";
+import { cagriHakki, etiketDuzelt, sonAnalizler, type HedefTuru } from "@/lib/sunucu/yz-depo";
+import { dilUyumuKarsilastir } from "@/lib/sunucu/yz-dil";
 import { yzAcik } from "@/lib/sunucu/yz-servis";
 import { ETIKETLER, ONCELIKLER } from "@/lib/yz";
 
@@ -15,6 +17,22 @@ export async function POST(istek: Request) {
   const g = (await istek.json().catch(() => null)) as Record<string, unknown> | null;
   if (!g) return hata("Geçersiz istek.");
   if (!(await yetkili("eser.onayla"))) return hata("Onaylama izni gerekli.", 403);
+
+  if (g.islem === "dil_uyumu") {
+    // Onaylamadan önce iki dil karşılaştırması. Cevap yalnız uyarıyı belirler; YZ kapalıysa çağıran basit uyarıyı gösterir.
+    if (!yzAcik()) return Response.json({ tamam: false, neden: "YZ kapalı." });
+    const ciftler = Array.isArray(g.ciftler)
+      ? g.ciftler
+          .filter((c): c is { tr: string; en: string } => typeof c?.tr === "string" && typeof c?.en === "string" && !!c.tr.trim() && !!c.en.trim())
+          .slice(0, EN_FAZLA_CIFT)
+          .map((c) => ({ tr: c.tr.trim().slice(0, EN_UZUN_METIN), en: c.en.trim().slice(0, EN_UZUN_METIN) }))
+      : [];
+    if (!ciftler.length) return hata("Karşılaştırılacak metin yok.");
+    const vt = await hesapIstemcisi();
+    if (!vt) return hata("Bu işlem için hesabınla giriş yapmalısın.");
+    return Response.json(await dilUyumuKarsilastir(ciftler, cagriHakki(vt)));
+  }
+
   const id = typeof g.id === "number" && Number.isInteger(g.id) ? g.id : NaN;
   if (!Number.isFinite(id)) return hata("Geçersiz istek.");
   const vt = await hesapIstemcisi();

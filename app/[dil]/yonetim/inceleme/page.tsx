@@ -7,9 +7,10 @@ import OneriKarti from "@/components/OneriKarti";
 import { SurumKarti, type GosterilenSurum } from "@/components/SurumListesi";
 import YzElemeKutusu from "@/components/YzElemeKutusu";
 import YzKaynakKutusu, { type GosterilenAnaliz } from "@/components/YzKaynakKutusu";
+import { dilFarklari } from "@/lib/dil-uyumu";
 import type { KutuphaneKaynagi } from "@/lib/kaynak";
 import { gecerliDil, metin } from "@/lib/metin";
-import { mevcutDeger, type OneriSatiri } from "@/lib/oneri";
+import { mevcutDeger, mevcutMetinler, type OneriSatiri } from "@/lib/oneri";
 import { s } from "@/lib/sozluk";
 import { kaynakListesi } from "@/lib/sunucu/kaynak-depo";
 import { hesapIstemcisi } from "@/lib/sunucu/kimlik";
@@ -78,7 +79,11 @@ export default async function Inceleme({
         bekleyen.map(async (x) => {
           const simdi = await yayindakiHal(x.eser_id);
           const eski = x.islem === "ekle" ? undefined : simdi.eser;
-          return surumuGoster(x, eski, dil, t, kaynakMap, { araDegisti: x.islem === "duzenle" && simdi.surum !== x.temel_surum });
+          return surumuGoster(x, eski, dil, t, kaynakMap, {
+            araDegisti: x.islem === "duzenle" && simdi.surum !== x.temel_surum,
+            dilFarklari: dilFarklari(eski, x.veri),
+            dilUyumu: x.dil_uyumu === true,
+          });
         }),
       );
     } catch (h) {
@@ -265,6 +270,8 @@ export default async function Inceleme({
             oneri={x.oneri}
             eserAd={metin(eserMap.get(x.oneri.eser_id)?.ad, dil) || x.oneri.eser_id}
             mevcut={mevcutDeger(eserMap.get(x.oneri.eser_id), x.oneri.alan)}
+            mevcutMetin={mevcutMetinler(eserMap.get(x.oneri.eser_id))}
+            yzAcik={yzAcikMi}
             kaynakAd={x.oneri.kaynak_id ? kaynakAdlari.get(x.oneri.kaynak_id)?.baslik : undefined}
             kategoriler={kategoriler}
             kutuphaneYetkisi={kaynakYetkisi}
@@ -294,6 +301,7 @@ export default async function Inceleme({
             turEtiketi={t.surum.onayTuru.eser}
             ek={kaynakliSurumler.has(x.surum.id) ? yzKutusu("surum", x.surum.id, surumAnalizleri.get(x.surum.id)) : undefined}
             yzAnalizleri={tamamlanan(surumAnalizleri.get(x.surum.id))}
+            yzAcik={yzAcikMi}
           />
         ) : (
           <article key={`k-${x.kaynak.id}`} className="katki" aria-labelledby={`kaynak-${x.kaynak.id}`}>

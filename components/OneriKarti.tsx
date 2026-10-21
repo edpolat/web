@@ -2,10 +2,12 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { DilNotu, useDilDenetimi } from "@/components/DilUyarisi";
+import { metinFarki, type DilFarki } from "@/lib/dil-uyumu";
 import { KAYNAK_TURLERI, NITELIKLER, VARSAYILAN_NITELIK, type KaynakTuru } from "@/lib/kaynak";
-import { UYGULANABILIR, type OneriSatiri, type UygulanacakAlan } from "@/lib/oneri";
+import { UYGULANABILIR, ikiDilli, type OneriSatiri, type UygulanacakAlan } from "@/lib/oneri";
 import { s } from "@/lib/sozluk";
-import type { Dil } from "@/lib/tipler";
+import type { CokDilli, Dil } from "@/lib/tipler";
 
 type Props = {
   dil: Dil;
@@ -13,6 +15,10 @@ type Props = {
   eserAd: string;
   /** Alanın sitedeki şu anki değeri. */
   mevcut: string;
+  /** Eserin iki dilli metinlerinin (ad, adres) şu anki hâli. */
+  mevcutMetin?: Partial<Record<string, CokDilli>>;
+  /** YZ açık: kabul ederken iki dil karşılaştırılır. */
+  yzAcik?: boolean;
   /** Önerinin seçtiği doğrulanmış kaynağın başlığı. */
   kaynakAd?: string;
   kategoriler: { id: string; ad: string }[];
@@ -37,10 +43,35 @@ async function gonder(govde: Record<string, unknown>): Promise<string | undefine
 }
 
 /** Onay bekleyenler listesindeki bilgi önerisi: öneri, kaynağı ve kabul/ret formu. */
-export default function OneriKarti({ dil, oneri: o, eserAd, mevcut, kaynakAd, kategoriler, kutuphaneYetkisi, yz, yzEleme, yzAnalizleri = [] }: Props) {
+export default function OneriKarti({
+  dil,
+  oneri: o,
+  eserAd,
+  mevcut,
+  mevcutMetin = {},
+  yzAcik = false,
+  kaynakAd,
+  kategoriler,
+  kutuphaneYetkisi,
+  yz,
+  yzEleme,
+  yzAnalizleri = [],
+}: Props) {
   const t = s(dil);
   const u = t.oneri;
   const k = t.kutuphane;
+  const du = t.dilUyumu;
+  const oneriDili: Dil = o.dil === "en" ? "en" : "tr";
+  const alanAdi = (f: DilFarki) => u.alanlar[f.alan] ?? f.alan;
+  const dilDenetimi = useDilDenetimi(dil, yzAcik, alanAdi);
+  // Öneri olduğu gibi yayına girse iki dilde ne değişirdi (kartın üstündeki basit uyarı için).
+  const oneriFarki = ikiDilli(o.alan)
+    ? metinFarki(
+        o.alan,
+        mevcutMetin[o.alan],
+        oneriDili === "en" ? { tr: mevcutMetin[o.alan]?.tr, en: o.onerilen } : { tr: o.onerilen, en: mevcutMetin[o.alan]?.en },
+      )
+    : null;
   const router = useRouter();
   const [alan, setAlan] = useState<UygulanacakAlan>(o.alan === "diger" ? "olgu" : o.alan);
   const kendiKaynagi = Boolean(o.url || o.dosya_yolu);
@@ -59,15 +90,32 @@ export default function OneriKarti({ dil, oneri: o, eserAd, mevcut, kaynakAd, ka
     setHata(h);
   }
 
+  // Kabul formundaki Türkçe/İngilizce kutularının ilk değeri: önerinin dilindeki kutuya öneri, diğerine sitedeki hâli.
+  const eskiMetin = alan === "olgu" ? undefined : mevcutMetin[alan];
+  const ilkTr = oneriDili === "en" ? (eskiMetin?.tr ?? "") : o.onerilen;
+  const ilkEn = oneriDili === "en" ? o.onerilen : (eskiMetin?.en ?? "");
+
   function kabul(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const v = new FormData(e.currentTarget);
+    const deger = String(v.get("deger") ?? "");
+    const degerEn = String(v.get("deger_en") ?? "");
+    // Sunucu boş İngilizceyi "eski hâliyle kalsın" sayar; karşılaştırma da öyle.
+    const farklar = ikiDilli(alan)
+      ? [metinFarki(alan, eskiMetin, { tr: deger, en: degerEn.trim() || eskiMetin?.en })].filter((f): f is DilFarki => f !== null)
+      : [];
+    dilDenetimi.denetle(farklar, o.dil_uyumu === true, (dilOnayi) => gonderKabul(v, deger, degerEn, dilOnayi));
+  }
+
+  function gonderKabul(v: FormData, deger: string, degerEn: string, dilOnayi: boolean) {
     yap({
       islem: "kabul",
       id: o.id,
       yz_analizleri: yzAnalizleri,
       alan,
-      deger: v.get("deger"),
+      deger,
+      deger_en: ikiDilli(alan) ? degerEn : undefined,
+      dil_onayi: dilOnayi,
       kategori: v.get("kategori"),
       konum: v.get("konum"),
       kutuphane: kutuphaneye
@@ -82,6 +130,7 @@ export default function OneriKarti({ dil, oneri: o, eserAd, mevcut, kaynakAd, ka
         <span className="tur-etiketi">{t.surum.onayTuru.oneri}</span>
         <span className="etiket etiket-oneri-bekliyor">{u.durumlar[o.durum]}</span>
         {o.kaynaksiz && <span className="etiket etiket-kaynaksiz">{u.kaynaksiz}</span>}
+        {ikiDilli(o.alan) && <span className="etiket">{du.diller[oneriDili]}</span>}
         {o.kullanici_ad && <span>· {o.kullanici_ad}</span>}
         <span>· {tarih(o.olusturuldu, dil)}</span>
       </p>
@@ -114,6 +163,7 @@ export default function OneriKarti({ dil, oneri: o, eserAd, mevcut, kaynakAd, ka
           {o.kaynaksiz && u.kaynaksiz}
         </dd>
       </dl>
+      <DilNotu dil={dil} farklar={oneriFarki ? [oneriFarki] : []} dilUyumu={o.dil_uyumu === true} alanAdi={alanAdi} yzAcik={yzAcik} />
       {yzEleme}
       {yz}
 
@@ -142,10 +192,28 @@ export default function OneriKarti({ dil, oneri: o, eserAd, mevcut, kaynakAd, ka
             </label>
           )}
         </div>
-        <label>
-          {u.uygulanacakDeger}
-          <textarea name="deger" rows={3} required maxLength={2000} defaultValue={o.onerilen} />
-        </label>
+        {ikiDilli(alan) ? (
+          <div key={alan}>
+            <label>
+              {du.degerTr}
+              <textarea name="deger" rows={3} required maxLength={2000} defaultValue={ilkTr} lang="tr" />
+            </label>
+            <label>
+              {du.degerEn}
+              <textarea name="deger_en" rows={3} maxLength={2000} defaultValue={ilkEn} lang="en" aria-describedby={alan !== "olgu" ? `${baslikId}-en` : undefined} />
+            </label>
+            {alan !== "olgu" && (
+              <p className="not" id={`${baslikId}-en`}>
+                {du.enBos}
+              </p>
+            )}
+          </div>
+        ) : (
+          <label>
+            {u.uygulanacakDeger}
+            <textarea name="deger" rows={3} required maxLength={2000} defaultValue={o.onerilen} />
+          </label>
+        )}
         {!o.kaynaksiz && (
           <label>
             {u.konum}
@@ -194,10 +262,11 @@ export default function OneriKarti({ dil, oneri: o, eserAd, mevcut, kaynakAd, ka
           </fieldset>
         )}
         <div className="dugmeler">
-          <button type="submit" disabled={bekle}>
+          <button type="submit" disabled={bekle || dilDenetimi.karsilastiriyor}>
             {u.kabulEt}
           </button>
         </div>
+        {dilDenetimi.kutu}
       </form>
       <RetFormu u={u} bekle={bekle} reddet={(gerekce) => yap({ islem: "reddet", id: o.id, gerekce, yz_analizleri: yzAnalizleri })} />
       {hata && <p role="alert">{hata}</p>}

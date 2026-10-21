@@ -4,6 +4,7 @@ import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 import { kaynagaCevir } from "./kaynak";
+import { adSirala } from "./metin";
 import { dogrulanmisKaynaklar } from "./sunucu/kaynak-depo";
 import { katmanla } from "./sunucu/surum";
 import { yayindakiSurumler } from "./sunucu/surum-depo";
@@ -52,7 +53,7 @@ export function kesifEserleri(eserler = tumEserler()): KesifEseri[] {
       gorselSayisi: e.gorseller?.length ?? 0,
       kaynakliSayisi: e.olgular.filter((o) => o.durum === "kaynakli").length,
     }))
-    .sort((a, b) => Number(!!b.gorsel) - Number(!!a.gorsel) || a.ad.tr.localeCompare(b.ad.tr, "tr"));
+    .sort((a, b) => Number(!!b.gorsel) - Number(!!a.gorsel) || adSirala(a.ad.tr, b.ad.tr));
 }
 
 export function eserBul(id: string): IlliEser | undefined {

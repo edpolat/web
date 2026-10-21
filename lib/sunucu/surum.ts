@@ -28,6 +28,8 @@ export type SurumSatiri = {
   inceleyen_ad: string | null;
   karar_tarihi: string | null;
   ret_gerekcesi: string | null;
+  /** Gönderen "diğer dildeki metne uyum için" dedi (supabase/009_dil_uyumu.sql; öncesinde sütun yok). */
+  dil_uyumu?: boolean;
 };
 
 export type YayindakiSurum = Pick<SurumSatiri, "id" | "eser_id" | "il" | "veri" | "arsivlendi" | "karar_tarihi">;

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { bulutHazir, dosyaYukle, erisimJetonu, kayitliOturum, type BulutOturumu } from "@/lib/bulut";
 import { DOSYA_TURLERI, EN_BUYUK_DOSYA, KAYNAK_TURLERI } from "@/lib/kaynak";
-import { GUNLUK_ONERI, KAYNAK_SECIMLERI, ONERI_ALANLARI, type KaynakSecimi, type OneriAlani, type OneriSatiri } from "@/lib/oneri";
+import { GUNLUK_ONERI, KAYNAK_SECIMLERI, ONERI_ALANLARI, ikiDilli, uyumAlani, type KaynakSecimi, type OneriAlani, type OneriSatiri } from "@/lib/oneri";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
 
@@ -12,6 +12,8 @@ type Props = {
   eserId: string;
   /** Alanların sitedeki şu anki değeri (öneren neyi düzelttiğini görsün). */
   mevcut: Partial<Record<OneriAlani, string>>;
+  /** Aynı alanların İngilizcesi (iki dilli alanlarda). */
+  mevcutEn?: Partial<Record<OneriAlani, string>>;
   kaynaklar: { id: string; ad: string }[];
 };
 
@@ -29,8 +31,10 @@ async function istek(jeton: string, govde: Record<string, unknown>): Promise<Rec
 const tarih = (iso: string, dil: Dil) => new Date(iso).toLocaleDateString(dil === "tr" ? "tr-TR" : "en-GB", { dateStyle: "medium" });
 
 /** Ziyaretçinin bilgi önerisi: giriş zorunlu; kaynak seçimi, dosya için hak onayı ve kendi önerilerinin sonucu. */
-export default function OneriFormu({ dil, eserId, mevcut, kaynaklar }: Props) {
+export default function OneriFormu({ dil, eserId, mevcut, mevcutEn = {}, kaynaklar }: Props) {
   const t = s(dil).oneri;
+  const du = s(dil).dilUyumu;
+  const [oneriDili, setOneriDili] = useState<Dil>(dil);
   const [ben, setBen] = useState<BulutOturumu | null | undefined>(undefined);
   const [alan, setAlan] = useState<OneriAlani>("olgu");
   const [kaynak, setKaynak] = useState<KaynakSecimi>("kutuphane");
@@ -87,6 +91,8 @@ export default function OneriFormu({ dil, eserId, mevcut, kaynaklar }: Props) {
         kaynak_turu: v.get("kaynak_turu"),
         dosya_yolu,
         hak_onayi: v.get("hak_onayi") === "on",
+        dil: ikiDilli(alan) ? oneriDili : "tr",
+        dil_uyumu: uyumAlani(alan) && v.get("dil_uyumu") === "on",
       });
       form.reset();
       setDurum({ tamam: true, metin: t.gonderildi });
@@ -120,15 +126,37 @@ export default function OneriFormu({ dil, eserId, mevcut, kaynaklar }: Props) {
             ))}
           </select>
         </label>
-        {mevcut[alan] && (
+        {ikiDilli(alan) && (
+          <label>
+            {du.oneriDili}
+            <select value={oneriDili} onChange={(e) => setOneriDili(e.target.value as Dil)}>
+              {(["tr", "en"] as const).map((d) => (
+                <option key={d} value={d}>
+                  {du.diller[d]}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        {(ikiDilli(alan) && oneriDili === "en" ? mevcutEn[alan] : mevcut[alan]) && (
           <p className="not">
-            {t.mevcut}: {mevcut[alan]}
+            {t.mevcut}: {ikiDilli(alan) && oneriDili === "en" ? mevcutEn[alan] : mevcut[alan]}
           </p>
         )}
         <label>
           {t.onerilen}
-          <textarea name="onerilen" rows={4} required maxLength={2000} />
+          <textarea name="onerilen" rows={4} required maxLength={2000} lang={ikiDilli(alan) ? oneriDili : undefined} />
         </label>
+        {uyumAlani(alan) && (
+          <>
+            <label className="secim">
+              <input type="checkbox" name="dil_uyumu" aria-describedby="oneri-uyum-not" /> {du.uyumIcin}
+            </label>
+            <p className="not" id="oneri-uyum-not">
+              {du.uyumIcinNot}
+            </p>
+          </>
+        )}
         <fieldset>
           <legend>{t.kaynak}</legend>
           {KAYNAK_SECIMLERI.map((k) => (

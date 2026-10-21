@@ -89,7 +89,8 @@ export async function denetimKaydi(hedef?: string, sinir = 200): Promise<Denetim
   return (data ?? []) as DenetimSatiri[];
 }
 
-export async function surumGonder(s: HazirSurum, temel: number | null, taslak: boolean): Promise<number> {
+/** dilUyumu: gönderen "diğer dildeki metne uyum için" dedi. Parametre yalnız işaretliyse gider (009 çalıştırılmadan da gönderme çalışsın). */
+export async function surumGonder(s: HazirSurum, temel: number | null, taslak: boolean, dilUyumu = false): Promise<number> {
   const { data, error } = await (await vt()).rpc("surum_gonder", {
     p_eser: s.eser_id,
     p_il: s.il,
@@ -100,7 +101,11 @@ export async function surumGonder(s: HazirSurum, temel: number | null, taslak: b
     p_sayfa: s.sayfa ?? null,
     p_not: s.aciklama ?? null,
     p_taslak: taslak,
+    ...(dilUyumu ? { p_dil_uyumu: true } : {}),
   });
+  if (error && dilUyumu && /p_dil_uyumu|function/i.test(error.message)) {
+    throw new KatkiHatasi("\"Uyum için\" işareti kaydedilemedi: Supabase'de supabase/009_dil_uyumu.sql çalıştırılmalı.");
+  }
   denetle(error);
   return data as number;
 }

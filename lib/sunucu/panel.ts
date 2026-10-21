@@ -1,6 +1,7 @@
 // Panel işlemleri: eser formu, inceleme kararı, eski sürüme dönme ve arşivleme.
 // İzin hem burada (yetkili) hem Supabase fonksiyonlarında denetlenir.
 import "server-only";
+import { dilFarklari, dilUyarisiGerekli } from "../dil-uyumu";
 import type { Eser } from "../tipler";
 import { yayindakiIller, yayindakiKaynaklar } from "../veri";
 import { KatkiHatasi, type Depo } from "./katki";
@@ -47,7 +48,7 @@ export async function panelIslemi(govde: Record<string, unknown>): Promise<Recor
       if (!(await yetkili(ekle ? "eser.ekle" : "eser.duzenle"))) throw new KatkiHatasi("Bu işlem için yetkin yok.");
       const hazir = surumHazirla(govde, await yayindakiDepo(), ben.ad);
       const temel = ekle ? null : (await yayindakiHal(hazir.eser_id)).surum;
-      const id = await surumGonder(hazir, temel, govde.taslak === true);
+      const id = await surumGonder(hazir, temel, govde.taslak === true, govde.dil_uyumu === true);
       // Kaynakla gelen düzenleme incelemeye girdiyse YZ kaynak analizi yanıttan sonra çalışır (YZ kapalıysa hiçbir şey olmaz).
       if (govde.taslak !== true) arkaPlanda(await hesapIstemcisi(), [{ analiz: "kaynak", tur: "surum", id }]);
       return { id, eser_id: hazir.eser_id };
@@ -71,7 +72,13 @@ export async function panelIslemi(govde: Record<string, unknown>): Promise<Recor
       }
       yayinaUygunMu(surum, await yayindakiDepo());
       const { eser } = await yayindakiHal(surum.eser_id);
-      await surumKarar(surum.id, true, gerekce, alanFarklari(eser, surum.veri));
+      // Yalnız bir dilde değişen metin varsa onaylayan "Yine de onayla" demiş olmalı (gönderen "uyum için" demediyse).
+      const dilUyarisi = dilUyarisiGerekli(dilFarklari(surum.islem === "ekle" ? undefined : eser, surum.veri), surum.dil_uyumu === true);
+      if (dilUyarisi && govde.dil_onayi !== true) {
+        throw new KatkiHatasi("Bu düzenlemede bazı metinler yalnız bir dilde değişmiş. Onaylamak için uyarıda \"Yine de onayla\" demelisin.");
+      }
+      const not = dilUyarisi ? [gerekce, "Dil uyarısına rağmen onaylandı."].filter(Boolean).join(" ") : gerekce;
+      await surumKarar(surum.id, true, not, alanFarklari(eser, surum.veri));
       yayiniYenile();
       await yzKararKaydet(await hesapIstemcisi(), govde.yz_analizleri, "onayladi");
       return { tamam: true };

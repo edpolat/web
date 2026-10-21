@@ -507,6 +507,8 @@ html[data-altyazi="kapali"] .altyazi-seridi { display: none; }
 .etiket-oneri-kabul { color: var(--kaynakli); background: var(--kaynakli-zemin); }
 .etiket-oneri-reddedildi { color: var(--damga); }
 .etiket-kaynaksiz { color: var(--damga); border-style: dashed; }
+.etiket-dil-uyumu { color: var(--yesil); }
+.uyari ul { margin: .25rem 0; padding-left: 1.25rem; }
 
 /* Yönetim paneli: menü, sekmeli form, özet kutuları, filtreler */
 .panel-menu { border-bottom: 1px solid var(--cizgi); margin: 0 0 1.25rem; }

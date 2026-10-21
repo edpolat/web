@@ -2,6 +2,7 @@
 // izinler Supabase fonksiyonlarında da denetlenir.
 import "server-only";
 import crypto from "node:crypto";
+import { dilFarklari, dilUyarisiGerekli } from "../dil-uyumu";
 import { DOSYA_KOVASI, type KaynakTuru, type Nitelik } from "../kaynak";
 import { GUNLUK_ONERI, OneriHatasi, oneriyiUygula, type OneriIstegi, type OneriSatiri } from "../oneri";
 import { hesapIstemcisi, kimlik } from "./kimlik";
@@ -36,7 +37,12 @@ export async function oneriGonder(o: OneriIstegi, dosya?: { tur: string; boyut: 
     p_dosya_boyutu: dosya?.boyut ?? null,
     p_hak_onayi: o.hak_onayi,
     p_kaynak_turu: o.kaynak_turu,
+    // Dil ve uyum işareti yalnız varsayılandan farklıysa gider (009 çalıştırılmadan da Türkçe öneri gönderilebilsin).
+    ...(o.dil !== "tr" || o.dil_uyumu ? { p_dil: o.dil, p_dil_uyumu: o.dil_uyumu } : {}),
   });
+  if (error && (o.dil !== "tr" || o.dil_uyumu) && /p_dil|function/i.test(error.message)) {
+    throw new OneriHatasi("İngilizce öneri ya da uyum işareti henüz kaydedilemiyor (Supabase'de supabase/009_dil_uyumu.sql çalıştırılmalı).");
+  }
   denetle(error);
   return data as number;
 }
@@ -73,6 +79,10 @@ export type KabulIstegi = {
   deger: string;
   kategori?: string;
   konum?: string;
+  /** Çok dilli alanlarda yayına girecek İngilizce metin (boşsa İngilizce olduğu gibi kalır). */
+  en?: string;
+  /** Onaylayan tek dil uyarısında "Yine de onayla" dedi. */
+  dil_onayi?: boolean;
   /** Önerinin kendi bağlantısı/dosyası kütüphaneye doğrulanmış olarak girsin mi. */
   kutuphane?: { baslik: string; kaynak_turu: KaynakTuru; nitelik: Nitelik; herkese_acik: boolean };
 };
@@ -89,7 +99,10 @@ export async function oneriKabul(k: KabulIstegi): Promise<number> {
   const yeniKaynak = k.kutuphane ? `k-${crypto.randomBytes(5).toString("hex")}` : undefined;
   const kaynak_id = yeniKaynak ?? o.kaynak_id;
   const konum = k.konum?.trim() || o.konum;
-  const veri = oneriyiUygula(simdi.eser, k.alan, k.deger, { kategori: k.kategori, kaynak_id, konum });
+  const veri = oneriyiUygula(simdi.eser, k.alan, k.deger, { kategori: k.kategori, kaynak_id, konum, en: k.en });
+  if (dilUyarisiGerekli(dilFarklari(simdi.eser, veri), o.dil_uyumu === true) && !k.dil_onayi) {
+    throw new OneriHatasi("Bu değişiklik yalnız bir dilde. Onaylamak için uyarıda \"Yine de onayla\" demelisin ya da diğer dili de doldurmalısın.");
+  }
   const depo = await yayindakiDepo();
   if (yeniKaynak) depo.tanimlar.kaynakIdleri.add(yeniKaynak);
   yayinaUygunMu({ eser_id: o.eser_id, il: simdi.il, veri, islem: "duzenle" }, depo);

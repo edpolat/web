@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { gecerliDil, metin } from "@/lib/metin";
+import { adSirala, gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import { panelKimligi } from "@/lib/sunucu/oturum";
 import { surumler, yayindakiSurumler } from "@/lib/sunucu/surum-depo";
@@ -59,7 +59,7 @@ export default async function Eserler({ params, searchParams }: { params: Promis
       if (q && !`${e.ad.tr} ${e.ad.en ?? ""} ${e.banisi ?? ""} ${e.id} ${e.ilce ?? ""}`.toLocaleLowerCase("tr").includes(q)) return false;
       return true;
     })
-    .sort((x, y) => x.eser.ad.tr.localeCompare(y.eser.ad.tr, "tr"));
+    .sort((x, y) => adSirala(x.eser.ad.tr, y.eser.ad.tr));
 
   const duzenleyebilir = izinli(ben, "eser.duzenle");
   return (

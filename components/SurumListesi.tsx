@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { DilNotu, useDilDenetimi } from "@/components/DilUyarisi";
+import type { DilFarki } from "@/lib/dil-uyumu";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
 
@@ -25,6 +27,10 @@ export type GosterilenSurum = {
   /** Bu sürüme dönülebilir mi (geçmiş sayfası). Veri dosyasındaki ilk hâl için hedef null. */
   donulebilir?: boolean;
   hedef?: number | null;
+  /** Değişen çok dilli metinler (onay bekleyenler: tek dil uyarısı için). */
+  dilFarklari?: DilFarki[];
+  /** Gönderen "diğer dildeki metne uyum için" dedi. */
+  dilUyumu?: boolean;
 };
 
 type Eylem = "karar" | "incelemeye" | "geriAl";
@@ -57,6 +63,7 @@ export function SurumKarti({
   turEtiketi,
   ek,
   yzAnalizleri = [],
+  yzAcik = false,
 }: {
   dil: Dil;
   k: GosterilenSurum;
@@ -68,9 +75,13 @@ export function SurumKarti({
   ek?: React.ReactNode;
   /** Editörün gördüğü YZ analizleri: kararla birlikte denetim kaydına yazılır. */
   yzAnalizleri?: number[];
+  /** YZ açık: onaylarken iki dil karşılaştırılır. */
+  yzAcik?: boolean;
 }) {
   const t = s(dil);
   const u = t.surum;
+  const alanAdi = (f: DilFarki) => `${t.alanlar[f.alan] ?? f.alan}${f.sira !== null ? ` #${f.sira + 1}` : ""}`;
+  const dilDenetimi = useDilDenetimi(dil, yzAcik, alanAdi);
   const router = useRouter();
   const [gerekce, setGerekce] = useState("");
   const [hata, setHata] = useState<string>();
@@ -143,6 +154,9 @@ export function SurumKarti({
           )}
         </p>
       )}
+      {eylemler.includes("karar") && k.durum === "incelemede" && k.dilFarklari && (
+        <DilNotu dil={dil} farklar={k.dilFarklari} dilUyumu={k.dilUyumu ?? false} alanAdi={alanAdi} yzAcik={yzAcik} />
+      )}
       {ek}
       {eylemler.includes("karar") && k.durum === "incelemede" && (
         <div className="form">
@@ -151,13 +165,22 @@ export function SurumKarti({
             <input value={gerekce} onChange={(e) => setGerekce(e.target.value)} maxLength={2000} />
           </label>
           <div className="dugmeler">
-            <button type="button" disabled={bekle} onClick={() => yap({ islem: "onayla", id: k.id, gerekce, yz_analizleri: yzAnalizleri })}>
+            <button
+              type="button"
+              disabled={bekle || dilDenetimi.karsilastiriyor}
+              onClick={() =>
+                dilDenetimi.denetle(k.dilFarklari ?? [], k.dilUyumu ?? false, (dilOnayi) =>
+                  yap({ islem: "onayla", id: k.id, gerekce, yz_analizleri: yzAnalizleri, dil_onayi: dilOnayi }),
+                )
+              }
+            >
               {u.onayla}
             </button>
             <button type="button" className="ikincil" disabled={bekle || !gerekce.trim()} onClick={() => yap({ islem: "reddet", id: k.id, gerekce, yz_analizleri: yzAnalizleri })}>
               {u.reddet}
             </button>
           </div>
+          {dilDenetimi.kutu}
         </div>
       )}
       {eylemler.includes("incelemeye") && k.durum === "taslak" && (

@@ -29,6 +29,7 @@ export default async function OneriSayfasi({ params }: { params: Promise<{ dil: 
         dil={dil}
         eserId={eser.id}
         mevcut={Object.fromEntries(ONERI_ALANLARI.map((a) => [a, mevcutDeger(eser, a)]))}
+        mevcutEn={Object.fromEntries(ONERI_ALANLARI.map((a) => [a, mevcutDeger(eser, a, "en")]))}
         kaynaklar={kaynaklar.map((k) => ({ id: k.id, ad: k.baslik }))}
       />
     </section>

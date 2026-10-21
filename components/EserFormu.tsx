@@ -97,6 +97,7 @@ export default function EserFormu({ dil, eser, iller, turler, kaynaklar }: Props
           kaynak_id: kaynak,
           sayfa: yazi(v, "sayfa"),
           not: yazi(v, "not"),
+          dil_uyumu: v.get("dil_uyumu") === "on",
           degisiklik: degisiklik(v),
         }),
       });
@@ -304,6 +305,16 @@ export default function EserFormu({ dil, eser, iller, turler, kaynaklar }: Props
           {t.notAlani}
           <textarea name="not" rows={2} maxLength={2000} />
         </label>
+        {eser && (
+          <>
+            <label className="secim">
+              <input type="checkbox" name="dil_uyumu" aria-describedby="dil-uyumu-not" /> {s(dil).dilUyumu.uyumIcin}
+            </label>
+            <p className="not" id="dil-uyumu-not">
+              {s(dil).dilUyumu.uyumIcinNot}
+            </p>
+          </>
+        )}
       </fieldset>
       <div className="dugmeler">
         {!kaynak && <p className="not">{p.dayanakIpucu}</p>}

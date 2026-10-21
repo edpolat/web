@@ -60,6 +60,8 @@ async function islem(g: Record<string, unknown>): Promise<Record<string, unknown
         deger: metin(g.deger),
         kategori: metin(g.kategori) || undefined,
         konum: metin(g.konum) || undefined,
+        en: metin(g.deger_en) || undefined,
+        dil_onayi: g.dil_onayi === true,
         kutuphane: k && {
           baslik: metin(k.baslik).slice(0, 300),
           kaynak_turu: kaynak_turu as KaynakTuru,
