@@ -5,6 +5,7 @@ import KaynakKunye from "@/components/KaynakKunye";
 import { KaynakDogrula } from "@/components/KaynakPaneli";
 import OneriKarti from "@/components/OneriKarti";
 import { SurumKarti, type GosterilenSurum } from "@/components/SurumListesi";
+import TalepKarti from "@/components/TalepKarti";
 import YzElemeKutusu from "@/components/YzElemeKutusu";
 import YzKaynakKutusu, { type GosterilenAnaliz } from "@/components/YzKaynakKutusu";
 import { dilFarklari } from "@/lib/dil-uyumu";
@@ -19,6 +20,8 @@ import { panelKimligi } from "@/lib/sunucu/oturum";
 import { yayindakiHal } from "@/lib/sunucu/panel";
 import { surumler } from "@/lib/sunucu/surum-depo";
 import { surumuGoster } from "@/lib/sunucu/surum-goster";
+import { talepler as talepListesi } from "@/lib/sunucu/talep-depo";
+import type { TalepSatiri } from "@/lib/talep";
 import { arkaPlanda, type ArkaPlanIsi } from "@/lib/sunucu/yz-analiz";
 import { sonAnalizler, sonDuzeltmeler, type AnalizSatiri, type EtiketDuzeltmesi } from "@/lib/sunucu/yz-depo";
 import { yzAcik } from "@/lib/sunucu/yz-servis";
@@ -28,7 +31,7 @@ import { ETIKETLER, benzerOneriler, siraPuani, type ElemeCevabi, type Etiket, ty
 
 export const metadata: Metadata = { robots: { index: false } };
 
-const TURLER = ["eser", "kaynak", "oneri"] as const;
+const TURLER = ["eser", "kaynak", "oneri", "talep"] as const;
 type Tur = (typeof TURLER)[number];
 
 const hata = (h: unknown) => (h instanceof Error ? h.message : String(h));
@@ -38,11 +41,12 @@ const tarih = (iso: string, dil: string) => new Date(iso).toLocaleString(dil ===
 type Kayit =
   | { tur: "eser"; zaman: string; surum: GosterilenSurum }
   | { tur: "kaynak"; zaman: string; kaynak: KutuphaneKaynagi }
-  | { tur: "oneri"; zaman: string; oneri: OneriSatiri };
+  | { tur: "oneri"; zaman: string; oneri: OneriSatiri }
+  | { tur: "talep"; zaman: string; talep: TalepSatiri };
 
 /**
- * Onay bekleyenler: eser düzenlemeleri ve bilgi önerileri (eser.onayla), doğrulanmamış kaynaklar (kaynak.dogrula) tek listede,
- * talep tarihine göre eskiden yeniye. ?tur=eser|kaynak|oneri türe göre süzer, ?sira=yeni sırayı çevirir.
+ * Onay bekleyenler: eser düzenlemeleri, bilgi önerileri ve mobil uygulama talepleri (eser.onayla), doğrulanmamış kaynaklar (kaynak.dogrula) tek listede,
+ * talep tarihine göre eskiden yeniye. ?tur=eser|kaynak|oneri|talep türe göre süzer, ?sira=yeni sırayı çevirir.
  */
 export default async function Inceleme({
   params,
@@ -109,6 +113,15 @@ export default async function Inceleme({
       oneriHatasi = hata(h);
     }
   }
+  let talepler: TalepSatiri[] | undefined;
+  let talepHatasi = "";
+  if (eserYetkisi) {
+    try {
+      talepler = await talepListesi();
+    } catch (h) {
+      talepHatasi = hata(h);
+    }
+  }
   // YZ kaynak analizi: sonuçlar okunur; hiç analizi olmayanlar (en çok 3) sayfa yanıtından sonra arka planda başlatılır.
   // YZ'nin her hatası burada yutulur, liste ve karar düğmeleri her durumda çalışır.
   const yzAcikMi = yzAcik();
@@ -172,11 +185,12 @@ export default async function Inceleme({
   const kaynakAdlari = await yayindakiKaynaklar();
   const kategoriler = ayarlar().olgu_kategorileri.map((k) => ({ id: k.id, ad: metin(k.ad, dil) }));
 
-  const sayi = { eser: eserler?.length ?? 0, kaynak: kaynaklar?.length ?? 0, oneri: oneriler?.length ?? 0 };
+  const sayi = { eser: eserler?.length ?? 0, kaynak: kaynaklar?.length ?? 0, oneri: oneriler?.length ?? 0, talep: talepler?.length ?? 0 };
   const kayitlar: Kayit[] = [
     ...(!secili || secili === "eser" ? (eserler ?? []).map((x): Kayit => ({ tur: "eser", zaman: x.olusturuldu, surum: x })) : []),
     ...(!secili || secili === "kaynak" ? (kaynaklar ?? []).map((k): Kayit => ({ tur: "kaynak", zaman: k.eklendi, kaynak: k })) : []),
     ...(!secili || secili === "oneri" ? (oneriler ?? []).filter(etiketUyar).map((o): Kayit => ({ tur: "oneri", zaman: o.olusturuldu, oneri: o })) : []),
+    ...(!secili || secili === "talep" ? (talepler ?? []).map((x): Kayit => ({ tur: "talep", zaman: x.olusturuldu, talep: x })) : []),
   ]
     // Spam etiketli öneri hep en sonda (silinmez, gizlenmez); "Önceliğe göre" seçiliyse önce öncelik, sonra tarih.
     .map((x) => ({ x, puan: x.tur === "oneri" ? siraPuani(gecerliEtiket(x.oneri.id), oncelikle) : oncelikle ? 1 : 0 }))
@@ -196,10 +210,11 @@ export default async function Inceleme({
     const yazi = q.toString();
     return `/${dil}/yonetim/inceleme${yazi ? `?${yazi}` : ""}`;
   };
-  const cipler: [Tur | undefined, string, number][] = [[undefined, u.tumu, sayi.eser + sayi.kaynak + sayi.oneri]];
+  const cipler: [Tur | undefined, string, number][] = [[undefined, u.tumu, sayi.eser + sayi.kaynak + sayi.oneri + sayi.talep]];
   if (eserYetkisi) cipler.push(["eser", t.surum.onayTurleri.eser, sayi.eser]);
   if (kaynakYetkisi) cipler.push(["kaynak", t.surum.onayTurleri.kaynak, sayi.kaynak]);
   if (eserYetkisi) cipler.push(["oneri", t.surum.onayTurleri.oneri, sayi.oneri]);
+  if (eserYetkisi) cipler.push(["talep", t.surum.onayTurleri.talep, sayi.talep]);
   const yeniSira = yeniOnce ? "yeni" : oncelikle ? "oncelik" : undefined;
   const y = t.yz;
 
@@ -256,6 +271,11 @@ export default async function Inceleme({
           {t.surum.oneriTabloYok} <small>({oneriHatasi})</small>
         </p>
       )}
+      {talepHatasi && (
+        <p className="hata">
+          {t.talep.tabloYok} <small>({talepHatasi})</small>
+        </p>
+      )}
       {kaynakHatasi && (
         <p className="hata">
           {u.tabloYok} <small>({kaynakHatasi})</small>
@@ -263,7 +283,15 @@ export default async function Inceleme({
       )}
       {!kayitlar.length && <p>{t.surum.hepsiOnaylandi}</p>}
       {kayitlar.map((x) =>
-        x.tur === "oneri" ? (
+        x.tur === "talep" ? (
+          <TalepKarti
+            key={`t-${x.talep.id}`}
+            dil={dil}
+            talep={x.talep}
+            eserAd={metin(eserMap.get(x.talep.eser_id)?.ad, dil) || x.talep.eser_adi || x.talep.eser_id}
+            duzenleyebilir={izinli(ben, "eser.duzenle") && eserMap.has(x.talep.eser_id)}
+          />
+        ) : x.tur === "oneri" ? (
           <OneriKarti
             key={`o-${x.oneri.id}`}
             dil={dil}

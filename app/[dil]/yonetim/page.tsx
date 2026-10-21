@@ -15,6 +15,7 @@ import { yonetimSifresi } from "@/lib/sunucu/yonetim";
 import { izinli, paneldeMi } from "@/lib/yetki";
 import { kaynakListesi } from "@/lib/sunucu/kaynak-depo";
 import { oneriler } from "@/lib/sunucu/oneri-depo";
+import { talepler } from "@/lib/sunucu/talep-depo";
 import { denetimKaydi, surumler } from "@/lib/sunucu/surum-depo";
 import { benimSurumlerim } from "@/lib/sunucu/panel";
 import { yayindakiIller, yayindakiKaynaklar } from "@/lib/veri";
@@ -62,9 +63,10 @@ export default async function Yonetim({ params }: { params: Promise<{ dil: strin
   const say = <T,>(izin: boolean, sorgu: () => Promise<T[]>) => (izin ? sorgu().then((x) => x.length).catch(() => undefined) : undefined);
   const onaylayan = izinli(ben, "eser.onayla");
   const katkici = izinli(ben, "eser.ekle") || izinli(ben, "eser.duzenle");
-  const [incelemede, oneriSayisi, dogrulanacak, taslaklarim, eserIlleri, kaynakMap, sonKayitlar] = await Promise.all([
+  const [incelemede, oneriSayisi, talepSayisi, dogrulanacak, taslaklarim, eserIlleri, kaynakMap, sonKayitlar] = await Promise.all([
     say(onaylayan, () => surumler({ durum: "incelemede" })),
     say(onaylayan, () => oneriler({ durum: "bekliyor" })),
+    say(onaylayan, () => talepler(false)),
     say(izinli(ben, "kaynak.dogrula"), () => kaynakListesi({ durum: "dogrulanmamis" })),
     say(katkici, () => benimSurumlerim().then((x) => x.filter((y) => y.durum === "taslak"))),
     yayindakiIller(),
@@ -78,6 +80,7 @@ export default async function Yonetim({ params }: { params: Promise<{ dil: strin
   const kutular = [
     { sayi: incelemede, ad: p.bekleyenDuzenleme, yol: `/${dil}/yonetim/inceleme?tur=eser` },
     { sayi: oneriSayisi, ad: p.bilgiOnerisi, yol: `/${dil}/yonetim/inceleme?tur=oneri` },
+    { sayi: talepSayisi, ad: p.uygulamaTalebi, yol: `/${dil}/yonetim/inceleme?tur=talep` },
     { sayi: dogrulanacak, ad: p.dogrulanmamisKaynak, yol: `/${dil}/yonetim/inceleme?tur=kaynak` },
     { sayi: taslaklarim, ad: p.taslaklarim, yol: `/${dil}/yonetim/katkilarim` },
   ].filter((k) => k.sayi !== undefined);
