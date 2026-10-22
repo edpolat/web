@@ -53,11 +53,13 @@ async function kaynakTanimi(vt: SupabaseClient, kaynak_id: string): Promise<Kayn
   const k = data as KutuphaneKaynagi | null;
   const dosya = k?.dosya_yolu ? `/api/kaynak/dosya/${k.id}` : null;
   // Sitenin varsayılan kaynakları (envanter kitapları): metin veri/kaynak-metinleri'nde, sayfa numaraları kitabınki.
-  // Kitabın PDF'i kütüphanedeyse düğme onu açar (pdf_sayfa ile doğru sayfada); metin yine buradan okunur.
+  // Düğme kitabın resmi PDF'ini (kaynaklar.json url), yoksa kütüphanedeki dosyayı açar (pdf_sayfa ile doğru sayfada);
+  // pdf_sayfa tam PDF'e göre çıkarıldığı için resmi adres önce gelir. Metin yine buradan okunur.
   const yerel = kaynakMetni(kaynak_id);
   if (yerel?.length) {
     const sayfalar = yerel;
-    return { anahtar: `yerel:${kaynak_id}`, getir: async () => ({ durum: "tamam", sayfali: true, sayfalar }), adres: dosya, halktan: false };
+    const adres = kaynaklar().get(kaynak_id)?.url ?? dosya;
+    return { anahtar: `yerel:${kaynak_id}`, getir: async () => ({ durum: "tamam", sayfali: true, sayfalar }), adres, halktan: false };
   }
   if (k?.dosya_yolu) return { anahtar: `kutuphane:${k.id}`, getir: indir(vt, k.dosya_yolu), adres: dosya, halktan: false };
   const url = k?.url ?? kaynaklar().get(kaynak_id)?.url ?? (await yayindakiKaynaklar()).get(kaynak_id)?.url;

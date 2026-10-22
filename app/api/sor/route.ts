@@ -3,7 +3,7 @@
 import { gecerliDil } from "@/lib/metin";
 import { cevapla } from "@/lib/sunucu/sor";
 import { sonCikti, yapayZekaAcik, yapayZekaDurumu, yapayZekaylaCevapla, type GecmisMesaj } from "@/lib/sunucu/sor-yz";
-import { yayindakiEser } from "@/lib/veri";
+import { cevabaAdresEkle, yayindakiEser } from "@/lib/veri";
 
 const GECMIS_SINIRI = 4;
 
@@ -66,7 +66,7 @@ export async function POST(istek: Request) {
   // Yapay zekâ açıksa cevabı her zaman o verir: sayfadaki bilgi kaynaklı, sayfada olmayan "AI yorumu".
   // Ulaşılamazsa (yoğunluk, zaman aşımı) eşleştirmeye düşülmez, ziyaretçiye "tekrar dene" denir;
   // iki farklı yöntemin karışık cevapları kafa karıştırıyordu. Eşleştirme yalnız anahtar hiç yoksa çalışır.
-  if (yz) return Response.json(yz, { headers: CORS });
+  if (yz) return Response.json(cevabaAdresEkle(yz), { headers: CORS });
   if (yapayZekaAcik()) return Response.json({ hata: "Yapay zekâ şu an cevap veremedi." }, { status: 503, headers: CORS });
-  return Response.json(cevapla(eser, soru, dil), { headers: CORS });
+  return Response.json(cevabaAdresEkle(cevapla(eser, soru, dil)), { headers: CORS });
 }

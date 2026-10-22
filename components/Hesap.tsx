@@ -56,6 +56,26 @@ export default function Hesap({
       .catch(() => setUye(null));
   }, []);
 
+  // Uygulamada alınan pullar sayfa açıkken de gelsin: sekmeye dönünce ve açıkken 20 saniyede bir pullar yeniden okunur.
+  const uyeId = uye?.id;
+  useEffect(() => {
+    if (!uyeId) return;
+    const tazele = () => {
+      if (document.visibilityState !== "visible") return;
+      pullariGetir()
+        .then((pullar) => setUye((o) => (o && o.id === uyeId && o.pullar.join() !== pullar.join() ? { ...o, pullar } : o)))
+        .catch(() => {});
+    };
+    const zamanlayici = setInterval(tazele, 20000);
+    document.addEventListener("visibilitychange", tazele);
+    window.addEventListener("focus", tazele);
+    return () => {
+      clearInterval(zamanlayici);
+      document.removeEventListener("visibilitychange", tazele);
+      window.removeEventListener("focus", tazele);
+    };
+  }, [uyeId]);
+
   async function gonder(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setHata(undefined);

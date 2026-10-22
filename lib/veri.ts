@@ -6,6 +6,7 @@ import path from "node:path";
 import { kaynagaCevir } from "./kaynak";
 import { adSirala } from "./metin";
 import { dogrulanmisKaynaklar } from "./sunucu/kaynak-depo";
+import type { CevapCumlesi } from "./sunucu/sor";
 import { katmanla } from "./sunucu/surum";
 import { yayindakiSurumler } from "./sunucu/surum-depo";
 import type { Ayarlar, Eser, Il, IlliEser, KesifEseri, Kaynak, Rota, Sergi, Vakif } from "./tipler";
@@ -89,6 +90,37 @@ export function kaynakMetni(kaynak_id: string): { sayfa: number; metin: string; 
   } catch {
     return undefined;
   }
+}
+
+const pdfSayfaHaritalari = new Map<string, Map<number, number>>();
+
+/** Kitap sayfasının PDF'teki sırası (kaynak metninden; envanter PDF'lerinde her PDF sayfası iki kitap sayfasıdır). */
+export function pdfSayfasi(kaynak_id: string, sayfa: number): number | undefined {
+  let harita = pdfSayfaHaritalari.get(kaynak_id);
+  if (!harita) {
+    harita = new Map((kaynakMetni(kaynak_id) ?? []).map((s) => [s.sayfa, s.pdf_sayfa ?? s.sayfa]));
+    pdfSayfaHaritalari.set(kaynak_id, harita);
+  }
+  return harita.get(sayfa);
+}
+
+/** Kaynağın bağlantısı; PDF ise ve sayfa biliniyorsa "#page=N" ile o sayfada açılır. */
+export function kaynakAdresi(k: Kaynak, sayfa?: string): string | undefined {
+  if (!k.url) return undefined;
+  const no = Number(sayfa?.match(/\d+/)?.[0]);
+  const pdf = no && /\.pdf$/i.test(k.url) ? pdfSayfasi(k.id, no) : undefined;
+  return pdf ? `${k.url}#page=${pdf}` : k.url;
+}
+
+/** "Bu esere sor" cevabındaki kaynaklı cümlelere kaynağın bağlantısını ekler (etiket kitabı o sayfada açar). */
+export function cevabaAdresEkle<T extends { cumleler: CevapCumlesi[] }>(cevap: T): T {
+  const tumu = kaynaklar();
+  for (const c of cevap.cumleler) {
+    const k = c.kaynak_id ? tumu.get(c.kaynak_id) : undefined;
+    const adres = k && kaynakAdresi(k, c.sayfa);
+    if (adres) c.adres = adres;
+  }
+  return cevap;
 }
 
 export function kaynaklar(): Map<string, Kaynak> {

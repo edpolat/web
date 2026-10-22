@@ -5,15 +5,34 @@
     "baslik": "Bursa Vakıf Eserleri, I. ve II. Cilt (Osmangazi, Yıldırım)",
     "yayinci": "Vakıf Katılım",
     "yil": 2025,
-    "not": "Kitabın web sürümü bölümlerinden alındı (Web Sürümü.zip). Sayfa numaraları kitaba aittir."
+    "not": "Eski kayıt: kitabın web sürümü bölümleri (Web Sürümü.zip), sayfa numaraları basılı kitaptan farklı. Eserler artık vk-bursa-envanter-c1 kullanıyor."
+  },
+  {
+    "id": "vk-bursa-envanter-c1",
+    "tur": "envanter_kitabi",
+    "baslik": "Bursa Vakıf Eserleri, I. Cilt",
+    "yayinci": "Vakıf Katılım",
+    "yil": 2025,
+    "url": "https://www.vakifkatilim.com.tr/documents/KurumsalIletisim/yayinlarimiz/bursa-envanteri-cilt-1.pdf",
+    "not": "Vakıf Katılım'ın yayınlar sayfasındaki tam PDF. Sayfa numaraları basılı kitabınkidir; PDF'in her sayfası iki kitap sayfasıdır."
+  },
+  {
+    "id": "vk-bursa-envanter-c2",
+    "tur": "envanter_kitabi",
+    "baslik": "Bursa Vakıf Eserleri, II. Cilt",
+    "yayinci": "Vakıf Katılım",
+    "yil": 2025,
+    "url": "https://www.vakifkatilim.com.tr/documents/KurumsalIletisim/yayinlarimiz/bursa-envanteri-cilt-2.pdf",
+    "not": "Vakıf Katılım'ın yayınlar sayfasındaki tam PDF. Sayfa numaraları basılı kitabınkidir; PDF'in her sayfası iki kitap sayfasıdır."
   },
   {
     "id": "vk-bursa-envanter-c3",
     "tur": "envanter_kitabi",
-    "baslik": "Bursa Vakıf Eserleri, III. Cilt (Diğer İlçeler)",
+    "baslik": "Bursa Vakıf Eserleri, III. Cilt",
     "yayinci": "Vakıf Katılım",
     "yil": 2025,
-    "not": "Kitabın web sürümü bölümlerinden alındı (Web Sürümü.zip). Sayfa numaraları kitaba aittir."
+    "url": "https://www.vakifkatilim.com.tr/documents/KurumsalIletisim/yayinlarimiz/bursa-envanteri-cilt-3.pdf",
+    "not": "Vakıf Katılım'ın yayınlar sayfasındaki tam PDF. Sayfa numaraları basılı kitabınkidir; PDF'in her sayfası iki kitap sayfasıdır."
   },
   {
     "id": "unesco-1452",
@@ -29,7 +48,8 @@
     "baslik": "Konya Vakıf Eserleri Envanteri, I. Cilt",
     "yayinci": "Vakıf Katılım",
     "yil": 2024,
-    "not": "Kitabın web PDF'inden (konya-envanteri-1_cilt-web.pdf) yazı tipine göre otomatik ayrıştırıldı. Sayfa numaraları kitaba aittir. Konumlar ilçe merkezidir; konum_bul.py ile adresten düzeltilir."
+    "url": "https://www.vakifkatilim.com.tr/documents/KurumsalIletisim/yayinlarimiz/konya-envanteri-1_cilt-web.pdf",
+    "not": "Vakıf Katılım'ın yayınlar sayfasındaki tam PDF. Sayfa numaraları basılı kitabınkidir; PDF'in her sayfası iki kitap sayfasıdır (ilk iki PDF sayfası tektir)."
   },
   {
     "id": "vk-konya-envanter-c2",
@@ -37,7 +57,8 @@
     "baslik": "Konya Vakıf Eserleri Envanteri, II. Cilt",
     "yayinci": "Vakıf Katılım",
     "yil": 2024,
-    "not": "Kitabın web PDF'inden (konya-envanteri-2_cilt-web.pdf) yazı tipine göre otomatik ayrıştırıldı. Sayfa numaraları kitaba aittir. Konumlar ilçe merkezidir; konum_bul.py ile adresten düzeltilir."
+    "url": "https://www.vakifkatilim.com.tr/documents/KurumsalIletisim/yayinlarimiz/konya-envanteri-2_cilt-web.pdf",
+    "not": "Vakıf Katılım'ın yayınlar sayfasındaki tam PDF. Sayfa numaraları basılı kitabınkidir; PDF'in her sayfası iki kitap sayfasıdır (ilk iki PDF sayfası tektir)."
   },
   {
     "id": "vk-hatay-envanter",
@@ -45,6 +66,7 @@
     "baslik": "Hatay İli Vakıf Eserleri",
     "yayinci": "Vakıf Katılım",
     "yil": 2022,
-    "not": "Kitabın PDF'inden (hatay-vakif-eserleri.pdf) otomatik ayrıştırıldı. Kitap 2023 depremlerinden önce yayımlandı. Konumlar ilçe merkezidir."
+    "url": "https://www.vakifkatilim.com.tr/documents/KurumsalIletisim/hatay-vakif-eserleri.pdf",
+    "not": "Vakıf Katılım'ın yayınlar sayfasındaki tam PDF. Kitap 2023 depremlerinden önce yayımlandı. Sayfa numaraları basılı kitabınkidir; PDF'in her sayfası iki kitap sayfasıdır."
   }
 ]

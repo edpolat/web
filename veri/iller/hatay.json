@@ -186,6 +186,36 @@
           "durum": "kaynakli",
           "kaynak_id": "vk-hatay-envanter",
           "sayfa": "55-72"
+        },
+        {
+          "metin": {
+            "tr": "Külliyenin doğu girişinin hemen güneyinde, dikdörtgen alan üzerine kurulu türbenin içerisinde biri Yahya Peygambere, diğeri Paulos’a ait olduğuna inanılan yan yana iki sanduka bulunmaktadır.",
+            "en": "Just south of the eastern entrance of the complex, inside the tomb built on a rectangular area, there are two sarcophagi located side-by-side, one believed to belong to Prophet John and the other to Paul."
+          },
+          "kategori": "mimari",
+          "durum": "kaynakli",
+          "kaynak_id": "vk-hatay-envanter",
+          "sayfa": "70"
+        },
+        {
+          "metin": {
+            "tr": "Dikdörtgen planlı alanın aynalı tonozla örtülü olması yapıda dikkat çeken bir başka uygulamadır.",
+            "en": "The fact that the rectangular planned area is covered with a mirrored vault is another remarkable practice in the building."
+          },
+          "kategori": "mimari",
+          "durum": "kaynakli",
+          "kaynak_id": "vk-hatay-envanter",
+          "sayfa": "70"
+        },
+        {
+          "metin": {
+            "tr": "Türbenin ilk inşasına dair net bir bilgi bulunmazken, sandukaların konumu dikkate alındığında bunların İslam inançları esas alınarak yerleştirilmiş olduğu fark edilmektedir.",
+            "en": "Whereas there is no clear information about the first construction of the tomb, considering the location of the sarcophagi, it could be noticed that they were placed on the basis of Islamic beliefs."
+          },
+          "kategori": "tarihce",
+          "durum": "kaynakli",
+          "kaynak_id": "vk-hatay-envanter",
+          "sayfa": "70"
         }
       ],
       "gorseller": [
@@ -251,36 +281,6 @@
         "sayfa": "73"
       },
       "olgular": [
-        {
-          "metin": {
-            "tr": "Külliyenin doğu girişinin hemen güneyinde, dikdörtgen alan üzerine kurulu türbenin içerisinde biri Yahya Peygambere, diğeri Paulos’a ait olduğuna inanılan yan yana iki sanduka bulunmaktadır.",
-            "en": "Just south of the eastern entrance of the complex, inside the tomb built on a rectangular area, there are two sarcophagi located side-by-side, one believed to belong to Prophet John and the other to Paul."
-          },
-          "kategori": "mimari",
-          "durum": "kaynakli",
-          "kaynak_id": "vk-hatay-envanter",
-          "sayfa": "73-94"
-        },
-        {
-          "metin": {
-            "tr": "Dikdörtgen planlı alanın aynalı tonozla örtülü olması yapıda dikkat çeken bir başka uygulamadır.",
-            "en": "The fact that the rectangular planned area is covered with a mirrored vault is another remarkable practice in the building."
-          },
-          "kategori": "mimari",
-          "durum": "kaynakli",
-          "kaynak_id": "vk-hatay-envanter",
-          "sayfa": "73-94"
-        },
-        {
-          "metin": {
-            "tr": "Türbenin ilk inşasına dair net bir bilgi bulunmazken, sandukaların konumu dikkate alındığında bunların İslam inançları esas alınarak yerleştirilmiş olduğu fark edilmektedir.",
-            "en": "Whereas there is no clear information about the first construction of the tomb, considering the location of the sarcophagi, it could be noticed that they were placed on the basis of Islamic beliefs."
-          },
-          "kategori": "tarihce",
-          "durum": "kaynakli",
-          "kaynak_id": "vk-hatay-envanter",
-          "sayfa": "73-94"
-        },
         {
           "metin": {
             "tr": "Bir şehirde bulunan Müslümanların Cuma namazını birlikte kılmasını sağlamak amacıyla yapılan büyük mabetler ilk zamanlar “Mescid-i Cuma”, “Cuma Camii” veya “Cami-i Kebir” olarak adlandırılmıştır.",
@@ -614,6 +614,26 @@
           "durum": "kaynakli",
           "kaynak_id": "vk-hatay-envanter",
           "sayfa": "95-120"
+        },
+        {
+          "metin": {
+            "tr": "Şadırvan avlunun kuzey girişi ile caminin girişinin oluşturduğu eksen üzerinde bulunmaktadır.",
+            "en": "The shadirvan is located on the axis formed by the northern entrance of the courtyard and the entrance of the mosque."
+          },
+          "kategori": "mimari",
+          "durum": "kaynakli",
+          "kaynak_id": "vk-hatay-envanter",
+          "sayfa": "118"
+        },
+        {
+          "metin": {
+            "tr": "Şadırvan mevcut haliyle Batı tesirinde yenilenmiştir.",
+            "en": "The shadirvan in its current form was renovated under the influence of the West."
+          },
+          "kategori": "onarim",
+          "durum": "kaynakli",
+          "kaynak_id": "vk-hatay-envanter",
+          "sayfa": "118"
         }
       ],
       "gorseller": [
@@ -679,26 +699,6 @@
         "sayfa": "121"
       },
       "olgular": [
-        {
-          "metin": {
-            "tr": "Şadırvan avlunun kuzey girişi ile caminin girişinin oluşturduğu eksen üzerinde bulunmaktadır.",
-            "en": "The shadirvan is located on the axis formed by the northern entrance of the courtyard and the entrance of the mosque."
-          },
-          "kategori": "mimari",
-          "durum": "kaynakli",
-          "kaynak_id": "vk-hatay-envanter",
-          "sayfa": "121-138"
-        },
-        {
-          "metin": {
-            "tr": "Şadırvan mevcut haliyle Batı tesirinde yenilenmiştir.",
-            "en": "The shadirvan in its current form was renovated under the influence of the West."
-          },
-          "kategori": "onarim",
-          "durum": "kaynakli",
-          "kaynak_id": "vk-hatay-envanter",
-          "sayfa": "121-138"
-        },
         {
           "metin": {
             "tr": "Meydan Camii Külliyesi’nin kesin yapılış tarihi bilinmemektedir. Yakınında bulunan ve aynı ismi taşıyan hamamın 1527 tarihli Osmanlı sayımında adı geçmesi sebebiyle eser, 16. yüzyıla tarihlenmek istenmektedir. Hakkında sahip olduğumuz kesin bilgi yapının 1878’de esaslı bir şekilde onarılmış olmasıdır.",
@@ -1307,12 +1307,12 @@
         "en": "Mustafa Şevki Pasha Mosque and Complex"
       },
       "tur": "kulliye",
-      "ilce": "Antakya",
+      "ilce": "Reyhanlı",
       "konum": {
-        "enlem": 36.2025,
-        "boylam": 36.1605,
+        "enlem": 36.2675,
+        "boylam": 36.5675,
         "dogrulandi": false,
-        "yontem": "geocoding",
+        "yontem": "elle",
         "hassasiyet": "ilce"
       },
       "envanter": {
@@ -5298,12 +5298,12 @@
         "en": "Şenköy Sheikh Ahmet Kuseyri Mosque"
       },
       "tur": "cami",
-      "ilce": "Antakya",
+      "ilce": "Yayladağı",
       "konum": {
-        "enlem": 36.2025,
-        "boylam": 36.1605,
+        "enlem": 35.9036,
+        "boylam": 36.0611,
         "dogrulandi": false,
-        "yontem": "geocoding",
+        "yontem": "elle",
         "hassasiyet": "ilce"
       },
       "envanter": {
@@ -6397,12 +6397,12 @@
         "en": "Nardüzü Mosque"
       },
       "tur": "cami",
-      "ilce": "Antakya",
+      "ilce": "Arsuz",
       "konum": {
-        "enlem": 36.2025,
-        "boylam": 36.1605,
+        "enlem": 36.4131,
+        "boylam": 35.8892,
         "dogrulandi": false,
-        "yontem": "geocoding",
+        "yontem": "elle",
         "hassasiyet": "ilce"
       },
       "envanter": {

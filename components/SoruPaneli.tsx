@@ -94,7 +94,11 @@ export default function SoruPaneli({
                 <p key={j}>
                   {c.metin}{" "}
                   {c.kaynak_id ? (
-                    <a href={`#kaynak-${c.kaynak_id}`} className={`etiket etiket-${c.durum}`}>
+                    <a
+                      href={c.adres ?? `#kaynak-${c.kaynak_id}`}
+                      className={`etiket etiket-${c.durum}`}
+                      {...(c.adres ? { target: "_blank", rel: "noopener" } : {})}
+                    >
                       {t.durumIsareti[c.durum]} {durumAdlari[c.durum]}
                       {c.sayfa ? ` · ${t.sayfaKisa(c.sayfa)}` : ""}
                     </a>

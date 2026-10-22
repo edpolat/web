@@ -9,6 +9,7 @@ import { KAYNAK_SEMASI, anahtarKelimeler, belgeGuvenli, kaynakSonucu, maskele, p
 import { htmlSayfalari, icAdresMi, pdfSayfalari } from "../lib/sunucu/kaynak-metni";
 import { kaynakAnalizEt, kaynakIstemi, KAYNAK_SISTEMI } from "../lib/sunucu/yz-kaynak";
 import { geminiSemasi, yzAcik, yzJson } from "../lib/sunucu/yz-servis";
+import type { CevapCumlesi } from "../lib/sunucu/sor";
 
 /** Basit, metin katmanlı bir PDF üretir (her eleman bir sayfa). */
 function pdfYap(sayfalar: string[]): Uint8Array {
@@ -348,8 +349,30 @@ describe("varsayılan kaynakların metni (veri/kaynak-metinleri)", () => {
     expect(s394?.metin).toContain("Molla Fenârî");
     // Satır sonunda bölünmüş kelimeler ("al- maktadır") alıntı kontrolünü bozmaz.
     expect(pasajBul("Osmangazi ilçesi, Mollafenari Mahallesi, 12. Dilek Sokak, No:1’de yer almaktadır.", sayfalar!)).toBe(394);
-    expect(kaynakMetni("vk-bursa-envanter-c3")?.some((s) => s.sayfa === 325)).toBe(true);
-    expect(kaynakMetni("vk-hatay-envanter")).toBeUndefined();
     expect(kaynakMetni("../iller/bursa")).toBeUndefined();
+  });
+
+  it("tam kitap PDF'lerinde kitap sayfası PDF sırasına çevrilir (her PDF sayfası iki kitap sayfası)", async () => {
+    const { kaynakMetni, kaynakAdresi, kaynaklar } = await import("../lib/veri");
+    const adliye = kaynakMetni("vk-bursa-envanter-c3")?.find((s) => s.sayfa === 123);
+    expect(adliye?.metin).toContain("Adliye Köyü Camii");
+    expect(adliye?.pdf_sayfa).toBe(62);
+    expect(kaynakMetni("vk-hatay-envanter")?.find((s) => s.sayfa === 70)?.metin).toContain("Aziz Pavlos");
+    const konya = kaynaklar().get("vk-konya-envanter-c1")!;
+    expect(kaynakAdresi(konya, "82")).toBe(`${konya.url}#page=43`);
+    expect(kaynakAdresi(konya, undefined)).toBe(konya.url);
+  });
+
+  it("'Bu esere sor' cevabındaki kaynaklı cümle kitabı o sayfada açar", async () => {
+    const { cevabaAdresEkle, kaynaklar } = await import("../lib/veri");
+    const konya = kaynaklar().get("vk-konya-envanter-c1")!;
+    const c = cevabaAdresEkle<{ cumleler: CevapCumlesi[] }>({
+      cumleler: [
+        { metin: "Kaynaklı.", durum: "kaynakli", kaynak_id: "vk-konya-envanter-c1", sayfa: "82" },
+        { metin: "Yorum.", durum: "ai_yorumu" },
+      ],
+    });
+    expect(c.cumleler[0].adres).toBe(`${konya.url}#page=43`);
+    expect(c.cumleler[1].adres).toBeUndefined();
   });
 });

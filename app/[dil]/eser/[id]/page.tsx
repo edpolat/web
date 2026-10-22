@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DILLER, ceviriEksik, gecerliDil, metin } from "@/lib/metin";
-import { ayarlar, iller, sergiler, tumEserler, vakiflar, yayindakiEser, yayindakiKaynaklar } from "@/lib/veri";
+import { ayarlar, iller, kaynakAdresi, sergiler, tumEserler, vakiflar, yayindakiEser, yayindakiKaynaklar } from "@/lib/veri";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
 import HaritaYukle from "@/components/HaritaYukle";
@@ -84,6 +84,11 @@ export default async function EserKarti({ params }: { params: Params }) {
         </p>
         <h1>{metin(eser.ad, dil)}</h1>
       </header>
+      {eser.il === "hatay" && (
+        <p className="uyari" role="note">
+          {t.hatayDeprem}
+        </p>
+      )}
 
       {kapak && (
         <figure className="eser-kapak">
@@ -159,12 +164,15 @@ export default async function EserKarti({ params }: { params: Params }) {
           <ul className="olgular">
             {olgular.map((o, i) => {
               const kaynak = o.kaynak_id ? kaynakMap.get(o.kaynak_id) : undefined;
+              // Kitabın PDF'i varsa etiket onu bilginin geçtiği sayfada açar; yoksa kaynakçaya iner.
+              const adres = kaynak && o.sayfa ? kaynakAdresi(kaynak, o.sayfa) : undefined;
               return (
                 <li key={i} id={`olgu-${i}`}>
                   <span lang={ceviriEksik(o.metin, dil) ? "tr" : undefined}>{metin(o.metin, dil)}</span>{" "}
                   <a
                     className={`etiket etiket-${o.durum}`}
-                    href={kaynak ? `#kaynak-${kaynak.id}` : undefined}
+                    href={adres ?? (kaynak ? `#kaynak-${kaynak.id}` : undefined)}
+                    {...(adres ? { target: "_blank", rel: "noopener" } : {})}
                     title={kaynak ? `${kaynak.baslik}${o.sayfa ? `, ${t.sayfa} ${o.sayfa}` : ""}` : undefined}
                   >
                     {t.durumIsareti[o.durum]} {durumAdlari[o.durum]}
@@ -255,25 +263,30 @@ export default async function EserKarti({ params }: { params: Params }) {
           )}
           <HaritaYukle dil={dil} eserler={[eser]} merkez={eser.konum} yakinlastirma={eser.konum.hassasiyet === "ilce" ? 13 : 16} yukseklik={280} />
           {eser.konum.hassasiyet !== "ilce" && (
-            <p className="dugmeler yol-tarifi">
-              {/* Mobil uygulamadaki gibi yürüyerek yol tarifi */}
-              <a
-                className="dugme"
-                href={`https://www.google.com/maps/dir/?api=1&destination=${eser.konum.enlem},${eser.konum.boylam}&travelmode=walking`}
-                target="_blank"
-                rel="noopener"
-              >
-                {t.yolTarifi}
-              </a>
-              <a
-                className="dugme ikincil"
-                href={`https://maps.apple.com/?daddr=${eser.konum.enlem},${eser.konum.boylam}&dirflg=w`}
-                target="_blank"
-                rel="noopener"
-              >
-                {t.appleHaritalar}
-              </a>
-            </p>
+            <details className="yol-tarifi">
+              {/* Mobil uygulamadaki gibi yürüyerek yol tarifi; tıklayınca harita uygulaması seçilir */}
+              <summary className="dugme">{t.yolTarifi}</summary>
+              <ul>
+                <li>
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${eser.konum.enlem},${eser.konum.boylam}&travelmode=walking`}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    {t.googleHaritalar}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`https://maps.apple.com/?daddr=${eser.konum.enlem},${eser.konum.boylam}&dirflg=w`}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    {t.appleHaritalar}
+                  </a>
+                </li>
+              </ul>
+            </details>
           )}
         </section>
       )}
@@ -302,7 +315,16 @@ export default async function EserKarti({ params }: { params: Params }) {
                   {k.yazar ? `${k.yazar}, ` : ""}
                   {k.url ? <a href={k.url}>{k.baslik}</a> : <cite>{k.baslik}</cite>}
                   {k.yayinci ? `, ${k.yayinci}` : ""}
-                  {k.yil ? `, ${k.yil}` : ""}.
+                  {k.yil ? `, ${k.yil}` : ""}
+                  {k.url && kid === eser.envanter?.kaynak_id && eser.envanter.sayfa && (
+                    <>
+                      {", "}
+                      <a href={kaynakAdresi(k, eser.envanter.sayfa)} target="_blank" rel="noopener">
+                        {t.sayfaKisa(eser.envanter.sayfa)}
+                      </a>
+                    </>
+                  )}
+                  .
                 </li>
               );
             })}

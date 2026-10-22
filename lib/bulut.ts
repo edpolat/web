@@ -91,7 +91,7 @@ export async function pullariGetir(): Promise<string[]> {
 }
 
 export async function cikisYap(): Promise<void> {
-  await vt().auth.signOut().catch(() => {});
+  await vt().auth.signOut({ scope: "local" }).catch(() => {});
 }
 
 /** Oturum her değiştiğinde (açılış, giriş, yenileme, çıkış) güncel erişim jetonunu bildirir; aboneliği bırakan fonksiyonu döner. */

@@ -12,7 +12,7 @@
       "yontem": "elle"
     },
     "yakinlastirma": 13,
-    "envanter_kaynak_id": "vk-bursa-envanter-c1-2",
+    "envanter_kaynak_id": "vk-bursa-envanter-c1",
     "envanter_yili": 2025,
     "toplam_eser": 385
   },
@@ -52,7 +52,7 @@
               "tr": "Vakıflar Müdürlüğü ve Bursa Eski Eserleri Sevenler Kurumu tarafından yapılan onarım; asıl ibadet mekânı ikiye ayrılmış, üzeri tonozla örtülmüştür.",
               "en": "Restoration carried out by the Foundations Directorate and the Bursa Association for the Appreciation of Antiquities; the main place of worship was divided into two and covered with a vault."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2011,
@@ -60,7 +60,7 @@
               "tr": "Son onarım, Bursa Vakıflar Bölge Müdürlüğü tarafından gerçekleştirilmiştir.",
               "en": "Last restoration carried out by the Bursa Regional Directorate of Foundations."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -72,8 +72,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "394"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "396"
         },
         {
           "metin": {
@@ -82,8 +82,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "394"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "396"
         },
         {
           "metin": {
@@ -92,8 +92,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "395"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "397"
         },
         {
           "metin": {
@@ -102,8 +102,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "396"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "398"
         },
         {
           "metin": {
@@ -112,8 +112,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "396"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "398"
         },
         {
           "metin": {
@@ -122,8 +122,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "396"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "398"
         },
         {
           "metin": {
@@ -132,13 +132,13 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "396"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "398"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "394-397"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "396-398"
       },
       "konum": {
         "enlem": 40.176984,
@@ -156,7 +156,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/molla-fenari-camii/02.webp",
@@ -166,7 +166,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/molla-fenari-camii/03.webp",
@@ -176,7 +176,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/molla-fenari-camii/04.webp",
@@ -186,7 +186,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/molla-fenari-camii/05.webp",
@@ -196,7 +196,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/molla-fenari-camii/06.webp",
@@ -206,7 +206,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/molla-fenari-camii/07.webp",
@@ -216,7 +216,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/molla-fenari-camii/08.webp",
@@ -226,7 +226,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/molla-fenari-camii/09.webp",
@@ -236,7 +236,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/molla-fenari-camii/10.webp",
@@ -246,7 +246,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/molla-fenari-camii/11.webp",
@@ -256,7 +256,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -301,8 +301,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "398"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "400"
         },
         {
           "metin": {
@@ -311,8 +311,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "398"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "400"
         },
         {
           "metin": {
@@ -321,8 +321,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "398"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "400"
         },
         {
           "metin": {
@@ -331,8 +331,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "398"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "400"
         },
         {
           "metin": {
@@ -341,8 +341,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "398"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "400"
         },
         {
           "metin": {
@@ -351,8 +351,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "398"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "400"
         },
         {
           "metin": {
@@ -361,13 +361,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "398"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "400"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "398"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "400"
       },
       "konum": {
         "enlem": 40.184153,
@@ -385,7 +385,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/molla-gurani-mescidi/02.webp",
@@ -395,7 +395,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -437,7 +437,7 @@
               "tr": "H. 1205 / M. 1790 yılında onarıldığına dair kayıtlar bulunmaktadır.",
               "en": "Records indicate that it was repaired in AH 1205 / AD 1790."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2010,
@@ -445,7 +445,7 @@
               "tr": "2008 yılında Osmangazi Belediyesi tarafından mimari uygulama projeleri hazırlanmış, 2010 yılında Vakıflar Genel Müdürlüğü tarafından yeniden ayağa kaldırılmıştır.",
               "en": "Architectural implementation projects were prepared by the Osmangazi Municipality in 2008, and it was rebuilt by the General Directorate of Foundations in 2010."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2011,
@@ -453,7 +453,7 @@
               "tr": "Hazire alanı, Bursa Büyükşehir Belediyesi tarafından kapsamlı bir bakım ve onarımdan geçirilerek düzenlenmiştir.",
               "en": "The graveyard area was reorganized by the Bursa Metropolitan Municipality, undergoing extensive maintenance and repair."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -465,8 +465,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "399"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "401"
         },
         {
           "metin": {
@@ -475,8 +475,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "399"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "401"
         },
         {
           "metin": {
@@ -485,8 +485,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "399"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "401"
         },
         {
           "metin": {
@@ -495,8 +495,8 @@
           },
           "kategori": "vakif",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "399"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "401"
         },
         {
           "metin": {
@@ -505,8 +505,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "399"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "401"
         },
         {
           "metin": {
@@ -515,8 +515,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "400"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "402"
         },
         {
           "metin": {
@@ -525,8 +525,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "400"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "402"
         },
         {
           "metin": {
@@ -535,13 +535,13 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "401"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "403"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "399-401"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "401-403"
       },
       "konum": {
         "enlem": 40.184153,
@@ -559,7 +559,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/nakkas-ali-mescidi/02.webp",
@@ -569,7 +569,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/nakkas-ali-mescidi/03.webp",
@@ -579,7 +579,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/nakkas-ali-mescidi/04.webp",
@@ -589,7 +589,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/nakkas-ali-mescidi/05.webp",
@@ -599,7 +599,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/nakkas-ali-mescidi/06.webp",
@@ -609,7 +609,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/nakkas-ali-mescidi/07.webp",
@@ -619,7 +619,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -667,7 +667,7 @@
               "tr": "Bursa Eski Eserleri Sevenler Derneği tarafından onarılarak yeniden ibadete açılmıştır.",
               "en": "Repaired and reopened for worship by the Bursa Association for the Appreciation of Antiquities."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -679,8 +679,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "403"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "405"
         },
         {
           "metin": {
@@ -689,8 +689,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "403"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "405"
         },
         {
           "metin": {
@@ -699,8 +699,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "404"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "406"
         },
         {
           "metin": {
@@ -709,8 +709,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "404"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "406"
         },
         {
           "metin": {
@@ -719,8 +719,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "404"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "406"
         },
         {
           "metin": {
@@ -729,8 +729,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "405"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "407"
         },
         {
           "metin": {
@@ -739,13 +739,13 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "405"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "407"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "403-405"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "405-407"
       },
       "konum": {
         "enlem": 40.182323,
@@ -763,7 +763,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/nalbantoglu-camii/02.webp",
@@ -773,7 +773,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/nalbantoglu-camii/03.webp",
@@ -783,7 +783,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/nalbantoglu-camii/04.webp",
@@ -793,7 +793,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/nalbantoglu-camii/05.webp",
@@ -803,7 +803,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -839,8 +839,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "406"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "408"
         },
         {
           "metin": {
@@ -849,8 +849,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "406"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "408"
         },
         {
           "metin": {
@@ -859,8 +859,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "406"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "408"
         },
         {
           "metin": {
@@ -869,8 +869,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "406"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "408"
         },
         {
           "metin": {
@@ -879,8 +879,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "406"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "405"
         },
         {
           "metin": {
@@ -889,13 +889,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "406"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "408"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "406"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "408"
       },
       "konum": {
         "enlem": 40.181574,
@@ -913,7 +913,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/pasa-camii/02.webp",
@@ -923,7 +923,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/pasa-camii/03.webp",
@@ -933,7 +933,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -965,8 +965,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "407"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "409"
         },
         {
           "metin": {
@@ -975,8 +975,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "407"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "409"
         },
         {
           "metin": {
@@ -985,8 +985,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "407"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "409"
         },
         {
           "metin": {
@@ -995,8 +995,8 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "407"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "409"
         },
         {
           "metin": {
@@ -1005,13 +1005,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "407"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "409"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "407"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "409"
       },
       "konum": {
         "enlem": 40.190156,
@@ -1029,7 +1029,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/ruscuk-camii/02.webp",
@@ -1039,7 +1039,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/ruscuk-camii/03.webp",
@@ -1049,7 +1049,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/ruscuk-camii/04.webp",
@@ -1059,7 +1059,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -1108,8 +1108,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "408"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "410"
         },
         {
           "metin": {
@@ -1118,8 +1118,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "408"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "410"
         },
         {
           "metin": {
@@ -1128,8 +1128,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "408"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "410"
         },
         {
           "metin": {
@@ -1138,8 +1138,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "408"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "410"
         },
         {
           "metin": {
@@ -1148,8 +1148,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "408"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "411"
         },
         {
           "metin": {
@@ -1158,8 +1158,8 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "408"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "410"
         },
         {
           "metin": {
@@ -1168,13 +1168,13 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "409"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "411"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "408-409"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "410-411"
       },
       "konum": {
         "enlem": 40.184153,
@@ -1192,7 +1192,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sati-fakih-camii/02.webp",
@@ -1202,7 +1202,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sati-fakih-camii/03.webp",
@@ -1212,7 +1212,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sati-fakih-camii/04.webp",
@@ -1222,7 +1222,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sati-fakih-camii/05.webp",
@@ -1232,7 +1232,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sati-fakih-camii/06.webp",
@@ -1242,7 +1242,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -1285,7 +1285,7 @@
               "tr": "Eski Eserleri Sevenler Kurumu tarafından revak yenilenmiş ve yapı genel bir onarımdan geçirilmiştir.",
               "en": "The portico was renovated by the Association for the Appreciation of Antiquities and the building underwent a general restoration."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -1297,8 +1297,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "410"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "412"
         },
         {
           "metin": {
@@ -1307,8 +1307,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "410"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "412"
         },
         {
           "metin": {
@@ -1317,8 +1317,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "411"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "413"
         },
         {
           "metin": {
@@ -1327,8 +1327,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "411"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "413"
         },
         {
           "metin": {
@@ -1337,8 +1337,8 @@
           },
           "kategori": "vakif",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "411"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "413"
         },
         {
           "metin": {
@@ -1347,8 +1347,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "412"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "414"
         },
         {
           "metin": {
@@ -1357,8 +1357,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "412"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "414"
         },
         {
           "metin": {
@@ -1367,13 +1367,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "412"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "414"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "410-412"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "412-414"
       },
       "konum": {
         "enlem": 40.182325,
@@ -1391,7 +1391,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/selcuk-hatun-camii/02.webp",
@@ -1401,7 +1401,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/selcuk-hatun-camii/03.webp",
@@ -1411,7 +1411,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/selcuk-hatun-camii/04.webp",
@@ -1421,7 +1421,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -1464,7 +1464,7 @@
               "tr": "Bursa Büyükşehir Belediyesi tarafından aslına uygun şekilde restore edilmiştir.",
               "en": "Restored to its original state by the Bursa Metropolitan Municipality."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -1476,8 +1476,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "413"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "415"
         },
         {
           "metin": {
@@ -1486,8 +1486,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "413"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "415"
         },
         {
           "metin": {
@@ -1496,8 +1496,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "413"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "415"
         },
         {
           "metin": {
@@ -1506,8 +1506,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "413"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "415"
         },
         {
           "metin": {
@@ -1516,8 +1516,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "414"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "416"
         },
         {
           "metin": {
@@ -1526,8 +1526,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "414"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "416"
         },
         {
           "metin": {
@@ -1536,13 +1536,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "414"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "416"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "413-414"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "415-416"
       },
       "konum": {
         "enlem": 40.191601,
@@ -1560,7 +1560,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/selimiye-camii/02.webp",
@@ -1570,7 +1570,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/selimiye-camii/03.webp",
@@ -1580,7 +1580,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -1627,8 +1627,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "415"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "417"
         },
         {
           "metin": {
@@ -1637,8 +1637,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "415"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "417"
         },
         {
           "metin": {
@@ -1647,8 +1647,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "415"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "417"
         },
         {
           "metin": {
@@ -1657,8 +1657,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "415"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "417"
         },
         {
           "metin": {
@@ -1667,8 +1667,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "415"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "417"
         },
         {
           "metin": {
@@ -1677,13 +1677,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "415"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "414"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "415"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "417"
       },
       "konum": {
         "enlem": 40.183974,
@@ -1701,7 +1701,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/simkes-sirmakes-camii/02.webp",
@@ -1711,7 +1711,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -1750,8 +1750,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "416"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "418"
         },
         {
           "metin": {
@@ -1760,8 +1760,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "416"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "418"
         },
         {
           "metin": {
@@ -1770,8 +1770,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "416"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "418"
         },
         {
           "metin": {
@@ -1780,8 +1780,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "416"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "418"
         },
         {
           "metin": {
@@ -1790,13 +1790,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "416"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "418"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "416"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "418"
       },
       "konum": {
         "enlem": 40.178783,
@@ -1814,7 +1814,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sivasiler-tahtali-camii/02.webp",
@@ -1824,7 +1824,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -1864,8 +1864,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "417"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "419"
         },
         {
           "metin": {
@@ -1874,8 +1874,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "417"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "419"
         },
         {
           "metin": {
@@ -1884,8 +1884,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "418"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "420"
         },
         {
           "metin": {
@@ -1894,8 +1894,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "418"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "420"
         },
         {
           "metin": {
@@ -1904,8 +1904,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "418"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "420"
         },
         {
           "metin": {
@@ -1914,13 +1914,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "418"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "420"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "417-420"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "419-420"
       },
       "konum": {
         "enlem": 40.188736,
@@ -1938,7 +1938,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehabettin-pasa-camii/02.webp",
@@ -1948,7 +1948,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehabettin-pasa-camii/03.webp",
@@ -1958,7 +1958,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehabettin-pasa-camii/04.webp",
@@ -1968,7 +1968,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehabettin-pasa-camii/05.webp",
@@ -1978,7 +1978,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehabettin-pasa-camii/06.webp",
@@ -1988,7 +1988,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehabettin-pasa-camii/07.webp",
@@ -1998,7 +1998,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -2036,7 +2036,7 @@
               "tr": "Eski cami tamir edilmiştir.",
               "en": "The old mosque was repaired."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1844,
@@ -2044,7 +2044,7 @@
               "tr": "Eski cami tamir edilmiştir.",
               "en": "The old mosque was repaired."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1892,
@@ -2052,7 +2052,7 @@
               "tr": "1855 depreminden sonra yıllarca süren tamirat sonucunda yalnızca ortadaki iki kubbeli bölüm tamamlanmış ve cami yeniden ibadete açılmıştır.",
               "en": "After years of repair work following the 1855 earthquake, only the two-domed section in the middle was completed and the mosque was reopened for worship."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1962,
@@ -2060,7 +2060,7 @@
               "tr": "Bursa Eski Eserleri Sevenler Kurumu tarafından onarılmıştır.",
               "en": "Repaired by the Bursa Association for the Appreciation of Antiquities."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2012,
@@ -2068,7 +2068,7 @@
               "tr": "Kapsamlı bir restorasyon geçirmiştir.",
               "en": "Underwent a comprehensive restoration."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -2080,7 +2080,7 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
+          "kaynak_id": "vk-bursa-envanter-c1",
           "sayfa": "421"
         },
         {
@@ -2090,7 +2090,7 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
+          "kaynak_id": "vk-bursa-envanter-c1",
           "sayfa": "421"
         },
         {
@@ -2100,7 +2100,7 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
+          "kaynak_id": "vk-bursa-envanter-c1",
           "sayfa": "421"
         },
         {
@@ -2110,7 +2110,7 @@
           },
           "kategori": "vakif",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
+          "kaynak_id": "vk-bursa-envanter-c1",
           "sayfa": "421"
         },
         {
@@ -2120,7 +2120,7 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
+          "kaynak_id": "vk-bursa-envanter-c1",
           "sayfa": "422"
         },
         {
@@ -2130,7 +2130,7 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
+          "kaynak_id": "vk-bursa-envanter-c1",
           "sayfa": "422"
         },
         {
@@ -2140,7 +2140,7 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
+          "kaynak_id": "vk-bursa-envanter-c1",
           "sayfa": "423"
         },
         {
@@ -2150,13 +2150,13 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
+          "kaynak_id": "vk-bursa-envanter-c1",
           "sayfa": "423"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "421-426"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "421-423"
       },
       "konum": {
         "enlem": 40.186318,
@@ -2174,7 +2174,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehadet-kale-saray-camii/02.webp",
@@ -2184,7 +2184,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehadet-kale-saray-camii/03.webp",
@@ -2194,7 +2194,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehadet-kale-saray-camii/04.webp",
@@ -2204,7 +2204,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehadet-kale-saray-camii/05.webp",
@@ -2214,7 +2214,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehadet-kale-saray-camii/06.webp",
@@ -2224,7 +2224,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehadet-kale-saray-camii/07.webp",
@@ -2234,7 +2234,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehadet-kale-saray-camii/08.webp",
@@ -2244,7 +2244,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehadet-kale-saray-camii/09.webp",
@@ -2254,7 +2254,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehadet-kale-saray-camii/10.webp",
@@ -2264,7 +2264,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehadet-kale-saray-camii/11.webp",
@@ -2274,7 +2274,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -2307,7 +2307,7 @@
               "tr": "Mevcut minare yeniden inşa edilmiştir.",
               "en": "The current minaret was rebuilt."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -2319,8 +2319,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "427"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "425"
         },
         {
           "metin": {
@@ -2329,8 +2329,8 @@
           },
           "kategori": "vakif",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "427"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "425"
         },
         {
           "metin": {
@@ -2339,8 +2339,8 @@
           },
           "kategori": "vakif",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "427"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "425"
         },
         {
           "metin": {
@@ -2349,8 +2349,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "427"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "425"
         },
         {
           "metin": {
@@ -2359,8 +2359,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "428"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "426"
         },
         {
           "metin": {
@@ -2369,8 +2369,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "428"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "426"
         },
         {
           "metin": {
@@ -2379,13 +2379,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "428"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "426"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "427-429"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "425-426"
       },
       "konum": {
         "enlem": 40.187643,
@@ -2403,7 +2403,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehrekustu-pars-bey-camii/02.webp",
@@ -2413,7 +2413,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehrekustu-pars-bey-camii/03.webp",
@@ -2423,7 +2423,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehrekustu-pars-bey-camii/04.webp",
@@ -2433,7 +2433,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/sehrekustu-pars-bey-camii/05.webp",
@@ -2443,7 +2443,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -2483,8 +2483,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "430"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "428"
         },
         {
           "metin": {
@@ -2493,8 +2493,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "430"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "428"
         },
         {
           "metin": {
@@ -2503,8 +2503,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "430"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "428"
         },
         {
           "metin": {
@@ -2513,8 +2513,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "430"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "428"
         },
         {
           "metin": {
@@ -2523,8 +2523,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "430"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "428"
         },
         {
           "metin": {
@@ -2533,13 +2533,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "430"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "428"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "430"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "428"
       },
       "konum": {
         "enlem": 40.183382,
@@ -2557,7 +2557,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/seker-hoca-camii/02.webp",
@@ -2567,7 +2567,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -2614,7 +2614,7 @@
               "tr": "Yapı tamir edilmiştir.",
               "en": "The building was repaired."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1758,
@@ -2622,7 +2622,7 @@
               "tr": "Yapı tamir edilmiştir.",
               "en": "The building was repaired."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1916,
@@ -2630,7 +2630,7 @@
               "tr": "Ahmet Faik Efendi tarafından yeniden inşa ettirilmiştir.",
               "en": "Rebuilt by Ahmet Faik Efendi."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -2642,8 +2642,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "431"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "429"
         },
         {
           "metin": {
@@ -2652,8 +2652,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "431"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "429"
         },
         {
           "metin": {
@@ -2662,8 +2662,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "431"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "429"
         },
         {
           "metin": {
@@ -2672,8 +2672,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "432"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "430"
         },
         {
           "metin": {
@@ -2682,8 +2682,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "432"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "430"
         },
         {
           "metin": {
@@ -2692,8 +2692,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "432"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "430"
         },
         {
           "metin": {
@@ -2702,13 +2702,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "432"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "430"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "431-432"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "429-430"
       },
       "konum": {
         "enlem": 40.184269,
@@ -2726,7 +2726,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/serafettin-pasa-okcular-camii-ve-haziresi/02.webp",
@@ -2736,7 +2736,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/serafettin-pasa-okcular-camii-ve-haziresi/03.webp",
@@ -2746,7 +2746,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/serafettin-pasa-okcular-camii-ve-haziresi/04.webp",
@@ -2756,7 +2756,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -2797,8 +2797,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "433"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "431"
         },
         {
           "metin": {
@@ -2807,8 +2807,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "433"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "431"
         },
         {
           "metin": {
@@ -2817,8 +2817,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "433"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "431"
         },
         {
           "metin": {
@@ -2827,8 +2827,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "433"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "431"
         },
         {
           "metin": {
@@ -2837,8 +2837,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "434"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "432"
         },
         {
           "metin": {
@@ -2847,8 +2847,8 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "434"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "432"
         },
         {
           "metin": {
@@ -2857,13 +2857,13 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "434"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "432"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "433-434"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "431-432"
       },
       "konum": {
         "enlem": 40.177754,
@@ -2881,7 +2881,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/seyh-hamit-somuncu-baba-ayazma-camii-ve-haziresi/02.webp",
@@ -2891,7 +2891,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/seyh-hamit-somuncu-baba-ayazma-camii-ve-haziresi/03.webp",
@@ -2901,7 +2901,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/seyh-hamit-somuncu-baba-ayazma-camii-ve-haziresi/04.webp",
@@ -2911,7 +2911,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/seyh-hamit-somuncu-baba-ayazma-camii-ve-haziresi/05.webp",
@@ -2921,7 +2921,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -2964,7 +2964,7 @@
               "tr": "H. 1273 / M. 1856 tarihli tamir kayıtları: onarıma mütevellî Kutbî ve Hacı Ağa Hüseyin gayret etmiştir.",
               "en": "Repair records dated AH 1273 / AD 1856: the trustee Kutbi and Hacı Ağa Hüseyin undertook the repair."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -2976,8 +2976,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "435"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "433"
         },
         {
           "metin": {
@@ -2986,8 +2986,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "435"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "433"
         },
         {
           "metin": {
@@ -2996,8 +2996,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "435"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "433"
         },
         {
           "metin": {
@@ -3006,8 +3006,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "436"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "434"
         },
         {
           "metin": {
@@ -3016,8 +3016,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "436"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "434"
         },
         {
           "metin": {
@@ -3026,8 +3026,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "436"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "434"
         },
         {
           "metin": {
@@ -3036,13 +3036,13 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "436"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "434"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "435-436"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "433-434"
       },
       "konum": {
         "enlem": 40.178722,
@@ -3060,7 +3060,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/seyh-konevi-camii/02.webp",
@@ -3070,7 +3070,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/seyh-konevi-camii/03.webp",
@@ -3080,7 +3080,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/seyh-konevi-camii/04.webp",
@@ -3090,7 +3090,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/seyh-konevi-camii/05.webp",
@@ -3100,7 +3100,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -3143,7 +3143,7 @@
               "tr": "Tamir.",
               "en": "Repair."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1523,
@@ -3151,7 +3151,7 @@
               "tr": "Tamir.",
               "en": "Repair."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1562,
@@ -3159,7 +3159,7 @@
               "tr": "Tamir.",
               "en": "Repair."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1571,
@@ -3167,7 +3167,7 @@
               "tr": "Tamir.",
               "en": "Repair."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1950,
@@ -3175,7 +3175,7 @@
               "tr": "Bursa Eski Eserleri Sevenler Kurumu tarafından çatılı olarak yeniden ayağa kaldırıldı.",
               "en": "Rebuilt with a roof by the Bursa Association for the Appreciation of Antiquities."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2017,
@@ -3183,7 +3183,7 @@
               "tr": "En son onarım.",
               "en": "Last repair."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -3195,8 +3195,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "438"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "436"
         },
         {
           "metin": {
@@ -3205,8 +3205,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "437"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "435"
         },
         {
           "metin": {
@@ -3215,8 +3215,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "438"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "436"
         },
         {
           "metin": {
@@ -3225,8 +3225,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "438"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "436"
         },
         {
           "metin": {
@@ -3235,8 +3235,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "439"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "437"
         },
         {
           "metin": {
@@ -3245,8 +3245,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "439"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "437"
         },
         {
           "metin": {
@@ -3255,13 +3255,13 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "439"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "437"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "437-439"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "435-437"
       },
       "konum": {
         "enlem": 40.186082,
@@ -3279,7 +3279,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/seyh-pasa-dibekli-camii/02.webp",
@@ -3289,7 +3289,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/seyh-pasa-dibekli-camii/03.webp",
@@ -3299,7 +3299,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/seyh-pasa-dibekli-camii/04.webp",
@@ -3309,7 +3309,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -3346,7 +3346,7 @@
               "tr": "Kapsamlı onarım; duvarları sıvandı.",
               "en": "Extensive renovation; its walls were plastered."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -3358,8 +3358,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "440"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "438"
         },
         {
           "metin": {
@@ -3368,8 +3368,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "440"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "438"
         },
         {
           "metin": {
@@ -3378,8 +3378,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "440"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "438"
         },
         {
           "metin": {
@@ -3388,8 +3388,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "440"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "438"
         },
         {
           "metin": {
@@ -3398,8 +3398,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "440"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "438"
         },
         {
           "metin": {
@@ -3408,13 +3408,13 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "440"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "438"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "440"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "438"
       },
       "konum": {
         "enlem": 40.185307,
@@ -3432,7 +3432,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/tahtali-hatipzade-mescidi/02.webp",
@@ -3442,7 +3442,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/tahtali-hatipzade-mescidi/03.webp",
@@ -3452,7 +3452,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/tahtali-hatipzade-mescidi/04.webp",
@@ -3462,7 +3462,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/tahtali-hatipzade-mescidi/05.webp",
@@ -3472,7 +3472,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/tahtali-hatipzade-mescidi/06.webp",
@@ -3482,7 +3482,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -3526,7 +3526,7 @@
               "tr": "Kamulaştırılarak restore edildi; 2014'te ibadete açıldı.",
               "en": "Expropriated and restored; opened for worship in 2014."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -3538,8 +3538,8 @@
           },
           "kategori": "vakif",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "441"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "439"
         },
         {
           "metin": {
@@ -3548,8 +3548,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "441"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "439"
         },
         {
           "metin": {
@@ -3558,8 +3558,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "441"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "439"
         },
         {
           "metin": {
@@ -3568,8 +3568,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "441"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "439"
         },
         {
           "metin": {
@@ -3578,8 +3578,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "441"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "439"
         },
         {
           "metin": {
@@ -3588,8 +3588,8 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "441"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "439"
         },
         {
           "metin": {
@@ -3598,13 +3598,13 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "441"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "439"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "441"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "439"
       },
       "konum": {
         "enlem": 40.186153,
@@ -3650,8 +3650,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "442"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "440"
         },
         {
           "metin": {
@@ -3660,8 +3660,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "442"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "440"
         },
         {
           "metin": {
@@ -3670,8 +3670,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "443"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "441"
         },
         {
           "metin": {
@@ -3680,8 +3680,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "443"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "441"
         },
         {
           "metin": {
@@ -3690,8 +3690,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "443"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "441"
         },
         {
           "metin": {
@@ -3700,13 +3700,13 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "443"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "441"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "442-444"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "440-441"
       },
       "konum": {
         "enlem": 40.184958,
@@ -3724,7 +3724,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/tuzpazari-camii/02.webp",
@@ -3734,7 +3734,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/tuzpazari-camii/03.webp",
@@ -3744,7 +3744,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/tuzpazari-camii/04.webp",
@@ -3754,7 +3754,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -3792,7 +3792,7 @@
               "tr": "1950'de yalnızca minaresi ayakta kalacak şekilde yıkılan cami, mevcut planıyla ve dergâhın yerini de içine alacak biçimde yeniden inşa edildi.",
               "en": "Demolished in 1950 leaving only its minaret, the mosque was rebuilt with its current plan, including the location of the Sufi lodge."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1992,
@@ -3800,7 +3800,7 @@
               "tr": "Onarım; dış cephesi yeşile boyandı.",
               "en": "Restoration; its exterior was painted green."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2016,
@@ -3808,7 +3808,7 @@
               "tr": "Bursa Büyükşehir Belediyesi tarafından restore edildi.",
               "en": "Restored by the Bursa Metropolitan Municipality."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -3820,8 +3820,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "445"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "443"
         },
         {
           "metin": {
@@ -3830,8 +3830,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "445"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "443"
         },
         {
           "metin": {
@@ -3840,8 +3840,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "445"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "443"
         },
         {
           "metin": {
@@ -3850,8 +3850,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "446"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "444"
         },
         {
           "metin": {
@@ -3860,8 +3860,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "446"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "444"
         },
         {
           "metin": {
@@ -3870,8 +3870,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "446"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "444"
         },
         {
           "metin": {
@@ -3880,8 +3880,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "446"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "444"
         },
         {
           "metin": {
@@ -3890,13 +3890,13 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "447"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "445"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "445-448"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "443-445"
       },
       "konum": {
         "enlem": 40.177109,
@@ -3914,7 +3914,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/uc-kuzular-kozlar-camii-ve-kabri/02.webp",
@@ -3924,7 +3924,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/uc-kuzular-kozlar-camii-ve-kabri/03.webp",
@@ -3934,7 +3934,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/uc-kuzular-kozlar-camii-ve-kabri/04.webp",
@@ -3944,7 +3944,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/uc-kuzular-kozlar-camii-ve-kabri/05.webp",
@@ -3954,7 +3954,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/uc-kuzular-kozlar-camii-ve-kabri/06.webp",
@@ -3964,7 +3964,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/uc-kuzular-kozlar-camii-ve-kabri/07.webp",
@@ -3974,7 +3974,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -4011,7 +4011,7 @@
               "tr": "Üftâde Hazretleri'nin torunu Kutub İbrahim Efendi camiyi kendi gelirleriyle temelden yeniden inşa ettirdi, türbeyi tamir ettirdi (H. 1081).",
               "en": "Kutub Ibrahim Efendi, the grandson of Hazrat Üftade, rebuilt the mosque from its foundations with his own income and repaired the tomb (AH 1081)."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1843,
@@ -4019,7 +4019,7 @@
               "tr": "Vali Rıza Paşa cami ile türbede onarım yaptırdı (H. 1259).",
               "en": "Governor Rıza Paşa had a repair done on the mosque and the tomb (AH 1259)."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1866,
@@ -4027,7 +4027,7 @@
               "tr": "1855 Bursa Depremi'ndeki hasar sonrası Serasker Hasan Rıza Paşa tarafından onarıldı (H. 1283).",
               "en": "Repaired by Serasker Hasan Rıza Pasha after damage in the 1855 Bursa Earthquake (AH 1283)."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1961,
@@ -4035,7 +4035,7 @@
               "tr": "Türbe, Bursa Eski Eserleri Sevenler Kurumu tarafından restore edildi.",
               "en": "The tomb was restored by the Bursa Association for the Appreciation of Antiquities."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1969,
@@ -4043,7 +4043,7 @@
               "tr": "Cami, Bursa Eski Eserleri Sevenler Kurumu tarafından restore edildi; özgün düzeni tam korunamadı.",
               "en": "The mosque was restored by the Bursa Association for the Appreciation of Antiquities; its original layout could not be fully preserved."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1975,
@@ -4051,7 +4051,7 @@
               "tr": "1975–1977 yılları arasında onarımlar Vakıflar Genel Müdürlüğü tarafından sürdürüldü.",
               "en": "Between 1975 and 1977, repairs were continued by the General Directorate of Foundations."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2004,
@@ -4059,7 +4059,7 @@
               "tr": "Restorasyonda sıva altından 19. yüzyıla ait kalem işi bezemeler ortaya çıkarılıp yenilendi.",
               "en": "19th century hand-painted decorations were revealed under the plaster and renewed."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2009,
@@ -4067,7 +4067,7 @@
               "tr": "Bursa Vakıflar Bölge Müdürlüğü tarafından kapsamlı onarım.",
               "en": "Comprehensive restoration by the Bursa Regional Directorate of Foundations."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -4079,8 +4079,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "449"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "447"
         },
         {
           "metin": {
@@ -4089,8 +4089,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "449"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "447"
         },
         {
           "metin": {
@@ -4099,8 +4099,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "449"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "447"
         },
         {
           "metin": {
@@ -4109,8 +4109,8 @@
           },
           "kategori": "vakif",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "452"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "450"
         },
         {
           "metin": {
@@ -4119,8 +4119,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "453"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "451"
         },
         {
           "metin": {
@@ -4129,8 +4129,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "454"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "452"
         },
         {
           "metin": {
@@ -4139,8 +4139,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "454"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "452"
         },
         {
           "metin": {
@@ -4149,13 +4149,13 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "454"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "452"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "449-456"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "447-452"
       },
       "konum": {
         "enlem": 40.182961,
@@ -4173,7 +4173,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-camii/02.webp",
@@ -4183,7 +4183,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-camii/03.webp",
@@ -4193,7 +4193,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-camii/04.webp",
@@ -4203,7 +4203,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-camii/05.webp",
@@ -4213,7 +4213,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-camii/06.webp",
@@ -4223,7 +4223,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-camii/07.webp",
@@ -4233,7 +4233,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-camii/08.webp",
@@ -4243,7 +4243,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-camii/09.webp",
@@ -4253,7 +4253,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-camii/10.webp",
@@ -4263,7 +4263,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-camii/11.webp",
@@ -4273,7 +4273,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-camii/12.webp",
@@ -4283,7 +4283,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -4325,7 +4325,7 @@
               "tr": "2009–2014 yılları arasındaki son restorasyon; ahşap kısımlar sökülerek ayrı bir atölyede bakımdan geçirildi.",
               "en": "Last restoration carried out between 2009 and 2014; the wooden parts were removed and maintained in a separate workshop."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -4337,8 +4337,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "457"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "455"
         },
         {
           "metin": {
@@ -4347,8 +4347,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "457"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "455"
         },
         {
           "metin": {
@@ -4357,8 +4357,8 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "457"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "455"
         },
         {
           "metin": {
@@ -4367,8 +4367,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "457"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "455"
         },
         {
           "metin": {
@@ -4377,8 +4377,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "458"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "456"
         },
         {
           "metin": {
@@ -4387,8 +4387,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "458"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "456"
         },
         {
           "metin": {
@@ -4397,13 +4397,13 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "459"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "457"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "457-459"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "455-457"
       },
       "konum": {
         "enlem": 40.178081,
@@ -4421,7 +4421,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-tekke-camii/02.webp",
@@ -4431,7 +4431,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-tekke-camii/03.webp",
@@ -4441,7 +4441,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-tekke-camii/04.webp",
@@ -4451,7 +4451,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hz-uftade-tekke-camii/05.webp",
@@ -4461,7 +4461,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -4507,7 +4507,7 @@
               "tr": "Hayırsever Kazzazoğlu Şule Mehmed tarafından yenilendi.",
               "en": "Renovated by the philanthropist Kazzazoğlu Şule Mehmed."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1890,
@@ -4515,7 +4515,7 @@
               "tr": "Kapsamlı restorasyon.",
               "en": "Extensive restoration."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1955,
@@ -4523,7 +4523,7 @@
               "tr": "Kapsamlı restorasyon.",
               "en": "Extensive restoration."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1973,
@@ -4531,7 +4531,7 @@
               "tr": "Kapsamlı restorasyon.",
               "en": "Extensive restoration."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2008,
@@ -4539,7 +4539,7 @@
               "tr": "En son kapsamlı restorasyon.",
               "en": "Most recent extensive restoration."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -4551,8 +4551,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "460"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "458"
         },
         {
           "metin": {
@@ -4561,8 +4561,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "460"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "458"
         },
         {
           "metin": {
@@ -4571,8 +4571,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "461"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "459"
         },
         {
           "metin": {
@@ -4581,8 +4581,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "461"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "459"
         },
         {
           "metin": {
@@ -4591,8 +4591,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "461"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "459"
         },
         {
           "metin": {
@@ -4601,8 +4601,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "461"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "459"
         },
         {
           "metin": {
@@ -4611,13 +4611,13 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "461"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "459"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "460-461"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "458-459"
       },
       "konum": {
         "enlem": 40.187081,
@@ -4635,7 +4635,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-enbiya-enbiyaoglu-camii/02.webp",
@@ -4645,7 +4645,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-enbiya-enbiyaoglu-camii/03.webp",
@@ -4655,7 +4655,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -4701,7 +4701,7 @@
               "tr": "Tekke, ibadethane ve kütüphane ile birlikte Sultan Abdülmecid tarafından tamir ettirildi.",
               "en": "The lodge was repaired by Sultan Abdulmecid, along with the place of worship and the library."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1968,
@@ -4709,7 +4709,7 @@
               "tr": "Bursa Eski Eserleri Sevenler Kurumu tarafından kapsamlı olmayan onarım.",
               "en": "Non-comprehensive restoration by the Bursa Association for the Appreciation of Antiquities."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2013,
@@ -4717,7 +4717,7 @@
               "tr": "Vakıflar Bölge Müdürlüğü tarafından onarıldı.",
               "en": "Repaired by the Regional Directorate of Foundations."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -4729,8 +4729,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "462"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "460"
         },
         {
           "metin": {
@@ -4739,8 +4739,8 @@
           },
           "kategori": "vakif",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "462"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "460"
         },
         {
           "metin": {
@@ -4749,8 +4749,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "463"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "461"
         },
         {
           "metin": {
@@ -4759,8 +4759,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "463"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "461"
         },
         {
           "metin": {
@@ -4769,8 +4769,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "463"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "461"
         },
         {
           "metin": {
@@ -4779,8 +4779,8 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "463"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "461"
         },
         {
           "metin": {
@@ -4789,8 +4789,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "464"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "462"
         },
         {
           "metin": {
@@ -4799,13 +4799,13 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "464"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "462"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "462-464"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "460-462"
       },
       "konum": {
         "enlem": 40.179424,
@@ -4823,7 +4823,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-habib-camii/02.webp",
@@ -4833,7 +4833,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-habib-camii/03.webp",
@@ -4843,7 +4843,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-habib-camii/04.webp",
@@ -4853,7 +4853,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -4897,7 +4897,7 @@
               "tr": "Bursa Eski Eserleri Sevenler Kurumu kayıtlarına göre minare tamir edildi ve çevresi açıldı.",
               "en": "According to the records of the Bursa Association for the Appreciation of Antiquities, the minaret was repaired and its surroundings were opened."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2019,
@@ -4905,7 +4905,7 @@
               "tr": "Bursa Vakıflar Bölge Müdürlüğü tarafından kapsamlı restorasyon.",
               "en": "Comprehensive restoration by the Bursa Regional Directorate of Foundations."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -4917,8 +4917,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "465"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "463"
         },
         {
           "metin": {
@@ -4927,8 +4927,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "465"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "463"
         },
         {
           "metin": {
@@ -4937,8 +4937,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "465"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "463"
         },
         {
           "metin": {
@@ -4947,8 +4947,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "465"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "463"
         },
         {
           "metin": {
@@ -4957,8 +4957,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "465"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "463"
         },
         {
           "metin": {
@@ -4967,8 +4967,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "465"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "463"
         },
         {
           "metin": {
@@ -4977,8 +4977,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "465"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "463"
         },
         {
           "metin": {
@@ -4987,13 +4987,13 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "465"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "463"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "465"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "463"
       },
       "konum": {
         "enlem": 40.186153,
@@ -5011,7 +5011,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-sarayi-mescidi/02.webp",
@@ -5021,7 +5021,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -5063,7 +5063,7 @@
               "tr": "Çeşme aynasında H. 1331 / M. 1912 tarihli bir yenileme kitabesi yer almaktadır.",
               "en": "There is a renovation inscription on the fountain back panel dated AH 1331 / AD 1912."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -5075,8 +5075,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "467"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "465"
         },
         {
           "metin": {
@@ -5085,8 +5085,8 @@
           },
           "kategori": "vakif",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "467"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "465"
         },
         {
           "metin": {
@@ -5095,8 +5095,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "467"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "465"
         },
         {
           "metin": {
@@ -5105,8 +5105,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "468"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "466"
         },
         {
           "metin": {
@@ -5115,8 +5115,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "469"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "467"
         },
         {
           "metin": {
@@ -5125,8 +5125,8 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "469"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "467"
         },
         {
           "metin": {
@@ -5135,13 +5135,13 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "469"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "467"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "466-469"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "464-467"
       },
       "konum": {
         "enlem": 40.186082,
@@ -5159,7 +5159,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-yanic-camii/02.webp",
@@ -5169,7 +5169,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-yanic-camii/03.webp",
@@ -5179,7 +5179,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-yanic-camii/04.webp",
@@ -5189,7 +5189,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-yanic-camii/05.webp",
@@ -5199,7 +5199,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-yanic-camii/06.webp",
@@ -5209,7 +5209,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-yanic-camii/07.webp",
@@ -5219,7 +5219,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-yanic-camii/08.webp",
@@ -5229,7 +5229,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -5268,7 +5268,7 @@
               "tr": "Minarenin kaideden sonraki bölümü 1890-1894 yılları arasında yeniden inşa edilmiştir.",
               "en": "The minaret above the plinth was rebuilt between 1890-1894."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -5280,8 +5280,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "470"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "468"
         },
         {
           "metin": {
@@ -5290,8 +5290,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "470"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "468"
         },
         {
           "metin": {
@@ -5300,8 +5300,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "470"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "468"
         },
         {
           "metin": {
@@ -5310,8 +5310,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "471"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "469"
         },
         {
           "metin": {
@@ -5320,8 +5320,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "471"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "469"
         },
         {
           "metin": {
@@ -5330,13 +5330,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "471"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "469"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "470-471"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "468-469"
       },
       "konum": {
         "enlem": 40.17999,
@@ -5354,7 +5354,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-veziri-camii/02.webp",
@@ -5364,7 +5364,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-veziri-camii/03.webp",
@@ -5374,7 +5374,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-veziri-camii/04.webp",
@@ -5384,7 +5384,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veled-i-veziri-camii/05.webp",
@@ -5394,7 +5394,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -5436,7 +5436,7 @@
               "tr": "1855 depreminde kubbesi yıkılan cami yeni baştan inşa edilmiş; yapımına 1859 yılında başlanarak bir yıl içinde tamamlanmıştır.",
               "en": "After its dome collapsed in the earthquake of 1855, the mosque was rebuilt from scratch; its construction started in 1859 and was completed within a year."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -5448,8 +5448,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "472"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "470"
         },
         {
           "metin": {
@@ -5458,8 +5458,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "472"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "470"
         },
         {
           "metin": {
@@ -5468,8 +5468,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "472"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "470"
         },
         {
           "metin": {
@@ -5478,8 +5478,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "473"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "471"
         },
         {
           "metin": {
@@ -5488,8 +5488,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "473"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "471"
         },
         {
           "metin": {
@@ -5498,8 +5498,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "473"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "471"
         },
         {
           "metin": {
@@ -5508,13 +5508,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "473"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "471"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "472-473"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "470-471"
       },
       "konum": {
         "enlem": 40.180134,
@@ -5532,7 +5532,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veli-semseddin-camii/02.webp",
@@ -5542,7 +5542,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veli-semseddin-camii/03.webp",
@@ -5552,7 +5552,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veli-semseddin-camii/04.webp",
@@ -5562,7 +5562,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veli-semseddin-camii/05.webp",
@@ -5572,7 +5572,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veli-semseddin-camii/06.webp",
@@ -5582,7 +5582,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -5622,8 +5622,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "474"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "472"
         },
         {
           "metin": {
@@ -5632,8 +5632,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "474"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "472"
         },
         {
           "metin": {
@@ -5642,8 +5642,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "475"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "473"
         },
         {
           "metin": {
@@ -5652,8 +5652,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "475"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "473"
         },
         {
           "metin": {
@@ -5662,8 +5662,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "475"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "473"
         },
         {
           "metin": {
@@ -5672,13 +5672,13 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "475"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "473"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "474-475"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "472-473"
       },
       "konum": {
         "enlem": 40.180233,
@@ -5696,7 +5696,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veziri-camii/02.webp",
@@ -5706,7 +5706,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veziri-camii/03.webp",
@@ -5716,7 +5716,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/veziri-camii/04.webp",
@@ -5726,7 +5726,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -5765,7 +5765,7 @@
               "tr": "H. 1218 / M. 1803 tarihinde kapsamlı bir tamirat geçirmiştir.",
               "en": "The mosque underwent extensive repairs in AH 1218 / AD 1803."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 1963,
@@ -5773,7 +5773,7 @@
               "tr": "1963 yılında Bursa Eski Eserleri Sevenler Kurumu tarafından gerçekleştirilen son onarımda yeniden kubbeyle örtülmüş ve kurşun kaplanmıştır.",
               "en": "In the last repair carried out by the Bursa Association for the Appreciation of Antiquities in 1963, it was covered with a dome again and coated with lead."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -5785,8 +5785,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "476"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "474"
         },
         {
           "metin": {
@@ -5795,8 +5795,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "477"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "475"
         },
         {
           "metin": {
@@ -5805,8 +5805,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "477"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "475"
         },
         {
           "metin": {
@@ -5815,8 +5815,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "478"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "476"
         },
         {
           "metin": {
@@ -5825,8 +5825,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "478"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "476"
         },
         {
           "metin": {
@@ -5835,8 +5835,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "478"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "476"
         },
         {
           "metin": {
@@ -5845,13 +5845,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "478"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "476"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "476-478"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "474-476"
       },
       "konum": {
         "enlem": 40.186673,
@@ -5869,7 +5869,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yeni-bezzaz-camii/02.webp",
@@ -5879,7 +5879,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yeni-bezzaz-camii/03.webp",
@@ -5889,7 +5889,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yeni-bezzaz-camii/04.webp",
@@ -5899,7 +5899,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -5936,7 +5936,7 @@
               "tr": "Mescit, Bursa Mevlevihanesi şeyhi Mehmed Şemseddin Efendi'nin annesinin katkılarıyla 9 Ağustos 1893 tarihinde onarılmıştır.",
               "en": "The masjid was repaired on August 9, 1893, with the contributions of the mother of the Shaykh of Bursa Mevlevi Lodge, Mehmed Şemseddin Efendi."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -5948,8 +5948,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "479"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "477"
         },
         {
           "metin": {
@@ -5958,8 +5958,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "479"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "477"
         },
         {
           "metin": {
@@ -5968,8 +5968,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "479"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "477"
         },
         {
           "metin": {
@@ -5978,8 +5978,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "479"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "477"
         },
         {
           "metin": {
@@ -5988,8 +5988,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "479"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "477"
         },
         {
           "metin": {
@@ -5998,13 +5998,13 @@
           },
           "kategori": "gunumuz",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "479"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "477"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "479"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "477"
       },
       "konum": {
         "enlem": 40.19695,
@@ -6022,7 +6022,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yeni-kaplica-mescidi/02.webp",
@@ -6032,7 +6032,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -6070,7 +6070,7 @@
               "tr": "1967 yılında Bursa Eski Eserleri Sevenler Kurumu tarafından kapsamlı bir restorasyondan geçirilmiştir.",
               "en": "It underwent a comprehensive restoration in 1967 by the Bursa Association for the Appreciation of Antiquities."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2015,
@@ -6078,7 +6078,7 @@
               "tr": "2015–2016 yıllarında Vakıflar Müdürlüğü tarafından kapsamlı bir restorasyondan geçirilmiştir.",
               "en": "It underwent a comprehensive restoration in 2015–2016 by the Foundations Directorate."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -6090,8 +6090,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "480"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "478"
         },
         {
           "metin": {
@@ -6100,8 +6100,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "481"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "479"
         },
         {
           "metin": {
@@ -6110,8 +6110,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "481"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "479"
         },
         {
           "metin": {
@@ -6120,8 +6120,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "482"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "480"
         },
         {
           "metin": {
@@ -6130,8 +6130,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "482"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "480"
         },
         {
           "metin": {
@@ -6140,13 +6140,13 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "482"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "480"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "480-482"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "478-480"
       },
       "konum": {
         "enlem": 40.183813,
@@ -6164,7 +6164,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yer-kapi-camii/02.webp",
@@ -6174,7 +6174,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yer-kapi-camii/03.webp",
@@ -6184,7 +6184,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yer-kapi-camii/04.webp",
@@ -6194,7 +6194,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -6240,7 +6240,7 @@
               "tr": "Vakıflar Müdürlüğü tarafından kapsamlı restorasyondan geçirilmiştir.",
               "en": "Extensive restoration by the Directorate of Foundations."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           },
           {
             "yil": 2020,
@@ -6248,7 +6248,7 @@
               "tr": "Vakıflar Müdürlüğü tarafından kapsamlı restorasyondan geçirilmiştir.",
               "en": "Extensive restoration by the Directorate of Foundations."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -6260,8 +6260,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "483"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "481"
         },
         {
           "metin": {
@@ -6270,8 +6270,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "487"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "485"
         },
         {
           "metin": {
@@ -6280,8 +6280,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "484"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "482"
         },
         {
           "metin": {
@@ -6290,8 +6290,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "484"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "482"
         },
         {
           "metin": {
@@ -6300,8 +6300,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "485"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "483"
         },
         {
           "metin": {
@@ -6310,8 +6310,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "485"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "483"
         },
         {
           "metin": {
@@ -6320,13 +6320,13 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "485"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "483"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "483-487"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "481-485"
       },
       "konum": {
         "enlem": 40.183325,
@@ -6344,7 +6344,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yigit-kohne-camii/02.webp",
@@ -6354,7 +6354,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yigit-kohne-camii/03.webp",
@@ -6364,7 +6364,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yigit-kohne-camii/04.webp",
@@ -6374,7 +6374,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yigit-kohne-camii/05.webp",
@@ -6384,7 +6384,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yigit-kohne-camii/06.webp",
@@ -6394,7 +6394,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yigit-kohne-camii/07.webp",
@@ -6404,7 +6404,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -6449,7 +6449,7 @@
               "tr": "2012-2013 yıllarında Vakıflar Bölge Müdürlüğü tarafından restore edilerek asli fonksiyonuna kavuşturulmuştur.",
               "en": "It was restored to its original function by the Regional Directorate of Foundations in 2012-2013."
             },
-            "kaynak_id": "vk-bursa-envanter-c1-2"
+            "kaynak_id": "vk-bursa-envanter-c1"
           }
         ]
       },
@@ -6461,8 +6461,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "488"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "486"
         },
         {
           "metin": {
@@ -6471,8 +6471,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "488"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "486"
         },
         {
           "metin": {
@@ -6481,8 +6481,8 @@
           },
           "kategori": "tarihce",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "489"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "487"
         },
         {
           "metin": {
@@ -6491,8 +6491,8 @@
           },
           "kategori": "onarim",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "489"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "487"
         },
         {
           "metin": {
@@ -6501,8 +6501,8 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "489"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "487"
         },
         {
           "metin": {
@@ -6511,13 +6511,13 @@
           },
           "kategori": "mimari",
           "durum": "kaynakli",
-          "kaynak_id": "vk-bursa-envanter-c1-2",
-          "sayfa": "489"
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "sayfa": "487"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2",
-        "sayfa": "488-489"
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "486-487"
       },
       "konum": {
         "enlem": 40.187081,
@@ -6535,7 +6535,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/zagferanlik-mescidi/02.webp",
@@ -6545,7 +6545,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/zagferanlik-mescidi/03.webp",
@@ -6555,7 +6555,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ]
     },
@@ -6592,7 +6592,7 @@
           "kategori": "tarihce",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "325"
+          "sayfa": "123"
         },
         {
           "metin": {
@@ -6602,7 +6602,7 @@
           "kategori": "mimari",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "325"
+          "sayfa": "123"
         },
         {
           "metin": {
@@ -6612,7 +6612,7 @@
           "kategori": "mimari",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "326"
+          "sayfa": "124"
         },
         {
           "metin": {
@@ -6622,7 +6622,7 @@
           "kategori": "mimari",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "326"
+          "sayfa": "124"
         },
         {
           "metin": {
@@ -6632,12 +6632,12 @@
           "kategori": "tarihce",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "326"
+          "sayfa": "124"
         }
       ],
       "envanter": {
         "kaynak_id": "vk-bursa-envanter-c3",
-        "sayfa": "325-326"
+        "sayfa": "123-124"
       },
       "konum": {
         "enlem": 40.388038,
@@ -6722,7 +6722,7 @@
           "kategori": "tarihce",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "327"
+          "sayfa": "125"
         },
         {
           "metin": {
@@ -6732,7 +6732,7 @@
           "kategori": "tarihce",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "327"
+          "sayfa": "125"
         },
         {
           "metin": {
@@ -6742,7 +6742,7 @@
           "kategori": "tarihce",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "328"
+          "sayfa": "126"
         },
         {
           "metin": {
@@ -6752,7 +6752,7 @@
           "kategori": "mimari",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "328"
+          "sayfa": "126"
         },
         {
           "metin": {
@@ -6762,7 +6762,7 @@
           "kategori": "mimari",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "328"
+          "sayfa": "126"
         },
         {
           "metin": {
@@ -6772,12 +6772,12 @@
           "kategori": "gunumuz",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "328"
+          "sayfa": "126"
         }
       ],
       "envanter": {
         "kaynak_id": "vk-bursa-envanter-c3",
-        "sayfa": "327-328"
+        "sayfa": "125-126"
       },
       "konum": {
         "enlem": 40.434299,
@@ -6883,7 +6883,7 @@
           "kategori": "tarihce",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "329"
+          "sayfa": "127"
         },
         {
           "metin": {
@@ -6893,7 +6893,7 @@
           "kategori": "gunumuz",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "329"
+          "sayfa": "127"
         },
         {
           "metin": {
@@ -6903,7 +6903,7 @@
           "kategori": "tarihce",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "329"
+          "sayfa": "127"
         },
         {
           "metin": {
@@ -6913,7 +6913,7 @@
           "kategori": "mimari",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "330"
+          "sayfa": "128"
         },
         {
           "metin": {
@@ -6923,7 +6923,7 @@
           "kategori": "mimari",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "330"
+          "sayfa": "128"
         },
         {
           "metin": {
@@ -6933,12 +6933,12 @@
           "kategori": "mimari",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "330"
+          "sayfa": "128"
         }
       ],
       "envanter": {
         "kaynak_id": "vk-bursa-envanter-c3",
-        "sayfa": "329-331"
+        "sayfa": "127-128"
       },
       "konum": {
         "enlem": 40.438001,
@@ -7041,7 +7041,7 @@
           "kategori": "tarihce",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "335"
+          "sayfa": "133"
         },
         {
           "metin": {
@@ -7051,7 +7051,7 @@
           "kategori": "tarihce",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "335"
+          "sayfa": "133"
         },
         {
           "metin": {
@@ -7061,7 +7061,7 @@
           "kategori": "onarim",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "336"
+          "sayfa": "134"
         },
         {
           "metin": {
@@ -7071,7 +7071,7 @@
           "kategori": "mimari",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "336"
+          "sayfa": "134"
         },
         {
           "metin": {
@@ -7081,7 +7081,7 @@
           "kategori": "tarihce",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "337"
+          "sayfa": "135"
         },
         {
           "metin": {
@@ -7091,12 +7091,12 @@
           "kategori": "onarim",
           "durum": "kaynakli",
           "kaynak_id": "vk-bursa-envanter-c3",
-          "sayfa": "337"
+          "sayfa": "135"
         }
       ],
       "envanter": {
         "kaynak_id": "vk-bursa-envanter-c3",
-        "sayfa": "335-337"
+        "sayfa": "133-135"
       },
       "konum": {
         "enlem": 40.216275,
@@ -7176,7 +7176,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/orhan-gazi-kulliyesi/02.webp",
@@ -7186,7 +7186,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/orhan-gazi-kulliyesi/03.webp",
@@ -7196,7 +7196,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/orhan-gazi-kulliyesi/04.webp",
@@ -7206,7 +7206,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/orhan-gazi-kulliyesi/05.webp",
@@ -7216,11 +7216,11 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2"
+        "kaynak_id": "vk-bursa-envanter-c1"
       },
       "vakif_id": "orhan-gazi-vakfi",
       "konum": {
@@ -7249,7 +7249,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hudavendigar-kulliyesi/02.webp",
@@ -7259,7 +7259,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hudavendigar-kulliyesi/03.webp",
@@ -7269,7 +7269,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hudavendigar-kulliyesi/04.webp",
@@ -7279,7 +7279,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hudavendigar-kulliyesi/05.webp",
@@ -7289,11 +7289,11 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2"
+        "kaynak_id": "vk-bursa-envanter-c1"
       },
       "konum": {
         "enlem": 40.202366,
@@ -7321,7 +7321,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/hamzabey-kulliyesi/02.webp",
@@ -7331,11 +7331,11 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2"
+        "kaynak_id": "vk-bursa-envanter-c1"
       },
       "konum": {
         "enlem": 40.192173,
@@ -7363,11 +7363,11 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2"
+        "kaynak_id": "vk-bursa-envanter-c1"
       },
       "konum": {
         "enlem": 40.268497,
@@ -7395,7 +7395,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yildirim-kulliyesi/02.webp",
@@ -7405,7 +7405,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yildirim-kulliyesi/03.webp",
@@ -7415,7 +7415,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yildirim-kulliyesi/04.webp",
@@ -7425,7 +7425,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yildirim-kulliyesi/05.webp",
@@ -7435,7 +7435,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yildirim-kulliyesi/06.webp",
@@ -7445,7 +7445,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/yildirim-kulliyesi/07.webp",
@@ -7455,11 +7455,11 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2"
+        "kaynak_id": "vk-bursa-envanter-c2"
       },
       "konum": {
         "enlem": 40.187475,
@@ -7487,7 +7487,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/emir-sultan-kulliyesi/02.webp",
@@ -7497,7 +7497,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/emir-sultan-kulliyesi/03.webp",
@@ -7507,11 +7507,11 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2"
+        "kaynak_id": "vk-bursa-envanter-c2"
       },
       "konum": {
         "enlem": 40.18114,
@@ -7539,7 +7539,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/umurbey-kulliyesi/02.webp",
@@ -7549,7 +7549,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/umurbey-kulliyesi/03.webp",
@@ -7559,7 +7559,7 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
           "dosya": "/gorseller/bursa/umurbey-kulliyesi/04.webp",
@@ -7569,11 +7569,11 @@
           },
           "lisans": "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1-2"
+          "kaynak_id": "vk-bursa-envanter-c1"
         }
       ],
       "envanter": {
-        "kaynak_id": "vk-bursa-envanter-c1-2"
+        "kaynak_id": "vk-bursa-envanter-c2"
       },
       "konum": {
         "enlem": 40.177755,

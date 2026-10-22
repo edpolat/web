@@ -8,7 +8,8 @@ import { metin } from "../metin";
 import type { CokDilli, Dil, Eser, Olgu } from "../tipler";
 
 /** durum "not": kaynağa dayanmayan, sistemin kendi kısa açıklaması ("Kaynaklarda mimarın adı geçmiyor."). */
-export type CevapCumlesi = { metin: string; durum: string; kaynak_id?: string; sayfa?: string };
+/** adres: kaynağın bağlantısı (PDF ise o sayfada açılır); uç noktada eklenir, bu dosya dosya okumaz. */
+export type CevapCumlesi = { metin: string; durum: string; kaynak_id?: string; sayfa?: string; adres?: string };
 export type Cevap = { bulundu: boolean; cumleler: CevapCumlesi[]; yontem: "eslesme" | "yapay_zeka" };
 
 const YAYINDA = new Set(["kaynakli", "ai_yorumu", "belirsiz"]);
