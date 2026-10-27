@@ -1,12 +1,12 @@
 // Panelden il ekleme (hesapla giriş gerekli): yeni il ya da il bilgisi düzeltmesi gönder, editör onaylar/reddeder.
 // İzin hem burada hem Supabase fonksiyonlarında denetlenir. Kurallar lib/sunucu/il-surum.ts'de.
 import { KatkiHatasi } from "@/lib/sunucu/katki";
-import { ilGonder, ilKarar, ilOku } from "@/lib/sunucu/il-depo";
+import { ilGonder, ilKaldir, ilKarar, ilOku } from "@/lib/sunucu/il-depo";
 import { ilHazirla } from "@/lib/sunucu/il-surum";
 import { kimlik } from "@/lib/sunucu/kimlik";
 import { yetkili } from "@/lib/sunucu/oturum";
 import { yayiniYenile } from "@/lib/sunucu/surum-depo";
-import { yayindakiIller, yayindakiKaynaklar } from "@/lib/veri";
+import { iller, yayindakiIller, yayindakiKaynaklar } from "@/lib/veri";
 
 const metin = (x: unknown) => (typeof x === "string" ? x.trim() : "");
 
@@ -30,6 +30,15 @@ async function islem(g: Record<string, unknown>): Promise<Record<string, unknown
       await ilKarar(id, onay, metin(g.gerekce));
       if (onay) yayiniYenile();
       return { tamam: true, il_id: kayit.il_id };
+    }
+    case "kaldir": {
+      if (!(await yetkili("eser.arsivle"))) throw new KatkiHatasi("İli kaldırmak için arşivleme izni gerekli.");
+      const il_id = metin(g.il_id);
+      if (iller().some((d) => d.il.id === il_id)) throw new KatkiHatasi("Veri dosyasındaki iller panelden kaldırılamaz.");
+      if (!metin(g.gerekce)) throw new KatkiHatasi("Kaldırmak için gerekçe yazmalısın.");
+      const eserSayisi = await ilKaldir(il_id, metin(g.gerekce));
+      yayiniYenile();
+      return { tamam: true, eserSayisi };
     }
   }
   throw new KatkiHatasi("Bilinmeyen işlem.");

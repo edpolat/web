@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { IlFormu, IlKarari } from "@/components/IlPaneli";
+import { IlFormu, IlKaldir, IlKarari } from "@/components/IlPaneli";
 import { gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import { ilSurumleri } from "@/lib/sunucu/il-depo";
@@ -92,7 +92,10 @@ export default async function Iller({ params }: { params: Promise<{ dil: string 
                 )}
               </td>
               <td>{eserler.length}</td>
-              <td>{jsonda.has(il.id) ? u.json : u.panelden}</td>
+              <td>
+                {jsonda.has(il.id) ? u.json : u.panelden}
+                {!jsonda.has(il.id) && izinli(ben, "eser.arsivle") && <IlKaldir dil={dil} ilId={il.id} ad={metin(il.ad, dil)} />}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -104,7 +107,9 @@ export default async function Iller({ params }: { params: Promise<{ dil: string 
           <ul className="il-listesi">
             {gecmis.map((k) => (
               <li key={k.id}>
-                <span className={`etiket etiket-${k.durum === "yayinda" ? "onaylandi" : "reddedildi"}`}>{u.durumlar[k.durum]}</span>{" "}
+                <span className={`etiket etiket-${k.durum === "yayinda" && !k.arsivlendi ? "onaylandi" : "reddedildi"}`}>
+                  {k.arsivlendi ? u.durumlar.arsivlendi : u.durumlar[k.durum]}
+                </span>{" "}
                 {metin(k.veri.ad, dil)} · {k.ekleyen_ad ?? "?"}
                 {k.inceleyen_ad && ` → ${k.inceleyen_ad}`}
                 {k.karar_tarihi && ` · ${tarih(k.karar_tarihi)}`}

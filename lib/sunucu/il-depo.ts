@@ -23,7 +23,8 @@ export async function yayindakiIlKayitlari(): Promise<Map<string, YayindakiIl>> 
   try {
     const { data, error } = await herkese()
       .from("il_surumleri")
-      .select("id, il_id, veri, karar_tarihi")
+      // "*": arsivlendi sütunu 013'ten önce yok; seçim adla yapılırsa sorgu düşer ve yeni iller kaybolur.
+      .select("*")
       .eq("durum", "yayinda")
       .order("karar_tarihi", { ascending: false })
       .limit(500);
@@ -43,7 +44,7 @@ async function vt() {
 function denetle(error: { message: string; code?: string } | null): void {
   if (!error) return;
   if (error.code === "42501") throw new KatkiHatasi("Bu işlem için yetkin yok.");
-  if (/il_surumleri|il_gonder|il_karar/.test(error.message) && /exist|find|schema cache/i.test(error.message)) {
+  if (/il_surumleri|il_gonder|il_karar|il_kaldir/.test(error.message) && /exist|find|schema cache/i.test(error.message)) {
     throw new KatkiHatasi("İl kayıtları tablosu yok: Supabase'de supabase/012_il_surumleri.sql çalıştırılmalı.");
   }
   throw new KatkiHatasi(error.message);
@@ -64,6 +65,16 @@ export async function ilOku(id: number): Promise<IlSurumSatiri | undefined> {
 
 export async function ilGonder(h: HazirIl): Promise<number> {
   const { data, error } = await (await vt()).rpc("il_gonder", { p_il: h.il_id, p_veri: h.veri, p_islem: h.islem, p_not: h.aciklama ?? null });
+  denetle(error);
+  return data as number;
+}
+
+/** İli ve yayındaki eserlerini arşivler; arşivlenen eser sayısını döner. */
+export async function ilKaldir(il_id: string, gerekce: string): Promise<number> {
+  const { data, error } = await (await vt()).rpc("il_kaldir", { p_il: il_id, p_gerekce: gerekce });
+  if (error && /il_kaldir/.test(error.message) && /exist|find|schema cache/i.test(error.message)) {
+    throw new KatkiHatasi("İli kaldırmak için Supabase'de supabase/013_il_kaldir.sql çalıştırılmalı.");
+  }
   denetle(error);
   return data as number;
 }

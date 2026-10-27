@@ -147,3 +147,45 @@ export function IlKarari({ dil, id }: { dil: Dil; id: number }) {
     </div>
   );
 }
+
+/** Panelden eklenen ili kaldırır (eser.arsivle): il ve yayındaki eserleri arşive gider, il sonra yeniden eklenebilir. */
+export function IlKaldir({ dil, ilId, ad }: { dil: Dil; ilId: string; ad: string }) {
+  const t = s(dil).ilPaneli;
+  const router = useRouter();
+  const [gerekce, setGerekce] = useState("");
+  const [mesaj, setMesaj] = useState<string>();
+  const [bekle, setBekle] = useState(false);
+
+  async function kaldir() {
+    if (!window.confirm(t.kaldirOnay(ad))) return;
+    setMesaj(undefined);
+    setBekle(true);
+    try {
+      const { eserSayisi } = (await istek({ islem: "kaldir", il_id: ilId, gerekce })) as { eserSayisi: number };
+      setMesaj(t.kaldirildi(eserSayisi));
+      router.refresh();
+    } catch (h) {
+      setMesaj(h instanceof Error ? h.message : String(h));
+    } finally {
+      setBekle(false);
+    }
+  }
+
+  return (
+    <details>
+      <summary>{t.kaldir}</summary>
+      <div className="form">
+        <label>
+          {t.kaldirGerekce}
+          <input value={gerekce} onChange={(e) => setGerekce(e.target.value)} maxLength={500} required />
+        </label>
+        <div className="dugmeler">
+          <button type="button" className="ikincil" disabled={bekle || !gerekce.trim()} onClick={kaldir}>
+            {t.kaldir}
+          </button>
+        </div>
+        <p role="status">{mesaj}</p>
+      </div>
+    </details>
+  );
+}

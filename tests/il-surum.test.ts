@@ -95,6 +95,13 @@ describe("panelden il ekleme: yayındaki hâl", () => {
     expect(() => yayinaUygunMu({ ...hazir, eser_id: hazir.eser_id }, depo)).not.toThrow();
   });
 
+  it("kaldırılan il sitede görünmez, yeniden onaylanınca geri gelir", () => {
+    const kaldirildi = { ...ilKaydi(2, kutahya, "2026-10-27T12:00:00Z"), arsivlendi: true };
+    expect(ilKatmanla(json(), sonYayindakiIller([ilKaydi(1, kutahya, "2026-10-27T10:00:00Z"), kaldirildi])).map((d) => d.il.id)).toEqual(["bursa"]);
+    const geri = ilKaydi(3, kutahya, "2026-10-27T13:00:00Z");
+    expect(ilKatmanla(json(), sonYayindakiIller([ilKaydi(1, kutahya, "2026-10-27T10:00:00Z"), kaldirildi, geri])).map((d) => d.il.id)).toEqual(["bursa", "kutahya"]);
+  });
+
   it("Supabase'de il kaydı yoksa iller aynen kalır", () => {
     const iller = json();
     expect(ilKatmanla(iller, new Map())).toBe(iller);

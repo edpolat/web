@@ -13,7 +13,9 @@ export type IlSurumSatiri = {
   il_id: string;
   veri: Il;
   durum: IlSurumDurumu;
-  islem: "ekle" | "duzenle";
+  islem: "ekle" | "duzenle" | "arsivle";
+  /** Kaldırılan il (supabase/013_il_kaldir.sql; öncesinde sütun yok). */
+  arsivlendi?: boolean;
   aciklama: string | null;
   ekleyen: string | null;
   ekleyen_ad: string | null;
@@ -24,7 +26,7 @@ export type IlSurumSatiri = {
   ret_gerekcesi: string | null;
 };
 
-export type YayindakiIl = Pick<IlSurumSatiri, "id" | "il_id" | "veri" | "karar_tarihi">;
+export type YayindakiIl = Pick<IlSurumSatiri, "id" | "il_id" | "veri" | "karar_tarihi" | "arsivlendi">;
 
 /** Her ilin en son onaylanan kaydı. */
 export function sonYayindakiIller<T extends YayindakiIl>(satirlar: T[]): Map<string, T> {
@@ -40,17 +42,18 @@ export function sonYayindakiIller<T extends YayindakiIl>(satirlar: T[]): Map<str
 
 /**
  * JSON il dosyalarına panelde onaylanan illeri ekler. JSON'da olan ilin yalnız bilgileri (ad, merkez…) değişir, eserleri kalır;
- * yeni il eserleri olmadan eklenir (eserleri eser sürümleriyle gelir). Sıra: JSON illeri, sonra yeni iller ada göre.
+ * yeni il eserleri olmadan eklenir (eserleri eser sürümleriyle gelir); kaldırılan (arşivlenen) il eklenmez.
+ * Sıra: JSON illeri, sonra yeni iller ada göre.
  */
 export function ilKatmanla(iller: IlDosyasi[], yayindakiler: Map<string, YayindakiIl>): IlDosyasi[] {
   if (!yayindakiler.size) return iller;
   const mevcut = new Set(iller.map((d) => d.il.id));
   const guncel = iller.map((d) => {
     const s = yayindakiler.get(d.il.id);
-    return s ? { ...d, il: { ...s.veri, id: d.il.id } } : d;
+    return s && !s.arsivlendi ? { ...d, il: { ...s.veri, id: d.il.id } } : d;
   });
   const yeniler = [...yayindakiler.values()]
-    .filter((s) => !mevcut.has(s.il_id))
+    .filter((s) => !mevcut.has(s.il_id) && !s.arsivlendi)
     .map((s) => ({ il: { ...s.veri, id: s.il_id }, eserler: [] }))
     .sort((a, b) => a.il.ad.tr.localeCompare(b.il.ad.tr, "tr"));
   return [...guncel, ...yeniler];
