@@ -18,6 +18,7 @@ export default async function YonetimDuzeni({ children, params }: { children: Re
       { yol: `${k}/eserler`, ad: p.eserler, ayrica: `${k}/eser` },
       ...(izinli(ben, "eser.onayla") || izinli(ben, "kaynak.dogrula") ? [{ yol: `${k}/inceleme`, ad: p.onay }] : []),
       { yol: `${k}/kaynaklar`, ad: p.kaynaklar },
+      { yol: `${k}/iller`, ad: p.iller },
       ...(izinli(ben, "eser.ekle") || izinli(ben, "eser.duzenle") ? [{ yol: `${k}/katkilarim`, ad: p.katkilarim }] : []),
       ...(izinli(ben, "kullanici.yonet") ? [{ yol: `${k}/kullanicilar`, ad: p.kullanicilar }] : []),
       { yol: `${k}/denetim`, ad: p.denetim },

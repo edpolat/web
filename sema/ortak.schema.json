@@ -96,6 +96,12 @@
         "sayfa": {
           "type": "string",
           "description": "Örn: \"112\" veya \"112-114\""
+        },
+        "en_ceviri": {
+          "enum": [
+            "yz"
+          ],
+          "description": "İngilizce metin kaynakta yok; yapay zekâ çevirisi (arayüzde 'çeviri' etiketi)."
         }
       },
       "if": {

@@ -7,6 +7,8 @@ import { kaynagaCevir } from "./kaynak";
 import { adSirala } from "./metin";
 import { dogrulanmisKaynaklar } from "./sunucu/kaynak-depo";
 import type { CevapCumlesi } from "./sunucu/sor";
+import { yayindakiIlKayitlari } from "./sunucu/il-depo";
+import { ilKatmanla } from "./sunucu/il-surum";
 import { katmanla } from "./sunucu/surum";
 import { yayindakiSurumler } from "./sunucu/surum-depo";
 import type { Ayarlar, Eser, Il, IlliEser, KesifEseri, Kaynak, Rota, Sergi, Vakif } from "./tipler";
@@ -61,10 +63,11 @@ export function eserBul(id: string): IlliEser | undefined {
   return tumEserler().find((e) => e.id === id);
 }
 
-// Yayındaki hâl: JSON dosyaları + panelde onaylanmış sürümler (Supabase). Ziyaretçi sayfaları bunları kullanır.
+// Yayındaki hâl: JSON dosyaları + panelde onaylanmış iller ve eser sürümleri (Supabase). Ziyaretçi sayfaları bunları kullanır.
 
 export async function yayindakiIller(): Promise<{ il: Il; eserler: Eser[] }[]> {
-  return katmanla(iller(), await yayindakiSurumler());
+  const [ilKayitlari, surumler] = await Promise.all([yayindakiIlKayitlari(), yayindakiSurumler()]);
+  return katmanla(ilKatmanla(iller(), ilKayitlari), surumler);
 }
 
 export async function yayindakiEserler(): Promise<IlliEser[]> {

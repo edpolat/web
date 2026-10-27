@@ -10,8 +10,15 @@ import { ayarlar, yayindakiIller, yayindakiKaynaklar } from "@/lib/veri";
 export const metadata: Metadata = { robots: { index: false } };
 
 /** /yonetim/eser/yeni yeni eser, /yonetim/eser/<id> mevcut eseri düzenler. Taslaklar da düzenlenebilir. */
-export default async function EserDuzenle({ params }: { params: Promise<{ dil: string; id: string }> }) {
+export default async function EserDuzenle({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ dil: string; id: string }>;
+  searchParams: Promise<{ il?: string }>;
+}) {
   const { dil, id } = await params;
+  const { il: varsayilanIl } = await searchParams;
   if (!gecerliDil(dil)) notFound();
   if (!(await yetkili(id === "yeni" ? "eser.ekle" : "eser.duzenle"))) redirect(`/${dil}/yonetim`);
   const t = s(dil);
@@ -37,6 +44,7 @@ export default async function EserDuzenle({ params }: { params: Promise<{ dil: s
         iller={tumu.map(({ il }) => ({ id: il.id, ad: metin(il.ad, dil) }))}
         turler={ayarlar().eser_turleri.map((x) => ({ id: x.id, ad: metin(x.ad, dil) }))}
         kaynaklar={[...(await yayindakiKaynaklar()).values()].map((k) => ({ id: k.id, ad: k.baslik }))}
+        varsayilanIl={varsayilanIl}
       />
     </section>
   );

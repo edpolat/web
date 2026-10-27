@@ -104,7 +104,7 @@ Hata varsa çıkış kodu 1 olur (CI'a konabilir). İngilizcesi eksik metinler v
 ## Durum
 
 - `veri/iller/bursa.json`: Bursa envanter kitabının web sürümünden 41 eser (Osmangazi Camiler ve Hazireler 3, Gemlik, Gürsu). TR/EN tarihçe ve mimari metin kitaptan kelimesi kelimesine; olgular sayfa numarasıyla `kaynakli`. Bunlara ek olarak metni olmayan 7 külliye yalnız fotoğraflarıyla (Orhan Bey, Hüdavendigâr, Hamzabey, Timurtaş Paşa, Yıldırım, Emir Sultan, Umurbey) ve 3 taslak kayıt var.
-- Fotoğraflar `public/gorseller/bursa/<eser>/` altında, 1600 px WebP + 480 px önizleme (`_kucuk.webp`). Lisans ve atıf şartı organizatöre sorulacak.
+- Fotoğraflar `public/gorseller/bursa/<eser>/` altında, 1600 px WebP + 480 px önizleme (`_kucuk.webp`). Her galeride ve büyük görselde "© Vakıf Katılım" atfı gösterilir; fotoğraflar sponsorun envanter çalışmasındandır (tüm hakları saklıdır).
 - Kitap eserlerinin koordinatları adresten otomatik bulundu, çoğu yalnız mahalle düzeyinde. Yeniden aramak için internete bağlı bir bilgisayarda:
 
 ```

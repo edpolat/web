@@ -27,7 +27,7 @@ IL_BILGISI = {
               "envanter_kaynak_id": "vk-hatay-envanter", "envanter_yili": 2022, "toplam_eser": 117,
               "atif": "Vakıf Katılım, Hatay İli Vakıf Eserleri"},
 }
-LISANS = "Tüm hakları saklıdır (kullanım şartı organizatöre sorulacak)"
+LISANS = "Tüm hakları saklıdır"
 HASSASIYET = {"eser": "eser", "sokak": "adres", "adres": "adres", "mahalle": "mahalle", "ilce": "ilce"}
 KAYNAK_ALANLARI = {"kaynak", "kaynak_id", "sayfa", "not"}
 

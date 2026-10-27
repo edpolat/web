@@ -98,6 +98,7 @@ a.etiket { text-decoration: none; }
 .etiket-kaynakli { color: var(--kaynakli); background: var(--kaynakli-zemin); }
 .etiket-ai_yorumu { color: var(--ai); background: var(--ai-zemin); border-color: var(--sari); }
 .etiket-belirsiz { color: var(--belirsiz); border-style: dashed; }
+.etiket-ceviri { color: var(--ai); border-style: dotted; font-weight: 500; }
 .kaynak-ref { font-size: .85rem; }
 .galeri { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .5rem; }
 .galeri button { padding: 0; border: 0; background: none; cursor: zoom-in; width: 100%; }
@@ -573,3 +574,5 @@ html[data-altyazi="kapali"] .altyazi-seridi { display: none; }
 .etiket-oncelik-normal { color: var(--lacivert); }
 .etiket-oncelik-dusuk { color: var(--soluk); border-style: dashed; }
 .yz-kutu fieldset { border: 1px solid var(--cizgi); border-radius: 6px; padding: .4rem .6rem; }
+.il-listesi { list-style: none; padding: 0; display: grid; gap: .75rem; }
+.il-kayit { border: 1px solid var(--cizgi); border-radius: 8px; padding: .75rem; background: var(--yuzey); }

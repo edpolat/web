@@ -17,6 +17,8 @@ export type Olgu = {
   durum: string;
   kaynak_id?: string;
   sayfa?: string;
+  /** İngilizcesi kaynakta yok, YZ çevirisi: arayüz "çeviri" etiketi gösterir. */
+  en_ceviri?: "yz";
 };
 
 export type Gorsel = {

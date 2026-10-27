@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DILLER, ceviriEksik, gecerliDil, metin } from "@/lib/metin";
-import { ayarlar, iller, kaynakAdresi, sergiler, tumEserler, vakiflar, yayindakiEser, yayindakiKaynaklar } from "@/lib/veri";
+import { ayarlar, kaynakAdresi, sergiler, tumEserler, vakiflar, yayindakiEser, yayindakiIller, yayindakiKaynaklar } from "@/lib/veri";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
 import HaritaYukle from "@/components/HaritaYukle";
@@ -46,7 +46,7 @@ export default async function EserKarti({ params }: { params: Params }) {
   const t = s(dil);
   const ay = ayarlar();
   const tur = ay.eser_turleri.find((x) => x.id === eser.tur);
-  const il = iller().find((x) => x.il.id === eser.il)?.il;
+  const il = (await yayindakiIller()).find((x) => x.il.id === eser.il)?.il;
   const durumlar = new Map(ay.olgu_durumlari.map((d) => [d.id, d]));
   const kaynakMap = await yayindakiKaynaklar();
   const sergiMap = sergiler();
@@ -178,6 +178,14 @@ export default async function EserKarti({ params }: { params: Params }) {
                     {t.durumIsareti[o.durum]} {durumAdlari[o.durum]}
                     {o.sayfa ? ` · ${t.sayfaKisa(o.sayfa)}` : ""}
                   </a>
+                  {dil === "en" && o.en_ceviri === "yz" && (
+                    <>
+                      {" "}
+                      <span className="etiket etiket-ceviri" title={t.ceviriAciklama}>
+                        {t.ceviriEtiketi}
+                      </span>
+                    </>
+                  )}
                 </li>
               );
             })}
@@ -246,7 +254,7 @@ export default async function EserKarti({ params }: { params: Params }) {
 
       <section aria-labelledby="galeri">
         <h2 id="galeri">{t.galeri}</h2>
-        <Galeri dil={dil} gorseller={eser.gorseller ?? []} bosMetin={t.galeriBos} />
+        <Galeri dil={dil} gorseller={eser.gorseller ?? []} bosMetin={t.galeriBos} atifEtiketi={t.fotografAtfi} />
       </section>
 
       {eser.konum && (

@@ -7,7 +7,7 @@ import { s } from "@/lib/sozluk";
 import type { CokDilli, Dil, Eser } from "@/lib/tipler";
 
 type Secenek = { id: string; ad: string };
-type Props = { dil: Dil; eser?: Eser; iller: Secenek[]; turler: Secenek[]; kaynaklar: Secenek[] };
+type Props = { dil: Dil; eser?: Eser; iller: Secenek[]; turler: Secenek[]; kaynaklar: Secenek[]; varsayilanIl?: string };
 
 const SEKMELER = ["temel", "konum", "gorseller", "kaynaklar"] as const;
 type Sekme = (typeof SEKMELER)[number];
@@ -28,7 +28,7 @@ const doluysa = <T extends object>(o: T): T | null => (Object.keys(o).length ? o
  * Sekmeler: temel bilgiler, konum, görseller (yalnız görüntüleme) ve kaynaklı bilgiler; hepsi tek formdur.
  * Formda olmayan alanlar (olgular, görseller, mimari künye) olduğu gibi kalır.
  */
-export default function EserFormu({ dil, eser, iller, turler, kaynaklar }: Props) {
+export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayilanIl }: Props) {
   const t = s(dil);
   const router = useRouter();
   const [kaynak, setKaynak] = useState("");
@@ -152,7 +152,7 @@ export default function EserFormu({ dil, eser, iller, turler, kaynaklar }: Props
         {!eser && (
           <label>
             {t.il}
-            <select name="il" required defaultValue={iller[0]?.id}>
+            <select name="il" required defaultValue={iller.some((i) => i.id === varsayilanIl) ? varsayilanIl : iller[0]?.id}>
               {iller.map((i) => (
                 <option key={i.id} value={i.id}>
                   {i.ad}

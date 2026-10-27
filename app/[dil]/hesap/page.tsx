@@ -3,7 +3,7 @@ import Hesap from "@/components/Hesap";
 import { gecerliDil } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
-import { iller, rotalar, yayindakiEserler } from "@/lib/veri";
+import { rotalar, yayindakiEserler, yayindakiIller } from "@/lib/veri";
 
 export async function generateMetadata({ params }: { params: Promise<{ dil: string }> }) {
   const { dil } = await params;
@@ -20,7 +20,7 @@ export default async function HesapSayfasi({ params }: { params: Promise<{ dil: 
         dil={dil as Dil}
         eserler={eserler}
         rotalar={rotalar()}
-        iller={iller().map(({ il }) => ({ id: il.id, ad: il.ad }))}
+        iller={(await yayindakiIller()).map(({ il }) => ({ id: il.id, ad: il.ad }))}
       />
     </div>
   );

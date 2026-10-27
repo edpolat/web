@@ -4,9 +4,9 @@ import { kucukGorsel } from "@/lib/gorsel";
 import { metin } from "@/lib/metin";
 import type { Dil, Gorsel } from "@/lib/tipler";
 
-type Props = { dil: Dil; gorseller: Gorsel[]; bosMetin: string };
+type Props = { dil: Dil; gorseller: Gorsel[]; bosMetin: string; atifEtiketi: string };
 
-export default function Galeri({ dil, gorseller, bosMetin }: Props) {
+export default function Galeri({ dil, gorseller, bosMetin, atifEtiketi }: Props) {
   const [secili, setSecili] = useState(0);
   const pencere = useRef<HTMLDialogElement>(null);
   if (gorseller.length === 0) return <p className="not">{bosMetin}</p>;
@@ -19,6 +19,7 @@ export default function Galeri({ dil, gorseller, bosMetin }: Props) {
     setSecili((i) => (i + adim + gorseller.length) % gorseller.length);
   }
   const g = gorseller[secili];
+  const atiflar = [...new Set(gorseller.map((gr) => gr.atif))];
 
   return (
     <>
@@ -31,6 +32,9 @@ export default function Galeri({ dil, gorseller, bosMetin }: Props) {
           </li>
         ))}
       </ul>
+      <p className="not galeri-atif">
+        {atifEtiketi}: © {atiflar.join(", ")}
+      </p>
       <dialog
         ref={pencere}
         className="buyuk-gorsel"
