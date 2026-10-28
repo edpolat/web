@@ -37,7 +37,7 @@ export type Eser = {
   ilce?: string;
   adres?: CokDilli;
   konum?: Konum;
-  donem?: { yapim_yili?: number; yapim_yili_hicri?: number; yaklasik?: boolean; metin?: CokDilli };
+  donem?: { yapim_yili?: number; yapim_yili_hicri?: number; yaklasik?: boolean; metin?: CokDilli; kaynak_id?: string; sayfa?: string };
   banisi?: string;
   mimar?: string;
   tarihce?: CokDilli;

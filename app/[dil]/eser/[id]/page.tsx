@@ -49,6 +49,7 @@ export default async function EserKarti({ params }: { params: Params }) {
   const il = (await yayindakiIller()).find((x) => x.il.id === eser.il)?.il;
   const durumlar = new Map(ay.olgu_durumlari.map((d) => [d.id, d]));
   const kaynakMap = await yayindakiKaynaklar();
+  const donemKaynagi = eser.donem?.kaynak_id ? kaynakMap.get(eser.donem.kaynak_id) : undefined;
   const sergiMap = sergiler();
   const vakif = eser.vakif_id ? vakiflar().get(eser.vakif_id) : undefined;
 
@@ -102,21 +103,36 @@ export default async function EserKarti({ params }: { params: Params }) {
       )}
 
       <dl className="kunye-kutulari">
-        {eser.donem?.yapim_yili ? (
+        {(eser.donem?.yapim_yili || eser.donem?.metin) && (
           <div>
             <dt>{t.donem}</dt>
             <dd>
-              {eser.donem.yaklasik ? `${t.yaklasik} ` : ""}
-              {eser.donem.yapim_yili}
-              {eser.donem.yapim_yili_hicri ? ` (H. ${eser.donem.yapim_yili_hicri})` : ""}
+              {eser.donem.metin ? (
+                metin(eser.donem.metin, dil)
+              ) : (
+                <>
+                  {eser.donem.yaklasik ? `${t.yaklasik} ` : ""}
+                  {eser.donem.yapim_yili}
+                  {eser.donem.yapim_yili_hicri ? ` (H. ${eser.donem.yapim_yili_hicri})` : ""}
+                </>
+              )}
+              {donemKaynagi && (
+                <>
+                  {" "}
+                  <a
+                    className="etiket etiket-kaynakli"
+                    href={eser.donem.sayfa ? kaynakAdresi(donemKaynagi, eser.donem.sayfa) : `#kaynak-${donemKaynagi.id}`}
+                    {...(eser.donem.sayfa ? { target: "_blank", rel: "noopener" } : {})}
+                    title={`${donemKaynagi.baslik}${eser.donem.sayfa ? `, ${t.sayfa} ${eser.donem.sayfa}` : ""}`}
+                  >
+                    {t.durumIsareti.kaynakli}
+                    {eser.donem.sayfa ? ` ${t.sayfaKisa(eser.donem.sayfa)}` : ""}
+                  </a>
+                </>
+              )}
             </dd>
           </div>
-        ) : eser.donem?.metin ? (
-          <div>
-            <dt>{t.donem}</dt>
-            <dd>{metin(eser.donem.metin, dil)}</dd>
-          </div>
-        ) : null}
+        )}
         {eser.banisi && (
           <div>
             <dt>{t.banisi}</dt>

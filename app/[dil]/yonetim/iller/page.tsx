@@ -7,13 +7,14 @@ import { s } from "@/lib/sozluk";
 import { ilSurumleri } from "@/lib/sunucu/il-depo";
 import type { IlSurumSatiri } from "@/lib/sunucu/il-surum";
 import { panelKimligi } from "@/lib/sunucu/oturum";
+import { formTaslagiOku } from "@/lib/sunucu/taslak-depo";
 import { iller, yayindakiIller, yayindakiKaynaklar } from "@/lib/veri";
 import { izinli, paneldeMi } from "@/lib/yetki";
 
 export const metadata: Metadata = { robots: { index: false } };
 
 /** İller: sitedeki şehirler, yeni il formu ve onay bekleyen il kayıtları. */
-export default async function Iller({ params }: { params: Promise<{ dil: string }> }) {
+export default async function Iller({ params, searchParams }: { params: Promise<{ dil: string }>; searchParams: Promise<{ taslak?: string }> }) {
   const { dil } = await params;
   if (!gecerliDil(dil)) notFound();
   const ben = await panelKimligi();
@@ -33,6 +34,7 @@ export default async function Iller({ params }: { params: Promise<{ dil: string 
   const gecmis = (kayitlar ?? []).filter((k) => k.durum !== "incelemede").slice(0, 20);
   const tarih = (x: string) => new Date(x).toLocaleString(dil === "tr" ? "tr-TR" : "en-GB", { dateStyle: "medium", timeStyle: "short" });
   const ekleyebilir = izinli(ben, "eser.ekle");
+  const taslak = ekleyebilir ? await formTaslagiOku(Number((await searchParams).taslak), "il") : undefined;
 
   return (
     <section>
@@ -41,7 +43,7 @@ export default async function Iller({ params }: { params: Promise<{ dil: string 
       </p>
       <h1>{u.baslik}</h1>
       <p className="not">{u.aciklama}</p>
-      {ekleyebilir && <IlFormu dil={dil} kaynaklar={[...kaynakMap.values()].map((k) => ({ id: k.id, ad: k.baslik }))} />}
+      {ekleyebilir && <IlFormu dil={dil} kaynaklar={[...kaynakMap.values()].map((k) => ({ id: k.id, ad: k.baslik }))} taslak={taslak} />}
 
       <h2>{u.bekleyen}</h2>
       {!kayitlar ? (

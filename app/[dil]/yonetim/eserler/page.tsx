@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { adSirala, gecerliDil, metin } from "@/lib/metin";
+import { donemYuzyili } from "@/lib/filtre";
 import { s } from "@/lib/sozluk";
 import { panelKimligi } from "@/lib/sunucu/oturum";
 import { surumler, yayindakiSurumler } from "@/lib/sunucu/surum-depo";
@@ -17,7 +18,7 @@ const GOSTERILEN = 200;
 type Arama = { q?: string; durum?: string; tur?: string; il?: string; donem?: string; gonderildi?: string };
 type Satir = { eser: Eser; il: string; arsivde: boolean; incelemede: boolean };
 
-const yuzyil = (e: Eser) => (e.donem?.yapim_yili ? Math.floor((e.donem.yapim_yili - 1) / 100) + 1 : undefined);
+const yuzyil = (e: Eser) => donemYuzyili(e.donem);
 
 /** Paneldeki eser listesi: durum, kategori, bölge ve döneme göre süzülür; adla, banisiyle ya da kimlikle aranır. */
 export default async function Eserler({ params, searchParams }: { params: Promise<{ dil: string }>; searchParams: Promise<Arama> }) {
@@ -32,7 +33,10 @@ export default async function Eserler({ params, searchParams }: { params: Promis
   const [iller, yayindakiler, bekleyen] = await Promise.all([
     yayindakiIller(),
     yayindakiSurumler(),
-    surumler({ durum: "incelemede" }).catch(() => []),
+    // Onay bekleyen: tarihçide ya da editörde.
+    Promise.all([surumler({ durum: "incelemede" }), surumler({ durum: "editorde" })])
+      .then(([x, y]) => [...x, ...y])
+      .catch(() => []),
   ]);
   const incelemede = new Set(bekleyen.map((x) => x.eser_id));
   const ilAdi = new Map(iller.map(({ il }) => [il.id, metin(il.ad, dil)]));
@@ -159,7 +163,7 @@ export default async function Eserler({ params, searchParams }: { params: Promis
               </td>
               <td>{[ilAdi.get(il), e.ilce].filter(Boolean).join(", ")}</td>
               <td>{metin(turler.find((x) => x.id === e.tur)?.ad, dil) || e.tur}</td>
-              <td>{e.donem?.yapim_yili ?? "—"}</td>
+              <td>{e.donem?.yapim_yili ?? (e.donem?.metin ? metin(e.donem.metin, dil) : "—")}</td>
               <td>
                 <span className={`etiket etiket-surum-${arsivde ? "arsivlendi" : e.taslak ? "taslak" : "yayinda"}`}>
                   {p.durumlar[arsivde ? "arsivlendi" : e.taslak ? "taslak" : "yayinda"]}

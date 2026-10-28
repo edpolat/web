@@ -14,7 +14,7 @@ export async function POST(istek: Request) {
   } catch {
     return Response.json({ hata: "Geçersiz JSON." }, { status: 400 });
   }
-  if (!(await yetkili("eser.onayla"))) return Response.json({ hata: "Onaylama izni gerekli." }, { status: 403 });
+  if (!(await yetkili("eser.incele"))) return Response.json({ hata: "Akademik danışman incelemesi izni gerekli." }, { status: 403 });
   if (g.islem !== "kabul" && g.islem !== "reddet") return Response.json({ hata: "Bilinmeyen işlem." }, { status: 400 });
   try {
     await talepKarar(metin(g.id), g.islem === "kabul", metin(g.gerekce).slice(0, 2000));

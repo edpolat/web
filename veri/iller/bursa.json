@@ -819,6 +819,12 @@
         "tr": "Alacahırka Mahallesi, Orhaneli Caddesi, No: 39, Osmangazi, Bursa",
         "en": "Alacahırka Neighborhood, Orhaneli Street, No. 39, Osmangazi, Bursa"
       },
+      "donem": {
+        "yapim_yili": 1901,
+        "yapim_yili_hicri": 1319,
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "408"
+      },
       "tarihce": {
         "tr": "Paşa Camii, Osmangazi ilçesi, Alacahırka Mahallesi, Orhaneli Caddesi, No: 39’da yer almaktadır.\n\nKitabesi bulunmayan caminin kimin tarafından yaptırıldığı kesin olarak bilinmemektedir. Bir görüşe göre H. 1323-1325 / M. 1905-1907 yıllarında bölge halkı tarafından inşa edildiği, diğer bir görüşe göre ise H. 1319 / M. 1901 tarihinde Ahmet Vefik Paşa döneminde, Kırım’dan göç ederek bu civara yerleşen muhacirler tarafından yaptırıldığı düşünülmektedir.",
         "en": "Paşa Mosque is located in Osmangazi District, Alacahırka Neighborhood, on Orhaneli Street, No. 39.\n\nIt is not known for sure who built the mosque, which has no inscription. According to one view, it was built by the local people in AH 1323-1325 / AD 1905-1907, and according to another view, it was built by the immigrants who migrated from Crimea and settled in this area during the time of Ahmet Vefik Paşa in AH 1319 / AD 1901."
@@ -3626,6 +3632,11 @@
         "tr": "Orhanbey Mahallesi, Tuzpazarı Caddesi, No: 53, Osmangazi, Bursa",
         "en": "Orhanbey Neighborhood, Tuzpazarı Street, No. 53, Osmangazi District, Bursa"
       },
+      "donem": {
+        "yapim_yili": 1479,
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "440"
+      },
       "tarihce": {
         "tr": "Osmangazi ilçesi, Orhanbey Mahallesi, Tuzpazarı Caddesi, No: 53’te yer almaktadır. Yaptıran kişinin adı kesin olarak bilinmemekle birlikte, Şemseddin Ulusoy, Kâmil Kepecioğlu ve Kâzım Baykal’ın bildirdiklerine göre, cami 1479 yılında Fâtih Sultan Mehmed devri ricalinden “Kara Ali Bey” adında bir şahıs tarafından inşa ettirilmiştir.",
         "en": "The mosque is located in Osmangazi District, Orhanbey Neighborhood, on Tuzpazarı Street, No. 53. Although the name of the person who had it built is not known for sure, according to what Şemseddin Ulusoy, Kamil Kepecioğlu and Kâzım Baykal reported, the mosque was built in 1479 by a person named “Kara Ali Bey”, one of the statesmen of the Fâtih Sultan Mehmed era."
@@ -5915,6 +5926,16 @@
         "tr": "Gaziakdemir Mahallesi, Yeni Kaplıca Caddesi No: 7, Osmangazi, Bursa",
         "en": "Gaziakdemir Neighborhood, Yeni Kaplıca Street No. 7, Osmangazi District, Bursa"
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "1680'den sonra",
+          "en": "after 1680"
+        },
+        "yapim_yili": 1680,
+        "kaynak_id": "vk-bursa-envanter-c1",
+        "sayfa": "477"
+      },
       "tarihce": {
         "tr": "Osmangazi ilçesi, Gaziakdemir Mahallesi, Yeni Kaplıca Caddesi No: 7’de, Yeni Kaplıca Hamamı ile aynı avlu içerisinde yer almaktadır.\n\nKitabesi bulunmayan mescidin, 1680 yılından sonra Yusuf Ağa tarafından, cuma günleri hamama gelenlerin cuma namazlarını kılabilmeleri amacıyla inşa ettirildiği bilinmektedir. Ancak H. 28 Zilhicce 955 / M. 28 Ocak 1549 tarihli bir başka kayıtta, mescidin aynı amaçla “Evhad Fakih” adında bir hayırsever tarafından yaptırıldığı bilgisi de yer almaktadır.\n\nMescidin, Bursa Mevlevihanesi şeyhi Mehmed Şemseddin Efendi’nin annesinin katkılarıyla 9 Ağustos 1893 tarihinde onarıldığına dair bir bilgi bulunmaktadır.\n\nGünümüzde mescit, kaplıcaya gelenlerin ibadetlerini gerçekleştirebildiği küçük ama işlevsel bir yapı olarak kullanılmaktadır. Yapının minaresi bulunmamaktadır.",
         "en": "The masjid is located in Osmangazi District, Gaziakdemir Neighborhood, on Yeni Kaplıca Street No. 7, in the same courtyard as the Yeni Kaplıca Bath.\n\nIt is known that the masjid, which has no inscription, was built by Yusuf Ağa after 1680 so that those who came to the bath on Fridays could perform their Friday prayers. However, in another record dated 28 Dhul-Hijjah AH 955 / 28 January AD 1549, there is information that the masjid was built by a philanthropist named “Evhad Fakih” for the same purpose.\n\nThere is information that the masjid was repaired on August 9, 1893, with the contributions of the mother of the Shaykh of Bursa Mevlevi Lodge, Mehmed Şemseddin Efendi.\n\nToday, the masjid is used as a small but functional structure where those who come to the spa can perform their prayers. The building does not have a minaret."
@@ -7630,6 +7651,31 @@
       "konum": {
         "enlem": 40.1835,
         "boylam": 29.0634,
+        "dogrulandi": false,
+        "yontem": "elle"
+      },
+      "olgular": []
+    },
+    {
+      "id": "demo-deneme-cesmesi",
+      "ad": {
+        "tr": "DEMO Deneme Çeşmesi (silinecek)",
+        "en": "DEMO Test Fountain (to be deleted)"
+      },
+      "tur": "cesme",
+      "ilce": "Osmangazi",
+      "banisi": "Deneme Bey",
+      "donem": {
+        "yapim_yili": 1500,
+        "yaklasik": true,
+        "metin": {
+          "tr": "Onaylama akışını denemek için eklenmiş örnek kayıttır, gerçek bir eser değildir.",
+          "en": "A sample record added to test the approval flow; not a real monument."
+        }
+      },
+      "konum": {
+        "enlem": 40.184,
+        "boylam": 29.061,
         "dogrulandi": false,
         "yontem": "elle"
       },

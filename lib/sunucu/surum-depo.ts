@@ -6,6 +6,7 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { createClient } from "@supabase/supabase-js";
 import { hesapIstemcisi } from "./kimlik";
 import { KatkiHatasi } from "./katki";
+import type { Eser } from "../tipler";
 import { sonYayindakiler, type AlanFarki, type HazirSurum, type SurumSatiri, type YayindakiSurum } from "./surum";
 
 const ADRES = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
@@ -116,6 +117,15 @@ export async function surumIncelemeye(id: number): Promise<void> {
 
 export async function surumKarar(id: number, onay: boolean, gerekce: string, degisiklikler: AlanFarki[]): Promise<void> {
   denetle((await (await vt()).rpc("surum_karar", { p_id: id, p_onay: onay, p_gerekce: gerekce, p_degisiklikler: degisiklikler })).error);
+}
+
+/** Tarihçi kararı: ilerlet (isteğe bağlı düzeltilmiş veriyle) ya da reddet. Fonksiyon yoksa 015 çalıştırılmamıştır. */
+export async function surumTarihciKarar(id: number, ilerlet: boolean, veri: Eser | null, not: string, degisiklikler: AlanFarki[] | null): Promise<void> {
+  const { error } = await (await vt()).rpc("surum_tarihci_karar", { p_id: id, p_ilerlet: ilerlet, p_veri: veri, p_not: not, p_degisiklikler: degisiklikler });
+  if (error && /surum_tarihci_karar/.test(error.message) && /exist|find|schema cache/i.test(error.message)) {
+    throw new KatkiHatasi("Akademik danışman onayı için Supabase'de supabase/015_tarihci_onayi.sql çalıştırılmalı.");
+  }
+  denetle(error);
 }
 
 export async function surumYayinla(

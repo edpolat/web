@@ -25,6 +25,12 @@ export function surumuGoster(
   ek: Partial<GosterilenSurum> = {},
 ): GosterilenSurum {
   const ilAdi = iller().find((d) => d.il.id === s.il)?.il.ad;
+  const farkla = (a: Eser | undefined, b: Eser) =>
+    alanFarklari(a, b).map((f) => ({
+      alan: t.alanlar[f.alan] ?? f.alan,
+      eski: goster(f.alan, f.eski, dil, t, kaynakMap),
+      yeni: goster(f.alan, f.yeni, dil, t, kaynakMap),
+    }));
   return {
     id: s.id,
     eserId: s.eser_id,
@@ -39,11 +45,12 @@ export function surumuGoster(
     ret_gerekcesi: s.ret_gerekcesi ?? undefined,
     aciklama: s.aciklama ?? undefined,
     kaynak: s.kaynak_id ? `${kaynakMap.get(s.kaynak_id)?.baslik ?? s.kaynak_id}${s.sayfa ? `, ${t.sayfa} ${s.sayfa}` : ""}` : undefined,
-    farklar: alanFarklari(onceki, s.veri).map((f) => ({
-      alan: t.alanlar[f.alan] ?? f.alan,
-      eski: goster(f.alan, f.eski, dil, t, kaynakMap),
-      yeni: goster(f.alan, f.yeni, dil, t, kaynakMap),
-    })),
+    farklar: farkla(onceki, s.veri),
+    tarihci: s.tarihci_ad ?? undefined,
+    tarihciId: s.tarihci ?? undefined,
+    tarihciNotu: s.tarihci_notu ?? undefined,
+    editorNotu: s.editor_notu ?? undefined,
+    ...(s.ilk_veri ? { tarihciFarklari: farkla(s.ilk_veri, s.veri) } : {}),
     ...ek,
   };
 }

@@ -116,7 +116,7 @@ export default function DenetimTablosu({
                     {k.alan && (
                       <>
                         {" · "}
-                        <strong>{t.alanlar[k.alan] ?? t.oneri.alanlar[k.alan] ?? k.alan}</strong>
+                        <strong>{k.alan === "rol" ? t.panel.rol : (t.alanlar[k.alan] ?? t.oneri.alanlar[k.alan] ?? k.alan)}</strong>
                         <br />
                         <small>
                           {goster(k.alan, k.eski, dil, t, kaynakMap).slice(0, 200)} → {goster(k.alan, k.yeni, dil, t, kaynakMap).slice(0, 200)}

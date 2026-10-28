@@ -247,6 +247,15 @@
         "tr": "Mescit, Meram İlçesi, Sephavan Mahallesi, Bulgur Dede Sokak’ta bulunmaktadır ve konum olarak Aziziye Camii’nin batısında yer almaktadır.",
         "en": "The masjid is located in Meram District, Sephavan Neighborhood, Bulgur Dede Street and is located to the west of Aziziye Mosque."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyıl",
+          "en": "13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "75"
+      },
       "konum": {
         "enlem": 37.869256,
         "boylam": 32.500133,
@@ -465,6 +474,15 @@
         "tr": "Mescit, Meram ilçesi, Şükran Mahallesi, Hotuz Sokak, No. 2’de yer almaktadır.",
         "en": "The masjid is located at Meram District, Şükran Neighborhood, Hotuz Street No: 2. The masjid is very close to one of the gates of the Konya city walls opening to the east."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın başları",
+          "en": "early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "78"
+      },
       "konum": {
         "enlem": 37.870173,
         "boylam": 32.498241,
@@ -595,6 +613,15 @@
       "adres": {
         "tr": "Cami Meram, Sahibiata Mahallesi, Furgan Dede Caddesi, No. 47’de yer almaktadır.",
         "en": "The mosque is located at Furgan Dede Str No: 47, Meram District, Sahibiata Neighborhood."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın başları",
+          "en": "early 19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "80"
       },
       "konum": {
         "enlem": 37.866066,
@@ -754,6 +781,11 @@
       "adres": {
         "tr": "Cami, Meram, Karakurt Mahallesi, Birhan Sokak, No. 11’de yer almaktadır.",
         "en": "The mosque is located in Meram District, Karakurt Neighborhood, Birhan Street No: 11."
+      },
+      "donem": {
+        "yapim_yili": 1954,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "81"
       },
       "konum": {
         "enlem": 37.865625,
@@ -1000,6 +1032,11 @@
       "adres": {
         "tr": "Mescit, Meram, Akbaş Mahallesi, Kamani Mehmet Paşa Sokak, No. 9’da yer almaktadır.",
         "en": "The masjid is located in Meram District, Akbaş Neighborhood, Kamani Mehmet Paşa Street No: 9. The work was commissioned by Furgan Dede, whose grave is located in the western part of the narthex."
+      },
+      "donem": {
+        "yapim_yili": 1908,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "83"
       },
       "konum": {
         "enlem": 37.865747,
@@ -1408,6 +1445,15 @@
         "tr": "Cami, Meram, Ayanbey Sokak, No. 2’de yer almaktadır.",
         "en": "The Mosque is located Meram, Ayanbey Str."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın ortaları",
+          "en": "mid-19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "89"
+      },
       "konum": {
         "enlem": 37.865,
         "boylam": 32.48,
@@ -1772,6 +1818,12 @@
         "tr": "Cami, Meram, Büyük Kovanağzı Mahallesi, Küçük Kovanağzı Caddesi, No. 16’da yer almaktadır.",
         "en": "The mosque is located in Meram, Büyük Kovanağzı Neighborhood, Küçük Kovanağzı Street, No: 16. According to the inscription written in Latin letters on the right of the entrance door of the work, the mosque was built in 1305 AH / 1889-90 AD. The people of the neighborhood state that the founder of the mosque is Hacı Haydar Efendi. The mosque, which has recently undergone significant repairs, is open for worship."
       },
+      "donem": {
+        "yapim_yili": 1889,
+        "yapim_yili_hicri": 1305,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "92"
+      },
       "konum": {
         "enlem": 37.846055,
         "boylam": 32.462582,
@@ -1900,6 +1952,15 @@
       "adres": {
         "tr": "Cami, Meram İlçesi, Sağlık Köyü’nün merkezinde yer almaktadır.",
         "en": "The mosque is located in the center of Sağlık Village, Meram District."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın sonları",
+          "en": "late 19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "94"
       },
       "konum": {
         "enlem": 37.865,
@@ -2277,6 +2338,12 @@
         "tr": "Cami Meram, Yeşildere Mahallesinde yer almaktadır.",
         "en": "The mosque is located in Meram, Yeşildere Neighborhood."
       },
+      "donem": {
+        "yapim_yili": 1849,
+        "yapim_yili_hicri": 1266,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "97"
+      },
       "konum": {
         "enlem": 37.865,
         "boylam": 32.48,
@@ -2454,6 +2521,12 @@
       "adres": {
         "tr": "Cami, Meram, Şeyh Sadreddin Mahallesi, Turgutoğlu Sokak üzerinde yer almaktadır.",
         "en": "The mosque is located on Meram, Şeyh Sadreddin Neighborhood, Turgutoğlu Street."
+      },
+      "donem": {
+        "yapim_yili": 1274,
+        "yapim_yili_hicri": 673,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "99"
       },
       "konum": {
         "enlem": 37.865,
@@ -2673,6 +2746,12 @@
         "tr": "Mescit, Meram, Armağan Mahallesi, Hoca Fakih Caddesi No. 59’da yer almaktadır.",
         "en": "The masjid is located at Meram, Armağan Neighborhood, Hoca Fakih Street No. 59. According to its foundation charter, it was built by Kemalettin Rumtaş, the middle brother of Celaleddin Karatay, in 646 AH / 1248 AD."
       },
+      "donem": {
+        "yapim_yili": 1248,
+        "yapim_yili_hicri": 646,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "104"
+      },
       "konum": {
         "enlem": 37.872023,
         "boylam": 32.465893,
@@ -2882,6 +2961,12 @@
         "tr": "Cami, Meram, Armağan Mahallesi, Hoca Fakih Caddesi No. 57’de yer almaktadır.",
         "en": "The mosque is located in Meram, Armağan Neighborhood, Hoca Fakih Str."
       },
+      "donem": {
+        "yapim_yili": 1221,
+        "yapim_yili_hicri": 618,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "106"
+      },
       "konum": {
         "enlem": 37.868493,
         "boylam": 32.468509,
@@ -3090,6 +3175,11 @@
         "tr": "Cami, Hoşhavanata Saatçi Mahallesi, Baruthane Caddesi’nde yer almaktadır.",
         "en": "The mosque is located in Hoşhavanata Saatçi Neighborhood, Baruthane Street."
       },
+      "donem": {
+        "yapim_yili": 1871,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "108"
+      },
       "konum": {
         "enlem": 37.865693,
         "boylam": 32.496812,
@@ -3248,6 +3338,12 @@
         "tr": "Cami, Meram, Kadı İzzet Sokak No. 20’de yer almaktadır.",
         "en": "The mosque is located at Meram, Kadı İzzet Street No: 20. The neighborhood takes its name from Abdülaziz Sultan, one of the leading clergy and statesmen of the Seljuk period, and from the historical mosque named after Abdülaziz Sultan."
       },
+      "donem": {
+        "yapim_yili": 1253,
+        "yapim_yili_hicri": 651,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "109"
+      },
       "konum": {
         "enlem": 37.869274,
         "boylam": 32.48864,
@@ -3366,6 +3462,15 @@
       "adres": {
         "tr": "Cami, Meram, Sahibiata Mahallesi, Mimar Muzaffer Caddesi, No. 39’da yer almaktadır.",
         "en": "Konyalı Dursun Fakih is the first judge of the Ottoman Empire. He is a poet, scientist and lawyer who delivered the first sermon, which is considered a sign of independence of the Ottoman Empire. He is the relative and son-in-law of Şeyh Edebali and the brother-in-law of Osman Gazi. After his primary education, he went to Söğüt to Şeyh Edebalı, who was working with Osman Gazi, and received lessons in tafsir, hadith and fiqh from him. Dursun Fakih participated in the wars as an imam alongside Osman Gazi and encouraged the mujahids to go to war and struggle on the fronts. After the death of Şeyh Edebali, he was also assigned to fatwa and teaching. Müneccimbaşı writes that Dursun Fakih became the first şeyhülislam of the Ottoman Empire due to this duty. Dursun Fakih passed away in 1326. His grave is located in the tomb within the Şeyh Edebali Zawiya in Bilecik."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "14. yüzyılın sonları",
+          "en": "late 14th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "111"
       },
       "konum": {
         "enlem": 37.870912,
@@ -3588,6 +3693,15 @@
       "adres": {
         "tr": "Mescit, Meram, Beyhekim Mahallesi, Çukur Meydan’da bulunmaktadır.",
         "en": "The masjid is located in Meram, Beyhekim Neighborhood, Çukur Square."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyılın sonları",
+          "en": "late 13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "113"
       },
       "konum": {
         "enlem": 37.865,
@@ -4176,6 +4290,12 @@
         "tr": "Cami, Meram, Gökyurt Köyü merkezindedir.",
         "en": "The mosque is in the center of Meram, Gökyurt Village."
       },
+      "donem": {
+        "yapim_yili": 1874,
+        "yapim_yili_hicri": 1289,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "121"
+      },
       "konum": {
         "enlem": 37.865,
         "boylam": 32.48,
@@ -4364,6 +4484,15 @@
         "tr": "Mescit Meram,\t Sungur Mahallesi, Telli Mescit\t Sokak üzerinde, Hacı Fettah Mezarlığı’nın kuzeydoğusunda yer almaktadır.",
         "en": "The masjid is located in Meram, Sungur Neighborhood, on Telli Mescit Street, northeast of Hacı Fettah Cemetery."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyıl",
+          "en": "20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "122"
+      },
       "konum": {
         "enlem": 37.865155,
         "boylam": 32.498677,
@@ -4472,6 +4601,11 @@
       "adres": {
         "tr": "yapılmasını büyük sultan kölelerin azat edicisi, Arap ve Acem sultanların efendisi, dünya ve dinin izzeti, fetih babası, Keyhüsrev oğlu Keykâvus’un saltanat günlerinde (Allah saltanatını daim etsin) Allah’ın rahmetine muhtaç, zayıf kul, Hacı Ebubekir oğlu Hüseyin oğlu Ali 656 yılında emretmiştir.",
         "en": "Cami, Meram, Furkandede Mahallesi, Sahip Ata Sokak, No. 89’da yer almaktadır."
+      },
+      "donem": {
+        "yapim_yili": 1258,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "127"
       },
       "konum": {
         "enlem": 37.865,
@@ -4690,6 +4824,12 @@
       "adres": {
         "tr": "Cami, Meram, Sehpevan Mahallesi, Kapı Cami Sokağı üzerinde yer almaktadır.",
         "en": "The mosque is on Meram, Sehpevan Neighborhood, Kapı Cami Street."
+      },
+      "donem": {
+        "yapim_yili": 1650,
+        "yapim_yili_hicri": 1060,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "130"
       },
       "konum": {
         "enlem": 37.865,
@@ -5077,6 +5217,11 @@
         "tr": "Cami, Meram, Sahip Ata Mahallesi, Yavuz Selim Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located in Meram, Sahip Ata Neighborhood, Yavuz Selim Street"
       },
+      "donem": {
+        "yapim_yili": 1972,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "140"
+      },
       "konum": {
         "enlem": 37.865,
         "boylam": 32.48,
@@ -5164,6 +5309,12 @@
       "adres": {
         "tr": "Mescit, Meram, İhtiyarettin Mahallesi, Kale Sokak, No. 22’de yer almaktadır.",
         "en": "The Masjid is located in Meram, İhtiyarettin Neighborhood, Kale Str."
+      },
+      "donem": {
+        "yapim_yili": 1918,
+        "yapim_yili_hicri": 1337,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "141"
       },
       "konum": {
         "enlem": 37.868288,
@@ -5342,6 +5493,17 @@
       "adres": {
         "tr": "Cami, Meram, Kürkçü Mahallesi, Mevlâna Caddesi, No. 16’da yer almaktadır.",
         "en": "The mosque is located in Meram, Kürkçü Neighborhood, Mevlâna Street No16."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "H. 598 / M. 1201'den önce",
+          "en": "before AH 598 / 1201"
+        },
+        "yapim_yili": 1201,
+        "yapim_yili_hicri": 598,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "142"
       },
       "konum": {
         "enlem": 37.87124,
@@ -5551,6 +5713,15 @@
         "tr": "Mescit Meram, Hacı Fettah Mahallesi, Tahtatepen Sokak üzerinde yer almaktadır.",
         "en": "The masjid is located at Meram Hacı Fettah Neighborhood, Tahtatepen Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın başları",
+          "en": "early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "145"
+      },
       "konum": {
         "enlem": 37.863642,
         "boylam": 32.498871,
@@ -5718,6 +5889,11 @@
       "adres": {
         "tr": "Cami, Meram, Kürkçü Mahallesi, Karahöyüklü Sokak, No. 5’te yer almaktadır.",
         "en": "The mosque is located in Meram, Kürkçü Neighborhood, Karahöyüklü Street No: 5. It is on Mevlâna Street, east of Alaaddin Hill."
+      },
+      "donem": {
+        "yapim_yili": 1940,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "146"
       },
       "konum": {
         "enlem": 37.87124,
@@ -5976,6 +6152,12 @@
       "adres": {
         "tr": "Cami Meram, Kayısılıburun Sokak üzerinde yer almaktadır.",
         "en": "Mosque Meram is located on Kayısılıburun Street."
+      },
+      "donem": {
+        "yapim_yili": 1748,
+        "yapim_yili_hicri": 1162,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "148"
       },
       "konum": {
         "enlem": 37.865,
@@ -6343,6 +6525,15 @@
         "tr": "Cami, Meram İlçesi, Abdülaziz Mahallesi, Abdülmümin Sokak, No. 7’de yer almaktadır.",
         "en": "The mosque is located in Meram District, Abdülaziz Neighborhood, Abdülmümin Street No: 7."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "15. yüzyılın ikinci yarısı",
+          "en": "second half of the 15th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "151"
+      },
       "konum": {
         "enlem": 37.869274,
         "boylam": 32.48864,
@@ -6551,6 +6742,15 @@
       "adres": {
         "tr": "Cami, Meram, Fahrunnisa Mahallesi, Baruthane Caddesi, No. 65’te yer almaktadır.",
         "en": "The mosque is located Meram, Fahrunnisa Neighborhood, Baruthane Street, No: 65."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın ilk yarısı",
+          "en": "first half of the 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "153"
       },
       "konum": {
         "enlem": 37.859971,
@@ -6859,6 +7059,12 @@
       "adres": {
         "tr": "Mescit, Meram, Kale Celp Mahallesi Hisar Sokak üzerinde, İplikçi Camii’nin güneyinde yer almaktadır.",
         "en": "The masjid is located in Meram District, Kale Celp Neighborhood, Hisar Street, to south of İplikçi Mosque."
+      },
+      "donem": {
+        "yapim_yili": 1837,
+        "yapim_yili_hicri": 1253,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "155"
       },
       "konum": {
         "enlem": 37.865,
@@ -7315,6 +7521,12 @@
         "tr": "Mescit, Meram, Kızılören Kasabasında yer almaktadır.",
         "en": "The masjid is located in Meram, Kızılören Town. The date 1286 AH / 1869- 70 AD is written on the plaque above the entrance of the building. The masjid was repaired by the General Directorate of Foundations in 2001."
       },
+      "donem": {
+        "yapim_yili": 1869,
+        "yapim_yili_hicri": 1286,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "158"
+      },
       "konum": {
         "enlem": 37.865,
         "boylam": 32.48,
@@ -7634,6 +7846,12 @@
         "tr": "Mescit, Meram, Mücellit Mahallesi, Ayine Sokak, No. 2’de yer almaktadır.",
         "en": "The masjid is located in Meram, Mücellit Neighborhood, Ayine Str., No: 2."
       },
+      "donem": {
+        "yapim_yili": 1421,
+        "yapim_yili_hicri": 824,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "163"
+      },
       "konum": {
         "enlem": 37.852359,
         "boylam": 32.420236,
@@ -7852,6 +8070,12 @@
         "tr": "Mescit, Meram, Kale-i Cerp Mahallesi, Sakarya Sokak üzerinde yer almaktadır.",
         "en": "The masjid is located on Meram, Kale-i Cerp District, Sakarya Street."
       },
+      "donem": {
+        "yapim_yili": 1220,
+        "yapim_yili_hicri": 617,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "166"
+      },
       "konum": {
         "enlem": 37.870218,
         "boylam": 32.49575,
@@ -8059,6 +8283,15 @@
       "adres": {
         "tr": "Mescit, Meram, Kürkçü Mahallesi, Gürcü Hatun Sokak, No. 23’te yer almaktadır.",
         "en": "The masjid is located in Meram, Kürkçü Neighborhood, Gürcü Hatun Str, No: 23. It is located in the south of Alâeddin Hill."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın başları",
+          "en": "early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "168"
       },
       "konum": {
         "enlem": 37.87124,
@@ -8268,6 +8501,15 @@
       "adres": {
         "tr": "Cami, Karatay, Müze Alanı Caddesi üzerinde bulunmaktadır.",
         "en": "The mosque is located on Karatay, Müze Alanı Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "16. yüzyılın ilk yarısı",
+          "en": "first half of the 16th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "176"
       },
       "konum": {
         "enlem": 37.870397,
@@ -8487,6 +8729,11 @@
       "adres": {
         "tr": "Cami, Konya, Karatay, Tercüman Mahallesi, Sultan Veled Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located on Konya, Karatay, Tercüman Neighborhood, Sultan Veled Street."
+      },
+      "donem": {
+        "yapim_yili": 1925,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "184"
       },
       "konum": {
         "enlem": 37.87526,
@@ -8763,6 +9010,15 @@
       "adres": {
         "tr": "Cami, Karatay, Aslanlı Kışla Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Aslanlı Kışla Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın sonları",
+          "en": "late 19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "189"
       },
       "konum": {
         "enlem": 37.870688,
@@ -9150,6 +9406,15 @@
         "tr": "Cami Karatay, Karacihan Mahallesi, Karakayış Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Karacihan Neighborhood, Karakayış Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyıl",
+          "en": "19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "192"
+      },
       "konum": {
         "enlem": 37.887118,
         "boylam": 32.504239,
@@ -9337,6 +9602,11 @@
       "adres": {
         "tr": "Cami, Karatay, Hasandede Mescit Mahallesi, Sedirler Caddesi’nde yer almaktadır.",
         "en": "The mosque is located in Karatay, Hasandede Mescit Neighborhood, Sedirler Street."
+      },
+      "donem": {
+        "yapim_yili": 1908,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "193"
       },
       "konum": {
         "enlem": 37.8716,
@@ -9664,6 +9934,15 @@
         "tr": "Cami, Karatay, Obruk Köyü merkezinde bulunmaktadır.",
         "en": "The mosque is located in the center of Karatay, Obruk Village."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyıl",
+          "en": "19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "195"
+      },
       "konum": {
         "enlem": 37.8716,
         "boylam": 32.505,
@@ -9852,6 +10131,11 @@
         "tr": "Cami, Karatay Belediyesi’nin batısında, Fakıh Dede Mahallesi, Mengüç Caddesi üzerinde bulunmaktadır.",
         "en": "The mosque is located in Fakıh Dede Neighborhood, Mengüç Street, in the west of Karatay Municipality in Karatay district."
       },
+      "donem": {
+        "yapim_yili": 1930,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "196"
+      },
       "konum": {
         "enlem": 37.865949,
         "boylam": 32.504417,
@@ -10029,6 +10313,11 @@
       "adres": {
         "tr": "Cami, Karatay, Uluırmak Burhandede Mahallesi, Karaman Caddesi’nde yer almaktadır.",
         "en": "The mosque is located in Karatay, Uluırmak Burhandede Neighborhood, Karaman Street."
+      },
+      "donem": {
+        "yapim_yili": 1915,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "198"
       },
       "konum": {
         "enlem": 37.8716,
@@ -10209,6 +10498,11 @@
         "tr": "Cami, Karatay, Keçeciler Mahallesi, Araplar Caddesi’nde yer almaktadır.",
         "en": "The mosque is located in Karatay, Keçeciler Neighborhood, Araplar Street."
       },
+      "donem": {
+        "yapim_yili": 1908,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "199"
+      },
       "konum": {
         "enlem": 37.883156,
         "boylam": 32.505282,
@@ -10386,6 +10680,12 @@
       "adres": {
         "tr": "Cami, Karatay, Karakayış Mahallesi, Karakayış Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Karakayış Neighborhood, Karakayış Street."
+      },
+      "donem": {
+        "yapim_yili": 1841,
+        "yapim_yili_hicri": 1257,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "200"
       },
       "konum": {
         "enlem": 37.899952,
@@ -10595,6 +10895,11 @@
         "tr": "Mescit, Sırçalı Mescit’in güneyinde, Hocahabib (Aziziye) Mahallesi, Kadılar Sokak’ta yer almaktadır.",
         "en": "The masjid is located in Hocahabib (Aziziye) Neighborhood, Kadilar Street, to the south of Sırçalı Masjid."
       },
+      "donem": {
+        "yapim_yili": 1927,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "202"
+      },
       "konum": {
         "enlem": 37.872459,
         "boylam": 32.501327,
@@ -10742,6 +11047,12 @@
       "adres": {
         "tr": "Cami Karatay, Aziziye Mahallesi, Mor Sokak üzerinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Aziziye Neighborhood, Mor Street."
+      },
+      "donem": {
+        "yapim_yili": 1252,
+        "yapim_yili_hicri": 650,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "203"
       },
       "konum": {
         "enlem": 37.873059,
@@ -10900,6 +11211,15 @@
       "adres": {
         "tr": "Cami, Karatay, Yunusoğlu Mahallesi, Mengüç Caddesinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Yunusoğlu Neighborhood, Mengüç Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyıl",
+          "en": "20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "204"
       },
       "konum": {
         "enlem": 37.867436,
@@ -11079,6 +11399,15 @@
         "tr": "Mescit, Karatay, Sarnıç Mahallesi, Şeyh Ulema Recep Ağa Caddesi üzerindedir.",
         "en": "The masjid is located in Karatay, Sarnıç Neighborhood, Şeyh Ulema Recep Ağa Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın başları",
+          "en": "early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "205"
+      },
       "konum": {
         "enlem": 37.8716,
         "boylam": 32.505,
@@ -11227,6 +11556,15 @@
         "tr": "Cami, Karatay, Sarnıç Mahallesi, Sedirler Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Sarnıç Neighborhood, Sedirler Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın sonları",
+          "en": "late 19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "206"
+      },
       "konum": {
         "enlem": 37.876546,
         "boylam": 32.512011,
@@ -11374,6 +11712,11 @@
       "adres": {
         "tr": "Cami, Karatay, Büyüksinan Mahallesi, Büyüksinan Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Büyüksinan Neighborhood, Büyüksinan Street."
+      },
+      "donem": {
+        "yapim_yili": 1907,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "207"
       },
       "konum": {
         "enlem": 37.8716,
@@ -11550,6 +11893,15 @@
       "adres": {
         "tr": "Cami, Karatay, Nakipoğlu Mahallesi, Bağevliya Sokak üzerindedir.",
         "en": "The mosque is in Karatay, Nakipoğlu Neighborhood, Bağevliya Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın başları",
+          "en": "early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "208"
       },
       "konum": {
         "enlem": 37.8716,
@@ -11947,6 +12299,12 @@
         "tr": "Cami, Karatay, Ovaloğlu Mahallesi, Çelik Paşa Sokak üzerinde yer almaktadır.",
         "en": "The masjid is located in Karatay, Ovaloğlu District, Çelik Paşa Street."
       },
+      "donem": {
+        "yapim_yili": 1764,
+        "yapim_yili_hicri": 1178,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "212"
+      },
       "konum": {
         "enlem": 37.876474,
         "boylam": 32.505583,
@@ -12164,6 +12522,12 @@
       "adres": {
         "tr": "Cami, Karatay, Mihmandar Mahallesi, Şerafettin Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Mihmandar Neighborhood, Şerafettin Street."
+      },
+      "donem": {
+        "yapim_yili": 1207,
+        "yapim_yili_hicri": 604,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "214"
       },
       "konum": {
         "enlem": 37.8716,
@@ -12421,6 +12785,11 @@
         "tr": "Cami, Karatay, Çifte Merdiven Mahallesi, Şerafeddin Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Çifte Merdiven Neighborhood, on Şerafeddin Street."
       },
+      "donem": {
+        "yapim_yili": 1925,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "216"
+      },
       "konum": {
         "enlem": 37.8716,
         "boylam": 32.505,
@@ -12549,6 +12918,15 @@
         "tr": "Mescit, Karatay, Çifte Merdiven Mahallesi, Abdulkadir Erdoğan Sokak üzerinde yer almaktadır.",
         "en": "The masjid is located in Karatay, Çifte Merdiven Neighborhood, Abdulkadir Erdoğan Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın ilk yarısı",
+          "en": "first half of the 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "218"
+      },
       "konum": {
         "enlem": 37.8716,
         "boylam": 32.505,
@@ -12666,6 +13044,16 @@
       "adres": {
         "tr": "Mescit, Karatay, Mihmandar Mahallesi, Hatuniye Sokak üzerindedir.",
         "en": "The masjid is located in Karatay, Mihmandar neighbourhood, Hatuniye Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "Bugünkü yapı 1957 (ilk yapı H. 610 / M. 1213-14)",
+          "en": "Present building 1957 (first built AH 610 / 1213-14)"
+        },
+        "yapim_yili": 1957,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "220"
       },
       "konum": {
         "enlem": 37.8716,
@@ -12814,6 +13202,12 @@
       "adres": {
         "tr": "Cami Karatay, Şems Mahallesi, Şems Caddesi üzerinde, Şerafeddin Camii’nin kuzeyinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Şems Neighborhood, on Şems Street, north of Şerafeddin Mosque."
+      },
+      "donem": {
+        "yapim_yili": 1677,
+        "yapim_yili_hicri": 1088,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "225"
       },
       "konum": {
         "enlem": 37.87364,
@@ -13032,6 +13426,15 @@
       "adres": {
         "tr": "Mescit Karatay, Sırçalı Mescit Mahallesi, Kuzgunkavak Caddesi üzerinde yer almakta, İsmet Paşa İlkokulu’nun kuzeyinde bulunmaktadır.",
         "en": "The masjid is located in Karatay, Sırçalı Mescit Neighborhood, Kuzgunkavak Street. It is located north of İsmet Paşa Primary School."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyıl",
+          "en": "13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "234"
       },
       "konum": {
         "enlem": 37.874472,
@@ -13252,6 +13655,15 @@
         "tr": "Mescit, Karatay, Sırçalı Mescit Mahallesi, Köprübaşı Caddesi üzerindedir.",
         "en": "The masjid is located in Karatay, Sırçalı Mescit Neighborhood, Köprübaşı Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın başları",
+          "en": "early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "238"
+      },
       "konum": {
         "enlem": 37.8716,
         "boylam": 32.505,
@@ -13369,6 +13781,15 @@
       "adres": {
         "tr": "Mescit, Karatay, Zenburi Mahallesi, Müftüler Sokak üzerinde yer almaktadır.",
         "en": "The masjid is located in Karatay, Zenburi District, Müftüler Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyılın ilk yarısı",
+          "en": "first half of the 13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "239"
       },
       "konum": {
         "enlem": 37.8716,
@@ -13568,6 +13989,15 @@
         "tr": "Mescit, Karatay, Babasultan Mahallesi, Apalılar Sokak üzerindedir.",
         "en": "The mosque is in Karatay District, Babasultan Neighborhood, Apalilar District."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyılın başları",
+          "en": "early 13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "241"
+      },
       "konum": {
         "enlem": 37.8716,
         "boylam": 32.505,
@@ -13755,6 +14185,11 @@
       "adres": {
         "tr": "Cami, Karatay, Dedemoğlu Mahallesi, Han Sokak üzerinde yer almaktadır.",
         "en": "The mosque is located on Karatay, Dedemoğlu District, Han Street."
+      },
+      "donem": {
+        "yapim_yili": 1863,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "245"
       },
       "konum": {
         "enlem": 37.8716,
@@ -13964,6 +14399,12 @@
         "tr": "Cami Karatay, Aziziye Mahallesi, Köprübaşı Mevkii’nde yer alır.",
         "en": "The mosque is located in Karatay, Aziziye neighborhood, Köprübaşı area."
       },
+      "donem": {
+        "yapim_yili": 1826,
+        "yapim_yili_hicri": 1243,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "248"
+      },
       "konum": {
         "enlem": 37.870914,
         "boylam": 32.507638,
@@ -14111,6 +14552,11 @@
       "adres": {
         "tr": "Mescit, Karatay, Civar Mahallesi, Şehit Nazım Bey Caddesi üzerinde yer almaktadır.",
         "en": "The masjid is located on Karatay, Civar Neighborhood, Şehit Nazım Bey Street."
+      },
+      "donem": {
+        "yapim_yili": 1821,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "249"
       },
       "konum": {
         "enlem": 37.873713,
@@ -14299,6 +14745,15 @@
       "adres": {
         "tr": "Mescit, Karatay, Adak Sokak üzerinde yer almaktadır.",
         "en": "The masjid is on Karatay, Adak Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyılın ikinci yarısı",
+          "en": "second half of the 13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "251"
       },
       "konum": {
         "enlem": 37.8716,
@@ -14517,6 +14972,15 @@
       "adres": {
         "tr": "Cami Karatay, Kocabekir Mahallesi, Büyük Kumköprü Caddesi üzerindedir.",
         "en": "The mosque is located in Karatay, Kocabekir Neighborhood, Büyük Kumköprü Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın başları",
+          "en": "early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "256"
       },
       "konum": {
         "enlem": 37.845804,
@@ -14972,6 +15436,15 @@
         "tr": "Mescit Karatay, Dolap Mektep Mahallesi, Dolap Mektep Sokak’ta yer almaktadır.",
         "en": "The Masjid is located in Karatay, Dolap Mektep Neighborhood, Dolap Mektep Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın sonları",
+          "en": "late 19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "260"
+      },
       "konum": {
         "enlem": 37.871195,
         "boylam": 32.509522,
@@ -15070,6 +15543,12 @@
       "adres": {
         "tr": "Cami, Karatay, Sedir Mahallesinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Sedir Neighborhood."
+      },
+      "donem": {
+        "yapim_yili": 1813,
+        "yapim_yili_hicri": 1228,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "261"
       },
       "konum": {
         "enlem": 37.856377,
@@ -15239,6 +15718,15 @@
         "tr": "Cami, Karatay, Şeyh Ulemâ Recep Ağa Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located on Karatay, Şeyh Ulemâ Recep Ağa Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın başları",
+          "en": "early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "263-264"
+      },
       "konum": {
         "enlem": 37.874854,
         "boylam": 32.511126,
@@ -15366,6 +15854,15 @@
       "adres": {
         "tr": "Cami, Karatay, Hacı Hasan Baş Caddesi’nde, Aliyenler Mezarlığı’nın kuzeybatısında yer almaktadır.",
         "en": "The mosque is located in Karatay, Hacı Hasan Baş Street, northwest of Aliyenler Cemetery."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın başları",
+          "en": "early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "264"
       },
       "konum": {
         "enlem": 37.8716,
@@ -15743,6 +16240,15 @@
         "tr": "Cami Karatay, Doğuş Mahallesi, Rüstem Şirvani Sokak’ta yer almaktadır.",
         "en": "The mosque is located in Karatay, Doğuş Neighborhood, Rüstem Şirvani."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın ortaları",
+          "en": "mid-20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "266-268"
+      },
       "konum": {
         "enlem": 37.862388,
         "boylam": 32.50998,
@@ -15860,6 +16366,11 @@
       "adres": {
         "tr": "Cami Karatay, Şeyh Ulema Çavuşoğlu Mahallesinde yer almaktadır.",
         "en": "Mosque Karatay is located in Şeyh Ulema Çavuşoğlu Neighborhood."
+      },
+      "donem": {
+        "yapim_yili": 1929,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "267"
       },
       "konum": {
         "enlem": 37.873462,
@@ -15988,6 +16499,15 @@
       "adres": {
         "tr": "Cami Karatay, Cemil Çiçek Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located in Karatay on Cemil Çiçek Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın ortaları",
+          "en": "mid-20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "268"
       },
       "konum": {
         "enlem": 37.861559,
@@ -16533,6 +17053,12 @@
         "tr": "Cami, Karatay, Hacı Cemil Mahallesi, Hacı Hasan Başı Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located on Hacı Hasan Başı Street, in Karatay, Hacı Cemil Neighborhood."
       },
+      "donem": {
+        "yapim_yili": 1767,
+        "yapim_yili_hicri": 1181,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "271"
+      },
       "konum": {
         "enlem": 37.8716,
         "boylam": 32.505,
@@ -16899,6 +17425,11 @@
         "tr": "Cami Karatay, Şeyh Ulema Recep Ağa Mahallesi, Şeyh Ulema Yahşi Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Şeyh Ulema Recep Ağa District, on Şeyh Ulema Yahşi Street."
       },
+      "donem": {
+        "yapim_yili": 1940,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "274"
+      },
       "konum": {
         "enlem": 37.87725,
         "boylam": 32.52356,
@@ -17046,6 +17577,12 @@
       "adres": {
         "tr": "Cami, Karatay, Çelebi Mahallesi, Dolappare Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located at Karatay, Çelebi Neighborhood, Dolappare Street."
+      },
+      "donem": {
+        "yapim_yili": 1888,
+        "yapim_yili_hicri": 1306,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "275"
       },
       "konum": {
         "enlem": 37.869751,
@@ -17255,6 +17792,15 @@
         "tr": "Cami, Karatay, Kalenderhâne Mahallesinde, Musalla Mezarlığı ve Konya Kalesi’nin Halkabegüş Kapısı yakınında bulunmaktadır.",
         "en": "The mosque is located in Karatay, Kalenderhâne Neighborhood, near Musalla Cemetery and Halkabüş Gate of Konya Castle."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyıl",
+          "en": "13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "277"
+      },
       "konum": {
         "enlem": 37.883599,
         "boylam": 32.49893,
@@ -17422,6 +17968,15 @@
       "adres": {
         "tr": "Cami, Karatay, Fakıh Dede (günümüzde Akçeşme) Mahallesi, Garaj Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located in Karatay, Fakıh Dede (now Akçeşme) Neighborhood, Garaj Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın başları",
+          "en": "early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "278"
       },
       "konum": {
         "enlem": 37.864475,
@@ -17621,6 +18176,15 @@
         "tr": "Cami, Karatay, Şeyh Ulema Mahallesi’nde, Şeyh Alaman Mezarlığı’nın kuzey doğusunda yer almaktadır.",
         "en": "The mosque is located in Karatay, Şeyh Ulema Neighborhood, north-east of Şeyh Alaman Cemetery."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın sonları – 20. yüzyılın başları",
+          "en": "late 19th century – early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "279"
+      },
       "konum": {
         "enlem": 37.874633,
         "boylam": 32.513343,
@@ -17768,6 +18332,16 @@
       "adres": {
         "tr": "Konya tarihi kent merkezi, Karatay ilçesinde bulunan Aziziye Camii, III. derece arkeolojik sit alanı içerisindedir.",
         "en": "Aziziye Mosque, located in Konya historical city center, Karatay district, is within 3rd grade archaeological protected area."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "1872-1874 (ilk yapı 1671-1676)",
+          "en": "1872-1874 (first built 1671-1676)"
+        },
+        "yapim_yili": 1874,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "281"
       },
       "konum": {
         "enlem": 37.869981,
@@ -18354,6 +18928,15 @@
         "tr": "Mescit, Selçuklu, Ferhuniye Mahallesi, Sultan Mesut Sokak’ta yer almaktadır.",
         "en": "The masjid is located in Selçuklu, Ferhuniye Neighborhood, Sultan Mesut Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyıl",
+          "en": "13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "295"
+      },
       "konum": {
         "enlem": 37.87511,
         "boylam": 32.491379,
@@ -18642,6 +19225,15 @@
         "tr": "Cami, Selçuklu İlçesi, Başarakavak Kasabasında yer almaktadır.",
         "en": "The mosque is located in Başarakavak Town, Selçuklu District."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyıl",
+          "en": "19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "297"
+      },
       "konum": {
         "enlem": 37.876,
         "boylam": 32.49,
@@ -18780,6 +19372,12 @@
         "tr": "Cami Selçuklu, Tatköy (Köyü) Mahallesinin ulu camisidir.",
         "en": "The mosque is the grand mosque of Selçuklu, Tatköy (Village) Neighborhood. According to the inscription on the western facade, the work was built in 1284 AH / 1867-68 AD. The building, built of rubble stone on a sloping land, has a single storey on the north side and two floors on the south side."
       },
+      "donem": {
+        "yapim_yili": 1867,
+        "yapim_yili_hicri": 1284,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "298"
+      },
       "konum": {
         "enlem": 37.876,
         "boylam": 32.49,
@@ -18878,6 +19476,15 @@
       "adres": {
         "tr": "Mescit, Selçuklu, Şair Yurdakul Sokak, No. 2’de yer almaktadır.",
         "en": "The masjid is located at Selçuklu, Şair Yurdakul Sokak, No: 2. It is located in the neighborhood to which its name is given, to the west of Alâeddin Hill."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyılın ilk yarısı",
+          "en": "first half of the 13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "300"
       },
       "konum": {
         "enlem": 37.871885,
@@ -19286,6 +19893,11 @@
         "tr": "Minare, Selçuklu, İhsaniye Mahallesi, İhsaniye Ulu Camii bitişiğinde yer almaktadır.",
         "en": "The minaret is located in Selçuklu, İhsaniye Neighborhood, adjacent to İhsaniye Grand Mosque."
       },
+      "donem": {
+        "yapim_yili": 1958,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "318"
+      },
       "konum": {
         "enlem": 37.872105,
         "boylam": 32.485056,
@@ -19403,6 +20015,15 @@
       "adres": {
         "tr": "Cami, Ahırlı İlçesi, Kuruçay Köyü’ndedir.",
         "en": "The mosque is in Kuruçay Village, Ahırlı District."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın sonları",
+          "en": "late 19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "319"
       },
       "konum": {
         "enlem": 37.239,
@@ -19591,6 +20212,15 @@
       "adres": {
         "tr": "Cami Akören, Avdan Mahallesinde yer almaktadır.",
         "en": "The mosque is located in Akoren, Avdan District."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19.-20. yüzyıl",
+          "en": "19th-20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "320"
       },
       "konum": {
         "enlem": 37.289282,
@@ -19898,6 +20528,12 @@
         "tr": "Mescit, Altınkalem Mahallesi, Mescit Sokak’ta yer almaktadır.",
         "en": "The masjid is located in Altınkalem Neighborhood, Mescit Street."
       },
+      "donem": {
+        "yapim_yili": 1223,
+        "yapim_yili_hicri": 620,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "323"
+      },
       "konum": {
         "enlem": 38.357,
         "boylam": 31.416,
@@ -20116,6 +20752,12 @@
         "tr": "Cami, Akşehir Merkez Anıt Mahallesindedir.",
         "en": "The mosque is in Akşehir Center Anıt Neighborhood."
       },
+      "donem": {
+        "yapim_yili": 1584,
+        "yapim_yili_hicri": 992,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "326"
+      },
       "konum": {
         "enlem": 38.355489,
         "boylam": 31.40865,
@@ -20283,6 +20925,15 @@
       "adres": {
         "tr": "Cami, Akşehir, Doğrugöz Beldesi, Köyiçi Mevkii’nde yer almaktadır.",
         "en": "The mosque is located in Akşehir, Doğrugöz Settlement, Köyiçi Site."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın sonları",
+          "en": "late 19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "327"
       },
       "konum": {
         "enlem": 38.357,
@@ -20472,6 +21123,12 @@
         "tr": "Mescit, Akşehir, Anıt Mahallesi, Türbe Sokağı, Seyyid Mahmut Hayrani haziresi içerisinde yer almaktadır.",
         "en": "The masjid is located in Akşehir, Anıt Neighborhood, Türbe street, Seyyid Mahmut Hayrani graveyard."
       },
+      "donem": {
+        "yapim_yili": 1224,
+        "yapim_yili_hicri": 621,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "329"
+      },
       "konum": {
         "enlem": 38.356962,
         "boylam": 31.408135,
@@ -20659,6 +21316,12 @@
       "adres": {
         "tr": "Cami, Selçuk Mahallesi, Güdük Minare Sokak üzerinde yer almaktadır.",
         "en": "The mosque is located on Güdük Minare Street, in Selçuk Neighborhood."
+      },
+      "donem": {
+        "yapim_yili": 1227,
+        "yapim_yili_hicri": 624,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "330"
       },
       "konum": {
         "enlem": 38.357225,
@@ -20878,6 +21541,15 @@
         "tr": "Mescit, Akşehir, Yıldırım Mahallesi, Hacı Hamza Sokak üzerindedir.",
         "en": "The masjid is in Akşehir, Yıldırım Neighborhood, Hacı Hamza Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13.-14. yüzyıl",
+          "en": "13th-14th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "332"
+      },
       "konum": {
         "enlem": 38.357,
         "boylam": 31.416,
@@ -21036,6 +21708,15 @@
         "tr": "Mescit, Akşehir merkez, Kızılca Mahalle, Hıdırlık Mesire yerinin içerisinde yer almaktadır.",
         "en": "The masjid is located in Akşehir center, Kızılca Neighborhood, Hıdırlık Recreation Area."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13.-14. yüzyıl",
+          "en": "13th-14th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "333"
+      },
       "konum": {
         "enlem": 38.348762,
         "boylam": 31.414795,
@@ -21173,6 +21854,12 @@
       "adres": {
         "tr": "Cami, Akşehir, Kileci Mahallesi, İmaret Sokak üzerinde bulunmaktadır.",
         "en": "The mosque is located in Akşehir, Kileci Neighborhood, on İmaret Street."
+      },
+      "donem": {
+        "yapim_yili": 1510,
+        "yapim_yili_hicri": 916,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "335"
       },
       "konum": {
         "enlem": 38.354497,
@@ -21540,6 +22227,15 @@
         "tr": "Mescit, Akşehir, Kuşçu Mahallesi, Kalaycı Sokak üzerinde yer almaktadır.",
         "en": "The masjid is located in Akşehir, Kuşçu Neighborhood, on Kalaycı Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "12. yüzyıl",
+          "en": "12th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "352-353"
+      },
       "konum": {
         "enlem": 38.355687,
         "boylam": 31.412348,
@@ -21717,6 +22413,15 @@
       "adres": {
         "tr": "Mescit, Akşehir, Kızılca Mahallesi, İbre Sokak üzerindedir.",
         "en": "The masjid is in Akşehir, Kizilca Neighborhood, on Ibre Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "12. yüzyıl",
+          "en": "12th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "352-353"
       },
       "konum": {
         "enlem": 38.357,
@@ -21916,6 +22621,15 @@
         "tr": "Mescit, Kileci Mahallesi, Bayram Sokak üzerinde yer almaktadır.",
         "en": "The masjid is located in Kileci Neighborhood, Bayram Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyıl",
+          "en": "13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "354"
+      },
       "konum": {
         "enlem": 38.354497,
         "boylam": 31.413926,
@@ -22053,6 +22767,12 @@
       "adres": {
         "tr": "Mescit, Eski Kale, Orta Hamam Sokak üzerinde yer almaktadır.",
         "en": "ile beraber başka birisine dua etmeyiniz."
+      },
+      "donem": {
+        "yapim_yili": 1236,
+        "yapim_yili_hicri": 633,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "356"
       },
       "konum": {
         "enlem": 38.357,
@@ -22272,6 +22992,15 @@
         "tr": "Cami Akşehir, Ortaköy Beldesi merkezinde yer almaktadır.",
         "en": "The mosque is located in the center of Akşehir, Ortaköy Town."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın ortaları",
+          "en": "mid-19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "360"
+      },
       "konum": {
         "enlem": 38.357,
         "boylam": 31.416,
@@ -22479,6 +23208,15 @@
       "adres": {
         "tr": "Mescit, Akşehir, Kuşçu Mahallesi, Çarşı Sokak’ta bulunan dükkanların arasında, Akşehir Kalesi’nin yakınlarındadır.",
         "en": "The masjid is located among the shops in Akşehir, Kuşçu neighborhood, Çarşı Street, near Akşehir Castle."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyıl",
+          "en": "13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "362"
       },
       "konum": {
         "enlem": 38.357,
@@ -22698,6 +23436,12 @@
         "tr": "Akşehir Ulu (Sultan Alaattin) Camii kendi ismini taşıyan cadde üzerindedir.",
         "en": "Akşehir Grand  (Sultan Alaattin) Mosque is on the street bearing its name."
       },
+      "donem": {
+        "yapim_yili": 1213,
+        "yapim_yili_hicri": 610,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "367"
+      },
       "konum": {
         "enlem": 38.356283,
         "boylam": 31.411408,
@@ -22916,6 +23660,12 @@
         "tr": "Cami Altınekin ilçe merkezinde yer almaktadır.",
         "en": "The mosque is located in Altınekin district center."
       },
+      "donem": {
+        "yapim_yili": 1854,
+        "yapim_yili_hicri": 1271,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "374"
+      },
       "konum": {
         "enlem": 38.308,
         "boylam": 32.869,
@@ -23133,6 +23883,12 @@
       "adres": {
         "tr": "Cami, Konya-Beyşehir yolu üzerindeki Bayındır Köyü merkezinde yer almaktadır.",
         "en": "The mosque is located in the center of Bayındır Village on the Konya-Beyşehir Road."
+      },
+      "donem": {
+        "yapim_yili": 1365,
+        "yapim_yili_hicri": 767,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "379"
       },
       "konum": {
         "enlem": 37.677,
@@ -23459,6 +24215,12 @@
       "adres": {
         "tr": "Mescit, Beyşehir, İçerişehir Mahallesi, Demirli Sokak üzerinde yer almaktadır.",
         "en": "The masjid is located on Beyşehir, İçerişehir Neighborhood, Demirli Street."
+      },
+      "donem": {
+        "yapim_yili": 1314,
+        "yapim_yili_hicri": 714,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "383"
       },
       "konum": {
         "enlem": 37.677,
@@ -23795,6 +24557,15 @@
       "adres": {
         "tr": "Cami, Beyşehir, Üstünler Köyü’nde yer almaktadır.",
         "en": "The mosque is located in Üstünler Village, Beyşehir."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "16. yüzyıl",
+          "en": "16th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "385"
       },
       "konum": {
         "enlem": 37.581092,
@@ -24736,6 +25507,15 @@
         "tr": "Cami, Bozkır, Söğüt Mahallesinde yer almaktadır.",
         "en": "The mosque is located in Bozkır, Söğüt Neighborhood."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyıl",
+          "en": "20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "393"
+      },
       "konum": {
         "enlem": 37.097292,
         "boylam": 32.328803,
@@ -25264,6 +26044,12 @@
         "tr": "Cami, Çumra, İçeriçumra Köyü, Minarealtı Mahallesinde, Konya yolu üzerinde yer almaktadır.",
         "en": "The mosque is located on Konya Road in Çumra, İçeriçumra Village of Minarealtı Neighborhood."
       },
+      "donem": {
+        "yapim_yili": 1866,
+        "yapim_yili_hicri": 1283,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "404"
+      },
       "konum": {
         "enlem": 37.573,
         "boylam": 32.774,
@@ -25482,6 +26268,11 @@
         "tr": "Cami, Derbent, Çiftliközü Beldesi merkezinde yer almaktadır.",
         "en": "The mosque is located in the center of Derbent, Çiftliközü Town."
       },
+      "donem": {
+        "yapim_yili": 1924,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "407"
+      },
       "konum": {
         "enlem": 38.012,
         "boylam": 32.018,
@@ -25599,6 +26390,15 @@
       "adres": {
         "tr": "Cami, Doğanhisar, Başköy Mahallesinin ulu camisidir.",
         "en": "The mosque is the grand mosque of Doğanhisar, Başköy Neighborhood."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "18.-19. yüzyıl",
+          "en": "18th-19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "409"
       },
       "konum": {
         "enlem": 38.141753,
@@ -25986,6 +26786,12 @@
         "tr": "Cami, Doğanhisar, Harman Mahallesindedir.",
         "en": "The mosque is in Doğanhisar, Harman Neighborhood."
       },
+      "donem": {
+        "yapim_yili": 1857,
+        "yapim_yili_hicri": 1274,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "412"
+      },
       "konum": {
         "enlem": 38.148124,
         "boylam": 31.674441,
@@ -26143,6 +26949,12 @@
       "adres": {
         "tr": "Cami, Doğanhisar ilçe merkezindedir.",
         "en": "The mosque is in Doğanhisar district center."
+      },
+      "donem": {
+        "yapim_yili": 1521,
+        "yapim_yili_hicri": 928,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "413"
       },
       "konum": {
         "enlem": 38.145,
@@ -26321,6 +27133,15 @@
       "adres": {
         "tr": "Cami, Doğanhisar, Ayaslar Mahallesindedir.",
         "en": "The mosque is in Doğanhisar, Ayaslar Neighborhood."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "18.-19. yüzyıl",
+          "en": "18th-19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "414"
       },
       "konum": {
         "enlem": 38.145,
@@ -26529,6 +27350,12 @@
       "adres": {
         "tr": "Ulu Camii, Doğanhisar merkez, Pazar Mahallesi, Ulu Camii Caddesi üzerinde yer almaktadır.",
         "en": "Grand Mosque is located in Doğanhisar center, Pazar Neighborhood, Ulu Cami Street."
+      },
+      "donem": {
+        "yapim_yili": 1548,
+        "yapim_yili_hicri": 955,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "417"
       },
       "konum": {
         "enlem": 38.184431,
@@ -26748,6 +27575,15 @@
         "tr": "Doğanhisar, Yeğin Mahallesi merkezinde bulunan cami eğimli bir arazi üzerine inşa edilmiştir.",
         "en": "Located in the center of Doğanhisar, Yeğin Neighborhood, the mosque was built on a sloping land."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "18.-19. yüzyıl",
+          "en": "18th-19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "424"
+      },
       "konum": {
         "enlem": 38.146008,
         "boylam": 31.675427,
@@ -26966,6 +27802,12 @@
         "tr": "Mescit, Ereğli, Boyacı Ali Mahallesi, İstasyon Caddesi üzerinde yer almaktadır.",
         "en": "The masjid is located on İstasyon Street, Ereğli, Boyacı Ali Neighborhood."
       },
+      "donem": {
+        "yapim_yili": 1551,
+        "yapim_yili_hicri": 958,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "426"
+      },
       "konum": {
         "enlem": 37.513,
         "boylam": 34.047,
@@ -27113,6 +27955,16 @@
       "adres": {
         "tr": "Cami, Ereğli, Büyükdede Köyü’nde yer almaktadır.",
         "en": "The mosque is located in Ereğli, Büyükdede Village."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "560'lı yıllar (sonradan camiye çevrildi)",
+          "en": "c. 560s (later converted into a mosque)"
+        },
+        "yapim_yili": 560,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "427"
       },
       "konum": {
         "enlem": 37.414766,
@@ -27322,6 +28174,12 @@
         "tr": "Cami Ereğli, Kutören kasaba mezarlığı içinde yer alır.",
         "en": "The mosque is located in Ereğli Kutören town cemetery."
       },
+      "donem": {
+        "yapim_yili": 1896,
+        "yapim_yili_hicri": 1314,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "430"
+      },
       "konum": {
         "enlem": 37.513,
         "boylam": 34.047,
@@ -27500,6 +28358,12 @@
       "adres": {
         "tr": "Cami Ereğli ilçe merkezinde, Cami-i Kebir Mahallesinde yer almaktadır.",
         "en": "The mosque is located in Ereğli district center, in Camii Kebir Neighborhood."
+      },
+      "donem": {
+        "yapim_yili": 1455,
+        "yapim_yili_hicri": 860,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "431"
       },
       "konum": {
         "enlem": 37.825667,
@@ -27699,6 +28563,15 @@
         "tr": "Cami Ereğli, Zengen Köyü, Mustafa Kemal Paşa Mahallesindedir.",
         "en": "There is no inscription belonging to the construction of the mosque. Considering its architectural features, it is dated to the end of the 19th century and the beginning of the 20th century. It is stated in the sources that it was made by Niğde Fertekli Nafi Usta at the beginning of the 20th century. It is known that the embroideries seen in the harim were made by Tahir Usta from Çanakkale Bigalı in 1945. The building, which was destroyed over time and became unusable, was repaired by the General Directorate of Foundations in 2007, its embroidery was renewed and opened for worship."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın başları",
+          "en": "early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "432"
+      },
       "konum": {
         "enlem": 37.513,
         "boylam": 34.047,
@@ -27847,6 +28720,15 @@
       "adres": {
         "tr": "Cami Hüyük İlçesi Çavuş Köyü’nde yer almaktadır.",
         "en": "The mosque is located in Höyük, Çavuş Village."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyıl",
+          "en": "19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "436"
       },
       "konum": {
         "enlem": 37.962956,
@@ -28066,6 +28948,13 @@
         "tr": "Cami Hüyük, Çukurkent Köyü, Köyiçi Mevkii’ndedir.",
         "en": "The mosque is located in Hüyük, Çukurkent Village, Köyiçi Site."
       },
+      "donem": {
+        "yapim_yili": 1893,
+        "yapim_yili_hicri": 1311,
+        "yaklasik": true,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "438"
+      },
       "konum": {
         "enlem": 37.954,
         "boylam": 31.597,
@@ -28263,6 +29152,12 @@
       "adres": {
         "tr": "Beykonak Dediği Sultan Mescit ve Tekkesi, Anadolu Selçuklu Sultanı II. Kılıç Arslan’ın oğlu I. Keyhüsrev zamanına, H. 576 / M. 1180 yılına ait önemli bir yapıdır.",
         "en": "Beykonak Dediği Sultan Mosque and Tekke, is an important building dating back to the time of Keyhusrev I, the son of the Anatolian Seljuk Sultan Kılıç Arslan II, in the year 576 AH / 1180 AD."
+      },
+      "donem": {
+        "yapim_yili": 1180,
+        "yapim_yili_hicri": 576,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "442"
       },
       "konum": {
         "enlem": 38.279,
@@ -28546,6 +29441,12 @@
       "adres": {
         "tr": "Cami, Ilgın, Yukarı Çiğil Beldesi’nde bulunmaktadır.",
         "en": "The mosque is located in Ilgın, Yukarı Çiğil Settlement."
+      },
+      "donem": {
+        "yapim_yili": 1877,
+        "yapim_yili_hicri": 1296,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "446"
       },
       "konum": {
         "enlem": 38.058443,
@@ -28843,6 +29744,12 @@
         "tr": "Ilgın merkezinde, çarşı içerisinde kendi ismiyle anılan mahallede bulunan cami zeminden 1,5 m aşağıda kaldığı için halk tarafından “Çukur Camii” adıyla anılmaktadır.",
         "en": "Located in the center of Ilgın, in the neighborhood named after it within the bazaar, the mosque is called “Çukur Mosque” by the public because it is 1.5 m below the ground."
       },
+      "donem": {
+        "yapim_yili": 1422,
+        "yapim_yili_hicri": 826,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "448"
+      },
       "konum": {
         "enlem": 38.279,
         "boylam": 31.913,
@@ -28982,6 +29889,15 @@
         "tr": "Cami, Ilgın, Şıhcarullah Mahallesinde bulunmaktadır.",
         "en": "The mosque is located in Ilgın, Şıhcarullah Neighborhood."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyıl",
+          "en": "19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "450"
+      },
       "konum": {
         "enlem": 38.279136,
         "boylam": 31.92176,
@@ -29089,6 +30005,13 @@
       "adres": {
         "tr": "Cami Ilgın, Yukarı Çiğil Beldesinde yer almaktadır.",
         "en": "Mosque is located in Ilgın, Yukarı Çiğil Town."
+      },
+      "donem": {
+        "yapim_yili": 1850,
+        "yapim_yili_hicri": 1266,
+        "yaklasik": true,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "451"
       },
       "konum": {
         "enlem": 38.279,
@@ -29277,6 +30200,12 @@
       "adres": {
         "tr": "Cami Kadınhanı, Ünveren Mahallesi, Menekşe Sokak’tadır.",
         "en": "The mosque is located in Kadınhanı, Ünveren Neighborhood, Menekşe Street."
+      },
+      "donem": {
+        "yapim_yili": 1764,
+        "yapim_yili_hicri": 1178,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "454"
       },
       "konum": {
         "enlem": 38.239,
@@ -29486,6 +30415,12 @@
         "tr": "Cami, Kadınhanı merkez, Doğanlar Mahallesi, Şirin Sokak üzerinde yer almaktadır.",
         "en": "yazmaktadır."
       },
+      "donem": {
+        "yapim_yili": 1516,
+        "yapim_yili_hicri": 932,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "456"
+      },
       "konum": {
         "enlem": 38.239,
         "boylam": 32.211,
@@ -29684,6 +30619,16 @@
       "adres": {
         "tr": "Cami, Kadınhanı, Konya Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located on Kadınhanı, Konya Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "1859 (yangından sonra yeniden yapıldı)",
+          "en": "1859 (rebuilt after a fire)"
+        },
+        "yapim_yili": 1859,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "458"
       },
       "konum": {
         "enlem": 38.238616,
@@ -29893,6 +30838,11 @@
         "tr": "Cami Kadınhanı, Kayabaşı Mahallesinde, tepelik bir konumda yer almaktadır.",
         "en": "The mosque is located in a hilly location in Kadınhanı, Kayabaşı Neighborhood."
       },
+      "donem": {
+        "yapim_yili": 1886,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "460"
+      },
       "konum": {
         "enlem": 38.236956,
         "boylam": 32.222488,
@@ -30070,6 +31020,11 @@
       "adres": {
         "tr": "Cami Kadınhanı, Güngören Mahallesi, Konya Caddesi üzerinde yer almaktadır.",
         "en": "The mosque is located on Kadınhanı, Güngören Neighborhood, Konya Street."
+      },
+      "donem": {
+        "yapim_yili": 1768,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "461"
       },
       "konum": {
         "enlem": 38.239,
@@ -30258,6 +31213,16 @@
       "adres": {
         "tr": "Cami Kadınhanı, Güngören Mahallesinde bulunur.",
         "en": "Mosque is located in Kadınhanı, Güngören Neighborhood."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "1720-1730",
+          "en": "1720-1730"
+        },
+        "yapim_yili": 1720,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "462"
       },
       "konum": {
         "enlem": 38.233476,
@@ -30457,6 +31422,13 @@
         "tr": "Cami Karapınar, Çetmi Mahallesinde yer almaktadır.",
         "en": "The mosque is located in Karapınar, Çetmi Neighborhood."
       },
+      "donem": {
+        "yapim_yili": 1882,
+        "yapim_yili_hicri": 1300,
+        "yaklasik": true,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "463"
+      },
       "konum": {
         "enlem": 37.711848,
         "boylam": 33.547765,
@@ -30644,6 +31616,12 @@
       "adres": {
         "tr": "Cami Karapınar, Adalet Sokak’ta yer almaktadır.",
         "en": "The mosque is located in Karapınar, Adalet Street."
+      },
+      "donem": {
+        "yapim_yili": 1911,
+        "yapim_yili_hicri": 1329,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "464"
       },
       "konum": {
         "enlem": 37.716,
@@ -30843,6 +31821,12 @@
         "tr": "Cami Karapınar ilçesinde, Emirgazi ve Ardistama yolları üzerinde, Yağmapınar Mahallesinde hazire içerisinde yer almaktadır.",
         "en": "The mosque is located in the graveyard in Yağmapınar Neighborhood, on Emirgazi and Ardistama roads, in Karapınar district."
       },
+      "donem": {
+        "yapim_yili": 1558,
+        "yapim_yili_hicri": 966,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "465"
+      },
       "konum": {
         "enlem": 37.827102,
         "boylam": 33.725618,
@@ -31041,6 +32025,12 @@
       "adres": {
         "tr": "Cami Sarayönü, Hatıp Mahallesi, Pir Hüseyin Bey Caddesi üzerindedir.",
         "en": "The mosque is located in Sarayönü, Hatıp Neighborhood, Pir Hüseyin Bey Street."
+      },
+      "donem": {
+        "yapim_yili": 1861,
+        "yapim_yili_hicri": 1281,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "467"
       },
       "konum": {
         "enlem": 38.268308,
@@ -31417,6 +32407,12 @@
       "adres": {
         "tr": "Cami Seydişehir, Sofuhane Mahallesinde, Hükümet Meydanı’nın güneyinde yer almaktadır.",
         "en": "The mosque is located in Seydişehir, Sofuhane Neighborhood, south of Hukumet Square."
+      },
+      "donem": {
+        "yapim_yili": 1529,
+        "yapim_yili_hicri": 936,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "472"
       },
       "konum": {
         "enlem": 37.418896,
@@ -32052,6 +33048,11 @@
         "tr": "Cami, Yunak, Piribeyli Kasabasında yer almaktadır.",
         "en": "The mosque is located in Yunak, Piribeyli Town."
       },
+      "donem": {
+        "yapim_yili": 1896,
+        "kaynak_id": "vk-konya-envanter-c1",
+        "sayfa": "484"
+      },
       "konum": {
         "enlem": 38.815,
         "boylam": 31.733,
@@ -32676,6 +33677,12 @@
         "tr": "Ilgın şehir merkezindeki külliye, Sultan Murad zamanında Kıbrıs Fâtihi Lala Mustafa Paşa tarafından H. 984 / M.1576 yılında yaptırılmıştır.",
         "en": "The complex in the city center of Ilgın was built by Lala Mustafa Paşa, the Conqueror of Cyprus, in 984 AH / 1576 AD during the reign of Sultan Murad."
       },
+      "donem": {
+        "yapim_yili": 1576,
+        "yapim_yili_hicri": 984,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "53-54"
+      },
       "konum": {
         "enlem": 38.279,
         "boylam": 31.913,
@@ -32895,6 +33902,12 @@
         "tr": "Medrese, Meram, Gazi Alemşah Mahallesinde, kendi adıyla anılan Sırçalı Medrese Caddesi, No. 16’da yer almaktadır.",
         "en": "The madrasa is located in Meram, Gazi Alemşah Neighborhood, at Sırçalı Medrese Street, no: 16, named after itself."
       },
+      "donem": {
+        "yapim_yili": 1242,
+        "yapim_yili_hicri": 640,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "75"
+      },
       "konum": {
         "enlem": 37.87005,
         "boylam": 32.494127,
@@ -33113,6 +34126,15 @@
         "tr": "“Kemaliye” ya da “Küçük Karatay” olarak da bilinen Selçuklu devri medresesinden günümüze gelebilen tek eyvan kalıntısı, Karatay, Ankara Caddesi üzerinde, Kız Öğretmen Okulu’nun (Konya Büyükşehir Belediyesi Taş Bina) güneybatı köşesinde yer almaktadır.",
         "en": "The only surviving iwan ruin from the Seljuk period madrasa, also known as “Kemaliye” or “Küçük Karatay”, is located on Karatay, Ankara Street, in the southwest corner of the Girls’ Teacher Training School (Konya Metropolitan Municipality Stone Building)."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyılın ikinci çeyreği",
+          "en": "second quarter of the 13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "82"
+      },
       "konum": {
         "enlem": 37.934924,
         "boylam": 32.537062,
@@ -33320,6 +34342,12 @@
       "adres": {
         "tr": "Medrese, Selçuklu, Ankara Caddesi, No. 1’de, Alâeddin Tepesi’nin kuzey eteğinde yer almaktadır.",
         "en": "The madrasa is located at Selçuklu, Ankara Street, No: 1, at the northern foot of Alâeddin Hill."
+      },
+      "donem": {
+        "yapim_yili": 1251,
+        "yapim_yili_hicri": 649,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "87"
       },
       "konum": {
         "enlem": 37.934924,
@@ -33539,6 +34567,15 @@
         "tr": "Belgelerde darülhuffaz, darülkurra, medrese veya muallimhane adlarıyla anılan yapı, Karatay, Şerefşirin Mahallesi’nde, Şerafettin Camii’nin (XVII. yy. başı) hemen kuzeydoğusunda yer almaktadır.",
         "en": "The building, which is referred to as darülhuffaz, darülkurra, madrasa or muallimhane in the documents, is located in Karatay, Şerefşirin Neighborhood, just northeast of Şerafettin Mosque (early 17th century)."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "15. yüzyılın ikinci çeyreği",
+          "en": "second quarter of the 15th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "94"
+      },
       "konum": {
         "enlem": 37.8716,
         "boylam": 32.505,
@@ -33736,6 +34773,15 @@
       "adres": {
         "tr": "Alâeddin Tepesi’nin kuzeyinde ve Karatay Medresesi’ne yaklaşık 150 m uzaklıkta bulunan yapı ismini, bir rivayete göre XV. yüzyılda medresede şeyhlik yapmış, Hacı Bayram-ı Veli ahfadından Ali Gav Baba’dan almıştır.",
         "en": "Located in the north of Alâeddin Hill and approximately 150 m from Karatay Madrasa, the building took its name from Ali Gav Baba, a descendant of Hacı Bayram-ı Veli, who, according to a rumor, was a şeyh in the madrasa in the 15th century."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyılın ilk çeyreği",
+          "en": "first quarter of the 13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "98"
       },
       "konum": {
         "enlem": 37.876,
@@ -33954,6 +35000,16 @@
       "adres": {
         "tr": "Medrese, Selçuklu, Beyhekim Mahallesi, Alâeddin Bulvarı, No. 15’te bulunmaktadır.",
         "en": "The madrasa was located at Selçuklu, Beyhekim Neighborhood, Alâeddin Boulevard, No: 15."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "1261-62 (vakfiye H. 662 / M. 1264)",
+          "en": "1261-62 (endowment deed AH 662 / 1264)"
+        },
+        "yapim_yili": 1261,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "102"
       },
       "konum": {
         "enlem": 37.985409,
@@ -34549,6 +35605,15 @@
         "tr": "Türbe, Meram İlçesi, Yaka Mahallesi, Dere Caddesi üzerinde No. 13’te yer almaktadır.",
         "en": "The tomb is located in Meram Neighborhood, Yaka Neighborhood, Dere Street No: 13."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyılın sonları",
+          "en": "late 13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "120"
+      },
       "konum": {
         "enlem": 37.868654,
         "boylam": 32.435008,
@@ -34767,6 +35832,12 @@
         "tr": "Ateşbaz Veli Türbesi Meram, Ateşbaz Veli Mahallesi, Ateşbaz Sokak’ta yer almaktadır.",
         "en": "Ateşbaz Veli Tomb is located in Meram, Ateşbaz Veli Neighborhood, Ateşbaz Street."
       },
+      "donem": {
+        "yapim_yili": 1285,
+        "yapim_yili_hicri": 685,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "125"
+      },
       "konum": {
         "enlem": 37.859944,
         "boylam": 32.443092,
@@ -34965,6 +36036,15 @@
         "tr": "Türbe, Meram, Durunday Mahallesi, Tavusbaba Sokak üzerinde yer almaktadır.",
         "en": "The tomb is located on Meram, Durunday Neighborhood, Tavusbaba Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyıl",
+          "en": "13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "128"
+      },
       "konum": {
         "enlem": 37.85233,
         "boylam": 32.419947,
@@ -35162,6 +36242,12 @@
       "adres": {
         "tr": "Türbe, Meram, Konevi Mahallesi, Turgutoğlu Sokak üzerindedir.",
         "en": "The tomb is on Meram, Konevi Neighborhood, Turgutoğlu Street."
+      },
+      "donem": {
+        "yapim_yili": 1432,
+        "yapim_yili_hicri": 835,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "131"
       },
       "konum": {
         "enlem": 37.865,
@@ -35380,6 +36466,11 @@
       "adres": {
         "tr": "Sahip Ata Külliyesi, Meram, Sahibiata Mahallesi, Taşcami Uzunharmanlar Caddesi üzerinde yer almaktadır.",
         "en": "Sahip Ata Complex is located on Meram, Sahibata Neighborhood, Taşcami Uzunharmanlar Street."
+      },
+      "donem": {
+        "yapim_yili": 1283,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "142"
       },
       "konum": {
         "enlem": 37.864423,
@@ -35787,6 +36878,15 @@
         "tr": "Türbe Meram, Gülbahçe Sokak üzerinde yer almaktadır.",
         "en": "The tomb is located in Meram, Gülbahçe Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyıl",
+          "en": "13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "145"
+      },
       "konum": {
         "enlem": 37.835761,
         "boylam": 32.441511,
@@ -35974,6 +37074,15 @@
       "adres": {
         "tr": "Kümbet Meram, Sahip Ata Mahallesi, Kurs Sokak üzerinde yer almaktadır.",
         "en": "The kumbet is located in Meram, Sahip Ata Neighborhood, Kurs Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyılın ikinci yarısı",
+          "en": "second half of the 13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "146"
       },
       "konum": {
         "enlem": 37.865,
@@ -36172,6 +37281,15 @@
       "adres": {
         "tr": "Türbe Meram, Köprübaşı Mahallesi, Sedirler Caddesi üzerindedir.",
         "en": "The tomb is in Meram, Köprübaşı Neighborhood, Sedirler Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "14. yüzyıl",
+          "en": "14th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "148"
       },
       "konum": {
         "enlem": 37.8716,
@@ -36569,6 +37687,15 @@
         "tr": "Türbe, Karatay, Sedirler Mahallesi, Sedirler Sarnıç Camii’nin doğusundadır.",
         "en": "The tomb is located in Karatay, Sedirler Neighborhood, east of Sedirler Sarnıç Mosque."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyıl",
+          "en": "19th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "152-156"
+      },
       "konum": {
         "enlem": 37.8716,
         "boylam": 32.505,
@@ -36890,6 +38017,12 @@
         "tr": "İshak Paşa Türbesi Şems Parkı’nın içerisinde, Şems Tebrizi Türbesi’nin kuzey doğusunda yer almaktadır.",
         "en": "Ishak Paşa Tomb is located in the Şems Park, to the north-east of the Şems Tabrizi Tomb."
       },
+      "donem": {
+        "yapim_yili": 1505,
+        "yapim_yili_hicri": 915,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "155"
+      },
       "konum": {
         "enlem": 37.873959,
         "boylam": 32.497691,
@@ -37067,6 +38200,15 @@
       "adres": {
         "tr": "Kümbet, Karatay, Şems Tebrizi Mahallesi, Yeşilgözler Sokak üzerindedir.",
         "en": "The kumbet is located in Karatay, Şems Tebrizi Neighborhood, Yeşilgözler Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyıl",
+          "en": "13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "156"
       },
       "konum": {
         "enlem": 37.8716,
@@ -37265,6 +38407,12 @@
       "adres": {
         "tr": "Karatay, Akçeşme Mahallesi, Pir Esat Caddesi üzerinde yer alan türbe Pir Esad Türbesi’nin kuzeyinde bulunmaktadır. H. 860 / M. 1456 senesinde Karamanoğlu döneminde yapılmıştır.",
         "en": "The tomb, located on Karatay, Akçeşme Neighborhood, Pir Esat Street, is located to the north of the Pir Esad Tomb."
+      },
+      "donem": {
+        "yapim_yili": 1456,
+        "yapim_yili_hicri": 860,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "158"
       },
       "konum": {
         "enlem": 37.868,
@@ -37474,6 +38622,12 @@
         "tr": "Türbe Selçuklu, İhsaniye Mahallesi, Ertuğrul Sokak üzerinde yer almaktadır.",
         "en": "The masjid is located in Selçuklu, İhsaniye Neighborhood, Ertuğrul Street."
       },
+      "donem": {
+        "yapim_yili": 1418,
+        "yapim_yili_hicri": 821,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "160"
+      },
       "konum": {
         "enlem": 37.872722,
         "boylam": 32.488444,
@@ -37672,6 +38826,15 @@
         "tr": "Türbe, Selçuklu, Ferhuniye Mahallesi, Sultan Mesut Sokak üzerinde yer almaktadır.",
         "en": "The tomb is located in Selçuklu, Ferhuniye Neighborhood, Sultan Mesut Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın başları",
+          "en": "early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "162"
+      },
       "konum": {
         "enlem": 37.875678,
         "boylam": 32.491319,
@@ -37829,6 +38992,15 @@
       "adres": {
         "tr": "Türbe, Selçuklu, Feritpaşa Mahallesi, Ankara Caddesindedir.",
         "en": "The tomb is in Selçuklu, Feritpaşa Neighborhood, Ankara Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyıl",
+          "en": "13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "163"
       },
       "konum": {
         "enlem": 37.876,
@@ -38048,6 +39220,15 @@
         "tr": "Türbe Selçuklu, Ferhuniye Mahallesi, Parsana Caddesi üzerinde yer almaktadır.",
         "en": "The tomb is located at Selçuklu, Ferhuniye Neighborhood, Parsana Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyılın sonu – 14. yüzyılın başı",
+          "en": "late 13th century – early 14th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "166"
+      },
       "konum": {
         "enlem": 37.881333,
         "boylam": 32.490073,
@@ -38265,6 +39446,15 @@
       "adres": {
         "tr": "Selçuklu, Feritpaşa Mahallesi, Ankara Caddesi üzerindedir.",
         "en": "It is on Selçuklu, Feritpaşa Neighborhood, Ankara Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyıl",
+          "en": "13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "173"
       },
       "konum": {
         "enlem": 37.876,
@@ -38682,6 +39872,15 @@
         "tr": "Türbe, Alâeddin Tepesi, Alâeddin Camii avlusunda yer alan iki türbe içerisinden yapımı yarım bırakılmış olanıdır.",
         "en": "The tomb is the one whose construction was left unfinished among the two tombs located in the courtyard of Alâeddin Mosque on Alâeddin Hill."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyıl",
+          "en": "13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "182"
+      },
       "konum": {
         "enlem": 37.876,
         "boylam": 32.49,
@@ -38890,6 +40089,12 @@
         "tr": "Tacül Vezir Türbesi, Selçuklu, Ferhuniye Mahallesi, Sultanşah Caddesi üzerindedir.",
         "en": "Tacül Vezir Tomb is in Selçuklu, Ferhuniye District, Sultanşah Street."
       },
+      "donem": {
+        "yapim_yili": 1239,
+        "yapim_yili_hicri": 637,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "184"
+      },
       "konum": {
         "enlem": 37.876,
         "boylam": 32.49,
@@ -39077,6 +40282,15 @@
       "adres": {
         "tr": "Türbe, Emirgazi, 87036 Sokak, Emirgazi Şehitliği içerisinde yer almaktadır.",
         "en": "The tomb is located in Emirgazi, 87036 Street, Emirgazi Martyr Cemetary."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "14. yüzyılın sonları – 15. yüzyılın başları",
+          "en": "late 14th century – early 15th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "186"
       },
       "konum": {
         "enlem": 37.9031,
@@ -39622,6 +40836,13 @@
         "tr": "Şeyh Eyüp (Yağlı Dede) Türbesi, Akşehir İlçesi, Kızılca Mahallesi, Mektep Sokak’ta yer almaktadır.",
         "en": "Şeyh Eyüp (Yağlı Dede) Tomb is located in Akşehir District, Kızılca Neighborhood, Mektep Street."
       },
+      "donem": {
+        "yapim_yili": 1367,
+        "yapim_yili_hicri": 769,
+        "yaklasik": true,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "196"
+      },
       "konum": {
         "enlem": 38.352305,
         "boylam": 31.410953,
@@ -40019,6 +41240,12 @@
         "tr": "Beyşehir İlçesi, İçerişehir Mahallesinde Eşrefoğlu Camii’nin kuzeydoğu cephesinde yer almaktadır.",
         "en": "It is located on the northeastern facade of Eşrefoğlu Mosque in the İçerşehir Neighborhood of Beyşehir District."
       },
+      "donem": {
+        "yapim_yili": 1561,
+        "yapim_yili_hicri": 969,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "200"
+      },
       "konum": {
         "enlem": 37.677,
         "boylam": 31.725,
@@ -40146,6 +41373,15 @@
       "adres": {
         "tr": "Türbe Yazlıca Köyü’ndedir.",
         "en": "The tomb is in Yazlıca Village."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "14. yüzyıl",
+          "en": "14th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "202"
       },
       "konum": {
         "enlem": 38.145,
@@ -40344,6 +41580,12 @@
       "adres": {
         "tr": "Seydişehir İlçesi, Seyitharun Mahallesi, 153096 Sokak, Seyyid Harun Camii’nin kuzeydoğu köşesine bitişik olarak inşa edilen iki türbeden cami duvarına bitişik olan yapıdır.",
         "en": "kitâbede; “Bu mübarek Türbe, … toprağı bol olsun."
+      },
+      "donem": {
+        "yapim_yili": 1367,
+        "yapim_yili_hicri": 768,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "203"
       },
       "konum": {
         "enlem": 37.419,
@@ -41148,6 +42390,12 @@
         "tr": "Hamam, Meram, Yorgancı Mahallesi’nde, Meram Köprüsü’nün güney tarafında 645 ada, 1 numaralı parsel üzerinde bulunmaktadır.",
         "en": "Hamam is located on island No. 1, parcel No. 645, on the south side of the Meram Bridge, in Meram, Yorgancı District."
       },
+      "donem": {
+        "yapim_yili": 1423,
+        "yapim_yili_hicri": 827,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "215"
+      },
       "konum": {
         "enlem": 37.845763,
         "boylam": 32.424709,
@@ -41544,6 +42792,12 @@
         "tr": "Hamam, Akşehir, Selçuk Mahallesi, Müze Caddesinde bulunmaktadır.",
         "en": "The bath is located in Akşehir, Selçuk Neighborhood, Muze Street."
       },
+      "donem": {
+        "yapim_yili": 1329,
+        "yapim_yili_hicri": 730,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "220"
+      },
       "konum": {
         "enlem": 38.358333,
         "boylam": 31.414796,
@@ -41762,6 +43016,15 @@
       "adres": {
         "tr": "Hamam, Ereğli, Selçuklu Mahallesi, Hamam Sokak üzerinde yer almaktadır.",
         "en": "The bath is located in Ereğli, Selçuklu Neighborhood, Hamam Street."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "15. yüzyıl",
+          "en": "15th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "223"
       },
       "konum": {
         "enlem": 37.513242,
@@ -42425,6 +43688,15 @@
         "tr": "Çeşme, Karatay, Aslanlı Kışla Caddesi üzerinde bulunmaktadır.",
         "en": "The fountain is located in Karatay, Aslanlı Kışla Street."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın sonu – 20. yüzyılın başları",
+          "en": "late 19th century – early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "233"
+      },
       "konum": {
         "enlem": 37.870688,
         "boylam": 32.509115,
@@ -42522,6 +43794,15 @@
       "adres": {
         "tr": "Çeşme, Karatay, Bağevliya Sokak, Bağevliya Camii’nin önünde bulunmaktadır.",
         "en": "The fountain is located in Karatay, Bağevliya Street, in front of Bağevliya Mosque."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın sonları – 20. yüzyılın başları",
+          "en": "late 19th century – early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "235"
       },
       "konum": {
         "enlem": 37.877817,
@@ -42800,6 +44081,12 @@
         "tr": "Çeşme, Akşehir, Eski Kale Mahallesi, Süleymanağa Sokak, 13 numarada bulunmaktadır.",
         "en": "The fountain is located in Akşehir, Eski Kale Neighborhood, Süleymanağa Street, number 13."
       },
+      "donem": {
+        "yapim_yili": 1795,
+        "yapim_yili_hicri": 1210,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "237"
+      },
       "konum": {
         "enlem": 38.354849,
         "boylam": 31.40992,
@@ -43000,6 +44287,15 @@
         "tr": "Sarnıç, Meram, Yaka Mahallesi, Aziz Mahmut Hüdai Caddesi ve Ezgi Sokak’ın birleştiği köşede yer almaktadır.",
         "en": "The cistern is located at the corner where Meram, Yaka District, Aziz Mahmut Hüdai Street and Ezgi Street meet."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "12. yüzyıl",
+          "en": "12th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "239"
+      },
       "konum": {
         "enlem": 37.879173,
         "boylam": 32.435465,
@@ -43188,6 +44484,15 @@
         "tr": "Han, Meram, Seydişehir yolu üzerinde yer alan Bozağaç Camii’nin yakınında yer almaktadır.",
         "en": "The inn is located near the Bozağaç Mosque on the Meram-Seydişehir Road."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın sonu – 20. yüzyılın başları",
+          "en": "late 19th century – early 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "242"
+      },
       "konum": {
         "enlem": 37.865,
         "boylam": 32.48,
@@ -43375,6 +44680,15 @@
       "adres": {
         "tr": "Han, Meram, Yunus Emre Mahallesi, Konya-Beyşehir yolu üzerindedir.",
         "en": "The inn is located in Meram, Yunus Emre Neighborhood, Konya-Beyşehir Road."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "12. yüzyıl",
+          "en": "12th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "245"
       },
       "konum": {
         "enlem": 37.865,
@@ -43583,6 +44897,12 @@
       "adres": {
         "tr": "Han, Meram, Kızılören Köyü sınırları içerisinde Konya-Beyşehir yolunun 32. km’sinde, yoldan 200 m içerde yer alır.",
         "en": "The inn is located within the borders of Meram, Kızılören Village, at 32 km of the Konya-Beyşehir Road, 200 m inside the road."
+      },
+      "donem": {
+        "yapim_yili": 1207,
+        "yapim_yili_hicri": 604,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "247"
       },
       "konum": {
         "enlem": 37.865,
@@ -43801,6 +45121,12 @@
       "adres": {
         "tr": "Han, Meram, Kızılören Köyü yakınında, Konya- Beyşehir yolu üzerinde Altunapa ve Kuruçeşme hanlarından sonra gelen yapıdır.",
         "en": "The inn is the building that comes after the Altunapa and Kuruçeşme inns, on the Konya-Beyşehir Road, near Meram, Kızılören Village."
+      },
+      "donem": {
+        "yapim_yili": 1206,
+        "yapim_yili_hicri": 603,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "251"
       },
       "konum": {
         "enlem": 37.865,
@@ -44375,6 +45701,15 @@
         "tr": "Han, Konya-Derbent yolu üzerinde, Aladağlar arasında Başara Vadisi yolu üzerinde, Kalburcu/Güney Köyü içerisinde yer alır.",
         "en": "The inn is located in Kalburcu/Guney Village, on the Konya-Derbent Road, on the Başara Valley Road between the Aladağlar."
       },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyılın ilk yarısı",
+          "en": "first half of the 13th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "258"
+      },
       "konum": {
         "enlem": 37.876,
         "boylam": 32.49,
@@ -44593,6 +45928,11 @@
         "tr": "Yapı, Konya-Afyon yolu üzerinde, Konya merkeze 24 km mesafede, Şadiye Köyü’nde yer almaktadır.",
         "en": "The building is located in Şadiye Village, on the Konya-Afyon Road, 24 km from Konya centre."
       },
+      "donem": {
+        "yapim_yili": 1210,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "260"
+      },
       "konum": {
         "enlem": 37.876,
         "boylam": 32.49,
@@ -44800,6 +46140,12 @@
       "adres": {
         "tr": "Han, Konya- Aksaray yolunun 22. km’sinde, Tömek Köyü’ne yakın bir konumda yer almaktadır.",
         "en": "The inn is located on the 22nd km of the Konya-Aksaray Road, close to Tömek Village."
+      },
+      "donem": {
+        "yapim_yili": 1236,
+        "yapim_yili_hicri": 634,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "263"
       },
       "konum": {
         "enlem": 37.876,
@@ -45217,6 +46563,12 @@
         "tr": "Han, Altınekin, Dedeler Kasabası’nın merkezinde bulunmaktadır.",
         "en": "The inn is located in the center of Altınekin, Dedeler Town."
       },
+      "donem": {
+        "yapim_yili": 1868,
+        "yapim_yili_hicri": 1285,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "270"
+      },
       "konum": {
         "enlem": 38.308,
         "boylam": 32.869,
@@ -45364,6 +46716,15 @@
       "adres": {
         "tr": "Han, Altınekin ilçesine bağlı Koçkaya Köyü’nün yaklaşık olarak 10 km güneyinde yer almaktadır.",
         "en": "The inn is located approximately 10 km south of Koçkaya Village in Altınekin district."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "15. yüzyılın ilk yarısı",
+          "en": "first half of the 15th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "271-273"
       },
       "konum": {
         "enlem": 38.308,
@@ -45562,6 +46923,15 @@
       "adres": {
         "tr": "Han, Altınekin ilçesinin merkezinde bulunmaktadır.",
         "en": "The inn is located in the center of Altınekin district."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "14. yüzyılın ortaları – 15. yüzyılın ortaları",
+          "en": "mid-14th century – mid-15th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "273"
       },
       "konum": {
         "enlem": 38.308,
@@ -45770,6 +47140,15 @@
       "adres": {
         "tr": "Bedesten, Ereğli’de, çarşı içinde bulunmaktadır.",
         "en": "The bedesten is located in the bazaar in Ereğli."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "15.-16. yüzyıl",
+          "en": "15th-16th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "277"
       },
       "konum": {
         "enlem": 37.513,
@@ -46117,6 +47496,12 @@
         "tr": "Kervansaray, Kadınhanı ilçe merkezinde yer almaktadır.",
         "en": "The caravanserai is located in Kadınhanı district center."
       },
+      "donem": {
+        "yapim_yili": 1223,
+        "yapim_yili_hicri": 620,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "282"
+      },
       "konum": {
         "enlem": 38.239,
         "boylam": 32.211,
@@ -46451,6 +47836,12 @@
         "tr": "Kütüphane, Karatay, Müze Alanı Caddesi, No. 5 adresinde, Sultan Selim Camii’nin güney batı köşesinde yer almaktadır.",
         "en": "The library is located at Karatay, Müze Alanı Street, No: 5, to the southwestern corner of Sultan Selim Mosque."
       },
+      "donem": {
+        "yapim_yili": 1796,
+        "yapim_yili_hicri": 1210,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "288"
+      },
       "konum": {
         "enlem": 37.870277,
         "boylam": 32.50388,
@@ -46658,6 +48049,15 @@
       "adres": {
         "tr": "Konut, Akşehir, Eski Kale Mahallesi’nde, Ayasofya Mescidi’nin yanında yer almaktadır.",
         "en": "The residence is located in Akşehir, Eski Kale Neighborhood, next to the Hagia Sophia Masjid."
+      },
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın sonları – 20. yüzyılın ilk yarısı",
+          "en": "late 19th century – first half of the 20th century"
+        },
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "291"
       },
       "konum": {
         "enlem": 38.354849,

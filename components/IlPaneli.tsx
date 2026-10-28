@@ -3,6 +3,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
+import { useTaslak } from "./taslak";
+
+/** Kayıtlı form taslağı: forma ilk değer olarak dolar. */
+export type FormTaslagiVerisi = { id: number; veri: Record<string, string> };
 
 async function istek(govde: Record<string, unknown>): Promise<Record<string, unknown>> {
   const yanit = await fetch("/api/il", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(govde) });
@@ -15,8 +19,11 @@ async function istek(govde: Record<string, unknown>): Promise<Record<string, unk
 }
 
 /** Yeni il formu (eser.ekle): il incelemeye gider, editör onaylayınca sitede görünür. */
-export function IlFormu({ dil, kaynaklar }: { dil: Dil; kaynaklar: { id: string; ad: string }[] }) {
+export function IlFormu({ dil, kaynaklar, taslak }: { dil: Dil; kaynaklar: { id: string; ad: string }[]; taslak?: FormTaslagiVerisi }) {
   const t = s(dil).ilPaneli;
+  const ft = s(dil).formTaslagi;
+  const tk = useTaslak("il", undefined, taslak?.id);
+  const ilk = taslak?.veri ?? {};
   const router = useRouter();
   const [durum, setDurum] = useState<{ tamam: boolean; metin: string }>();
   const [bekle, setBekle] = useState(false);
@@ -28,6 +35,7 @@ export function IlFormu({ dil, kaynaklar }: { dil: Dil; kaynaklar: { id: string;
     setBekle(true);
     try {
       await istek({ islem: "gonder", ...Object.fromEntries(new FormData(form)) });
+      await tk.bitir();
       form.reset();
       setDurum({ tamam: true, metin: t.gonderildi });
       router.refresh();
@@ -38,39 +46,55 @@ export function IlFormu({ dil, kaynaklar }: { dil: Dil; kaynaklar: { id: string;
     }
   }
 
+  async function taslagaKaydet(e: React.MouseEvent<HTMLButtonElement>) {
+    const form = e.currentTarget.form;
+    if (!form) return;
+    setDurum(undefined);
+    setBekle(true);
+    try {
+      await tk.kaydet(form);
+      setDurum({ tamam: true, metin: ft.kaydedildi });
+    } catch (h) {
+      setDurum({ tamam: false, metin: h instanceof Error ? h.message : String(h) });
+    } finally {
+      setBekle(false);
+    }
+  }
+
   return (
-    <details className="katki">
+    <details className="katki" id="il-formu" open={!!taslak}>
       <summary>{t.ekle}</summary>
       <form className="form" onSubmit={gonder}>
+        {taslak && <p className="not">{ft.devam}</p>}
         <div className="form-satir">
           <label>
             {t.adTr}
-            <input name="ad_tr" required minLength={2} maxLength={60} />
+            <input name="ad_tr" required minLength={2} maxLength={60} defaultValue={ilk.ad_tr} />
           </label>
           <label>
             {t.adEn}
-            <input name="ad_en" maxLength={60} lang="en" />
+            <input name="ad_en" maxLength={60} lang="en" defaultValue={ilk.ad_en} />
           </label>
         </div>
         <div className="form-satir">
           <label>
             {t.enlem}
-            <input name="enlem" required inputMode="decimal" placeholder="39.42" />
+            <input name="enlem" required inputMode="decimal" placeholder="39.42" defaultValue={ilk.enlem} />
           </label>
           <label>
             {t.boylam}
-            <input name="boylam" required inputMode="decimal" placeholder="29.98" />
+            <input name="boylam" required inputMode="decimal" placeholder="29.98" defaultValue={ilk.boylam} />
           </label>
         </div>
         <p className="not">{t.merkezIpucu}</p>
         <div className="form-satir">
           <label>
             {t.yakinlastirma}
-            <input name="yakinlastirma" type="number" min={5} max={18} defaultValue={11} />
+            <input name="yakinlastirma" type="number" min={5} max={18} defaultValue={ilk.yakinlastirma ?? 11} />
           </label>
           <label>
             {t.kitap}
-            <select name="envanter_kaynak_id" defaultValue="">
+            <select name="envanter_kaynak_id" defaultValue={ilk.envanter_kaynak_id ?? ""}>
               <option value="">{t.kitapYok}</option>
               {kaynaklar.map((k) => (
                 <option key={k.id} value={k.id}>
@@ -83,20 +107,23 @@ export function IlFormu({ dil, kaynaklar }: { dil: Dil; kaynaklar: { id: string;
         <div className="form-satir">
           <label>
             {t.yil}
-            <input name="envanter_yili" type="number" min={1900} max={2100} />
+            <input name="envanter_yili" type="number" min={1900} max={2100} defaultValue={ilk.envanter_yili} />
           </label>
           <label>
             {t.toplam}
-            <input name="toplam_eser" type="number" min={0} />
+            <input name="toplam_eser" type="number" min={0} defaultValue={ilk.toplam_eser} />
           </label>
         </div>
         <label>
           {t.not}
-          <textarea name="not" maxLength={500} rows={2} />
+          <textarea name="not" maxLength={500} rows={2} defaultValue={ilk.not} />
         </label>
         <div className="dugmeler">
           <button type="submit" disabled={bekle}>
             {t.gonder}
+          </button>
+          <button type="button" className="ikincil" disabled={bekle} onClick={taslagaKaydet}>
+            {ft.kaydet}
           </button>
         </div>
         <p role={durum?.tamam === false ? "alert" : "status"} className={durum?.tamam === false ? "hata" : undefined}>

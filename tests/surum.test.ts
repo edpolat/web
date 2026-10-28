@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import ayarlarJson from "../veri/ayarlar.json";
 import type { Ayarlar, Eser } from "../lib/tipler";
 import { KatkiHatasi, type Depo } from "../lib/sunucu/katki";
-import { alanFarklari, katmanla, sonYayindakiler, surumHazirla, yayinaUygunMu, type YayindakiSurum } from "../lib/sunucu/surum";
+import { alanFarklari, katmanla, sonYayindakiler, surumHazirla, surumluDepo, yayinaUygunMu, type YayindakiSurum } from "../lib/sunucu/surum";
 
 const hamza: Eser = { id: "hamzabey-kulliyesi", ad: { tr: "Hamzabey Külliyesi" }, tur: "kulliye", banisi: "Hamza Bey", olgular: [] };
 
@@ -101,5 +101,27 @@ describe("konum düzenleme", () => {
     const hazir = surumHazirla(istek({ enlem: 40.19, boylam: 29.07, dogrulandi: true, yontem: "elle", hassasiyet: "eser" }), depo(), "Eda");
     expect(hazir.veri.konum).toEqual({ enlem: 40.19, boylam: 29.07, dogrulandi: true, yontem: "elle", hassasiyet: "eser" });
     expect(() => surumHazirla(istek({ enlem: 10, boylam: 29.07, dogrulandi: true }), depo(), "Eda")).toThrow(KatkiHatasi);
+  });
+});
+
+describe("surumluDepo (tarihçi düzeltmesi)", () => {
+  it("düzenlenen eser, depoda sürümdeki hâliyle görünür; yayındaki depo değişmez", () => {
+    const d = depo();
+    const yeni = surumluDepo(d, { eser_id: "hamzabey-kulliyesi", il: "bursa", veri: { ...hamza, banisi: "Sürümdeki" } });
+    expect(yeni.iller[0].eserler).toHaveLength(1);
+    expect(yeni.iller[0].eserler[0].banisi).toBe("Sürümdeki");
+    expect(d.iller[0].eserler[0].banisi).toBe("Hamza Bey");
+  });
+
+  it("henüz yayında olmayan yeni eser depoya eklenir, böylece üstüne düzeltme yapılabilir", () => {
+    const yeni = surumluDepo(depo(), { eser_id: "yeni-cesme", il: "bursa", veri: { ...hamza, id: "x", ad: { tr: "Yeni Çeşme" } } });
+    expect(yeni.iller[0].eserler.map((e) => e.id)).toEqual(["hamzabey-kulliyesi", "yeni-cesme"]);
+    expect(yeni.tanimlar.eserIdleri.has("yeni-cesme")).toBe(true);
+    const hazir = surumHazirla(
+      { tur: "eser_duzenle", eser_id: "yeni-cesme", il: "bursa", kaynak_id: "vk-bursa-envanter-c1-2", degisiklik: { banisi: "Düzeltilmiş" } },
+      yeni,
+      "Tarihçi",
+    );
+    expect(hazir.veri.banisi).toBe("Düzeltilmiş");
   });
 });

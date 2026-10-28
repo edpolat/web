@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { BulutHatasi, bulutHazir, girisYap, oturumIzle, type BulutHataKodu } from "@/lib/bulut";
+import { BulutHatasi, bulutHazir, erisimJetonu, girisYap, oturumIzle, type BulutHataKodu } from "@/lib/bulut";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
 
@@ -23,6 +23,44 @@ export function OturumKoprusu() {
     });
   }, [router]);
   return null;
+}
+
+/**
+ * Sunucu çerezde oturum görmediğinde gösterilir. Tarayıcıda açık oturum varsa (çerezin süresi dolmuş ya da henüz
+ * yazılmamış) giriş formu yerine "oturum açılıyor" der; jetonu sunucuya yazıp sayfayı yeniler. Oturum yoksa ya da
+ * birkaç saniyede açılamazsa formu gösterir.
+ */
+export function PanelGirisi({ dil, children }: { dil: Dil; children: React.ReactNode }) {
+  const router = useRouter();
+  const [durum, setDurum] = useState<"bakiliyor" | "form">(bulutHazir ? "bakiliyor" : "form");
+  useEffect(() => {
+    if (!bulutHazir) return;
+    let bitti = false;
+    const yedek = setTimeout(() => !bitti && setDurum("form"), 6000);
+    (async () => {
+      const jeton = await erisimJetonu().catch(() => null);
+      if (!jeton) {
+        bitti = true;
+        setDurum("form");
+        return;
+      }
+      const yanit = await fetch("/api/yonetim/oturum", { method: "POST", headers: { Authorization: `Bearer ${jeton}` } }).catch(() => undefined);
+      if (yanit?.ok) router.refresh();
+      else {
+        bitti = true;
+        setDurum("form");
+      }
+    })();
+    return () => clearTimeout(yedek);
+  }, [router]);
+  if (durum === "bakiliyor") {
+    return (
+      <p className="not" role="status">
+        {s(dil).panel.oturumAciliyor}
+      </p>
+    );
+  }
+  return <>{children}</>;
 }
 
 /** Panele kişisel hesapla giriş (ziyaretçi hesabıyla aynı). Başarılı girişte OturumKoprusu sayfayı yeniler. */

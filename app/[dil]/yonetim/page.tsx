@@ -5,13 +5,14 @@ import DemoDugmeleri from "@/components/DemoDugmeleri";
 import DenetimTablosu from "@/components/DenetimTablosu";
 import EserSecici from "@/components/EserSecici";
 import { demoKaydiZamani } from "@/lib/sunucu/demo";
-import { PanelGirisFormu } from "@/components/PanelGiris";
+import { PanelGirisFormu, PanelGirisi } from "@/components/PanelGiris";
 import { CikisDugmesi, GirisFormu } from "@/components/YonetimGiris";
 import { gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import { katkilar } from "@/lib/sunucu/kuyruk";
 import { panelKimligi } from "@/lib/sunucu/oturum";
 import { yonetimSifresi } from "@/lib/sunucu/yonetim";
+import { formTaslaklarim } from "@/lib/sunucu/taslak-depo";
 import { izinli, paneldeMi } from "@/lib/yetki";
 import { kaynakListesi } from "@/lib/sunucu/kaynak-depo";
 import { oneriler } from "@/lib/sunucu/oneri-depo";
@@ -30,14 +31,16 @@ export default async function Yonetim({ params }: { params: Promise<{ dil: strin
   if (!ben) {
     return (
       <section className="kart">
-        <h1>{t.yonetimGiris}</h1>
-        <PanelGirisFormu dil={dil} />
-        {yonetimSifresi() && (
-          <details>
-            <summary>{t.panel.sifreliGiris}</summary>
-            <GirisFormu dil={dil} />
-          </details>
-        )}
+        <PanelGirisi dil={dil}>
+          <h1>{t.yonetimGiris}</h1>
+          <PanelGirisFormu dil={dil} />
+          {yonetimSifresi() && (
+            <details>
+              <summary>{t.panel.sifreliGiris}</summary>
+              <GirisFormu dil={dil} />
+            </details>
+          )}
+        </PanelGirisi>
       </section>
     );
   }
@@ -62,13 +65,17 @@ export default async function Yonetim({ params }: { params: Promise<{ dil: strin
   const bekleyen = katkilar().filter((k) => k.durum === "bekliyor").length;
   const say = <T,>(izin: boolean, sorgu: () => Promise<T[]>) => (izin ? sorgu().then((x) => x.length).catch(() => undefined) : undefined);
   const onaylayan = izinli(ben, "eser.onayla");
+  const tarihci = izinli(ben, "eser.incele");
   const katkici = izinli(ben, "eser.ekle") || izinli(ben, "eser.duzenle");
-  const [incelemede, oneriSayisi, talepSayisi, dogrulanacak, taslaklarim, eserIlleri, kaynakMap, sonKayitlar] = await Promise.all([
-    say(onaylayan, () => surumler({ durum: "incelemede" })),
-    say(onaylayan, () => oneriler({ durum: "bekliyor" })),
-    say(onaylayan, () => talepler(false)),
+  const [tarihcide, editorde, oneriSayisi, talepSayisi, dogrulanacak, taslaklarim, eserIlleri, kaynakMap, sonKayitlar] = await Promise.all([
+    say(tarihci, () => surumler({ durum: "incelemede" })),
+    say(onaylayan, () => surumler({ durum: "editorde" })),
+    say(tarihci, () => oneriler({ durum: "bekliyor" })),
+    say(tarihci, () => talepler(false)),
     say(izinli(ben, "kaynak.dogrula"), () => kaynakListesi({ durum: "dogrulanmamis" })),
-    say(katkici, () => benimSurumlerim().then((x) => x.filter((y) => y.durum === "taslak"))),
+    say(katkici, () =>
+      Promise.all([benimSurumlerim().then((x) => x.filter((y) => y.durum === "taslak")), formTaslaklarim()]).then(([a, b]) => [...a, ...b]),
+    ),
     yayindakiIller(),
     yayindakiKaynaklar(),
     denetimKaydi(undefined, 8).catch(() => undefined),
@@ -76,13 +83,15 @@ export default async function Yonetim({ params }: { params: Promise<{ dil: strin
   const hedefler = new Map<string, { ad: string; yol: string }>();
   for (const { eserler } of eserIlleri) for (const e of eserler) hedefler.set(e.id, { ad: metin(e.ad, dil), yol: `/${dil}/yonetim/eser/${e.id}/gecmis` });
   for (const k of kaynakMap.values()) hedefler.set(k.id, { ad: k.baslik, yol: `/${dil}/yonetim/kaynaklar/${k.id}` });
+  for (const { il } of eserIlleri) hedefler.set(`il:${il.id}`, { ad: metin(il.ad, dil), yol: `/${dil}/yonetim/iller` });
   const p = t.pano;
   const kutular = [
-    { sayi: incelemede, ad: p.bekleyenDuzenleme, yol: `/${dil}/yonetim/inceleme?tur=eser` },
+    { sayi: tarihcide, ad: p.tarihciBekleyen, yol: `/${dil}/yonetim/inceleme?tur=eser` },
+    { sayi: editorde, ad: p.editorBekleyen, yol: `/${dil}/yonetim/inceleme?tur=eser` },
     { sayi: oneriSayisi, ad: p.bilgiOnerisi, yol: `/${dil}/yonetim/inceleme?tur=oneri` },
     { sayi: talepSayisi, ad: p.uygulamaTalebi, yol: `/${dil}/yonetim/inceleme?tur=talep` },
     { sayi: dogrulanacak, ad: p.dogrulanmamisKaynak, yol: `/${dil}/yonetim/inceleme?tur=kaynak` },
-    { sayi: taslaklarim, ad: p.taslaklarim, yol: `/${dil}/yonetim/katkilarim` },
+    { sayi: taslaklarim, ad: p.taslaklarim, yol: `/${dil}/yonetim/katkilarim?durum=taslak` },
   ].filter((k) => k.sayi !== undefined);
   return (
     <section>

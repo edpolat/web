@@ -44,6 +44,13 @@
         },
         "metin": {
           "$ref": "ortak.schema.json#/$defs/cokDilli"
+        },
+        "kaynak_id": {
+          "$ref": "ortak.schema.json#/$defs/kimlik",
+          "description": "Dönemin alındığı kitap; sayfa ile birlikte eser sayfasında kaynak bağlantısı olur"
+        },
+        "sayfa": {
+          "type": "string"
         }
       },
       "additionalProperties": false

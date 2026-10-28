@@ -16,7 +16,7 @@ export default async function YonetimDuzeni({ children, params }: { children: Re
     const ogeler = [
       { yol: k, ad: p.anaSayfa },
       { yol: `${k}/eserler`, ad: p.eserler, ayrica: `${k}/eser` },
-      ...(izinli(ben, "eser.onayla") || izinli(ben, "kaynak.dogrula") ? [{ yol: `${k}/inceleme`, ad: p.onay }] : []),
+      ...(izinli(ben, "eser.incele") || izinli(ben, "eser.onayla") || izinli(ben, "kaynak.dogrula") ? [{ yol: `${k}/inceleme`, ad: p.onay }] : []),
       { yol: `${k}/kaynaklar`, ad: p.kaynaklar },
       { yol: `${k}/iller`, ad: p.iller },
       ...(izinli(ben, "eser.ekle") || izinli(ben, "eser.duzenle") ? [{ yol: `${k}/katkilarim`, ad: p.katkilarim }] : []),

@@ -107,7 +107,7 @@ function farkYazisi(alan: string, eski: unknown, yeni: unknown, kaynakMap: Map<s
 async function surumHedefi(vt: SupabaseClient, id: number): Promise<Hedef | null> {
   const { data } = await vt.from("eser_surumleri").select("*").eq("id", id).maybeSingle();
   const r = data as SurumSatiri | null;
-  if (!r || r.durum !== "incelemede" || !r.kaynak_id) return null;
+  if (!r || (r.durum !== "incelemede" && r.durum !== "editorde") || !r.kaynak_id) return null;
   const onceki: Eser | undefined = r.islem === "ekle" ? undefined : (await yayindakiHal(r.eser_id)).eser;
   const kaynakMap = await yayindakiKaynaklar();
   const farklar = alanFarklari(onceki, r.veri)

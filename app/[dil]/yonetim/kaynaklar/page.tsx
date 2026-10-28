@@ -7,11 +7,12 @@ import { gecerliDil } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import { kaynakListesi } from "@/lib/sunucu/kaynak-depo";
 import { panelKimligi } from "@/lib/sunucu/oturum";
+import { formTaslagiOku } from "@/lib/sunucu/taslak-depo";
 import { izinli, paneldeMi } from "@/lib/yetki";
 
 export const metadata: Metadata = { robots: { index: false } };
 
-type Arama = { durum?: string; nitelik?: string; q?: string };
+type Arama = { durum?: string; nitelik?: string; q?: string; taslak?: string };
 
 /** Kaynak kütüphanesi: süzgeçli liste ve kaynak ekleme. Ayrıntı, önizleme ve doğrulama kaynağın kendi sayfasında. */
 export default async function Kaynaklar({ params, searchParams }: { params: Promise<{ dil: string }>; searchParams: Promise<Arama> }) {
@@ -25,6 +26,8 @@ export default async function Kaynaklar({ params, searchParams }: { params: Prom
   const durum = KAYNAK_DURUMLARI.find((d) => d === arama.durum);
   const nitelik = NITELIKLER.find((n) => n === arama.nitelik);
   const q = (arama.q ?? "").trim().toLocaleLowerCase("tr");
+  const ekleyebilir = izinli(ben, "eser.ekle") || izinli(ben, "eser.duzenle");
+  const taslak = ekleyebilir && arama.taslak ? await formTaslagiOku(Number(arama.taslak), "kaynak") : undefined;
   let liste: KutuphaneKaynagi[] | undefined;
   let hataMetni = "";
   try {
@@ -41,7 +44,7 @@ export default async function Kaynaklar({ params, searchParams }: { params: Prom
       </p>
       <h1>{u.baslik}</h1>
       <p className="not">{u.aciklama}</p>
-      {(izinli(ben, "eser.ekle") || izinli(ben, "eser.duzenle")) && <KaynakFormu dil={dil} />}
+      {ekleyebilir && <KaynakFormu key={taslak?.id} dil={dil} taslak={taslak} />}
       <form className="panel-filtre" method="get">
         <label>
           {u.durum}

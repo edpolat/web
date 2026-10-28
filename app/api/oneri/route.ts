@@ -42,7 +42,7 @@ async function islem(g: Record<string, unknown>): Promise<Record<string, unknown
     }
     case "kabul":
     case "reddet": {
-      if (!(await yetkili("eser.onayla"))) throw new OneriHatasi("Onaylama izni gerekli.");
+      if (!(await yetkili("eser.incele"))) throw new OneriHatasi("Akademik danışman incelemesi izni gerekli.");
       const id = sayi(g.id);
       if (g.islem === "reddet") {
         if (!metin(g.gerekce)) throw new OneriHatasi("Reddetmek için gerekçe yazmalısın.");

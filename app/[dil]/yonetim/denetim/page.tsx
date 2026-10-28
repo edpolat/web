@@ -5,7 +5,7 @@ import { gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import { panelKimligi } from "@/lib/sunucu/oturum";
 import { denetimKaydi, type DenetimSatiri } from "@/lib/sunucu/surum-depo";
-import { yayindakiEserler, yayindakiKaynaklar } from "@/lib/veri";
+import { yayindakiEserler, yayindakiKaynaklar, yayindakiIller } from "@/lib/veri";
 import { paneldeMi } from "@/lib/yetki";
 
 export const metadata: Metadata = { robots: { index: false } };
@@ -29,10 +29,11 @@ export default async function Denetim({
   const kim = (arama.kim ?? "").trim().toLocaleLowerCase("tr");
   const q = (arama.q ?? "").trim().toLocaleLowerCase("tr");
 
-  const [eserler, kaynakMap] = await Promise.all([yayindakiEserler(), yayindakiKaynaklar()]);
+  const [eserler, kaynakMap, ilDosyalari] = await Promise.all([yayindakiEserler(), yayindakiKaynaklar(), yayindakiIller()]);
   const hedefler = new Map<string, { ad: string; yol: string }>();
   for (const e of eserler) hedefler.set(e.id, { ad: metin(e.ad, dil), yol: `/${dil}/yonetim/eser/${e.id}/gecmis` });
   for (const k of kaynakMap.values()) hedefler.set(k.id, { ad: k.baslik, yol: `/${dil}/yonetim/kaynaklar/${k.id}` });
+  for (const { il } of ilDosyalari) hedefler.set(`il:${il.id}`, { ad: metin(il.ad, dil), yol: `/${dil}/yonetim/iller` });
 
   let kayitlar: DenetimSatiri[] | undefined;
   let hataMetni = "";

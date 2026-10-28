@@ -45,7 +45,8 @@ type Kayit =
   | { tur: "talep"; zaman: string; talep: TalepSatiri };
 
 /**
- * Onay bekleyenler: eser düzenlemeleri, bilgi önerileri ve mobil uygulama talepleri (eser.onayla), doğrulanmamış kaynaklar (kaynak.dogrula) tek listede,
+ * Onay bekleyenler, iki aşamalı: tarihçi (eser.incele) tarihçideki eser sürümlerini, bilgi önerilerini ve mobil uygulama taleplerini,
+ * editör (eser.onayla) tarihçiden geçmiş sürümleri görür; doğrulanmamış kaynaklar (kaynak.dogrula) da aynı listede,
  * talep tarihine göre eskiden yeniye. ?tur=eser|kaynak|oneri|talep türe göre süzer, ?sira=yeni sırayı çevirir.
  */
 export default async function Inceleme({
@@ -58,9 +59,13 @@ export default async function Inceleme({
   const { dil } = await params;
   if (!gecerliDil(dil)) notFound();
   const ben = await panelKimligi();
-  const eserYetkisi = izinli(ben, "eser.onayla");
+  const tarihciYetkisi = izinli(ben, "eser.incele");
+  const editorYetkisi = izinli(ben, "eser.onayla");
+  // eserYetkisi: eser sürümlerinden en az bir aşamayı görür; öneri ve talepler tarihçinin işi.
+  const eserYetkisi = tarihciYetkisi || editorYetkisi;
   const kaynakYetkisi = izinli(ben, "kaynak.dogrula");
   if (!eserYetkisi && !kaynakYetkisi) redirect(`/${dil}/yonetim`);
+  const surumEylemleri = [...(tarihciYetkisi ? (["tarihci"] as const) : []), ...(editorYetkisi ? (["karar"] as const) : [])];
   const t = s(dil);
   const u = t.kutuphane;
   const { tur, sira, etiket } = await searchParams;
@@ -77,7 +82,10 @@ export default async function Inceleme({
   if (eserYetkisi) {
     try {
       const kaynakMap = await yayindakiKaynaklar();
-      const bekleyen = await surumler({ durum: "incelemede" });
+      const bekleyen = [
+        ...(tarihciYetkisi ? await surumler({ durum: "incelemede" }) : []),
+        ...(editorYetkisi ? await surumler({ durum: "editorde" }) : []),
+      ];
       for (const x of bekleyen) if (x.kaynak_id) kaynakliSurumler.add(x.id);
       eserler = await Promise.all(
         bekleyen.map(async (x) => {
@@ -106,7 +114,7 @@ export default async function Inceleme({
 
   let oneriler: OneriSatiri[] | undefined;
   let oneriHatasi = "";
-  if (eserYetkisi) {
+  if (tarihciYetkisi) {
     try {
       oneriler = await oneriListesi({ durum: "bekliyor" });
     } catch (h) {
@@ -115,7 +123,7 @@ export default async function Inceleme({
   }
   let talepler: TalepSatiri[] | undefined;
   let talepHatasi = "";
-  if (eserYetkisi) {
+  if (tarihciYetkisi) {
     try {
       talepler = await talepListesi();
     } catch (h) {
@@ -213,8 +221,8 @@ export default async function Inceleme({
   const cipler: [Tur | undefined, string, number][] = [[undefined, u.tumu, sayi.eser + sayi.kaynak + sayi.oneri + sayi.talep]];
   if (eserYetkisi) cipler.push(["eser", t.surum.onayTurleri.eser, sayi.eser]);
   if (kaynakYetkisi) cipler.push(["kaynak", t.surum.onayTurleri.kaynak, sayi.kaynak]);
-  if (eserYetkisi) cipler.push(["oneri", t.surum.onayTurleri.oneri, sayi.oneri]);
-  if (eserYetkisi) cipler.push(["talep", t.surum.onayTurleri.talep, sayi.talep]);
+  if (tarihciYetkisi) cipler.push(["oneri", t.surum.onayTurleri.oneri, sayi.oneri]);
+  if (tarihciYetkisi) cipler.push(["talep", t.surum.onayTurleri.talep, sayi.talep]);
   const yeniSira = yeniOnce ? "yeni" : oncelikle ? "oncelik" : undefined;
   const y = t.yz;
 
@@ -324,7 +332,8 @@ export default async function Inceleme({
             key={`e-${x.surum.id}`}
             dil={dil}
             k={x.surum}
-            eylemler={["karar"]}
+            eylemler={surumEylemleri}
+            benimId={ben?.id}
             eserAdresi
             turEtiketi={t.surum.onayTuru.eser}
             ek={kaynakliSurumler.has(x.surum.id) ? yzKutusu("surum", x.surum.id, surumAnalizleri.get(x.surum.id)) : undefined}

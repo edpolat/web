@@ -1,15 +1,17 @@
 // Yönetim paneli rolleri ve izinleri. Kontroller her zaman izne göre yapılır (izinli(kimlik, "eser.onayla")), rol adına göre değil.
-// Asıl eşleme Supabase'deki rol_izinleri tablosunda (supabase/001_roller.sql); buradaki kopya arayüz ve testler içindir.
+// Asıl eşleme Supabase'deki rol_izinleri tablosunda (supabase/001_roller.sql, 015'te tarihçi eklendi); buradaki kopya arayüz ve testler içindir.
 
-export const IZINLER = ["eser.ekle", "eser.duzenle", "eser.onayla", "eser.arsivle", "kaynak.dogrula", "kullanici.yonet"] as const;
+// eser.incele: tarihçi aşaması (supabase/015_tarihci_onayi.sql); eser.onayla: editör aşaması.
+export const IZINLER = ["eser.ekle", "eser.duzenle", "eser.incele", "eser.onayla", "eser.arsivle", "kaynak.dogrula", "kullanici.yonet"] as const;
 export type Izin = (typeof IZINLER)[number];
 
-export const ROLLER = ["super_admin", "editor", "katkici", "goruntuleyici"] as const;
+export const ROLLER = ["super_admin", "editor", "tarihci", "katkici", "goruntuleyici"] as const;
 export type Rol = (typeof ROLLER)[number];
 
 export const ROL_IZINLERI: Record<Rol, readonly Izin[]> = {
   super_admin: IZINLER,
-  editor: ["eser.ekle", "eser.duzenle", "eser.onayla", "kaynak.dogrula"],
+  editor: ["eser.ekle", "eser.duzenle", "eser.onayla"],
+  tarihci: ["eser.incele", "kaynak.dogrula"],
   katkici: ["eser.ekle", "eser.duzenle"],
   goruntuleyici: [],
 };

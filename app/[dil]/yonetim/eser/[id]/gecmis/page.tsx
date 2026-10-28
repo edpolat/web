@@ -9,6 +9,7 @@ import { s } from "@/lib/sozluk";
 import { DUZENLENEBILIR } from "@/lib/sunucu/katki";
 import { bilgiKaynaklari, type BilgiKaynagi } from "@/lib/sunucu/kaynak-depo";
 import { panelKimligi } from "@/lib/sunucu/oturum";
+import { formTaslagiOku } from "@/lib/sunucu/taslak-depo";
 import { yayindakiHal } from "@/lib/sunucu/panel";
 import { denetimKaydi, surumler, type DenetimSatiri } from "@/lib/sunucu/surum-depo";
 import { ilkHal, surumuGoster } from "@/lib/sunucu/surum-goster";
@@ -19,14 +20,22 @@ import { yayindakiKaynaklar } from "@/lib/veri";
 export const metadata: Metadata = { robots: { index: false } };
 
 /** Bir eserin sürüm geçmişi, denetim kaydı, eski sürüme dönme ve arşivleme. */
-export default async function Gecmis({ params }: { params: Promise<{ dil: string; id: string }> }) {
+export default async function Gecmis({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ dil: string; id: string }>;
+  searchParams: Promise<{ taslak?: string }>;
+}) {
   const { dil, id } = await params;
+  const taslakNo = (await searchParams).taslak;
   if (!gecerliDil(dil)) notFound();
   const ben = await panelKimligi();
   if (!paneldeMi(ben)) redirect(`/${dil}/yonetim`);
   const t = s(dil);
   const u = t.surum;
   const kaynakMap = await yayindakiKaynaklar();
+  const bilgiTaslagi = taslakNo && izinli(ben, "eser.duzenle") ? await formTaslagiOku(Number(taslakNo), "bilgi") : undefined;
   const ilk = ilkHal(id);
   const simdi = await yayindakiHal(id);
   if (!ilk && !simdi.eser) notFound();
@@ -147,8 +156,10 @@ export default async function Gecmis({ params }: { params: Promise<{ dil: string
           )}
           {izinli(ben, "eser.duzenle") && (
             <BilgiKaynagiFormu
+              key={bilgiTaslagi?.id}
               dil={dil}
               eserId={id}
+              taslak={bilgiTaslagi?.hedef === id ? bilgiTaslagi : undefined}
               alanlar={DUZENLENEBILIR.filter((a) => a !== "taslak").map((a) => ({ id: a, ad: t.alanlar[a] ?? a }))}
               kaynaklar={[...kaynakMap.values()].map((k) => ({ id: k.id, ad: k.baslik }))}
             />

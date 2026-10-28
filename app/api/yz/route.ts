@@ -16,7 +16,7 @@ const hata = (mesaj: string, durum = 400) => Response.json({ hata: mesaj }, { st
 export async function POST(istek: Request) {
   const g = (await istek.json().catch(() => null)) as Record<string, unknown> | null;
   if (!g) return hata("Geçersiz istek.");
-  if (!(await yetkili("eser.onayla"))) return hata("Onaylama izni gerekli.", 403);
+  if (!(await yetkili("eser.incele")) && !(await yetkili("eser.onayla"))) return hata("İnceleme ya da onaylama izni gerekli.", 403);
 
   if (g.islem === "dil_uyumu") {
     // Onaylamadan önce iki dil karşılaştırması. Cevap yalnız uyarıyı belirler; YZ kapalıysa çağıran basit uyarıyı gösterir.

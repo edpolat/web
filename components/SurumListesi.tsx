@@ -12,7 +12,7 @@ export type GosterilenSurum = {
   eserId: string;
   eser: string;
   il: string;
-  durum: "taslak" | "incelemede" | "yayinda" | "reddedildi" | "arsivlendi";
+  durum: "taslak" | "incelemede" | "editorde" | "yayinda" | "reddedildi" | "arsivlendi";
   islem: "ekle" | "duzenle" | "geri_al" | "arsivle" | "arsivden_cikar";
   ekleyen: string;
   olusturuldu: string;
@@ -31,12 +31,47 @@ export type GosterilenSurum = {
   dilFarklari?: DilFarki[];
   /** Gönderen "diğer dildeki metne uyum için" dedi. */
   dilUyumu?: boolean;
+  /** Tarihçi aşaması: kim inceledi, notu; düzelttiyse gönderilen hâle göre farklar. */
+  tarihci?: string;
+  tarihciId?: string;
+  tarihciNotu?: string;
+  tarihciFarklari?: { alan: string; eski: string; yeni: string }[];
+  /** Editör tarihçiye geri gönderdiyse notu. */
+  editorNotu?: string;
 };
 
-type Eylem = "karar" | "incelemeye" | "geriAl";
+/** tarihci: tarihçi aşaması (incelemede); karar: editör aşaması (editorde). */
+type Eylem = "tarihci" | "karar" | "incelemeye" | "geriAl";
 
 const tarih = (iso: string, dil: Dil) =>
   new Date(iso).toLocaleString(dil === "tr" ? "tr-TR" : "en-GB", { dateStyle: "medium", timeStyle: "short" });
+
+function FarkTablosu({ farklar, eskiBaslik, yeniBaslik, alanBaslik }: { farklar: GosterilenSurum["farklar"]; eskiBaslik: string; yeniBaslik: string; alanBaslik: string }) {
+  return (
+    <table className="fark">
+      <thead>
+        <tr>
+          <th scope="col">{alanBaslik}</th>
+          <th scope="col">{eskiBaslik}</th>
+          <th scope="col">{yeniBaslik}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {farklar.map((f) => (
+          <tr key={f.alan}>
+            <th scope="row">{f.alan}</th>
+            <td className="eski" data-baslik={eskiBaslik}>
+              <Deger metin={f.eski} />
+            </td>
+            <td className="yeni" data-baslik={yeniBaslik}>
+              <Deger metin={f.yeni} />
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
 
 function Deger({ metin }: { metin: string }) {
   if (metin.length < 400) return <>{metin}</>;
@@ -64,9 +99,12 @@ export function SurumKarti({
   ek,
   yzAnalizleri = [],
   yzAcik = false,
+  benimId,
 }: {
   dil: Dil;
   k: GosterilenSurum;
+  /** Giriş yapan kişi: tarihçi olarak incelediği sürümde editör düğmeleri çıkmaz. */
+  benimId?: string;
   eylemler: Eylem[];
   eserAdresi: boolean;
   /** Karışık listelerde (onay bekleyenler) kaydın türü. */
@@ -118,29 +156,30 @@ export function SurumKarti({
       )}
       {k.aciklama && <p className="not">“{k.aciklama}”</p>}
       {k.araDegisti && <p className="uyari">{u.araDegisti}</p>}
-      {k.farklar.length > 0 && (
-        <table className="fark">
-          <thead>
-            <tr>
-              <th scope="col">{t.alan}</th>
-              <th scope="col">{u.onceki}</th>
-              <th scope="col">{u.yeni}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {k.farklar.map((f) => (
-              <tr key={f.alan}>
-                <th scope="row">{f.alan}</th>
-                <td className="eski" data-baslik={u.onceki}>
-                  <Deger metin={f.eski} />
-                </td>
-                <td className="yeni" data-baslik={u.yeni}>
-                  <Deger metin={f.yeni} />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {k.farklar.length > 0 && <FarkTablosu farklar={k.farklar} alanBaslik={t.alan} eskiBaslik={u.onceki} yeniBaslik={u.yeni} />}
+      {k.editorNotu && k.durum === "incelemede" && (
+        <p className="uyari">
+          <strong>{u.editorGeriGonderdi}:</strong> {k.editorNotu}
+        </p>
+      )}
+      {k.tarihci && k.durum !== "incelemede" && (
+        <p className="not">
+          {u.tarihci}: {k.tarihci}
+          {k.tarihciNotu && (
+            <>
+              {" · "}
+              <strong>{u.tarihciNotu}:</strong> {k.tarihciNotu}
+            </>
+          )}
+        </p>
+      )}
+      {k.tarihciFarklari && k.tarihciFarklari.length > 0 && (
+        <details>
+          <summary>
+            {u.tarihciDuzeltmeleri} ({k.tarihciFarklari.length})
+          </summary>
+          <FarkTablosu farklar={k.tarihciFarklari} alanBaslik={t.alan} eskiBaslik={u.gonderilenHal} yeniBaslik={u.duzeltilenHal} />
+        </details>
       )}
       {(k.inceleyen || k.ret_gerekcesi) && (
         <p className="not">
@@ -154,14 +193,39 @@ export function SurumKarti({
           )}
         </p>
       )}
-      {eylemler.includes("karar") && k.durum === "incelemede" && k.dilFarklari && (
+      {eylemler.includes("karar") && k.durum === "editorde" && k.dilFarklari && (
         <DilNotu dil={dil} farklar={k.dilFarklari} dilUyumu={k.dilUyumu ?? false} alanAdi={alanAdi} yzAcik={yzAcik} />
       )}
       {ek}
-      {eylemler.includes("karar") && k.durum === "incelemede" && (
+      {eylemler.includes("tarihci") && k.durum === "incelemede" && (
         <div className="form">
           <label>
-            {u.gerekceRet}
+            {u.tarihciNotAlani}
+            <input value={gerekce} onChange={(e) => setGerekce(e.target.value)} maxLength={2000} />
+          </label>
+          <div className="dugmeler">
+            <button type="button" disabled={bekle} onClick={() => yap({ islem: "tarihci_ilerlet", id: k.id, not: gerekce })}>
+              {u.ilerlet}
+            </button>
+            <Link className="dugme ikincil" href={`/${dil}/yonetim/eser/${encodeURIComponent(k.eserId)}?surum=${k.id}`}>
+              {u.duzenleyerekIlerlet}
+            </Link>
+            <button
+              type="button"
+              className="ikincil"
+              disabled={bekle || !gerekce.trim()}
+              onClick={() => yap({ islem: "tarihci_reddet", id: k.id, not: gerekce, yz_analizleri: yzAnalizleri })}
+            >
+              {u.tarihciReddet}
+            </button>
+          </div>
+        </div>
+      )}
+      {eylemler.includes("karar") && k.durum === "editorde" && benimId && k.tarihciId === benimId && <p className="not">{u.ayniKisi}</p>}
+      {eylemler.includes("karar") && k.durum === "editorde" && !(benimId && k.tarihciId === benimId) && (
+        <div className="form">
+          <label>
+            {u.geriGonderGerekce}
             <input value={gerekce} onChange={(e) => setGerekce(e.target.value)} maxLength={2000} />
           </label>
           <div className="dugmeler">
@@ -177,7 +241,7 @@ export function SurumKarti({
               {u.onayla}
             </button>
             <button type="button" className="ikincil" disabled={bekle || !gerekce.trim()} onClick={() => yap({ islem: "reddet", id: k.id, gerekce, yz_analizleri: yzAnalizleri })}>
-              {u.reddet}
+              {u.geriGonder}
             </button>
           </div>
           {dilDenetimi.kutu}

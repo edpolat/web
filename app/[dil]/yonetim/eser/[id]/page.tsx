@@ -5,26 +5,41 @@ import EserFormu from "@/components/EserFormu";
 import { gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import { yetkili } from "@/lib/sunucu/oturum";
+import { surumOku } from "@/lib/sunucu/surum-depo";
+import type { Eser } from "@/lib/tipler";
 import { ayarlar, yayindakiIller, yayindakiKaynaklar } from "@/lib/veri";
 
 export const metadata: Metadata = { robots: { index: false } };
 
-/** /yonetim/eser/yeni yeni eser, /yonetim/eser/<id> mevcut eseri düzenler. Taslaklar da düzenlenebilir. */
+/**
+ * /yonetim/eser/yeni yeni eser, /yonetim/eser/<id> mevcut eseri düzenler. Taslaklar da düzenlenebilir.
+ * ?surum=<id>: tarihçi, incelemedeki sürümü düzelterek editöre gönderir (form sürümün hâliyle açılır).
+ */
 export default async function EserDuzenle({
   params,
   searchParams,
 }: {
   params: Promise<{ dil: string; id: string }>;
-  searchParams: Promise<{ il?: string }>;
+  searchParams: Promise<{ il?: string; surum?: string }>;
 }) {
   const { dil, id } = await params;
-  const { il: varsayilanIl } = await searchParams;
+  const { il: varsayilanIl, surum: surumNo } = await searchParams;
   if (!gecerliDil(dil)) notFound();
-  if (!(await yetkili(id === "yeni" ? "eser.ekle" : "eser.duzenle"))) redirect(`/${dil}/yonetim`);
   const t = s(dil);
   const tumu = await yayindakiIller();
-  const eser = id === "yeni" ? undefined : tumu.flatMap((d) => d.eserler).find((e) => e.id === id);
-  if (id !== "yeni" && !eser) notFound();
+  let eser: Eser | undefined;
+  let tarihciSurum: { id: number; kaynak_id: string } | undefined;
+  if (surumNo) {
+    if (!(await yetkili("eser.incele"))) redirect(`/${dil}/yonetim`);
+    const surum = await surumOku(Number(surumNo));
+    if (!surum || surum.durum !== "incelemede" || surum.eser_id !== id) notFound();
+    eser = surum.veri as Eser;
+    tarihciSurum = { id: surum.id, kaynak_id: surum.kaynak_id ?? "" };
+  } else {
+    if (!(await yetkili(id === "yeni" ? "eser.ekle" : "eser.duzenle"))) redirect(`/${dil}/yonetim`);
+    eser = id === "yeni" ? undefined : tumu.flatMap((d) => d.eserler).find((e) => e.id === id);
+    if (id !== "yeni" && !eser) notFound();
+  }
   return (
     <section className="kart">
       <p>
@@ -37,7 +52,7 @@ export default async function EserDuzenle({
         )}
       </p>
       <h1>{eser ? `${t.eseriDuzenle}: ${metin(eser.ad, dil)}` : t.yeniEser}</h1>
-      <p className="not">{t.yonetimAciklama}</p>
+      <p className="not">{tarihciSurum ? t.surum.tarihciModu : t.yonetimAciklama}</p>
       <EserFormu
         dil={dil}
         eser={eser}
@@ -45,6 +60,7 @@ export default async function EserDuzenle({
         turler={ayarlar().eser_turleri.map((x) => ({ id: x.id, ad: metin(x.ad, dil) }))}
         kaynaklar={[...(await yayindakiKaynaklar()).values()].map((k) => ({ id: k.id, ad: k.baslik }))}
         varsayilanIl={varsayilanIl}
+        tarihciSurum={tarihciSurum}
       />
     </section>
   );

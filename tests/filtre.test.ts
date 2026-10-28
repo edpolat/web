@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { filtrele, sadelestir } from "../lib/filtre";
+import { donemYuzyili, filtrele, sadelestir } from "../lib/filtre";
 import { ceviriEksik, metin } from "../lib/metin";
 import type { IlliEser } from "../lib/tipler";
 
@@ -49,5 +49,18 @@ describe("kucukGorsel", () => {
   it("webp için önizleme dosyasını verir", () => {
     expect(kucukGorsel("/gorseller/bursa/x/01.webp")).toBe("/gorseller/bursa/x/01_kucuk.webp");
     expect(kucukGorsel("/a.jpg")).toBe("/a.jpg");
+  });
+});
+
+describe("donemYuzyili", () => {
+  it("yapım yılından yüzyılı bulur", () => {
+    expect(donemYuzyili({ yapim_yili: 1248 })).toBe(13);
+    expect(donemYuzyili({ yapim_yili: 1900 })).toBe(19);
+  });
+  it("yıl yoksa dönem metnindeki yüzyılı okur (Arap ve Roma rakamı)", () => {
+    expect(donemYuzyili({ yaklasik: true, metin: { tr: "15. yüzyılın ilk yarısı" } })).toBe(15);
+    expect(donemYuzyili({ yaklasik: true, metin: { tr: "XIV. yüzyıl sonları" } })).toBe(14);
+    expect(donemYuzyili({ yaklasik: true, metin: { tr: "Sultan II. Murad dönemi" } })).toBeUndefined();
+    expect(donemYuzyili(undefined)).toBeUndefined();
   });
 });

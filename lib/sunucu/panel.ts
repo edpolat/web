@@ -8,10 +8,10 @@ import { KatkiHatasi, type Depo } from "./katki";
 import { depoOku } from "./kuyruk";
 import { hesapIstemcisi, kimlik } from "./kimlik";
 import { yetkili } from "./oturum";
-import { alanFarklari, surumHazirla, yayinaUygunMu } from "./surum";
+import { alanFarklari, surumHazirla, surumluDepo, yayinaUygunMu } from "./surum";
 import { arkaPlanda } from "./yz-analiz";
 import { yzKararKaydet } from "./yz-depo";
-import { surumGonder, surumIncelemeye, surumKarar, surumOku, surumYayinla, surumler, yayiniYenile, yayindakiSurumler } from "./surum-depo";
+import { surumGonder, surumIncelemeye, surumKarar, surumOku, surumTarihciKarar, surumYayinla, surumler, yayiniYenile, yayindakiSurumler } from "./surum-depo";
 
 /** Onay kuyruğundaki doğrulama deposunun yayındaki hâli (JSON + onaylı sürümler). */
 export async function yayindakiDepo(): Promise<Depo> {
@@ -58,14 +58,45 @@ export async function panelIslemi(govde: Record<string, unknown>): Promise<Recor
       arkaPlanda(await hesapIstemcisi(), [{ analiz: "kaynak", tur: "surum", id: sayi(govde.id) }]);
       return { tamam: true };
     }
+    // Tarihçi aşaması (eser.incele): doğruysa editöre gönderir (eser formuyla düzelttiyse yeni hâliyle), değilse gerekçeyle reddeder.
+    case "tarihci_ilerlet":
+    case "tarihci_reddet": {
+      if (!(await yetkili("eser.incele"))) throw new KatkiHatasi("Akademik danışman incelemesi izni gerekli.");
+      const surum = await surumOku(sayi(govde.id));
+      if (!surum || surum.durum !== "incelemede") throw new KatkiHatasi("Bu sürüm akademik danışman incelemesinde değil.");
+      const not = metin(govde.not);
+      if (govde.islem === "tarihci_reddet") {
+        if (!not) throw new KatkiHatasi("Reddetmek için gerekçe yazmalısın.");
+        await surumTarihciKarar(surum.id, false, null, not, null);
+        await yzKararKaydet(await hesapIstemcisi(), govde.yz_analizleri, "reddetti");
+        return { tamam: true };
+      }
+      const depo = await yayindakiDepo();
+      let veri: Eser | null = null;
+      if (govde.degisiklik !== undefined) {
+        // Formdan gelen düzeltme, sürümün hâli üzerine aynı kurallarla uygulanır; sürümün kaynağı korunur.
+        const hazir = surumHazirla(
+          { ...govde, tur: "eser_duzenle", eser_id: surum.eser_id, il: surum.il, kaynak_id: metin(govde.kaynak_id) || surum.kaynak_id },
+          surumluDepo(depo, surum),
+          ben.ad,
+        );
+        veri = hazir.veri;
+      }
+      yayinaUygunMu({ ...surum, veri: veri ?? surum.veri }, depo);
+      await surumTarihciKarar(surum.id, true, veri, not, veri ? alanFarklari(surum.veri, veri) : null);
+      return { tamam: true, eser_id: surum.eser_id };
+    }
+    // Editör aşaması (eser.onayla): tarihçiden geçmiş sürümü yayına alır ya da gerekçeyle tarihçiye geri gönderir.
     case "onayla":
     case "reddet": {
       if (!(await yetkili("eser.onayla"))) throw new KatkiHatasi("Onaylama izni gerekli.");
       const surum = await surumOku(sayi(govde.id));
       if (!surum) throw new KatkiHatasi("Sürüm bulunamadı.");
+      if (surum.durum !== "editorde") throw new KatkiHatasi("Bu sürüm henüz akademik danışmandan geçmedi.");
+      if (surum.tarihci && surum.tarihci === ben.id) throw new KatkiHatasi("Bu sürümü akademik danışman olarak sen inceledin; editör onayını başka biri vermeli.");
       const gerekce = metin(govde.gerekce);
       if (govde.islem === "reddet") {
-        if (!gerekce) throw new KatkiHatasi("Reddetmek için gerekçe yazmalısın.");
+        if (!gerekce) throw new KatkiHatasi("Akademik danışmana geri göndermek için gerekçe yazmalısın.");
         await surumKarar(surum.id, false, gerekce, []);
         await yzKararKaydet(await hesapIstemcisi(), govde.yz_analizleri, "reddetti");
         return { tamam: true };

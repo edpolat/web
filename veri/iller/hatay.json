@@ -687,6 +687,15 @@
       },
       "tur": "kulliye",
       "ilce": "Antakya",
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyıl",
+          "en": "19th century"
+        },
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "121-138"
+      },
       "konum": {
         "enlem": 36.2025,
         "boylam": 36.1605,
@@ -1095,6 +1104,16 @@
       },
       "tur": "kulliye",
       "ilce": "Antakya",
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "1580'den önce",
+          "en": "before 1580"
+        },
+        "yapim_yili": 1580,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "159-176"
+      },
       "konum": {
         "enlem": 36.2025,
         "boylam": 36.1605,
@@ -1310,6 +1329,12 @@
       },
       "tur": "kulliye",
       "ilce": "Reyhanlı",
+      "donem": {
+        "yapim_yili": 1910,
+        "yaklasik": true,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "177-192"
+      },
       "konum": {
         "enlem": 36.2675,
         "boylam": 36.5675,
@@ -1649,6 +1674,11 @@
       },
       "tur": "cami",
       "ilce": "Antakya",
+      "donem": {
+        "yapim_yili": 1894,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "198-205"
+      },
       "konum": {
         "enlem": 36.2025,
         "boylam": 36.1605,
@@ -1987,6 +2017,11 @@
       },
       "tur": "cami",
       "ilce": "Antakya",
+      "donem": {
+        "yapim_yili": 1842,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "212-217"
+      },
       "konum": {
         "enlem": 36.203431,
         "boylam": 36.163491,
@@ -2673,6 +2708,15 @@
       },
       "tur": "mescit",
       "ilce": "Antakya",
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyıl",
+          "en": "19th century"
+        },
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "232-237"
+      },
       "konum": {
         "enlem": 36.2025,
         "boylam": 36.1605,
@@ -3116,6 +3160,15 @@
       },
       "tur": "cami",
       "ilce": "Antakya",
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "16. yüzyıl",
+          "en": "16th century"
+        },
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "250-257"
+      },
       "konum": {
         "enlem": 36.2025,
         "boylam": 36.1605,
@@ -3504,6 +3557,11 @@
       },
       "tur": "cami",
       "ilce": "Antakya",
+      "donem": {
+        "yapim_yili": 1906,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "264-271"
+      },
       "konum": {
         "enlem": 36.2025,
         "boylam": 36.1605,
@@ -4528,6 +4586,12 @@
       },
       "tur": "cami",
       "ilce": "Antakya",
+      "donem": {
+        "yapim_yili": 1895,
+        "yapim_yili_hicri": 1313,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "302-305"
+      },
       "konum": {
         "enlem": 36.2025,
         "boylam": 36.1605,
@@ -4982,6 +5046,15 @@
       },
       "tur": "cami",
       "ilce": "Antakya",
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "13. yüzyılın son çeyreği",
+          "en": "last quarter of the 13th century"
+        },
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "316-321"
+      },
       "konum": {
         "enlem": 36.2025,
         "boylam": 36.1605,
@@ -6044,6 +6117,11 @@
       },
       "tur": "mescit",
       "ilce": "Defne",
+      "donem": {
+        "yapim_yili": 1902,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "350-353"
+      },
       "konum": {
         "enlem": 36.19,
         "boylam": 36.15,
@@ -6352,6 +6430,12 @@
       },
       "tur": "cami",
       "ilce": "Erzin",
+      "donem": {
+        "yapim_yili": 1895,
+        "yapim_yili_hicri": 1302,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "360-363"
+      },
       "konum": {
         "enlem": 36.957495,
         "boylam": 36.19274,
@@ -6416,6 +6500,12 @@
       },
       "tur": "cami",
       "ilce": "Arsuz",
+      "donem": {
+        "yapim_yili": 1895,
+        "yapim_yili_hicri": 1313,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "364-367"
+      },
       "konum": {
         "enlem": 36.4131,
         "boylam": 35.8892,
@@ -6724,6 +6814,12 @@
       },
       "tur": "cami",
       "ilce": "Samandağ",
+      "donem": {
+        "yapim_yili": 1798,
+        "yaklasik": true,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "374-377"
+      },
       "konum": {
         "enlem": 36.084,
         "boylam": 35.979,
@@ -6848,6 +6944,11 @@
       },
       "tur": "cami",
       "ilce": "Yayladağı",
+      "donem": {
+        "yapim_yili": 1131,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "378-381"
+      },
       "konum": {
         "enlem": 35.903,
         "boylam": 36.061,
@@ -7320,6 +7421,11 @@
       },
       "tur": "cami",
       "ilce": "Samandağ",
+      "donem": {
+        "yapim_yili": 1936,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "390-393"
+      },
       "konum": {
         "enlem": 36.085053,
         "boylam": 35.980641,
@@ -8298,6 +8404,11 @@
       },
       "tur": "turbe",
       "ilce": "Kırıkhan",
+      "donem": {
+        "yapim_yili": 1890,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "420-423"
+      },
       "konum": {
         "enlem": 36.531845,
         "boylam": 36.365009,
@@ -8755,6 +8866,11 @@
       },
       "tur": "turbe",
       "ilce": "Antakya",
+      "donem": {
+        "yapim_yili": 1876,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "430-431"
+      },
       "konum": {
         "enlem": 36.2025,
         "boylam": 36.1605,
@@ -9143,6 +9259,15 @@
       },
       "tur": "kilise",
       "ilce": "İskenderun",
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "20. yüzyılın ilk çeyreği",
+          "en": "first quarter of the 20th century"
+        },
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "444-445"
+      },
       "konum": {
         "enlem": 36.587,
         "boylam": 36.173,
@@ -9568,6 +9693,15 @@
       },
       "tur": "kilise",
       "ilce": "Yayladağı",
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "19. yüzyılın son çeyreği",
+          "en": "last quarter of the 19th century"
+        },
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "450-451"
+      },
       "konum": {
         "enlem": 35.903,
         "boylam": 36.061,
@@ -9762,6 +9896,11 @@
       },
       "tur": "kilise",
       "ilce": "Samandağ",
+      "donem": {
+        "yapim_yili": 1774,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "452-456"
+      },
       "konum": {
         "enlem": 36.084,
         "boylam": 35.979,
@@ -10496,6 +10635,16 @@
       },
       "tur": "diger",
       "ilce": "Samandağ",
+      "donem": {
+        "yaklasik": true,
+        "metin": {
+          "tr": "1915'ten sonra",
+          "en": "after 1915"
+        },
+        "yapim_yili": 1915,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "480-481"
+      },
       "konum": {
         "enlem": 36.084,
         "boylam": 35.979,

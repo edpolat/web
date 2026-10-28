@@ -88,8 +88,8 @@ export type KabulIstegi = {
 };
 
 /**
- * Kabul: yeni hâl burada hazırlanır ve veri şemasına göre denetlenir; yayına alma, kaynak ekleme ve
- * öneriyi kapatma Supabase'de tek işlemde yapılır (oneri_kabul).
+ * Kabul (tarihçi): yeni hâl burada hazırlanır ve veri şemasına göre denetlenir; sürümü editör onayına gönderme,
+ * kaynak ekleme ve öneriyi kapatma Supabase'de tek işlemde yapılır (oneri_kabul, 015'ten beri yayına doğrudan girmez).
  */
 export async function oneriKabul(k: KabulIstegi): Promise<number> {
   const o = await oneriOku(k.id);

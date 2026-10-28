@@ -5,6 +5,8 @@ import { dosyaYukle } from "@/lib/bulut";
 import { DOSYA_TURLERI, EN_BUYUK_KAYNAK_DOSYASI, KAYNAK_TURLERI, NITELIKLER, VARSAYILAN_NITELIK, type KaynakTuru } from "@/lib/kaynak";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
+import type { FormTaslagiVerisi } from "./IlPaneli";
+import { useTaslak } from "./taslak";
 
 async function istek(govde: Record<string, unknown>): Promise<Record<string, unknown>> {
   const yanit = await fetch("/api/kaynak", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(govde) });
@@ -17,12 +19,17 @@ async function istek(govde: Record<string, unknown>): Promise<Record<string, unk
  * Kaynak ekleme: bağlantı ya da dosya. Dosya önce tarayıcıda denetlenir (tür, 50 MB), sunucudan alınan
  * tek kullanımlık adrese doğrudan Supabase'e yüklenir, sonra sunucu içeriğine bakıp kaydı oluşturur.
  */
-export function KaynakFormu({ dil }: { dil: Dil }) {
+export function KaynakFormu({ dil, taslak }: { dil: Dil; taslak?: FormTaslagiVerisi }) {
   const t = s(dil).kutuphane;
+  const ft = s(dil).formTaslagi;
   const router = useRouter();
-  const [tur, setTur] = useState<"baglanti" | "dosya">("baglanti");
-  const [kaynakTuru, setKaynakTuru] = useState<KaynakTuru>("web");
-  const [nitelik, setNitelik] = useState<string>(VARSAYILAN_NITELIK.web);
+  const ilk = taslak?.veri ?? {};
+  const tk = useTaslak("kaynak", undefined, taslak?.id);
+  const [tur, setTur] = useState<"baglanti" | "dosya">(ilk.tur === "dosya" ? "dosya" : "baglanti");
+  const [kaynakTuru, setKaynakTuru] = useState<KaynakTuru>(KAYNAK_TURLERI.find((k) => k === ilk.kaynak_turu) ?? "web");
+  const [nitelik, setNitelik] = useState<string>(
+    NITELIKLER.find((n) => n === ilk.nitelik) ?? VARSAYILAN_NITELIK[KAYNAK_TURLERI.find((k) => k === ilk.kaynak_turu) ?? "web"],
+  );
   const [durum, setDurum] = useState<{ tamam: boolean; metin: string }>();
   const [bekle, setBekle] = useState(false);
 
@@ -56,6 +63,7 @@ export function KaynakFormu({ dil }: { dil: Dil }) {
         yil: v.get("yil"),
         aciklama: v.get("aciklama"),
       });
+      await tk.bitir();
       form.reset();
       setDurum({ tamam: true, metin: t.eklendi });
       router.refresh();
@@ -66,13 +74,29 @@ export function KaynakFormu({ dil }: { dil: Dil }) {
     }
   }
 
+  async function taslagaKaydet(e: React.MouseEvent<HTMLButtonElement>) {
+    const form = e.currentTarget.form;
+    if (!form) return;
+    setDurum(undefined);
+    setBekle(true);
+    try {
+      await tk.kaydet(form, { tur, kaynak_turu: kaynakTuru, nitelik });
+      setDurum({ tamam: true, metin: tur === "dosya" ? `${ft.kaydedildi} ${ft.dosyaNotu}` : ft.kaydedildi });
+    } catch (h) {
+      setDurum({ tamam: false, metin: h instanceof Error ? h.message : String(h) });
+    } finally {
+      setBekle(false);
+    }
+  }
+
   return (
-    <details className="katki">
+    <details className="katki" id="kaynak-formu" open={!!taslak}>
       <summary>{t.ekle}</summary>
       <form className="form" onSubmit={gonder}>
+        {taslak && <p className="not">{tur === "dosya" ? `${ft.devam} ${ft.dosyaNotu}` : ft.devam}</p>}
         <label>
           {t.kaynakBaslik}
-          <input name="baslik" required maxLength={300} />
+          <input name="baslik" required maxLength={300} defaultValue={ilk.baslik} />
         </label>
         <div className="form-satir">
           <label>
@@ -113,7 +137,7 @@ export function KaynakFormu({ dil }: { dil: Dil }) {
         {tur === "baglanti" ? (
           <label>
             {t.url}
-            <input name="url" type="url" required pattern="https?://.+" />
+            <input name="url" type="url" required pattern="https?://.+" defaultValue={ilk.url} />
           </label>
         ) : (
           <label>
@@ -124,24 +148,27 @@ export function KaynakFormu({ dil }: { dil: Dil }) {
         <div className="form-satir">
           <label>
             {t.yazar}
-            <input name="yazar" maxLength={200} />
+            <input name="yazar" maxLength={200} defaultValue={ilk.yazar} />
           </label>
           <label>
             {t.yayinci}
-            <input name="yayinci" maxLength={200} />
+            <input name="yayinci" maxLength={200} defaultValue={ilk.yayinci} />
           </label>
           <label>
             {t.yil}
-            <input name="yil" type="number" min={1} max={new Date().getFullYear()} step={1} />
+            <input name="yil" type="number" min={1} max={new Date().getFullYear()} step={1} defaultValue={ilk.yil} />
           </label>
         </div>
         <label>
           {t.not}
-          <textarea name="aciklama" rows={2} maxLength={2000} />
+          <textarea name="aciklama" rows={2} maxLength={2000} defaultValue={ilk.aciklama} />
         </label>
         <div className="dugmeler">
           <button type="submit" disabled={bekle}>
             {bekle ? t.yukleniyor : t.kaydet}
+          </button>
+          <button type="button" className="ikincil" disabled={bekle} onClick={taslagaKaydet}>
+            {ft.kaydet}
           </button>
         </div>
         <p role="status" className={durum && !durum.tamam ? "uyari" : undefined}>
@@ -210,18 +237,24 @@ export function BilgiKaynagiFormu({
   eserId,
   alanlar,
   kaynaklar,
+  taslak,
 }: {
   dil: Dil;
   eserId: string;
   alanlar: { id: string; ad: string }[];
   kaynaklar: { id: string; ad: string }[];
+  taslak?: FormTaslagiVerisi;
 }) {
   const t = s(dil).kutuphane;
+  const ft = s(dil).formTaslagi;
   const router = useRouter();
+  const ilk = taslak?.veri ?? {};
+  const tk = useTaslak("bilgi", eserId, taslak?.id);
   const [mesaj, setMesaj] = useState<string>();
   const [bekle, setBekle] = useState(false);
   return (
     <form
+      id="bilgi-formu"
       className="form"
       onSubmit={async (e) => {
         e.preventDefault();
@@ -230,6 +263,7 @@ export function BilgiKaynagiFormu({
         setBekle(true);
         try {
           await istek({ islem: "bilgi_bagla", eser_id: eserId, ...v });
+          await tk.bitir();
           form.reset();
           setMesaj(t.baglandi);
           router.refresh();
@@ -240,10 +274,11 @@ export function BilgiKaynagiFormu({
         }
       }}
     >
+      {taslak && <p className="not">{ft.devam}</p>}
       <div className="form-satir">
         <label>
           {t.alan}
-          <select name="alan" required>
+          <select name="alan" required defaultValue={ilk.alan}>
             {alanlar.map((a) => (
               <option key={a.id} value={a.id}>
                 {a.ad}
@@ -253,13 +288,13 @@ export function BilgiKaynagiFormu({
         </label>
         <label>
           {t.deger}
-          <input name="deger" maxLength={500} />
+          <input name="deger" maxLength={500} defaultValue={ilk.deger} />
         </label>
       </div>
       <div className="form-satir">
         <label>
           {s(dil).kaynak}
-          <select name="kaynak_id" required defaultValue="">
+          <select name="kaynak_id" required defaultValue={ilk.kaynak_id ?? ""}>
             <option value="" disabled>
               {s(dil).kaynakSec}
             </option>
@@ -272,12 +307,32 @@ export function BilgiKaynagiFormu({
         </label>
         <label>
           {t.konum}
-          <input name="konum" maxLength={100} />
+          <input name="konum" maxLength={100} defaultValue={ilk.konum} />
         </label>
       </div>
       <div className="dugmeler">
         <button type="submit" disabled={bekle}>
           {t.bagla}
+        </button>
+        <button
+          type="button"
+          className="ikincil"
+          disabled={bekle}
+          onClick={async (e) => {
+            const form = e.currentTarget.form;
+            if (!form) return;
+            setBekle(true);
+            try {
+              await tk.kaydet(form);
+              setMesaj(ft.kaydedildi);
+            } catch (h) {
+              setMesaj(h instanceof Error ? h.message : String(h));
+            } finally {
+              setBekle(false);
+            }
+          }}
+        >
+          {ft.kaydet}
         </button>
       </div>
       <p role="status">{mesaj}</p>

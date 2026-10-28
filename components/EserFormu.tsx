@@ -7,7 +7,10 @@ import { s } from "@/lib/sozluk";
 import type { CokDilli, Dil, Eser } from "@/lib/tipler";
 
 type Secenek = { id: string; ad: string };
-type Props = { dil: Dil; eser?: Eser; iller: Secenek[]; turler: Secenek[]; kaynaklar: Secenek[]; varsayilanIl?: string };
+type Props = { dil: Dil; eser?: Eser; iller: Secenek[]; turler: Secenek[]; kaynaklar: Secenek[]; varsayilanIl?: string;
+  /** Tarihçi modu: incelemedeki sürüm düzeltilip editöre gönderilir (taslak yok). */
+  tarihciSurum?: { id: number; kaynak_id: string };
+};
 
 const SEKMELER = ["temel", "konum", "gorseller", "kaynaklar"] as const;
 type Sekme = (typeof SEKMELER)[number];
@@ -28,10 +31,10 @@ const doluysa = <T extends object>(o: T): T | null => (Object.keys(o).length ? o
  * Sekmeler: temel bilgiler, konum, görseller (yalnız görüntüleme) ve kaynaklı bilgiler; hepsi tek formdur.
  * Formda olmayan alanlar (olgular, görseller, mimari künye) olduğu gibi kalır.
  */
-export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayilanIl }: Props) {
+export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayilanIl, tarihciSurum }: Props) {
   const t = s(dil);
   const router = useRouter();
-  const [kaynak, setKaynak] = useState("");
+  const [kaynak, setKaynak] = useState(tarihciSurum?.kaynak_id ?? "");
   const [durum, setDurum] = useState<{ tur: "tamam" | "hata"; metin: string }>();
   const [gonderiliyor, setGonderiliyor] = useState(false);
   const [sekme, setSekme] = useState<Sekme>("temel");
@@ -88,21 +91,33 @@ export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayi
       const yanit = await fetch("/api/surum", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          islem: "gonder",
-          taslak,
-          tur: eser ? "eser_duzenle" : "eser_ekle",
-          eser_id: eser?.id,
-          il: yazi(v, "il") || undefined,
-          kaynak_id: kaynak,
-          sayfa: yazi(v, "sayfa"),
-          not: yazi(v, "not"),
-          dil_uyumu: v.get("dil_uyumu") === "on",
-          degisiklik: degisiklik(v),
-        }),
+        body: JSON.stringify(
+          tarihciSurum
+            ? {
+                islem: "tarihci_ilerlet",
+                id: tarihciSurum.id,
+                kaynak_id: kaynak,
+                sayfa: yazi(v, "sayfa"),
+                not: yazi(v, "not"),
+                degisiklik: degisiklik(v),
+              }
+            : {
+                islem: "gonder",
+                taslak,
+                tur: eser ? "eser_duzenle" : "eser_ekle",
+                eser_id: eser?.id,
+                il: yazi(v, "il") || undefined,
+                kaynak_id: kaynak,
+                sayfa: yazi(v, "sayfa"),
+                not: yazi(v, "not"),
+                dil_uyumu: v.get("dil_uyumu") === "on",
+                degisiklik: degisiklik(v),
+              },
+        ),
       });
       const veri = (await yanit.json()) as { hata?: string; ayrinti?: string[] };
       if (!yanit.ok) throw new Error([veri.hata, ...(veri.ayrinti ?? [])].filter(Boolean).join(" "));
+      if (tarihciSurum) return router.push(`/${dil}/yonetim/inceleme`);
       // İncelemeye giden düzenlemeden sonra eserler listesine dönülür (orada "incelemeye gönderildi" notu çıkar).
       if (!taslak) return router.push(`/${dil}/yonetim/eserler?gonderildi=1`);
       setDurum({ tur: "tamam", metin: t.surum.taslakKaydedildi });
@@ -302,10 +317,10 @@ export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayi
           {alan("sayfa", t.sayfaNo, undefined, { maxLength: 40 })}
         </div>
         <label>
-          {t.notAlani}
+          {tarihciSurum ? t.surum.tarihciNotAlani : t.notAlani}
           <textarea name="not" rows={2} maxLength={2000} />
         </label>
-        {eser && (
+        {eser && !tarihciSurum && (
           <>
             <label className="secim">
               <input type="checkbox" name="dil_uyumu" aria-describedby="dil-uyumu-not" /> {s(dil).dilUyumu.uyumIcin}
@@ -319,11 +334,13 @@ export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayi
       <div className="dugmeler">
         {!kaynak && <p className="not">{p.dayanakIpucu}</p>}
         <button type="submit" value="inceleme" disabled={!kaynak || gonderiliyor}>
-          {gonderiliyor ? t.gonderiliyor : t.surum.incelemeyeGonder}
+          {gonderiliyor ? t.gonderiliyor : tarihciSurum ? t.surum.tarihciGonder : t.surum.incelemeyeGonder}
         </button>
-        <button type="submit" value="taslak" className="ikincil" disabled={!kaynak || gonderiliyor}>
-          {t.surum.taslakKaydet}
-        </button>
+        {!tarihciSurum && (
+          <button type="submit" value="taslak" className="ikincil" disabled={!kaynak || gonderiliyor}>
+            {t.surum.taslakKaydet}
+          </button>
+        )}
       </div>
       <p role="status" className={durum?.tur === "hata" ? "uyari" : undefined}>
         {durum?.metin}{" "}

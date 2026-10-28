@@ -7,8 +7,14 @@ const kisi = (rol: Kimlik["rol"]): Kimlik => ({ id: "x", eposta: "x@y.z", ad: "X
 
 describe("roller ve izinler", () => {
   it("Supabase'deki rol_izinleri tohumu lib/yetki.ts ile aynı", () => {
-    const sql = fs.readFileSync(path.join(__dirname, "../supabase/001_roller.sql"), "utf-8");
-    const satirlar = [...sql.matchAll(/\('(\w+)', '([\w.]+)'\)/g)].map((m) => `${m[1]} ${m[2]}`).sort();
+    const oku = (dosya: string) => fs.readFileSync(path.join(__dirname, "../supabase", dosya), "utf-8");
+    const ciftler = (sql: string) => [...sql.matchAll(/\('(\w+)', '([\w.]+)'\)/g)].map((m) => `${m[1]} ${m[2]}`);
+    // 015 tarihçiyi ekler ve kaynak doğrulamayı editörden alır.
+    const tarihci = oku("015_tarihci_onayi.sql");
+    const silinen = [...tarihci.matchAll(/where rol = '(\w+)' and izin = '([\w.]+)'/g)].map((m) => `${m[1]} ${m[2]}`);
+    const satirlar = [...ciftler(oku("001_roller.sql")), ...ciftler(tarihci.split("-- Sürümde tarihçi aşaması")[0])]
+      .filter((x) => !silinen.includes(x))
+      .sort();
     const kod = ROLLER.flatMap((r) => ROL_IZINLERI[r].map((i) => `${r} ${i}`)).sort();
     expect(satirlar).toEqual(kod);
   });
@@ -19,6 +25,10 @@ describe("roller ve izinler", () => {
     expect(izinli(kisi("katkici"), "eser.duzenle")).toBe(true);
     expect(izinli(kisi("katkici"), "eser.onayla")).toBe(false);
     expect(izinli(kisi("super_admin"), "eser.arsivle")).toBe(true);
+    expect(izinli(kisi("tarihci"), "eser.incele")).toBe(true);
+    expect(izinli(kisi("tarihci"), "eser.onayla")).toBe(false);
+    expect(izinli(kisi("editor"), "eser.incele")).toBe(false);
+    expect(izinli(kisi("editor"), "kaynak.dogrula")).toBe(false);
     expect(IZINLER.some((i) => izinli(kisi("goruntuleyici"), i))).toBe(false);
   });
 

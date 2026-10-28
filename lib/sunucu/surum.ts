@@ -5,7 +5,8 @@ import { ilDosyasiHatalari } from "./dogrula";
 import { KatkiHatasi, denetleVeUygula, esit, katkiOlustur, type Depo } from "./katki";
 import type { IlDosyasi } from "./konum";
 
-export type SurumDurumu = "taslak" | "incelemede" | "yayinda" | "reddedildi";
+/** incelemede: tarihçide; editorde: tarihçi ilerletti, editör onayı bekliyor (supabase/015_tarihci_onayi.sql). */
+export type SurumDurumu = "taslak" | "incelemede" | "editorde" | "yayinda" | "reddedildi";
 export type SurumIslemi = "ekle" | "duzenle" | "geri_al" | "arsivle" | "arsivden_cikar";
 
 /** eser_surumleri tablosundaki satır. */
@@ -30,6 +31,14 @@ export type SurumSatiri = {
   ret_gerekcesi: string | null;
   /** Gönderen "diğer dildeki metne uyum için" dedi (supabase/009_dil_uyumu.sql; öncesinde sütun yok). */
   dil_uyumu?: boolean;
+  /** Tarihçi aşaması (015; öncesinde sütunlar yok). ilk_veri: tarihçi düzelttiyse gönderilen hâl. */
+  tarihci?: string | null;
+  tarihci_ad?: string | null;
+  tarihci_tarihi?: string | null;
+  tarihci_notu?: string | null;
+  ilk_veri?: Eser | null;
+  /** Editör tarihçiye geri gönderdiyse notu. */
+  editor_notu?: string | null;
 };
 
 export type YayindakiSurum = Pick<SurumSatiri, "id" | "eser_id" | "il" | "veri" | "arsivlendi" | "karar_tarihi">;
@@ -105,6 +114,20 @@ export function surumHazirla(istek: unknown, depo: Depo, ekleyen: string): Hazir
     ...(katki.sayfa ? { sayfa: katki.sayfa } : {}),
     ...(katki.not ? { aciklama: katki.not } : {}),
   };
+}
+
+/**
+ * Tarihçinin düzenlemesi için depo: incelenen sürüm yayındaymış gibi yerine konur (yeni eserse eklenir).
+ * Böylece eser formu sürümün hâli üzerinde çalışır ve aynı kurallarla (surumHazirla) denetlenir.
+ */
+export function surumluDepo(depo: Depo, s: Pick<SurumSatiri, "eser_id" | "il" | "veri">): Depo {
+  const veri = { ...s.veri, id: s.eser_id };
+  const iller = depo.iller.map((d) => {
+    if (d.il.id !== s.il) return d;
+    const var_ = d.eserler.some((e) => e.id === s.eser_id);
+    return { ...d, eserler: var_ ? d.eserler.map((e) => (e.id === s.eser_id ? veri : e)) : [...d.eserler, veri] };
+  });
+  return { iller, tanimlar: { ...depo.tanimlar, eserIdleri: new Set([...depo.tanimlar.eserIdleri, s.eser_id]) } };
 }
 
 /** Sürüm yayına alınsa şehir dosyası geçerli kalır mı? Kalmazsa KatkiHatasi. Yeni eser zaten yayındaysa da hata. */
