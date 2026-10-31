@@ -1,7 +1,10 @@
 "use client";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { bulutHazir, kayitliOturum, pullariGetir } from "@/lib/bulut";
+import { PUL_OLAYI, yerelPullar } from "@/lib/yerel-pul";
+import { gununSirasi, z } from "@/lib/ziyaret";
 import { filtrele, konumEksik } from "@/lib/filtre";
 import { kucukGorsel } from "@/lib/gorsel";
 import { metin } from "@/lib/metin";
@@ -23,6 +26,23 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
     ara: sorgu.get("ara") ?? "",
   }));
   const [vurgulu, setVurgulu] = useState<string>();
+  const v = z(dil).vitrin;
+  // Pulu alınmış (ziyaret edilmiş) eserler haritada altın işaretlenir: bu tarayıcıdaki pullar + girişliyse hesaptakiler.
+  const [ziyaretli, setZiyaretli] = useState<string[]>([]);
+  useEffect(() => {
+    const yerel = () => setZiyaretli((o) => [...new Set([...o, ...yerelPullar()])]);
+    yerel();
+    if (bulutHazir)
+      kayitliOturum()
+        .then(async (o) => {
+          if (!o) return;
+          const p = await pullariGetir();
+          setZiyaretli((x) => [...new Set([...x, ...p])]);
+        })
+        .catch(() => {});
+    window.addEventListener(PUL_OLAYI, yerel);
+    return () => window.removeEventListener(PUL_OLAYI, yerel);
+  }, []);
 
   function guncelle(alan: keyof typeof f, deger: string) {
     const yeniF = { ...f, [alan]: deger };
@@ -48,9 +68,55 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
   const merkez = seciliIl?.merkez ?? { enlem: 39.0, boylam: 33.0 };
   const turAdi = (id: string) => metin(turler.find((tr) => tr.id === id)?.ad, dil);
   const yaklasikVar = sonuc.some((e) => e.konum && konumEksik(e.konum));
+  const filtreli = Boolean(f.il || f.tur || f.ara);
+
+  // Vitrin (mobil uygulamadaki gibi): güne göre değişen öne çıkan eser, kategori düğmeleri, fotoğraflı şehir kartları.
+  const fotolu = useMemo(() => eserler.filter((e) => e.gorsel), [eserler]);
+  const oneCikan = fotolu[gununSirasi(fotolu.length)];
+  const kategoriler = ["cami", "mescit", "kulliye", "medrese"].filter((id) => turler.some((tr) => tr.id === id));
+  const sehirKartlari = iller.map((i) => {
+    const ilinkiler = fotolu.filter((e) => e.il === i.id);
+    return { il: i, sayi: eserler.filter((e) => e.il === i.id).length, foto: ilinkiler[gununSirasi(ilinkiler.length)]?.gorsel };
+  });
 
   return (
     <div className="kesif-alani">
+      {!filtreli && (
+        <section className="vitrin" aria-label={v.oneCikan}>
+          {oneCikan && (
+            <Link href={`/${dil}/eser/${oneCikan.id}`} className="vitrin-one-cikan" style={{ backgroundImage: `url("${kucukGorsel(oneCikan.gorsel!.dosya)}")` }}>
+              <small>{v.bugun}</small>
+              <b>{metin(oneCikan.ad, dil)}</b>
+              <span>{[turAdi(oneCikan.tur), metin(iller.find((i) => i.id === oneCikan.il)?.ad, dil), oneCikan.ilce].filter(Boolean).join(" · ")}</span>
+            </Link>
+          )}
+          <div className="vitrin-yan">
+            <h2 className="kart-baslik">{v.kategoriler}</h2>
+            <div className="vitrin-kategoriler" role="group" aria-label={v.kategoriler}>
+              {kategoriler.map((id) => (
+                <button key={id} type="button" onClick={() => guncelle("tur", id)}>
+                  {turAdi(id)} <small>{turSayilari.get(id) ?? 0}</small>
+                </button>
+              ))}
+            </div>
+            <h2 className="kart-baslik">{v.sehirler}</h2>
+            <div className="vitrin-sehirler">
+              {sehirKartlari.map(({ il, sayi, foto }) => (
+                <button
+                  key={il.id}
+                  type="button"
+                  className="vitrin-sehir"
+                  style={foto ? { backgroundImage: `url("${kucukGorsel(foto.dosya)}")` } : undefined}
+                  onClick={() => guncelle("il", il.id)}
+                >
+                  <b>{metin(il.ad, dil)}</b>
+                  <small>{v.eser(sayi)}</small>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       <form className="kesif-arac" role="search" onSubmit={(e) => e.preventDefault()}>
         <label className="arama">
           <span className="gizli">{t.ara}</span>
@@ -92,6 +158,11 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
         )}
       </form>
 
+      {f.il === "hatay" && (
+        <p className="uyari" role="note">
+          {v.deprem}
+        </p>
+      )}
       <p className="sonuc-sayisi" role="status" aria-live="polite">
         {t.sonucOran(sonuc.length, eserler.length)}
       </p>
@@ -151,8 +222,15 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
             yakinlastirma={seciliIl?.yakinlastirma ?? 6}
             yukseklik={560}
             vurgulu={vurgulu}
+            ziyaretli={ziyaretli}
+            araclar
           />
           {yaklasikVar && <p className="not">○ {t.konumYaklasik}</p>}
+          {ziyaretli.length > 0 && (
+            <p className="not">
+              <span className="ziyaret-nokta" aria-hidden="true" /> {z(dil).harita.ziyaret}
+            </p>
+          )}
         </section>
       </div>
     </div>

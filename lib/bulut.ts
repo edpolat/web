@@ -114,3 +114,58 @@ export async function erisimJetonu(): Promise<string | null> {
   const { data } = await vt().auth.getSession();
   return data.session?.access_token ?? null;
 }
+
+/** Pulları hesaba ekler; zaten olanlar atlanır (uygulamadaki pullariEsitle gibi). */
+export async function pullariEkle(kullanici: string, idler: string[]): Promise<void> {
+  if (!idler.length) return;
+  const { data, error } = await vt().from("pullar").select("eser_id");
+  denetle(error);
+  const var_ = new Set((data ?? []).map((p) => p.eser_id as string));
+  const eksik = [...new Set(idler)].filter((id) => !var_.has(id));
+  if (!eksik.length) return;
+  denetle((await vt().from("pullar").upsert(eksik.map((eser_id) => ({ kullanici, eser_id })), { ignoreDuplicates: true })).error);
+}
+
+/** "Şifremi unuttum": Supabase e-postaya sıfırlama bağlantısı yollar; bağlantı `donus` adresini açar. */
+export async function sifreSifirla(eposta: string, donus: string): Promise<void> {
+  denetle((await vt().auth.resetPasswordForEmail(eposta, { redirectTo: donus })).error);
+}
+
+/** E-postadaki bağlantıyla açılan kurtarma oturumunda yeni şifreyi kaydeder. */
+export async function sifreGuncelle(sifre: string): Promise<BulutOturumu> {
+  const { data, error } = await vt().auth.updateUser({ password: sifre });
+  denetle(error);
+  return oturum(data.user!);
+}
+
+/** Kurtarma bağlantısıyla gelindiğinde bildirir (Supabase "PASSWORD_RECOVERY" olayı); aboneliği bırakan fonksiyonu döner. */
+export function sifreKurtarmaIzle(bildir: () => void): () => void {
+  const { data } = vt().auth.onAuthStateChange((olay) => {
+    if (olay === "PASSWORD_RECOVERY") setTimeout(bildir, 0);
+  });
+  return () => data.subscription.unsubscribe();
+}
+
+/** Ziyaretçinin bilgi / fotoğraf önerisi: uygulamayla aynı "eser_talepleri" tablosu ve "talep-foto" deposu (misafir de gönderebilir). */
+export async function talepGonder(t: { eserId: string; eserAdi: string; bilgi: string; fotolar: Blob[] }): Promise<void> {
+  const o = await kayitliOturum().catch(() => null);
+  const kimlik = crypto.randomUUID();
+  const yollar: string[] = [];
+  for (const [i, foto] of t.fotolar.entries()) {
+    const yol = `${kimlik}/${i + 1}.jpg`;
+    const { error } = await vt().storage.from("talep-foto").upload(yol, foto, { contentType: "image/jpeg" });
+    if (error) throw new Error(error.message);
+    yollar.push(yol);
+  }
+  const { error } = await vt().from("eser_talepleri").insert({
+    id: kimlik,
+    eser_id: t.eserId,
+    eser_adi: t.eserAdi,
+    bilgi: t.bilgi,
+    kullanici: o?.id ?? null,
+    gonderen_ad: o?.ad ?? null,
+    foto_yollari: yollar,
+    kaynak: "web",
+  });
+  denetle(error);
+}

@@ -9,18 +9,21 @@ import HaritaYukle from "@/components/HaritaYukle";
 import Galeri from "@/components/Galeri";
 import Dinle, { type OkunacakParca } from "@/components/Dinle";
 import SoruPaneli from "@/components/SoruPaneli";
+import TalepFormu from "@/components/TalepFormu";
+import TerimliMetin from "@/components/TerimliMetin";
+import ZiyaretAdabi from "@/components/ZiyaretAdabi";
 import { katkilar } from "@/lib/sunucu/kuyruk";
 import { cevapla } from "@/lib/sunucu/sor";
 
 type Params = Promise<{ dil: string; id: string }>;
 
 /** Kitap metinleri paragrafları boş satırla ayırır. */
-function Paragraflar({ metin, lang }: { metin: string; lang?: string }) {
+function Paragraflar({ metin, lang, dil }: { metin: string; lang?: string; dil: Dil }) {
   return (
     <div lang={lang}>
       {metin.split(/\n{2,}/).map((p, i) => (
         <p key={i} className="cok-satir">
-          {p}
+          <TerimliMetin metin={p} dil={(lang as Dil) ?? dil} />
         </p>
       ))}
     </div>
@@ -164,10 +167,12 @@ export default async function EserKarti({ params }: { params: Params }) {
         <Link className="dugme ikincil" href={`/${dil}/eser/${eser.id}/oner`}>
           + {t.bilgiEkle}
         </Link>
+        <TalepFormu dil={dil} eserId={eser.id} eserAdi={metin(eser.ad, dil)} />
         <a className="dugme ikincil sor-baglanti" href="#sor-baslik">
           {t.sor.baslik}
         </a>
       </div>
+      <ZiyaretAdabi dil={dil} tur={eser.tur} konum={eser.konum ? { enlem: eser.konum.enlem, boylam: eser.konum.boylam } : undefined} />
       {sonOnay && (
         <p className="not">
           {t.sonGuncelleme}: {new Date(sonOnay).toLocaleDateString(dil === "tr" ? "tr-TR" : "en-GB", { dateStyle: "long" })}
@@ -184,7 +189,9 @@ export default async function EserKarti({ params }: { params: Params }) {
               const adres = kaynak && o.sayfa ? kaynakAdresi(kaynak, o.sayfa) : undefined;
               return (
                 <li key={i} id={`olgu-${i}`}>
-                  <span lang={ceviriEksik(o.metin, dil) ? "tr" : undefined}>{metin(o.metin, dil)}</span>{" "}
+                  <span lang={ceviriEksik(o.metin, dil) ? "tr" : undefined}>
+                    <TerimliMetin metin={metin(o.metin, dil)} dil={ceviriEksik(o.metin, dil) ? "tr" : dil} />
+                  </span>{" "}
                   <a
                     className={`etiket etiket-${o.durum}`}
                     href={adres ?? (kaynak ? `#kaynak-${kaynak.id}` : undefined)}
@@ -216,7 +223,7 @@ export default async function EserKarti({ params }: { params: Params }) {
           <div lang={ceviriEksik(eser.tarihce, dil) ? "tr" : undefined}>
             {tarihceParagraflari.map((p, i) => (
               <p key={i} id={`tarihce-${i}`} className="cok-satir">
-                {p}
+                <TerimliMetin metin={p} dil={ceviriEksik(eser.tarihce, dil) ? "tr" : dil} />
               </p>
             ))}
           </div>
@@ -230,6 +237,7 @@ export default async function EserKarti({ params }: { params: Params }) {
             <Paragraflar
               metin={metin(eser.mimari.metin, dil)}
               lang={ceviriEksik(eser.mimari.metin, dil) ? "tr" : undefined}
+              dil={dil}
             />
           )}
           <dl className="kunye">

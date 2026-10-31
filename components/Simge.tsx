@@ -1,5 +1,5 @@
 // Mobil uygulamanın alt menüsündeki çizgi simgeleri. Süs içindir, ekran okuyucuya gösterilmez.
-export type SimgeAdi = "kesfet" | "harita" | "pasaport" | "oyun" | "erisim" | "yapi" | "kaynak" | "foto" | "dinle" | "sor" | "sergi";
+export type SimgeAdi = "kesfet" | "harita" | "pasaport" | "oyun" | "erisim" | "yapi" | "kaynak" | "foto" | "dinle" | "sor" | "sergi" | "tara";
 
 const YOLLAR: Record<SimgeAdi, React.ReactNode> = {
   // Çerçeveli resim: sergi.
@@ -10,6 +10,8 @@ const YOLLAR: Record<SimgeAdi, React.ReactNode> = {
       <circle cx="15.5" cy="8.5" r="1.5" />
     </>
   ),
+  // QR çerçevesi: tara (uygulamanın alt menüsündeki simge).
+  tara: <path d="M4 9V5h4M16 5h4v4M20 15v4h-4M8 19H4v-4M4 12h16" />,
   kesfet: (
     <>
       <circle cx="12" cy="12" r="9" />

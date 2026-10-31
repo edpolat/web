@@ -4,6 +4,7 @@ import { useState } from "react";
 import { metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import type { CokDilli, Dil, Rota } from "@/lib/tipler";
+import HikayeKarti from "./HikayeKarti";
 
 type Durak = Rota["duraklar"][number];
 
@@ -42,12 +43,15 @@ export default function Pasaport({
   rotalar,
   iller,
   adlar,
+  ad,
 }: {
   dil: Dil;
   pullar: string[];
   rotalar: Rota[];
   iller: { id: string; ad: CokDilli }[];
   adlar: Map<string, CokDilli>;
+  /** Hikâye kartında yazacak pasaport sahibinin adı. */
+  ad?: string;
 }) {
   const u = s(dil).uyelik;
   const alinan = (r: Rota) => r.duraklar.filter((d) => pullar.includes(d.eser_id)).length;
@@ -104,6 +108,7 @@ export default function Pasaport({
             </li>
           ))}
         </ul>
+        {sayi === toplam && <HikayeKarti dil={dil} sehir={ilAdi(rota.il)} rota={rota} ad={ad} />}
       </div>
 
       <div className="pasaport-kart">

@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { DILLER, gecerliDil } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
+import { z } from "@/lib/ziyaret";
 import DilDegistir from "@/components/DilDegistir";
 import UstMenu from "@/components/UstMenu";
 import YonetimBaglantisi from "@/components/YonetimBaglantisi";
@@ -19,7 +20,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ dil: string }> }): Promise<Metadata> {
   const { dil } = await params;
   if (!gecerliDil(dil)) return {};
-  return { title: { default: s(dil).site, template: `%s · ${s(dil).site}` }, description: s(dil).slogan };
+  return {
+    title: { default: s(dil).site, template: `%s · ${s(dil).site}` },
+    description: s(dil).slogan,
+    icons: { icon: "/ikon/ikon-192.png", apple: "/ikon/apple-touch-icon.png" },
+    appleWebApp: { capable: true, title: "Vakfiye", statusBarStyle: "default" },
+  };
 }
 
 export default async function Yerlesim({
@@ -52,6 +58,7 @@ export default async function Yerlesim({
               etiket={t.anaMenu}
               sekmeler={[
                 { yol: "", ad: t.kesfet, simge: "kesfet" },
+                { yol: "/tara", ad: z(dil).tara.sekme, simge: "tara" },
                 { yol: "/sergiler", ad: t.sergilerSekme, simge: "sergi" },
                 { yol: "/oyun", ad: t.oyunSekme, simge: "oyun" },
               ]}
