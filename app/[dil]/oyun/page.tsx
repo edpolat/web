@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
-import Oyun from "@/components/Oyun";
+import OyunGomulu from "@/components/OyunGomulu";
 import { gecerliDil } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 
@@ -21,9 +20,7 @@ export default async function OyunSayfasi({ params }: { params: Promise<{ dil: s
         <h1>{t.baslik}</h1>
         <p>{t.giris}</p>
       </section>
-      <Suspense>
-        <Oyun dil={dil} />
-      </Suspense>
+      <OyunGomulu dil={dil} />
     </>
   );
 }

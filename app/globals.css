@@ -676,3 +676,20 @@ html[data-altyazi="kapali"] .altyazi-seridi { display: none; }
 .talep-onizleme { display: flex; gap: 6px; }
 .talep-onizleme img { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; }
 html[data-kontrast="yuksek"] .vitrin-one-cikan, html[data-kontrast="yuksek"] .vitrin-sehir { background-image: none !important; background-color: #000; }
+
+/* Vakıf oyunu (components/OyunGomulu.tsx): tam ekran düğmesi oyunun sağ alt köşesinde. */
+.oyun-sahne { position: relative; max-width: 1100px; margin: 0 auto; }
+.oyun-tam-ekran {
+  position: absolute; right: 12px; bottom: 12px; z-index: 5;
+  display: grid; place-items: center; width: 44px; height: 44px; padding: 0;
+  border: 0; border-radius: 12px; cursor: pointer;
+  background: rgba(27, 38, 59, .72); color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+}
+.oyun-tam-ekran:hover { background: rgba(27, 38, 59, .88); }
+.oyun-tam-ekran:focus-visible { outline: 3px solid var(--sari); outline-offset: 2px; }
+.oyun-sahne--tam { max-width: none; margin: 0; background: #86ad60; --vakfiye-oyun-yukseklik: 100dvh; }
+.oyun-sahne--tam .vakfiye-oyun { border-radius: 0; min-height: 0; }
+.oyun-sahne--tam .oyun-tam-ekran { right: max(12px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); }
+/* Tarayıcı öğe tam ekranını desteklemiyorsa (iPhone Safari) kutu sayfayı kaplar. */
+.oyun-sahne--tam:not(:fullscreen) { position: fixed; inset: 0; z-index: 2147483000; }

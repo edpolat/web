@@ -635,7 +635,9 @@ const sozluk = {
     },
     oyun: {
       baslik: "Vakıf oyunu",
-      giris: "Vakıflar yüzyıllarca nasıl yaşadı? Gelir getiren mülkler (akar) sandığı besler, sandık bir hizmeti (hayrat) karşılar. Vakfını kur, felaketlerde ayakta tut. Bir tur 10 yıl, hedef 600 yıl.",
+      giris: "Vakıflar yüzyıllarca nasıl yaşadı? Gelir getiren mülkler (akar) sandığı besler, sandık bir hizmeti (hayrat) karşılar. Bursa, Konya ve Hatay'daki gerçek vakıflara dayanan levellerde vakfını kur, felaketlerde ayakta tut. Mobil uygulamada aldığın pasaport pulları burada da level açar.",
+      tamEkran: "Tam ekran",
+      tamEkranCik: "Tam ekrandan çık",
       kurBaslik: "Vakfını kur",
       sermaye: "Sermaye",
       toplam: (n: number) => `Toplam ${n} / 100`,
@@ -1364,7 +1366,9 @@ const sozluk = {
     },
     oyun: {
       baslik: "Endowment game",
-      giris: "How did waqfs survive for centuries? Income properties fill the treasury, the treasury pays for a charity. Found your waqf and keep it standing through disasters. One turn is 10 years; the goal is 600 years.",
+      giris: "How did waqfs survive for centuries? Income properties fill the treasury, the treasury pays for a charity. Found your waqf in levels based on real foundations in Bursa, Konya and Hatay, and keep it standing through disasters. Passport stamps from the mobile app unlock levels here too.",
+      tamEkran: "Full screen",
+      tamEkranCik: "Exit full screen",
       kurBaslik: "Found your waqf",
       sermaye: "Capital",
       toplam: (n: number) => `Total ${n} / 100`,

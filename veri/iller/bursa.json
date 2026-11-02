@@ -7655,31 +7655,6 @@
         "yontem": "elle"
       },
       "olgular": []
-    },
-    {
-      "id": "demo-deneme-cesmesi",
-      "ad": {
-        "tr": "DEMO Deneme Çeşmesi (silinecek)",
-        "en": "DEMO Test Fountain (to be deleted)"
-      },
-      "tur": "cesme",
-      "ilce": "Osmangazi",
-      "banisi": "Deneme Bey",
-      "donem": {
-        "yapim_yili": 1500,
-        "yaklasik": true,
-        "metin": {
-          "tr": "Onaylama akışını denemek için eklenmiş örnek kayıttır, gerçek bir eser değildir.",
-          "en": "A sample record added to test the approval flow; not a real monument."
-        }
-      },
-      "konum": {
-        "enlem": 40.184,
-        "boylam": 29.061,
-        "dogrulandi": false,
-        "yontem": "elle"
-      },
-      "olgular": []
     }
   ]
 }
