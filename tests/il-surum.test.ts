@@ -34,6 +34,13 @@ describe("panelden il ekleme: form", () => {
     expect(() => ilHazirla({ ...form, enlem: "51.5", boylam: "-0.1" }, json(), new Set())).toThrow(/Türkiye/);
   });
 
+  it("yalnız Türkiye'nin 81 ilinden biri eklenebilir, ad resmî yazımına çevrilir", () => {
+    expect(() => ilHazirla({ ...form, ad_tr: "Atlantis" }, json(), new Set())).toThrow(/81 ilinden/);
+    const h = ilHazirla({ ...form, ad_tr: "KÜTAHYA" }, json(), new Set());
+    expect(h.veri.ad.tr).toBe("Kütahya");
+    expect(h.il_id).toBe("kutahya");
+  });
+
   it("ad kısa ya da envanter kitabı tanımsızsa reddedilir", () => {
     expect(() => ilHazirla({ ...form, ad_tr: "K" }, json(), new Set())).toThrow(KatkiHatasi);
     expect(() => ilHazirla({ ...form, envanter_kaynak_id: "yok-boyle-kitap" }, json(), new Set())).toThrow(/tanımsız/);

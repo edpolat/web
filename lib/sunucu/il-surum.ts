@@ -1,5 +1,6 @@
 // Panelden eklenen illerin kuralları: onaylanmış il kayıtları Supabase'de (il_surumleri) durur ve veri/iller/*.json'un yanına konur.
 // Veritabanı erişimi yok; okuma/yazma lib/sunucu/il-depo.ts'de. Tablo: supabase/012_il_surumleri.sql
+import { ilAdiBul } from "../il-ilce";
 import type { Il } from "../tipler";
 import { semaHatalari } from "./dogrula";
 import { KatkiHatasi, kimlikUret } from "./katki";
@@ -75,9 +76,12 @@ export type HazirIl = { il_id: string; veri: Il; islem: "ekle" | "duzenle"; acik
  */
 export function ilHazirla(istek: unknown, mevcut: IlDosyasi[], kaynakIdleri: Set<string>): HazirIl {
   const g = (typeof istek === "object" && istek !== null ? istek : {}) as Record<string, unknown>;
-  const adTr = metin(g.ad_tr);
+  const yazilan = metin(g.ad_tr);
+  // İl adı serbest değil: Türkiye'nin 81 ilinden biri olmalı (veri/il-ilce.json), resmî yazımıyla kaydedilir.
+  const adTr = ilAdiBul(yazilan) ?? yazilan;
   const adEn = metin(g.ad_en);
   if (adTr.length < 2 || adTr.length > 60) throw new KatkiHatasi("İl adı 2-60 harf olmalı.");
+  if (!ilAdiBul(adTr)) throw new KatkiHatasi(`'${adTr}' Türkiye'nin 81 ilinden biri değil; listeden seçin.`);
   if (adEn.length > 60) throw new KatkiHatasi("İngilizce ad en çok 60 harf olabilir.");
 
   const duzenle = metin(g.il_id) !== "";

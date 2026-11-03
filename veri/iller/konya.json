@@ -35421,7 +35421,13 @@
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c2"
         }
-      ]
+      ],
+      "donem": {
+        "yapim_yili": 1250,
+        "yapim_yili_hicri": 648,
+        "kaynak_id": "vk-konya-envanter-c2",
+        "sayfa": "108"
+      }
     },
     {
       "id": "ismail-aga-medresesi-tas-medrese-konya",

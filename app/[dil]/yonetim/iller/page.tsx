@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { IlFormu, IlKaldir, IlKarari } from "@/components/IlPaneli";
+import { adAnahtari, tumIller } from "@/lib/il-ilce";
 import { gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import { ilSurumleri } from "@/lib/sunucu/il-depo";
@@ -34,6 +35,9 @@ export default async function Iller({ params, searchParams }: { params: Promise<
   const gecmis = (kayitlar ?? []).filter((k) => k.durum !== "incelemede").slice(0, 20);
   const tarih = (x: string) => new Date(x).toLocaleString(dil === "tr" ? "tr-TR" : "en-GB", { dateStyle: "medium", timeStyle: "short" });
   const ekleyebilir = izinli(ben, "eser.ekle");
+  // Yeni il yalnız 81 ilden, sitede (ya da onay kuyruğunda) olmayanlar arasından seçilir.
+  const alinmis = new Set([...yayindaki.map(({ il }) => il.ad.tr), ...bekleyen.map((k) => k.veri.ad.tr)].map(adAnahtari));
+  const secilebilirIller = tumIller().filter((x) => !alinmis.has(adAnahtari(x)));
   const taslak = ekleyebilir ? await formTaslagiOku(Number((await searchParams).taslak), "il") : undefined;
 
   return (
@@ -43,7 +47,7 @@ export default async function Iller({ params, searchParams }: { params: Promise<
       </p>
       <h1>{u.baslik}</h1>
       <p className="not">{u.aciklama}</p>
-      {ekleyebilir && <IlFormu dil={dil} kaynaklar={[...kaynakMap.values()].map((k) => ({ id: k.id, ad: k.baslik }))} taslak={taslak} />}
+      {ekleyebilir && <IlFormu dil={dil} kaynaklar={[...kaynakMap.values()].map((k) => ({ id: k.id, ad: k.baslik }))} secilebilirIller={secilebilirIller} taslak={taslak} />}
 
       <h2>{u.bekleyen}</h2>
       {!kayitlar ? (

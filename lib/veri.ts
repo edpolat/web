@@ -5,6 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { kaynagaCevir } from "./kaynak";
 import { adSirala } from "./metin";
+import { oneCikanCumle } from "./gezi";
 import { dogrulanmisKaynaklar } from "./sunucu/kaynak-depo";
 import type { CevapCumlesi } from "./sunucu/sor";
 import { yayindakiIlKayitlari } from "./sunucu/il-depo";
@@ -55,6 +56,7 @@ export function kesifEserleri(eserler = tumEserler()): KesifEseri[] {
       gorsel: e.gorseller?.[0] && { dosya: e.gorseller[0].dosya, alt: e.gorseller[0].alt, odak: e.gorseller[0].odak },
       gorselSayisi: e.gorseller?.length ?? 0,
       kaynakliSayisi: e.olgular.filter((o) => o.durum === "kaynakli").length,
+      ...(e.gorseller?.length ? { ozet: oneCikanCumle(e.olgular.filter((o) => o.durum === "kaynakli"))?.metin } : {}),
     }))
     .sort((a, b) => Number(!!b.gorsel) - Number(!!a.gorsel) || adSirala(a.ad.tr, b.ad.tr));
 }

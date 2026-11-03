@@ -14,16 +14,38 @@ export function sadelestir(s: string): string {
 
 type Suzulen = Pick<IlliEser, "il" | "tur" | "ad" | "ilce" | "banisi">;
 
+/** Aramada boşluk, tire, parantez, nokta ve tırnak yok sayılır ("ulucami" = "Ulu Camii"). */
+export function aramaSadele(s: string): string {
+  return sadelestir(s)
+    .replace(/[()\-–—.,'’"“”/]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Hoşgörülü arama (mobil uygulamadan, 3 Kas 2026): birden fazla sözcük ayrı ayrı aranır ("konya cami"),
+ * ad, ilçe, banisi yanında il ve tür de taranır; sözcükler bitişik yazılsa da bulunur.
+ */
+export function aramaUyar(e: Suzulen, aranan: string, dil: Dil): boolean {
+  const sozcukler = aramaSadele(aranan).split(" ").filter(Boolean);
+  if (!sozcukler.length) return true;
+  const m = aramaSadele([metin(e.ad, dil), e.ad.tr, e.ilce ?? "", e.banisi ?? "", e.il, e.tur.replace(/-/g, " ")].join(" "));
+  const bitisik = m.replace(/ /g, "");
+  return sozcukler.every((s) => m.includes(s) || bitisik.includes(s));
+}
+
+/** Aramada adı aranan sözle başlayan eserler önce (0), adında geçenler sonra (1), diğerleri en sonda (2). */
+export function aramaDerecesi(e: Pick<IlliEser, "ad">, aranan: string, dil: Dil): number {
+  const b = aramaSadele(aranan).replace(/ /g, "");
+  const ad = aramaSadele(metin(e.ad, dil).replace(/^\s*\([^)]*\)\s*/, "")).replace(/ /g, "");
+  return !b ? 2 : ad.startsWith(b) ? 0 : ad.includes(b) ? 1 : 2;
+}
+
 export function filtrele<T extends Suzulen>(eserler: T[], f: Filtre, dil: Dil): T[] {
-  const aranan = f.ara ? sadelestir(f.ara.trim()) : "";
   return eserler.filter((e) => {
     if (f.il && e.il !== f.il) return false;
     if (f.tur && e.tur !== f.tur) return false;
-    if (aranan) {
-      const alanlar = [metin(e.ad, dil), e.ad.tr, e.ilce ?? "", e.banisi ?? ""];
-      if (!alanlar.some((a) => sadelestir(a).includes(aranan))) return false;
-    }
-    return true;
+    return !f.ara || aramaUyar(e, f.ara, dil);
   });
 }
 

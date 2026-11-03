@@ -5,7 +5,10 @@ import { useEffect, useMemo, useState } from "react";
 import { bulutHazir, kayitliOturum, pullariGetir } from "@/lib/bulut";
 import { PUL_OLAYI, yerelPullar } from "@/lib/yerel-pul";
 import { gununSirasi, z } from "@/lib/ziyaret";
-import { filtrele, konumEksik } from "@/lib/filtre";
+import { aramaDerecesi, filtrele, konumEksik } from "@/lib/filtre";
+import { DIGER_RENK, HARITA_RENKLERI, g, mesafeKm } from "@/lib/gezi";
+import { konumIste, type Nokta } from "@/lib/konum";
+import { adSirala } from "@/lib/metin";
 import { kucukGorsel } from "@/lib/gorsel";
 import { metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
@@ -52,7 +55,33 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
     window.history.replaceState(null, "", `${window.location.pathname}${yeni.size ? `?${yeni}` : ""}`);
   }
 
-  const sonuc = useMemo(() => filtrele(eserler, f, dil), [eserler, f.il, f.tur, f.ara, dil]);
+  // Sıralama (mobil uygulamadan, 3 Kas): "Önerilen" fotoğraflı ve bilgisi bol eserleri öne alır, "A–Z" alfabetik
+  // (rakamla başlayan "3. Mıntıka…" gibi kayıtlar sonda), "Yakınımda" konum izniyle en yakından uzağa.
+  // Arama yazılıyken adı aranan sözle başlayan eserler en üstte.
+  const gz = g(dil).yakin;
+  const [sira, setSira] = useState<"onerilen" | "az" | "yakin">("onerilen");
+  const [konum, setKonum] = useState<Nokta | null>(null);
+  const [konumNotu, setKonumNotu] = useState<string>();
+  async function yakinimda() {
+    setKonumNotu(gz.aliniyor);
+    const n = await konumIste();
+    if (!n) return setKonumNotu(typeof navigator !== "undefined" && !navigator.geolocation ? gz.desteklenmiyor : gz.yok);
+    setKonumNotu(undefined);
+    setKonum(n);
+    setSira("yakin");
+  }
+  const sonuc = useMemo(() => {
+    const l = filtrele(eserler, f, dil);
+    const ad = (e: KesifEseri) => metin(e.ad, dil);
+    const rakamla = (e: KesifEseri) => Number(/^\d/.test(ad(e).replace(/^\s*\([^)]*\)\s*/, "")));
+    const az = (a: KesifEseri, b: KesifEseri) => rakamla(a) - rakamla(b) || adSirala(ad(a), ad(b));
+    const zengin = (e: KesifEseri) => (e.gorsel ? 2 : 0) + Math.min(e.kaynakliSayisi, 12) / 12 - (e.kaynakliSayisi === 0 ? 2 : 0);
+    const uzaklik = (e: KesifEseri) => (konum && e.konum ? mesafeKm(konum.enlem, konum.boylam, e.konum.enlem, e.konum.boylam) : 1e9);
+    if (f.ara.trim()) return l.sort((a, b) => aramaDerecesi(a, f.ara, dil) - aramaDerecesi(b, f.ara, dil) || az(a, b));
+    if (sira === "yakin" && konum) return l.sort((a, b) => uzaklik(a) - uzaklik(b));
+    if (sira === "az") return l.sort(az);
+    return l.sort((a, b) => zengin(b) - zengin(a) || az(a, b));
+  }, [eserler, f.il, f.tur, f.ara, dil, sira, konum]);
   // Tür çiplerindeki sayılar şehir ve arama filtresine göre değişir.
   const turSayilari = useMemo(() => {
     const sayac = new Map<string, number>();
@@ -87,6 +116,7 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
             <Link href={`/${dil}/eser/${oneCikan.id}`} className="vitrin-one-cikan" style={{ backgroundImage: `url("${kucukGorsel(oneCikan.gorsel!.dosya)}")`, backgroundPosition: oneCikan.gorsel!.odak }}>
               <small>{v.bugun}</small>
               <b>{metin(oneCikan.ad, dil)}</b>
+              {oneCikan.ozet && <span className="vitrin-ozet">{metin(oneCikan.ozet, dil)}</span>}
               <span>{[turAdi(oneCikan.tur), metin(iller.find((i) => i.id === oneCikan.il)?.ad, dil), oneCikan.ilce].filter(Boolean).join(" · ")}</span>
             </Link>
           )}
@@ -163,9 +193,29 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
           {v.deprem}
         </p>
       )}
-      <p className="sonuc-sayisi" role="status" aria-live="polite">
-        {t.sonucOran(sonuc.length, eserler.length)}
-      </p>
+      <div className="sonuc-satiri">
+        <p className="sonuc-sayisi" role="status" aria-live="polite">
+          {t.sonucOran(sonuc.length, eserler.length)}
+        </p>
+        {!f.ara.trim() && (
+          <span className="sira-secici" role="group" aria-label={gz.sira}>
+            <button type="button" aria-pressed={sira === "yakin" && !!konum} onClick={yakinimda}>
+              {gz.yakinimda}
+            </button>
+            <button type="button" aria-pressed={sira === "onerilen"} onClick={() => setSira("onerilen")}>
+              {gz.onerilen}
+            </button>
+            <button type="button" aria-pressed={sira === "az"} onClick={() => setSira("az")}>
+              {gz.az}
+            </button>
+          </span>
+        )}
+      </div>
+      {konumNotu && (
+        <p className="not" role="status">
+          {konumNotu}
+        </p>
+      )}
 
       <div className="kesif">
         <section aria-label={t.liste}>
@@ -225,6 +275,18 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
             ziyaretli={ziyaretli}
             araclar
           />
+          <p className="lejant" aria-label={t.harita}>
+            {Object.entries(HARITA_RENKLERI).map(([id, renk]) => (
+              <span key={id}>
+                <i style={{ background: renk }} aria-hidden="true" />
+                {turAdi(id)}
+              </span>
+            ))}
+            <span>
+              <i style={{ background: DIGER_RENK }} aria-hidden="true" />
+              {metin(turler.find((tr) => tr.id === "diger")?.ad, dil) || "Diğer"}
+            </span>
+          </p>
           {yaklasikVar && <p className="not">○ {t.konumYaklasik}</p>}
           {ziyaretli.length > 0 && (
             <p className="not">

@@ -1,8 +1,9 @@
 // Ziyaretçi hesabı: mobil uygulamayla aynı Supabase projesi (auth + "profiller" ve "pullar" tabloları).
 // Adres ve herkese açık (publishable) anahtar .env.local içinde: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY.
 // Secret anahtar asla koda girmez; verileri Supabase'deki satır güvenliği kuralları korur.
-// Tablolar: profiller(id, ad), pullar(kullanici, eser_id, tarih). Oturumu supabase-js tarayıcıda kendisi saklar ve yeniler.
+// Tablolar: profiller(id, ad), pullar(kullanici, eser_id, tarih), rotalar (Rotalarım). Oturumu supabase-js tarayıcıda kendisi saklar ve yeniler.
 import { createClient, type SupabaseClient, type User } from "@supabase/supabase-js";
+import { rotalarim, rotalarimiYaz, rotalariBirlestir, silinenRotalar, type BulutRotasi } from "./planlar";
 
 const ADRES = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 const ANAHTAR = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
@@ -168,4 +169,25 @@ export async function talepGonder(t: { eserId: string; eserAdi: string; bilgi: s
     kaynak: "web",
   });
   denetle(error);
+}
+
+/**
+ * Rotalarım'ı hesapla eşitler: uygulamayla aynı "rotalar" tablosu (kullanici, id, ad, eserler, silindi, guncelleme;
+ * supabase/018_rotalar.sql). Birleştirme kuralı lib/planlar.ts rotalariBirlestir. Tablo yoksa ya da bağlantı yoksa
+ * hata fırlatır; çağıran sessizce yutar, rotalar yerelde kalır.
+ */
+export async function rotalariEsitle(eserVarMi?: (id: string) => boolean): Promise<boolean> {
+  const o = await kayitliOturum();
+  if (!o) return false;
+  const { data, error } = await vt().from("rotalar").select("id, ad, eserler, silindi, guncelleme");
+  denetle(error);
+  const yerel = rotalarim();
+  const sonuc = rotalariBirlestir(yerel, silinenRotalar(), (data ?? []) as BulutRotasi[], eserVarMi);
+  if (sonuc.gonderilecek.length) {
+    const satirlar = sonuc.gonderilecek.map((r) => ({ kullanici: o.id, ...r }));
+    denetle((await vt().from("rotalar").upsert(satirlar, { onConflict: "kullanici,id" })).error);
+  }
+  if (JSON.stringify(sonuc.rotalar) !== JSON.stringify(yerel) || JSON.stringify(sonuc.silinenler) !== JSON.stringify(silinenRotalar()))
+    rotalarimiYaz(sonuc.rotalar, sonuc.silinenler);
+  return true;
 }

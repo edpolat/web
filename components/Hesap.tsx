@@ -17,6 +17,7 @@ import {
   type BulutOturumu,
 } from "@/lib/bulut";
 import Pasaport from "@/components/Pasaport";
+import Planlarim, { type PlanEseri } from "@/components/Planlarim";
 import { s } from "@/lib/sozluk";
 import type { CokDilli, Dil, Rota } from "@/lib/tipler";
 import { PASAPORT_NO, z } from "@/lib/ziyaret";
@@ -30,11 +31,13 @@ export default function Hesap({
   eserler,
   rotalar,
   iller,
+  turAdlari,
 }: {
   dil: Dil;
-  eserler: { id: string; ad: CokDilli }[];
+  eserler: PlanEseri[];
   rotalar: Rota[];
   iller: { id: string; ad: CokDilli }[];
+  turAdlari: Record<string, CokDilli>;
 }) {
   const t = s(dil);
   const u = t.uyelik;
@@ -209,6 +212,7 @@ export default function Hesap({
         {sifreNotu && !sifreNotu.hata && <p role="status">{sifreNotu.metin}</p>}
         {kagitKarti}
         <Pasaport dil={dil} pullar={uye.pullar} rotalar={rotalar} iller={iller} adlar={adlar} ad={uye.ad} />
+        <Planlarim dil={dil} eserler={eserler} turAdlari={turAdlari} iller={iller} pullar={uye.pullar} uyeId={uye.id} />
       </section>
     );
   }
@@ -268,6 +272,7 @@ export default function Hesap({
       </p>
       <p className="not">{u.misafir}</p>
       {kagitKarti}
+      <Planlarim dil={dil} eserler={eserler} turAdlari={turAdlari} iller={iller} pullar={yerelPullar()} />
     </section>
   );
 }

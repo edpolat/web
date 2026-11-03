@@ -212,6 +212,20 @@ export default function OyunGomulu({ dil }: { dil: Dil }) {
     return () => window.removeEventListener("keydown", tus);
   }, []);
 
+  // Oyunda fareyle sürüklerken sayfadaki yazılar seçilmesin. Seçim oyunun içinde başlıyorsa
+  // engellenir; oyundaki yazı alanlarında (vakıf adı vb.) seçim serbest kalır.
+  useEffect(() => {
+    const oge = sahne.current;
+    if (!oge) return;
+    const secimBasladi = (e: Event) => {
+      const hedef = e.target instanceof Node && !(e.target instanceof Element) ? e.target.parentElement : e.target;
+      if (yaziAlaniMi(hedef)) return;
+      e.preventDefault();
+    };
+    oge.addEventListener("selectstart", secimBasladi);
+    return () => oge.removeEventListener("selectstart", secimBasladi);
+  }, []);
+
   async function tamEkranDegistir() {
     if (tam) return tamEkrandanCik();
     const oge = sahne.current as OnekliOge | null;

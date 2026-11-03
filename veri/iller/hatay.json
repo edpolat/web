@@ -2987,7 +2987,12 @@
           "atif": "Vakıf Katılım, Hatay İli Vakıf Eserleri",
           "kaynak_id": "vk-hatay-envanter"
         }
-      ]
+      ],
+      "donem": {
+        "yapim_yili": 1729,
+        "kaynak_id": "vk-hatay-envanter",
+        "sayfa": "238-243"
+      }
     },
     {
       "id": "hunkar-mescidi-hatay",

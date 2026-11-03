@@ -78,6 +78,8 @@ export type KesifEseri = Pick<IlliEser, "id" | "il" | "ad" | "tur" | "ilce" | "b
   gorsel?: Pick<Gorsel, "dosya" | "alt" | "odak">;
   gorselSayisi: number;
   kaynakliSayisi: number;
+  /** Öne çıkan eser kartında: kim yaptırdığını ya da ne zaman yapıldığını söyleyen kısa envanter cümlesi. */
+  ozet?: CokDilli;
 };
 
 export type Tanim = { id: string; ad: CokDilli; yayinda?: boolean };

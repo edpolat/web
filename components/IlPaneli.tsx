@@ -19,7 +19,18 @@ async function istek(govde: Record<string, unknown>): Promise<Record<string, unk
 }
 
 /** Yeni il formu (eser.ekle): il incelemeye gider, editör onaylayınca sitede görünür. */
-export function IlFormu({ dil, kaynaklar, taslak }: { dil: Dil; kaynaklar: { id: string; ad: string }[]; taslak?: FormTaslagiVerisi }) {
+export function IlFormu({
+  dil,
+  kaynaklar,
+  secilebilirIller,
+  taslak,
+}: {
+  dil: Dil;
+  kaynaklar: { id: string; ad: string }[];
+  /** Eklenebilecek iller: 81 ilden sitede henüz olmayanlar (veri/il-ilce.json). */
+  secilebilirIller: string[];
+  taslak?: FormTaslagiVerisi;
+}) {
   const t = s(dil).ilPaneli;
   const ft = s(dil).formTaslagi;
   const tk = useTaslak("il", undefined, taslak?.id);
@@ -69,7 +80,16 @@ export function IlFormu({ dil, kaynaklar, taslak }: { dil: Dil; kaynaklar: { id:
         <div className="form-satir">
           <label>
             {t.adTr}
-            <input name="ad_tr" required minLength={2} maxLength={60} defaultValue={ilk.ad_tr} />
+            <select name="ad_tr" required defaultValue={secilebilirIller.includes(ilk.ad_tr ?? "") ? ilk.ad_tr : ""}>
+              <option value="" disabled>
+                {t.ilSec}
+              </option>
+              {secilebilirIller.map((x) => (
+                <option key={x} value={x}>
+                  {x}
+                </option>
+              ))}
+            </select>
           </label>
           <label>
             {t.adEn}

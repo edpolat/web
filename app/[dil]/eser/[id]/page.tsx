@@ -12,6 +12,10 @@ import SoruPaneli from "@/components/SoruPaneli";
 import TalepFormu from "@/components/TalepFormu";
 import TerimliMetin from "@/components/TerimliMetin";
 import ZiyaretAdabi from "@/components/ZiyaretAdabi";
+import ZiyaretBilgisi from "@/components/ZiyaretBilgisi";
+import EserPlan, { EserMesafesi } from "@/components/EserPlan";
+import { konumEksik } from "@/lib/filtre";
+import { g, kesikleriDuzelt } from "@/lib/gezi";
 import { katkilar } from "@/lib/sunucu/kuyruk";
 import { yayindakiSergiler } from "@/lib/sunucu/sergi-depo";
 import { cevapla } from "@/lib/sunucu/sor";
@@ -58,7 +62,9 @@ export default async function EserKarti({ params }: { params: Params }) {
   const vakif = eser.vakif_id ? vakiflar().get(eser.vakif_id) : undefined;
 
   // Yalnızca yayında gösterilecek durumdaki olgular ("doğrulanacak" gizli).
-  const olgular = eser.olgular.filter((o) => durumlar.get(o.durum)?.yayinda);
+  // Kitaptan aktarılırken başı kopmuş cümlelerin kopuk başı atlanır (uygulamadaki gibi; veri değişmez).
+  const olgular = kesikleriDuzelt(eser.olgular.filter((o) => durumlar.get(o.durum)?.yayinda));
+  const yaklasik = konumEksik(eser.konum);
   const kullanilanKaynaklar = new Set(
     [...olgular.map((o) => o.kaynak_id), eser.envanter?.kaynak_id].filter(Boolean) as string[],
   );
@@ -86,6 +92,7 @@ export default async function EserKarti({ params }: { params: Params }) {
       <header className="eser-baslik">
         <p className="ust-bilgi">
           {[metin(il?.ad, dil), eser.ilce, metin(tur?.ad, dil)].filter(Boolean).join(" · ")}
+          {eser.konum && <EserMesafesi dil={dil} konum={{ enlem: eser.konum.enlem, boylam: eser.konum.boylam }} yaklasik={yaklasik} />}
         </p>
         <h1>{metin(eser.ad, dil)}</h1>
       </header>
@@ -173,6 +180,9 @@ export default async function EserKarti({ params }: { params: Params }) {
           {t.sor.baslik}
         </a>
       </div>
+      <EserPlan dil={dil} eserId={eser.id} eserAdi={metin(eser.ad, dil)} sehir={metin(il?.ad, dil)} />
+      {!olgular.length && !eser.tarihce && <p className="not bilgisiz">{g(dil).bilgisiz}</p>}
+      <ZiyaretBilgisi dil={dil} tur={eser.tur} olgular={olgular} yaklasik={yaklasik} />
       <ZiyaretAdabi dil={dil} tur={eser.tur} konum={eser.konum ? { enlem: eser.konum.enlem, boylam: eser.konum.boylam } : undefined} />
       {sonOnay && (
         <p className="not">

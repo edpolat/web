@@ -6,11 +6,10 @@ import { CircleMarker, LayerGroup, LayersControl, MapContainer, Popup, TileLayer
 import { metin } from "@/lib/metin";
 import type { Dil, IlliEser, Konum } from "@/lib/tipler";
 import { z } from "@/lib/ziyaret";
+import { ALTIN, turRengi } from "@/lib/gezi";
 
-// Mobil uygulamadaki işaret renkleri: türün rengi; yaklaşık konumda içi boş ve kesik çizgili; pulu alınmış eser altın.
-const TUR_RENGI: Record<string, string> = { cami: "#17488f", mescit: "#0077b6", kulliye: "#123d3a" };
-const DIGER_RENK = "#1b263b";
-const ALTIN = "#c9a45c";
+// Mobil uygulamadaki işaret renkleri: türün rengi (lib/gezi.ts, Keşfet'teki lejantla aynı); yaklaşık konumda içi boş
+// ve kesik çizgili; pulu alınmış eser altın.
 
 type Props = {
   dil: Dil;
@@ -96,8 +95,8 @@ const EserIsareti = memo(function EserIsareti(p: IsaretProps) {
     : p.ziyaretli
       ? { color: "#ffffff", fillColor: ALTIN, fillOpacity: 1, weight: 2 }
       : p.yaklasik
-        ? { color: TUR_RENGI[p.tur] ?? DIGER_RENK, fillColor: "#ffffff", fillOpacity: 0.8, weight: 2, dashArray: "3 3" }
-        : { color: "#ffffff", fillColor: TUR_RENGI[p.tur] ?? DIGER_RENK, fillOpacity: 0.95, weight: 2 };
+        ? { color: turRengi(p.tur), fillColor: "#ffffff", fillOpacity: 0.8, weight: 2, dashArray: "3 3" }
+        : { color: "#ffffff", fillColor: turRengi(p.tur), fillOpacity: 0.95, weight: 2 };
   return (
     <CircleMarker
       center={[p.enlem, p.boylam]}

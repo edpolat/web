@@ -8,6 +8,10 @@ import type { CokDilli, Dil, Eser } from "@/lib/tipler";
 
 type Secenek = { id: string; ad: string };
 type Props = { dil: Dil; eser?: Eser; iller: Secenek[]; turler: Secenek[]; kaynaklar: Secenek[]; varsayilanIl?: string;
+  /** Düzenlenen eserin ili (ilçe listesi için). */
+  eserIl?: string;
+  /** İl kimliği → ilçe adları (veri/il-ilce.json). Listesi olmayan ilde ilçe serbest yazılır. */
+  ilceler?: Record<string, string[]>;
   /** Tarihçi modu: incelemedeki sürüm düzeltilip editöre gönderilir (taslak yok). */
   tarihciSurum?: { id: number; kaynak_id: string };
 };
@@ -31,13 +35,17 @@ const doluysa = <T extends object>(o: T): T | null => (Object.keys(o).length ? o
  * Sekmeler: temel bilgiler, konum, görseller (yalnız görüntüleme) ve kaynaklı bilgiler; hepsi tek formdur.
  * Formda olmayan alanlar (olgular, görseller, mimari künye) olduğu gibi kalır.
  */
-export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayilanIl, tarihciSurum }: Props) {
+export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayilanIl, eserIl, ilceler = {}, tarihciSurum }: Props) {
   const t = s(dil);
   const router = useRouter();
   const [kaynak, setKaynak] = useState(tarihciSurum?.kaynak_id ?? "");
   const [durum, setDurum] = useState<{ tur: "tamam" | "hata"; metin: string }>();
   const [gonderiliyor, setGonderiliyor] = useState(false);
   const [sekme, setSekme] = useState<Sekme>("temel");
+  const ilkIl = iller.some((i) => i.id === varsayilanIl) ? varsayilanIl : iller[0]?.id;
+  const [secilenIl, setSecilenIl] = useState(eser ? eserIl : ilkIl);
+  const [ilce, setIlce] = useState(eser?.ilce ?? "");
+  const ilceListesi = secilenIl ? ilceler[secilenIl] : undefined;
   const p = t.pano;
   const kaynakAdi = new Map(kaynaklar.map((k) => [k.id, k.ad]));
 
@@ -167,7 +175,15 @@ export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayi
         {!eser && (
           <label>
             {t.il}
-            <select name="il" required defaultValue={iller.some((i) => i.id === varsayilanIl) ? varsayilanIl : iller[0]?.id}>
+            <select
+              name="il"
+              required
+              value={secilenIl}
+              onChange={(e) => {
+                setSecilenIl(e.target.value);
+                setIlce("");
+              }}
+            >
               {iller.map((i) => (
                 <option key={i.id} value={i.id}>
                   {i.ad}
@@ -189,7 +205,23 @@ export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayi
             ))}
           </select>
         </label>
-        {alan("ilce", t.ilce, eser?.ilce)}
+        {ilceListesi ? (
+          <label>
+            {t.ilce}
+            <select name="ilce" value={ilce} onChange={(e) => setIlce(e.target.value)}>
+              <option value="">{t.ilceSec}</option>
+              {/* Eski kayıttaki ilçe listede yoksa kaybolmasın diye ayrıca gösterilir. */}
+              {ilce && !ilceListesi.includes(ilce) && <option value={ilce}>{`${ilce} (${t.listedeYok})`}</option>}
+              {ilceListesi.map((x) => (
+                <option key={x} value={x}>
+                  {x}
+                </option>
+              ))}
+            </select>
+          </label>
+        ) : (
+          alan("ilce", t.ilce, eser?.ilce)
+        )}
       </fieldset>
       <fieldset>
         <legend>{t.donem}</legend>

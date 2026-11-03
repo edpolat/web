@@ -48,6 +48,12 @@ const metinler = {
         "Omuzları ve dizleri örten kıyafet giy.",
       ],
       kilise: ["Ayin sırasında sessiz ol ve fotoğraf çekme.", "Omuzları ve dizleri örten kıyafet giy."],
+      yapi: [
+        "Taşlara, kitâbelere ve çinilere dokunma, yaslanma.",
+        "Yapı bugün dükkân, kafe ya da müze olarak kullanılıyorsa çalışanlara sorarak gez.",
+        "Fotoğraf çekerken içeridekilerin iznini al.",
+      ],
+      cesme: ["Çeşmenin taşına ve kitâbesine dokunma, üzerine çıkma.", "Suyu içilebilir değilse işaretlere uy."],
       vakitler: { Fajr: "Sabah", Dhuhr: "Öğle", Asr: "İkindi", Maghrib: "Akşam", Isha: "Yatsı" },
       yukleniyor: "Namaz vakitleri yükleniyor…",
       alinamadi: "Namaz vakitleri alınamadı.",
@@ -175,6 +181,12 @@ const metinler = {
         "Wear clothes that cover shoulders and knees.",
       ],
       kilise: ["Keep quiet and do not take photos during services.", "Wear clothes that cover shoulders and knees."],
+      yapi: [
+        "Do not touch or lean on the stones, inscriptions or tiles.",
+        "If the building is now a shop, café or museum, ask the staff before looking around.",
+        "Ask permission before photographing people inside.",
+      ],
+      cesme: ["Do not touch or climb on the fountain's stone and inscription.", "If the water is not drinkable, follow the signs."],
       vakitler: { Fajr: "Dawn", Dhuhr: "Noon", Asr: "Afternoon", Maghrib: "Sunset", Isha: "Night" },
       yukleniyor: "Loading prayer times…",
       alinamadi: "Prayer times could not be loaded.",
@@ -271,13 +283,24 @@ export function z(dil: Dil): ZiyaretMetinleri {
 }
 
 /** Ziyaret adabı türü (uygulamadaki ADAB_TURU). */
-export const ADAB_TURU: Record<string, "ibadet" | "turbe" | "kilise"> = {
+export const ADAB_TURU: Record<string, "ibadet" | "turbe" | "kilise" | "yapi" | "cesme"> = {
   cami: "ibadet",
   mescit: "ibadet",
   kulliye: "ibadet",
   turbe: "turbe",
   "zaviye-tekke": "turbe",
   kilise: "kilise",
+  // 3 Kas: uygulamada ziyaret adabı medrese, han, hamam, çeşme ve diğer yapılarda da çıkıyor.
+  medrese: "yapi",
+  han: "yapi",
+  hamam: "yapi",
+  imaret: "yapi",
+  "bedesten-carsi": "yapi",
+  kutuphane: "yapi",
+  darussifa: "yapi",
+  diger: "yapi",
+  cesme: "cesme",
+  sebil: "cesme",
 };
 
 export const VAKIT_ANAHTARLARI = ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"] as const;

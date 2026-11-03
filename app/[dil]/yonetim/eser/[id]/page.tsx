@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import EserFormu from "@/components/EserFormu";
+import { ilinIlceleri } from "@/lib/il-ilce";
 import { gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import { yetkili } from "@/lib/sunucu/oturum";
@@ -29,17 +30,27 @@ export default async function EserDuzenle({
   const tumu = await yayindakiIller();
   let eser: Eser | undefined;
   let tarihciSurum: { id: number; kaynak_id: string } | undefined;
+  let eserIl: string | undefined;
   if (surumNo) {
     if (!(await yetkili("eser.incele"))) redirect(`/${dil}/yonetim`);
     const surum = await surumOku(Number(surumNo));
     if (!surum || surum.durum !== "incelemede" || surum.eser_id !== id) notFound();
     eser = surum.veri as Eser;
     tarihciSurum = { id: surum.id, kaynak_id: surum.kaynak_id ?? "" };
+    eserIl = surum.il ?? undefined;
   } else {
     if (!(await yetkili(id === "yeni" ? "eser.ekle" : "eser.duzenle"))) redirect(`/${dil}/yonetim`);
     eser = id === "yeni" ? undefined : tumu.flatMap((d) => d.eserler).find((e) => e.id === id);
     if (id !== "yeni" && !eser) notFound();
+    eserIl = tumu.find((d) => d.eserler.some((e) => e.id === id))?.il.id;
   }
+  // İl → ilçe açılır listesi (veri/il-ilce.json); listede olmayan il serbest yazıya döner.
+  const ilceler = Object.fromEntries(
+    tumu.flatMap(({ il }) => {
+      const liste = ilinIlceleri(il.ad.tr);
+      return liste ? [[il.id, liste]] : [];
+    }),
+  );
   return (
     <section className="kart">
       <p>
@@ -60,6 +71,8 @@ export default async function EserDuzenle({
         turler={ayarlar().eser_turleri.map((x) => ({ id: x.id, ad: metin(x.ad, dil) }))}
         kaynaklar={[...(await yayindakiKaynaklar()).values()].map((k) => ({ id: k.id, ad: k.baslik }))}
         varsayilanIl={varsayilanIl}
+        eserIl={eserIl}
+        ilceler={ilceler}
         tarihciSurum={tarihciSurum}
       />
     </section>

@@ -40,6 +40,8 @@ const sozluk = {
     donem: "Yapım",
     yaklasik: "yaklaşık",
     ilce: "İlçe",
+    ilceSec: "— İlçe seç —",
+    listedeYok: "listede yok",
     adres: "Adres",
     taslak: "Taslak kayıt: bilgiler henüz doğrulanmadı.",
     hatayDeprem:
@@ -173,6 +175,7 @@ const sozluk = {
       aciklama: "Sitedeki şehirler. Yeni il eklemek kod değiştirmeyi ya da yeniden yayına almayı gerektirmez: il editör onayıyla yayına girer, eserleri \"Yeni eser ekle\" ile eklenir.",
       ekle: "Yeni il ekle",
       adTr: "İl adı (Türkçe)",
+      ilSec: "— 81 ilden seç —",
       adEn: "İl adı (İngilizce, isteğe bağlı)",
       merkez: "Harita merkezi",
       enlem: "Harita merkezi: enlem",
@@ -827,6 +830,8 @@ const sozluk = {
     donem: "Built",
     yaklasik: "approx.",
     ilce: "District",
+    ilceSec: "— Choose district —",
+    listedeYok: "not in list",
     adres: "Address",
     taslak: "Draft record: details not yet verified.",
     hatayDeprem:
@@ -960,6 +965,7 @@ const sozluk = {
       aciklama: "The cities on the site. Adding a province needs no code change or redeploy: it goes live after an editor approves it, and its monuments are added with \"Add a new monument\".",
       ekle: "Add a province",
       adTr: "Province name (Turkish)",
+      ilSec: "— Choose one of the 81 provinces —",
       adEn: "Province name (English, optional)",
       merkez: "Map centre",
       enlem: "Map centre: latitude",
