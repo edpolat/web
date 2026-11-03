@@ -52,7 +52,7 @@ export function kesifEserleri(eserler = tumEserler()): KesifEseri[] {
       banisi: e.banisi,
       konum: e.konum,
       yil: e.donem?.yapim_yili,
-      gorsel: e.gorseller?.[0] && { dosya: e.gorseller[0].dosya, alt: e.gorseller[0].alt },
+      gorsel: e.gorseller?.[0] && { dosya: e.gorseller[0].dosya, alt: e.gorseller[0].alt, odak: e.gorseller[0].odak },
       gorselSayisi: e.gorseller?.length ?? 0,
       kaynakliSayisi: e.olgular.filter((o) => o.durum === "kaynakli").length,
     }))

@@ -21,7 +21,6 @@ import { s } from "@/lib/sozluk";
 import type { CokDilli, Dil, Rota } from "@/lib/tipler";
 import { PASAPORT_NO, z } from "@/lib/ziyaret";
 import { kagitBagliMi, yerelPullar } from "@/lib/yerel-pul";
-import AnaEkranaEkle from "@/components/AnaEkranaEkle";
 
 type AcikUye = BulutOturumu & { pullar: string[] };
 
@@ -40,7 +39,7 @@ export default function Hesap({
   const t = s(dil);
   const u = t.uyelik;
   const [uye, setUye] = useState<AcikUye | null>();
-  const [sekme, setSekme] = useState<"uye" | "gir">("uye");
+  const [sekme, setSekme] = useState<"uye" | "gir">("gir");
   const [hata, setHata] = useState<BulutHataKodu>();
   const [onayBekliyor, setOnayBekliyor] = useState(false);
   const [bekliyor, setBekliyor] = useState(false);
@@ -210,7 +209,6 @@ export default function Hesap({
         {sifreNotu && !sifreNotu.hata && <p role="status">{sifreNotu.metin}</p>}
         {kagitKarti}
         <Pasaport dil={dil} pullar={uye.pullar} rotalar={rotalar} iller={iller} adlar={adlar} ad={uye.ad} />
-        <AnaEkranaEkle dil={dil} />
       </section>
     );
   }
@@ -221,13 +219,7 @@ export default function Hesap({
       <p>{u.alt}</p>
       {!bulutHazir && <p className="hata">{u.ayarYok}</p>}
       {onayBekliyor && <p role="status">{u.onayGerekli}</p>}
-      <div className="hesap-sekmeler" role="group">
-        {(["uye", "gir"] as const).map((k) => (
-          <button key={k} type="button" aria-pressed={sekme === k} onClick={() => (setSekme(k), setHata(undefined))}>
-            {k === "uye" ? u.uyeOl : u.girisYap}
-          </button>
-        ))}
-      </div>
+      <h2 className="hesap-form-baslik">{sekme === "gir" ? u.girisYap : u.uyeOl}</h2>
       <form className="form" onSubmit={gonder} noValidate>
         {sekme === "uye" && (
           <label>
@@ -265,9 +257,17 @@ export default function Hesap({
           )}
         </div>
       </form>
+      <p className="hesap-gecis">
+        {sekme === "gir" ? u.hesapYok : u.hesapVar}{" "}
+        <button
+          type="button"
+          onClick={() => (setSekme(sekme === "gir" ? "uye" : "gir"), setHata(undefined), setSifreNotu(undefined))}
+        >
+          {sekme === "gir" ? u.uyeOl : u.girisYap}
+        </button>
+      </p>
       <p className="not">{u.misafir}</p>
       {kagitKarti}
-      <AnaEkranaEkle dil={dil} />
     </section>
   );
 }

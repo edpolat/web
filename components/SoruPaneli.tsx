@@ -93,7 +93,12 @@ export default function SoruPaneli({
               {m.cevap?.cumleler.map((c, j) => (
                 <p key={j}>
                   {c.metin}{" "}
-                  {c.kaynak_id ? (
+                  {c.durum === "vikipedi" && c.adres ? (
+                    <a href={c.adres} className="etiket etiket-vikipedi" target="_blank" rel="noopener" title={t.sor.vikipediAciklama}>
+                      {t.sor.vikipedi}
+                      {c.baslik ? `: ${c.baslik}` : ""}
+                    </a>
+                  ) : c.kaynak_id ? (
                     <a
                       href={c.adres ?? `#kaynak-${c.kaynak_id}`}
                       className={`etiket etiket-${c.durum}`}

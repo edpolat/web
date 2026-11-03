@@ -146,6 +146,11 @@
         },
         "kaynak_id": {
           "$ref": "#/$defs/kimlik"
+        },
+        "odak": {
+          "type": "string",
+          "pattern": "^\\d{1,3}% \\d{1,3}%$",
+          "description": "Kart ve kapakta kırpma odağı (CSS object-position), ör. \"50% 70%\". Yoksa ortası."
         }
       },
       "additionalProperties": false

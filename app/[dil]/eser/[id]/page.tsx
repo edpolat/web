@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DILLER, ceviriEksik, gecerliDil, metin } from "@/lib/metin";
-import { ayarlar, kaynakAdresi, sergiler, tumEserler, vakiflar, yayindakiEser, yayindakiIller, yayindakiKaynaklar } from "@/lib/veri";
+import { ayarlar, kaynakAdresi, tumEserler, vakiflar, yayindakiEser, yayindakiIller, yayindakiKaynaklar } from "@/lib/veri";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
 import HaritaYukle from "@/components/HaritaYukle";
@@ -13,6 +13,7 @@ import TalepFormu from "@/components/TalepFormu";
 import TerimliMetin from "@/components/TerimliMetin";
 import ZiyaretAdabi from "@/components/ZiyaretAdabi";
 import { katkilar } from "@/lib/sunucu/kuyruk";
+import { yayindakiSergiler } from "@/lib/sunucu/sergi-depo";
 import { cevapla } from "@/lib/sunucu/sor";
 
 type Params = Promise<{ dil: string; id: string }>;
@@ -53,7 +54,7 @@ export default async function EserKarti({ params }: { params: Params }) {
   const durumlar = new Map(ay.olgu_durumlari.map((d) => [d.id, d]));
   const kaynakMap = await yayindakiKaynaklar();
   const donemKaynagi = eser.donem?.kaynak_id ? kaynakMap.get(eser.donem.kaynak_id) : undefined;
-  const sergiMap = sergiler();
+  const sergiMap = await yayindakiSergiler();
   const vakif = eser.vakif_id ? vakiflar().get(eser.vakif_id) : undefined;
 
   // Yalnızca yayında gösterilecek durumdaki olgular ("doğrulanacak" gizli).
@@ -96,7 +97,7 @@ export default async function EserKarti({ params }: { params: Params }) {
 
       {kapak && (
         <figure className="eser-kapak">
-          <img src={kapak.dosya} alt={metin(kapak.alt, dil)} width={1600} height={900} />
+          <img src={kapak.dosya} alt={metin(kapak.alt, dil)} width={1600} height={900} style={kapak.odak ? { objectPosition: kapak.odak } : undefined} />
           {(eser.gorseller?.length ?? 0) > 1 && (
             <figcaption>
               <a href="#galeri">{t.galeri} ({eser.gorseller!.length})</a>

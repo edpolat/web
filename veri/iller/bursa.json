@@ -1937,6 +1937,17 @@
       },
       "gorseller": [
         {
+          "dosya": "/gorseller/bursa/sehabettin-pasa-camii/03.webp",
+          "alt": {
+            "tr": "Ağaçlar arasında taş cami ve tuğla minaresi",
+            "en": "Stone mosque and brick minaret among trees"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
+          "kaynak_id": "vk-bursa-envanter-c1",
+          "odak": "50% 60%"
+        },
+        {
           "dosya": "/gorseller/bursa/sehabettin-pasa-camii/01.webp",
           "alt": {
             "tr": "Kırmızı ve siyah mürekkeple hat levhası",
@@ -1951,16 +1962,6 @@
           "alt": {
             "tr": "Taşa oyulmuş yeşil zeminli kitabe",
             "en": "Carved inscription panel on a green ground"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/bursa/sehabettin-pasa-camii/03.webp",
-          "alt": {
-            "tr": "Ağaçlar arasında taş cami ve tuğla minaresi",
-            "en": "Stone mosque and brick minaret among trees"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
@@ -6669,6 +6670,16 @@
       },
       "gorseller": [
         {
+          "dosya": "/gorseller/bursa/adliye-koyu-camii/04.webp",
+          "alt": {
+            "tr": "Ağaçlar arasında köy camisi ve minaresi",
+            "en": "The village mosque and minaret among trees"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
+          "kaynak_id": "vk-bursa-envanter-c3"
+        },
+        {
           "dosya": "/gorseller/bursa/adliye-koyu-camii/01.webp",
           "alt": {
             "tr": "Ormanlık tepelerin önünde köy evleri",
@@ -6693,16 +6704,6 @@
           "alt": {
             "tr": "Köy evleri ve caminin kuşbakışı görünümü",
             "en": "Bird's-eye view of the village houses and mosque"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
-          "kaynak_id": "vk-bursa-envanter-c3"
-        },
-        {
-          "dosya": "/gorseller/bursa/adliye-koyu-camii/04.webp",
-          "alt": {
-            "tr": "Ağaçlar arasında köy camisi ve minaresi",
-            "en": "The village mosque and minaret among trees"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
@@ -7553,20 +7554,20 @@
       "olgular": [],
       "gorseller": [
         {
-          "dosya": "/gorseller/bursa/umurbey-kulliyesi/01.webp",
+          "dosya": "/gorseller/bursa/umurbey-kulliyesi/02.webp",
           "alt": {
-            "tr": "Çiçek motifli çerçeve içinde hat levha",
-            "en": "Calligraphy roundel framed by floral motifs"
+            "tr": "Ağaçlar arasında tuğla kubbeli cami ve önündeki hazire",
+            "en": "Brick domed mosque among trees with its graveyard in front"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",
           "kaynak_id": "vk-bursa-envanter-c1"
         },
         {
-          "dosya": "/gorseller/bursa/umurbey-kulliyesi/02.webp",
+          "dosya": "/gorseller/bursa/umurbey-kulliyesi/01.webp",
           "alt": {
-            "tr": "Ağaçlar arasında tuğla kubbeli cami ve önündeki hazire",
-            "en": "Brick domed mosque among trees with its graveyard in front"
+            "tr": "Çiçek motifli çerçeve içinde hat levha",
+            "en": "Calligraphy roundel framed by floral motifs"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Bursa Vakıf Eserleri",

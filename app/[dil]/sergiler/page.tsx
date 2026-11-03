@@ -1,23 +1,17 @@
 import { notFound } from "next/navigation";
 import { gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
-import type { Dil, Sergi } from "@/lib/tipler";
-import { sergiler } from "@/lib/veri";
+import { sergiDurumu, type SergiDurumu as Durum } from "@/lib/sergi";
+import { yayindakiSergiler } from "@/lib/sunucu/sergi-depo";
+import type { Dil } from "@/lib/tipler";
 
 // Sergilerin durumu (açık, yakında, bitti) bugüne göre değişir; sayfa saatte bir yenilenir.
+// Sergiler panelden yönetilir (Supabase "sergiler"); panelde değişince sayfa hemen tazelenir.
 export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: Promise<{ dil: string }> }) {
   const { dil } = await params;
   return gecerliDil(dil) ? { title: s(dil).sergilerSayfa.baslik } : {};
-}
-
-type Durum = "acik" | "yakinda" | "bitti";
-
-function sergiDurumu(sergi: Sergi, bugun: string): Durum {
-  if (sergi.baslangic && bugun < sergi.baslangic) return "yakinda";
-  if (sergi.bitis && bugun > sergi.bitis) return "bitti";
-  return "acik";
 }
 
 function tarih(gun: string, dil: Dil) {
@@ -31,7 +25,7 @@ export default async function SergilerSayfasi({ params }: { params: Promise<{ di
   const bugun = new Date().toISOString().slice(0, 10);
   const sira: Record<Durum, number> = { acik: 0, yakinda: 1, bitti: 2 };
   // Yeri ve tarihi bilinmeyen sergi kaydı listede gösterilmez.
-  const liste = [...sergiler().values()]
+  const liste = [...(await yayindakiSergiler()).values()]
     .filter((x) => x.yer && x.baslangic)
     .map((x) => ({ ...x, durum: sergiDurumu(x, bugun) }))
     .sort((a, b) => sira[a.durum] - sira[b.durum] || b.baslangic!.localeCompare(a.baslangic!));

@@ -1000,20 +1000,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/komurculer-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/komurculer-camii-konya/02.webp",
           "alt": {
-            "tr": "Kömürcüler Camii, fotoğraf 1",
-            "en": "Kömürcüler Mosque, photo 1"
+            "tr": "Kömürcüler Camii, fotoğraf 2",
+            "en": "Kömürcüler Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/komurculer-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/komurculer-camii-konya/01.webp",
           "alt": {
-            "tr": "Kömürcüler Camii, fotoğraf 2",
-            "en": "Kömürcüler Mosque, photo 2"
+            "tr": "Kömürcüler Camii, fotoğraf 1",
+            "en": "Kömürcüler Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -1412,20 +1412,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/seyh-ebul-vefa-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/seyh-ebul-vefa-camii-konya/02.webp",
           "alt": {
-            "tr": "Şeyh Ebul Vefa Camii, fotoğraf 1",
-            "en": "Şeyh Ebul Vefa Mosque, photo 1"
+            "tr": "Şeyh Ebul Vefa Camii, fotoğraf 2",
+            "en": "Şeyh Ebul Vefa Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/seyh-ebul-vefa-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/seyh-ebul-vefa-camii-konya/01.webp",
           "alt": {
-            "tr": "Şeyh Ebul Vefa Camii, fotoğraf 2",
-            "en": "Şeyh Ebul Vefa Mosque, photo 2"
+            "tr": "Şeyh Ebul Vefa Camii, fotoğraf 1",
+            "en": "Şeyh Ebul Vefa Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -1549,20 +1549,21 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/ayanbey-camii-konya/01.webp",
-          "alt": {
-            "tr": "Ayanbey Camii, fotoğraf 1",
-            "en": "Ayanbey Mosque, photo 1"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
           "dosya": "/gorseller/konya/ayanbey-camii-konya/02.webp",
           "alt": {
             "tr": "Ayanbey Camii, fotoğraf 2",
             "en": "Ayanbey Mosque, photo 2"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 75%"
+        },
+        {
+          "dosya": "/gorseller/konya/ayanbey-camii-konya/01.webp",
+          "alt": {
+            "tr": "Ayanbey Camii, fotoğraf 1",
+            "en": "Ayanbey Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -1657,20 +1658,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/askan-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/askan-camii-konya/02.webp",
           "alt": {
-            "tr": "Aşkan Camii, fotoğraf 1",
-            "en": "Aşkan Mosque, photo 1"
+            "tr": "Aşkan Camii, fotoğraf 2",
+            "en": "Aşkan Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/askan-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/askan-camii-konya/01.webp",
           "alt": {
-            "tr": "Aşkan Camii, fotoğraf 2",
-            "en": "Aşkan Mosque, photo 2"
+            "tr": "Aşkan Camii, fotoğraf 1",
+            "en": "Aşkan Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -2305,20 +2306,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/karaagac-koyu-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/karaagac-koyu-camii-konya/02.webp",
           "alt": {
-            "tr": "Karaağaç Köyü Camii, fotoğraf 1",
-            "en": "Karaağaç Village Mosque, photo 1"
+            "tr": "Karaağaç Köyü Camii, fotoğraf 2",
+            "en": "Karaağaç Village Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/karaagac-koyu-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/karaagac-koyu-camii-konya/01.webp",
           "alt": {
-            "tr": "Karaağaç Köyü Camii, fotoğraf 2",
-            "en": "Karaağaç Village Mosque, photo 2"
+            "tr": "Karaağaç Köyü Camii, fotoğraf 1",
+            "en": "Karaağaç Village Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -2489,20 +2490,21 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/dayhane-camii-ve-mustemilati-konya/01.webp",
-          "alt": {
-            "tr": "Dayhane Camii ve Müştemilatı, fotoğraf 1",
-            "en": "Dayhane Mosque and Outbuildings, photo 1"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
           "dosya": "/gorseller/konya/dayhane-camii-ve-mustemilati-konya/02.webp",
           "alt": {
             "tr": "Dayhane Camii ve Müştemilatı, fotoğraf 2",
             "en": "Dayhane Mosque and Outbuildings, photo 2"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 65%"
+        },
+        {
+          "dosya": "/gorseller/konya/dayhane-camii-ve-mustemilati-konya/01.webp",
+          "alt": {
+            "tr": "Dayhane Camii ve Müştemilatı, fotoğraf 1",
+            "en": "Dayhane Mosque and Outbuildings, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -4451,20 +4453,21 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/gokyurt-koyu-camii-konya/01.webp",
-          "alt": {
-            "tr": "Gökyurt Köyü Camii, fotoğraf 1",
-            "en": "Gökyurt Village Mosque, photo 1"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
           "dosya": "/gorseller/konya/gokyurt-koyu-camii-konya/02.webp",
           "alt": {
             "tr": "Gökyurt Köyü Camii, fotoğraf 2",
             "en": "Gökyurt Village Mosque, photo 2"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 60%"
+        },
+        {
+          "dosya": "/gorseller/konya/gokyurt-koyu-camii-konya/01.webp",
+          "alt": {
+            "tr": "Gökyurt Köyü Camii, fotoğraf 1",
+            "en": "Gökyurt Village Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -4946,6 +4949,16 @@
       ],
       "gorseller": [
         {
+          "dosya": "/gorseller/konya/meram-kapu-kapi-ihyaiyye-camii-konya/03.webp",
+          "alt": {
+            "tr": "Meram Kapu (Kapı-İhyaiyye) Camii, fotoğraf 3",
+            "en": "Meram Kapu (Kapı-İhyaiyye) Mosque, photo 3"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1"
+        },
+        {
           "dosya": "/gorseller/konya/meram-kapu-kapi-ihyaiyye-camii-konya/01.webp",
           "alt": {
             "tr": "Meram Kapu (Kapı-İhyaiyye) Camii, fotoğraf 1",
@@ -4960,16 +4973,6 @@
           "alt": {
             "tr": "Meram Kapu (Kapı-İhyaiyye) Camii, fotoğraf 2",
             "en": "Meram Kapu (Kapı-İhyaiyye) Mosque, photo 2"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/konya/meram-kapu-kapi-ihyaiyye-camii-konya/03.webp",
-          "alt": {
-            "tr": "Meram Kapu (Kapı-İhyaiyye) Camii, fotoğraf 3",
-            "en": "Meram Kapu (Kapı-İhyaiyye) Mosque, photo 3"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -5164,6 +5167,16 @@
       ],
       "gorseller": [
         {
+          "dosya": "/gorseller/konya/haci-hasan-camii-konya/03.webp",
+          "alt": {
+            "tr": "Hacı Hasan Camii, fotoğraf 3",
+            "en": "Hacı Hasan Mosque, photo 3"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1"
+        },
+        {
           "dosya": "/gorseller/konya/haci-hasan-camii-konya/01.webp",
           "alt": {
             "tr": "Hacı Hasan Camii, fotoğraf 1",
@@ -5178,16 +5191,6 @@
           "alt": {
             "tr": "Hacı Hasan Camii, fotoğraf 2",
             "en": "Hacı Hasan Mosque, photo 2"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/konya/haci-hasan-camii-konya/03.webp",
-          "alt": {
-            "tr": "Hacı Hasan Camii, fotoğraf 3",
-            "en": "Hacı Hasan Mosque, photo 3"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -5267,20 +5270,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/seyh-osman-rumi-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/seyh-osman-rumi-camii-konya/02.webp",
           "alt": {
-            "tr": "Şeyh Osman Rûmi Camii, fotoğraf 1",
-            "en": "Şeyh Osman Rûmi Mosque, photo 1"
+            "tr": "Şeyh Osman Rûmi Camii, fotoğraf 2",
+            "en": "Şeyh Osman Rûmi Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/seyh-osman-rumi-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/seyh-osman-rumi-camii-konya/01.webp",
           "alt": {
-            "tr": "Şeyh Osman Rûmi Camii, fotoğraf 2",
-            "en": "Şeyh Osman Rûmi Mosque, photo 2"
+            "tr": "Şeyh Osman Rûmi Camii, fotoğraf 1",
+            "en": "Şeyh Osman Rûmi Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -5451,6 +5454,16 @@
       ],
       "gorseller": [
         {
+          "dosya": "/gorseller/konya/ihtiyarettin-mescidi-konya/03.webp",
+          "alt": {
+            "tr": "İhtiyarettin Mescidi, fotoğraf 3",
+            "en": "İhtiyarettin Masjid, photo 3"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1"
+        },
+        {
           "dosya": "/gorseller/konya/ihtiyarettin-mescidi-konya/01.webp",
           "alt": {
             "tr": "İhtiyarettin Mescidi, fotoğraf 1",
@@ -5465,16 +5478,6 @@
           "alt": {
             "tr": "İhtiyarettin Mescidi, fotoğraf 2",
             "en": "İhtiyarettin Masjid, photo 2"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/konya/ihtiyarettin-mescidi-konya/03.webp",
-          "alt": {
-            "tr": "İhtiyarettin Mescidi, fotoğraf 3",
-            "en": "İhtiyarettin Masjid, photo 3"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -6120,20 +6123,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/kadi-mursel-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/kadi-mursel-camii-konya/02.webp",
           "alt": {
-            "tr": "Kadı Mürsel Camii, fotoğraf 1",
-            "en": "Kadı Mürsel Mosque, photo 1"
+            "tr": "Kadı Mürsel Camii, fotoğraf 2",
+            "en": "Kadı Mürsel Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/kadi-mursel-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/kadi-mursel-camii-konya/01.webp",
           "alt": {
-            "tr": "Kadı Mürsel Camii, fotoğraf 2",
-            "en": "Kadı Mürsel Mosque, photo 2"
+            "tr": "Kadı Mürsel Camii, fotoğraf 1",
+            "en": "Kadı Mürsel Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -6700,20 +6703,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/nasuh-bey-camii-canbazzade-nasuh-bey-darul-huffazi-konya/01.webp",
+          "dosya": "/gorseller/konya/nasuh-bey-camii-canbazzade-nasuh-bey-darul-huffazi-konya/02.webp",
           "alt": {
-            "tr": "Nasuh Bey Camii (Canbazzade Nasuh Bey Dârü’l-Huffazı), fotoğraf 1",
-            "en": "Nasuh Bey Mosque (Canbazzade Nasuh Bey Dârü’l-huffaz), photo 1"
+            "tr": "Nasuh Bey Camii (Canbazzade Nasuh Bey Dârü’l-Huffazı), fotoğraf 2",
+            "en": "Nasuh Bey Mosque (Canbazzade Nasuh Bey Dârü’l-huffaz), photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/nasuh-bey-camii-canbazzade-nasuh-bey-darul-huffazi-konya/02.webp",
+          "dosya": "/gorseller/konya/nasuh-bey-camii-canbazzade-nasuh-bey-darul-huffazi-konya/01.webp",
           "alt": {
-            "tr": "Nasuh Bey Camii (Canbazzade Nasuh Bey Dârü’l-Huffazı), fotoğraf 2",
-            "en": "Nasuh Bey Mosque (Canbazzade Nasuh Bey Dârü’l-huffaz), photo 2"
+            "tr": "Nasuh Bey Camii (Canbazzade Nasuh Bey Dârü’l-Huffazı), fotoğraf 1",
+            "en": "Nasuh Bey Mosque (Canbazzade Nasuh Bey Dârü’l-huffaz), photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -7017,6 +7020,16 @@
       ],
       "gorseller": [
         {
+          "dosya": "/gorseller/konya/gurb-i-cedidi-kosova-mescidi-konya/03.webp",
+          "alt": {
+            "tr": "Gurb-i Cedidi (Kosova) Mescidi, fotoğraf 3",
+            "en": "Gurb-i Cedidi (Kosovo) Masjid, photo 3"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1"
+        },
+        {
           "dosya": "/gorseller/konya/gurb-i-cedidi-kosova-mescidi-konya/01.webp",
           "alt": {
             "tr": "Gurb-i Cedidi (Kosova) Mescidi, fotoğraf 1",
@@ -7031,16 +7044,6 @@
           "alt": {
             "tr": "Gurb-i Cedidi (Kosova) Mescidi, fotoğraf 2",
             "en": "Gurb-i Cedidi (Kosovo) Masjid, photo 2"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/konya/gurb-i-cedidi-kosova-mescidi-konya/03.webp",
-          "alt": {
-            "tr": "Gurb-i Cedidi (Kosova) Mescidi, fotoğraf 3",
-            "en": "Gurb-i Cedidi (Kosovo) Masjid, photo 3"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -7151,6 +7154,16 @@
       ],
       "gorseller": [
         {
+          "dosya": "/gorseller/konya/kalecik-mescidi-konya/03.webp",
+          "alt": {
+            "tr": "Kalecik Mescidi, fotoğraf 3",
+            "en": "Kalecik Masjid, photo 3"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1"
+        },
+        {
           "dosya": "/gorseller/konya/kalecik-mescidi-konya/01.webp",
           "alt": {
             "tr": "Kalecik Mescidi, fotoğraf 1",
@@ -7165,16 +7178,6 @@
           "alt": {
             "tr": "Kalecik Mescidi, fotoğraf 2",
             "en": "Kalecik Masjid, photo 2"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/konya/kalecik-mescidi-konya/03.webp",
-          "alt": {
-            "tr": "Kalecik Mescidi, fotoğraf 3",
-            "en": "Kalecik Masjid, photo 3"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -7290,6 +7293,16 @@
       ],
       "gorseller": [
         {
+          "dosya": "/gorseller/konya/emir-halil-camii-konya/03.webp",
+          "alt": {
+            "tr": "Emir Halil Camii, fotoğraf 3",
+            "en": "Emir Halil Mosque, photo 3"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1"
+        },
+        {
           "dosya": "/gorseller/konya/emir-halil-camii-konya/01.webp",
           "alt": {
             "tr": "Emir Halil Camii, fotoğraf 1",
@@ -7304,16 +7317,6 @@
           "alt": {
             "tr": "Emir Halil Camii, fotoğraf 2",
             "en": "Emir Halil Mosque, photo 2"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/konya/emir-halil-camii-konya/03.webp",
-          "alt": {
-            "tr": "Emir Halil Camii, fotoğraf 3",
-            "en": "Emir Halil Mosque, photo 3"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -8241,6 +8244,17 @@
       ],
       "gorseller": [
         {
+          "dosya": "/gorseller/konya/erdemsah-kale-i-cerp-mescidi-konya/03.webp",
+          "alt": {
+            "tr": "Erdemşah (Kale-i Cerp) Mescidi, fotoğraf 3",
+            "en": "Erdemşah (Kale-i Cerp) Masjid, photo 3"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 55%"
+        },
+        {
           "dosya": "/gorseller/konya/erdemsah-kale-i-cerp-mescidi-konya/01.webp",
           "alt": {
             "tr": "Erdemşah (Kale-i Cerp) Mescidi, fotoğraf 1",
@@ -8255,16 +8269,6 @@
           "alt": {
             "tr": "Erdemşah (Kale-i Cerp) Mescidi, fotoğraf 2",
             "en": "Erdemşah (Kale-i Cerp) Masjid, photo 2"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/konya/erdemsah-kale-i-cerp-mescidi-konya/03.webp",
-          "alt": {
-            "tr": "Erdemşah (Kale-i Cerp) Mescidi, fotoğraf 3",
-            "en": "Erdemşah (Kale-i Cerp) Masjid, photo 3"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -8840,20 +8844,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/nuriye-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/nuriye-camii-konya/02.webp",
           "alt": {
-            "tr": "Nuriye Camii, fotoğraf 1",
-            "en": "Nuriye Mosque, photo 1"
+            "tr": "Nuriye Camii, fotoğraf 2",
+            "en": "Nuriye Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/nuriye-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/nuriye-camii-konya/01.webp",
           "alt": {
-            "tr": "Nuriye Camii, fotoğraf 2",
-            "en": "Nuriye Mosque, photo 2"
+            "tr": "Nuriye Camii, fotoğraf 1",
+            "en": "Nuriye Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -9713,20 +9717,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/garip-nasrullah-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/garip-nasrullah-camii-konya/02.webp",
           "alt": {
-            "tr": "Garip Nasrullah Camii, fotoğraf 1",
-            "en": "Garip Nasrullah Mosque, photo 1"
+            "tr": "Garip Nasrullah Camii, fotoğraf 2",
+            "en": "Garip Nasrullah Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/garip-nasrullah-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/garip-nasrullah-camii-konya/01.webp",
           "alt": {
-            "tr": "Garip Nasrullah Camii, fotoğraf 2",
-            "en": "Garip Nasrullah Mosque, photo 2"
+            "tr": "Garip Nasrullah Camii, fotoğraf 1",
+            "en": "Garip Nasrullah Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -10098,20 +10102,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/obruk-koyu-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/obruk-koyu-camii-konya/02.webp",
           "alt": {
-            "tr": "Obruk Köyü Camii, fotoğraf 1",
-            "en": "Obruk Village Mosque, photo 1"
+            "tr": "Obruk Köyü Camii, fotoğraf 2",
+            "en": "Obruk Village Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/obruk-koyu-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/obruk-koyu-camii-konya/01.webp",
           "alt": {
-            "tr": "Obruk Köyü Camii, fotoğraf 2",
-            "en": "Obruk Village Mosque, photo 2"
+            "tr": "Obruk Köyü Camii, fotoğraf 1",
+            "en": "Obruk Village Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -10648,20 +10652,21 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/igdeli-sultan-camii-konya/01.webp",
-          "alt": {
-            "tr": "İğdeli Sultan Camii, fotoğraf 1",
-            "en": "İğdeli Sultan Mosque, photo 1"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
           "dosya": "/gorseller/konya/igdeli-sultan-camii-konya/02.webp",
           "alt": {
             "tr": "İğdeli Sultan Camii, fotoğraf 2",
             "en": "İğdeli Sultan Mosque, photo 2"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 55%"
+        },
+        {
+          "dosya": "/gorseller/konya/igdeli-sultan-camii-konya/01.webp",
+          "alt": {
+            "tr": "İğdeli Sultan Camii, fotoğraf 1",
+            "en": "İğdeli Sultan Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -11366,20 +11371,21 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/cukur-camii-konya/01.webp",
-          "alt": {
-            "tr": "Çukur Camii, fotoğraf 1",
-            "en": "Çukur Mosque, photo 1"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
           "dosya": "/gorseller/konya/cukur-camii-konya/02.webp",
           "alt": {
             "tr": "Çukur Camii, fotoğraf 2",
             "en": "Çukur Mosque, photo 2"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 60%"
+        },
+        {
+          "dosya": "/gorseller/konya/cukur-camii-konya/01.webp",
+          "alt": {
+            "tr": "Çukur Camii, fotoğraf 1",
+            "en": "Çukur Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -11523,20 +11529,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/toraman-mescidi-konya/01.webp",
+          "dosya": "/gorseller/konya/toraman-mescidi-konya/02.webp",
           "alt": {
-            "tr": "Toraman Mescidi, fotoğraf 1",
-            "en": "Toraman Masjid, photo 1"
+            "tr": "Toraman Mescidi, fotoğraf 2",
+            "en": "Toraman Masjid, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/toraman-mescidi-konya/02.webp",
+          "dosya": "/gorseller/konya/toraman-mescidi-konya/01.webp",
           "alt": {
-            "tr": "Toraman Mescidi, fotoğraf 2",
-            "en": "Toraman Masjid, photo 2"
+            "tr": "Toraman Mescidi, fotoğraf 1",
+            "en": "Toraman Masjid, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -12624,20 +12630,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/kinaci-camii-mescit-konya/01.webp",
+          "dosya": "/gorseller/konya/kinaci-camii-mescit-konya/02.webp",
           "alt": {
-            "tr": "Kınacı Camii (Mescit), fotoğraf 1",
-            "en": "Kınacı Mosque (Masjid), photo 1"
+            "tr": "Kınacı Camii (Mescit), fotoğraf 2",
+            "en": "Kınacı Mosque (Masjid), photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/kinaci-camii-mescit-konya/02.webp",
+          "dosya": "/gorseller/konya/kinaci-camii-mescit-konya/01.webp",
           "alt": {
-            "tr": "Kınacı Camii (Mescit), fotoğraf 2",
-            "en": "Kınacı Mosque (Masjid), photo 2"
+            "tr": "Kınacı Camii (Mescit), fotoğraf 1",
+            "en": "Kınacı Mosque (Masjid), photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -13012,20 +13018,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/sitte-i-banu-mescidi-konya/01.webp",
+          "dosya": "/gorseller/konya/sitte-i-banu-mescidi-konya/02.webp",
           "alt": {
-            "tr": "Sitte-i Banu Mescidi, fotoğraf 1",
-            "en": "Sitte-i Banu Masjid, photo 1"
+            "tr": "Sitte-i Banu Mescidi, fotoğraf 2",
+            "en": "Sitte-i Banu Masjid, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/sitte-i-banu-mescidi-konya/02.webp",
+          "dosya": "/gorseller/konya/sitte-i-banu-mescidi-konya/01.webp",
           "alt": {
-            "tr": "Sitte-i Banu Mescidi, fotoğraf 2",
-            "en": "Sitte-i Banu Masjid, photo 2"
+            "tr": "Sitte-i Banu Mescidi, fotoğraf 1",
+            "en": "Sitte-i Banu Masjid, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -13749,20 +13755,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/cimilli-sari-mescidi-konya/01.webp",
+          "dosya": "/gorseller/konya/cimilli-sari-mescidi-konya/02.webp",
           "alt": {
-            "tr": "Cimilli (Sarı) Mescidi, fotoğraf 1",
-            "en": "Cimilli (Sarı) Masjid, photo 1"
+            "tr": "Cimilli (Sarı) Mescidi, fotoğraf 2",
+            "en": "Cimilli (Sarı) Masjid, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/cimilli-sari-mescidi-konya/02.webp",
+          "dosya": "/gorseller/konya/cimilli-sari-mescidi-konya/01.webp",
           "alt": {
-            "tr": "Cimilli (Sarı) Mescidi, fotoğraf 2",
-            "en": "Cimilli (Sarı) Masjid, photo 2"
+            "tr": "Cimilli (Sarı) Mescidi, fotoğraf 1",
+            "en": "Cimilli (Sarı) Masjid, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -14356,6 +14362,17 @@
       ],
       "gorseller": [
         {
+          "dosya": "/gorseller/konya/sari-yakup-camii-konya/03.webp",
+          "alt": {
+            "tr": "Sarı Yakup Camii, fotoğraf 3",
+            "en": "Sarı Yakup Mosque, photo 3"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 40%"
+        },
+        {
           "dosya": "/gorseller/konya/sari-yakup-camii-konya/01.webp",
           "alt": {
             "tr": "Sarı Yakup Camii, fotoğraf 1",
@@ -14370,16 +14387,6 @@
           "alt": {
             "tr": "Sarı Yakup Camii, fotoğraf 2",
             "en": "Sarı Yakup Mosque, photo 2"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/konya/sari-yakup-camii-konya/03.webp",
-          "alt": {
-            "tr": "Sarı Yakup Camii, fotoğraf 3",
-            "en": "Sarı Yakup Mosque, photo 3"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -14520,20 +14527,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/haci-mustafa-aga-koprubasi-mustafa-aga-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/haci-mustafa-aga-koprubasi-mustafa-aga-camii-konya/02.webp",
           "alt": {
-            "tr": "Hacı Mustafa Ağa (Köprübaşı Mustafa Ağa) Camii, fotoğraf 1",
-            "en": "Hacı Mustafa Ağa (Köprübaşı Mustafa Ağa) Mosque, photo 1"
+            "tr": "Hacı Mustafa Ağa (Köprübaşı Mustafa Ağa) Camii, fotoğraf 2",
+            "en": "Hacı Mustafa Ağa (Köprübaşı Mustafa Ağa) Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/haci-mustafa-aga-koprubasi-mustafa-aga-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/haci-mustafa-aga-koprubasi-mustafa-aga-camii-konya/01.webp",
           "alt": {
-            "tr": "Hacı Mustafa Ağa (Köprübaşı Mustafa Ağa) Camii, fotoğraf 2",
-            "en": "Hacı Mustafa Ağa (Köprübaşı Mustafa Ağa) Mosque, photo 2"
+            "tr": "Hacı Mustafa Ağa (Köprübaşı Mustafa Ağa) Camii, fotoğraf 1",
+            "en": "Hacı Mustafa Ağa (Köprübaşı Mustafa Ağa) Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -14713,20 +14720,21 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/asmali-hatip-sultan-mescidi-konya/01.webp",
-          "alt": {
-            "tr": "Asmalı Hatip Sultan Mescidi, fotoğraf 1",
-            "en": "Asmalı Hatip Sultan Masjid, photo 1"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
           "dosya": "/gorseller/konya/asmali-hatip-sultan-mescidi-konya/02.webp",
           "alt": {
             "tr": "Asmalı Hatip Sultan Mescidi, fotoğraf 2",
             "en": "Asmalı Hatip Sultan Masjid, photo 2"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 65%"
+        },
+        {
+          "dosya": "/gorseller/konya/asmali-hatip-sultan-mescidi-konya/01.webp",
+          "alt": {
+            "tr": "Asmalı Hatip Sultan Mescidi, fotoğraf 1",
+            "en": "Asmalı Hatip Sultan Masjid, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -14920,20 +14928,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/pisili-pir-esat-mescit-ve-turbesi-konya/01.webp",
+          "dosya": "/gorseller/konya/pisili-pir-esat-mescit-ve-turbesi-konya/02.webp",
           "alt": {
-            "tr": "Pisili (Pir Esat) Mescit ve Türbesi, fotoğraf 1",
-            "en": "Pisili (Pir Esat) Masjid and Tomb, photo 1"
+            "tr": "Pisili (Pir Esat) Mescit ve Türbesi, fotoğraf 2",
+            "en": "Pisili (Pir Esat) Masjid and Tomb, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/pisili-pir-esat-mescit-ve-turbesi-konya/02.webp",
+          "dosya": "/gorseller/konya/pisili-pir-esat-mescit-ve-turbesi-konya/01.webp",
           "alt": {
-            "tr": "Pisili (Pir Esat) Mescit ve Türbesi, fotoğraf 2",
-            "en": "Pisili (Pir Esat) Masjid and Tomb, photo 2"
+            "tr": "Pisili (Pir Esat) Mescit ve Türbesi, fotoğraf 1",
+            "en": "Pisili (Pir Esat) Masjid and Tomb, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -15077,20 +15085,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/mengene-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/mengene-camii-konya/02.webp",
           "alt": {
-            "tr": "Mengene Camii, fotoğraf 1",
-            "en": "Mengene Mosque, photo 1"
+            "tr": "Mengene Camii, fotoğraf 2",
+            "en": "Mengene Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/mengene-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/mengene-camii-konya/01.webp",
           "alt": {
-            "tr": "Mengene Camii, fotoğraf 2",
-            "en": "Mengene Mosque, photo 2"
+            "tr": "Mengene Camii, fotoğraf 1",
+            "en": "Mengene Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -15202,7 +15210,8 @@
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 72%"
         },
         {
           "dosya": "/gorseller/konya/alemdar-camii-konya/02.webp",
@@ -16467,20 +16476,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/hanedan-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/hanedan-camii-konya/02.webp",
           "alt": {
-            "tr": "Hanedan Camii, fotoğraf 1",
-            "en": "Hanedan Mosque, photo 1"
+            "tr": "Hanedan Camii, fotoğraf 2",
+            "en": "Hanedan Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/hanedan-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/hanedan-camii-konya/01.webp",
           "alt": {
-            "tr": "Hanedan Camii, fotoğraf 2",
-            "en": "Hanedan Mosque, photo 2"
+            "tr": "Hanedan Camii, fotoğraf 1",
+            "en": "Hanedan Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -16654,20 +16663,21 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/cayir-camii-konya/01.webp",
-          "alt": {
-            "tr": "Çayır Camii, fotoğraf 1",
-            "en": "Çayır Mosque, photo 1"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
           "dosya": "/gorseller/konya/cayir-camii-konya/02.webp",
           "alt": {
             "tr": "Çayır Camii, fotoğraf 2",
             "en": "Çayır Mosque, photo 2"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 60%"
+        },
+        {
+          "dosya": "/gorseller/konya/cayir-camii-konya/01.webp",
+          "alt": {
+            "tr": "Çayır Camii, fotoğraf 1",
+            "en": "Çayır Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -17382,6 +17392,16 @@
       ],
       "gorseller": [
         {
+          "dosya": "/gorseller/konya/topraklik-hasan-efendi-camii-konya/03.webp",
+          "alt": {
+            "tr": "Topraklık Hasan Efendi Camii, fotoğraf 3",
+            "en": "Topraklık Hasan Efendi Mosque, photo 3"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1"
+        },
+        {
           "dosya": "/gorseller/konya/topraklik-hasan-efendi-camii-konya/01.webp",
           "alt": {
             "tr": "Topraklık Hasan Efendi Camii, fotoğraf 1",
@@ -17396,16 +17416,6 @@
           "alt": {
             "tr": "Topraklık Hasan Efendi Camii, fotoğraf 2",
             "en": "Topraklık Hasan Efendi Mosque, photo 2"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/konya/topraklik-hasan-efendi-camii-konya/03.webp",
-          "alt": {
-            "tr": "Topraklık Hasan Efendi Camii, fotoğraf 3",
-            "en": "Topraklık Hasan Efendi Mosque, photo 3"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -17936,20 +17946,21 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/halkabegus-mescidi-ve-turbesi-konya/01.webp",
-          "alt": {
-            "tr": "Halkabegüş Mescidi ve Türbesi, fotoğraf 1",
-            "en": "Halkabegüş Masjid and Tomb, photo 1"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
           "dosya": "/gorseller/konya/halkabegus-mescidi-ve-turbesi-konya/02.webp",
           "alt": {
             "tr": "Halkabegüş Mescidi ve Türbesi, fotoğraf 2",
             "en": "Halkabegüş Masjid and Tomb, photo 2"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 45%"
+        },
+        {
+          "dosya": "/gorseller/konya/halkabegus-mescidi-ve-turbesi-konya/01.webp",
+          "alt": {
+            "tr": "Halkabegüş Mescidi ve Türbesi, fotoğraf 1",
+            "en": "Halkabegüş Masjid and Tomb, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -18143,20 +18154,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/tolluoglu-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/tolluoglu-camii-konya/02.webp",
           "alt": {
-            "tr": "Tolluoğlu Camii, fotoğraf 1",
-            "en": "Tolluoğlu Mosque, photo 1"
+            "tr": "Tolluoğlu Camii, fotoğraf 2",
+            "en": "Tolluoğlu Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/tolluoglu-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/tolluoglu-camii-konya/01.webp",
           "alt": {
-            "tr": "Tolluoğlu Camii, fotoğraf 2",
-            "en": "Tolluoğlu Mosque, photo 2"
+            "tr": "Tolluoğlu Camii, fotoğraf 1",
+            "en": "Tolluoğlu Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -18895,20 +18906,21 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/ak-sazi-bey-camii-konya/01.webp",
-          "alt": {
-            "tr": "Ak (Şazi Bey) Camii, fotoğraf 1",
-            "en": "Ak (Şazi Bey) Mosque, photo 1"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
           "dosya": "/gorseller/konya/ak-sazi-bey-camii-konya/02.webp",
           "alt": {
             "tr": "Ak (Şazi Bey) Camii, fotoğraf 2",
             "en": "Ak (Şazi Bey) Mosque, photo 2"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 25%"
+        },
+        {
+          "dosya": "/gorseller/konya/ak-sazi-bey-camii-konya/01.webp",
+          "alt": {
+            "tr": "Ak (Şazi Bey) Camii, fotoğraf 1",
+            "en": "Ak (Şazi Bey) Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -20180,20 +20192,21 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/kurucay-eski-camii-konya/01.webp",
-          "alt": {
-            "tr": "Kuruçay Eski Camii, fotoğraf 1",
-            "en": "Kuruçay Old Mosque, photo 1"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
           "dosya": "/gorseller/konya/kurucay-eski-camii-konya/02.webp",
           "alt": {
             "tr": "Kuruçay Eski Camii, fotoğraf 2",
             "en": "Kuruçay Old Mosque, photo 2"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 55%"
+        },
+        {
+          "dosya": "/gorseller/konya/kurucay-eski-camii-konya/01.webp",
+          "alt": {
+            "tr": "Kuruçay Eski Camii, fotoğraf 1",
+            "en": "Kuruçay Old Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -21488,20 +21501,21 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/guduk-minare-camii-konya/01.webp",
-          "alt": {
-            "tr": "Güdük Minare Camii, fotoğraf 1",
-            "en": "Güdük Minare Mosque, photo 1"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
           "dosya": "/gorseller/konya/guduk-minare-camii-konya/02.webp",
           "alt": {
             "tr": "Güdük Minare Camii, fotoğraf 2",
             "en": "Güdük Minare Mosque, photo 2"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 60%"
+        },
+        {
+          "dosya": "/gorseller/konya/guduk-minare-camii-konya/01.webp",
+          "alt": {
+            "tr": "Güdük Minare Camii, fotoğraf 1",
+            "en": "Güdük Minare Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -22174,6 +22188,17 @@
       ],
       "gorseller": [
         {
+          "dosya": "/gorseller/konya/iplikci-ambardar-kerim-aga-camii-konya/04.webp",
+          "alt": {
+            "tr": "İplikçi (Ambardar Kerim Ağa) Camii, fotoğraf 4",
+            "en": "İplikçi (Ambardar Kerim Ağa) Mosque, photo 4"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 60%"
+        },
+        {
           "dosya": "/gorseller/konya/iplikci-ambardar-kerim-aga-camii-konya/01.webp",
           "alt": {
             "tr": "İplikçi (Ambardar Kerim Ağa) Camii, fotoğraf 1",
@@ -22198,16 +22223,6 @@
           "alt": {
             "tr": "İplikçi (Ambardar Kerim Ağa) Camii, fotoğraf 3",
             "en": "İplikçi (Ambardar Kerim Ağa) Mosque, photo 3"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/konya/iplikci-ambardar-kerim-aga-camii-konya/04.webp",
-          "alt": {
-            "tr": "İplikçi (Ambardar Kerim Ağa) Camii, fotoğraf 4",
-            "en": "İplikçi (Ambardar Kerim Ağa) Mosque, photo 4"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -22381,20 +22396,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/kalayci-mescidi-konya/01.webp",
+          "dosya": "/gorseller/konya/kalayci-mescidi-konya/02.webp",
           "alt": {
-            "tr": "Kalaycı Mescidi, fotoğraf 1",
-            "en": "Kalaycı Masjid, photo 1"
+            "tr": "Kalaycı Mescidi, fotoğraf 2",
+            "en": "Kalaycı Masjid, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/kalayci-mescidi-konya/02.webp",
+          "dosya": "/gorseller/konya/kalayci-mescidi-konya/01.webp",
           "alt": {
-            "tr": "Kalaycı Mescidi, fotoğraf 2",
-            "en": "Kalaycı Masjid, photo 2"
+            "tr": "Kalaycı Mescidi, fotoğraf 1",
+            "en": "Kalaycı Masjid, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -24055,20 +24070,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/bayindir-koyu-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/bayindir-koyu-camii-konya/02.webp",
           "alt": {
-            "tr": "Bayındır Köyü Camii, fotoğraf 1",
-            "en": "Bayındır Village Mosque, photo 1"
+            "tr": "Bayındır Köyü Camii, fotoğraf 2",
+            "en": "Bayındır Village Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/bayindir-koyu-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/bayindir-koyu-camii-konya/01.webp",
           "alt": {
-            "tr": "Bayındır Köyü Camii, fotoğraf 2",
-            "en": "Bayındır Village Mosque, photo 2"
+            "tr": "Bayındır Köyü Camii, fotoğraf 1",
+            "en": "Bayındır Village Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -24732,20 +24747,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/gedik-ahmet-pasa-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/gedik-ahmet-pasa-camii-konya/02.webp",
           "alt": {
-            "tr": "Gedik Ahmet Paşa Camii, fotoğraf 1",
-            "en": "Gedik Ahmet Paşa Mosque, photo 1"
+            "tr": "Gedik Ahmet Paşa Camii, fotoğraf 2",
+            "en": "Gedik Ahmet Paşa Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/gedik-ahmet-pasa-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/gedik-ahmet-pasa-camii-konya/01.webp",
           "alt": {
-            "tr": "Gedik Ahmet Paşa Camii, fotoğraf 2",
-            "en": "Gedik Ahmet Paşa Mosque, photo 2"
+            "tr": "Gedik Ahmet Paşa Camii, fotoğraf 1",
+            "en": "Gedik Ahmet Paşa Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -25684,6 +25699,17 @@
       ],
       "gorseller": [
         {
+          "dosya": "/gorseller/konya/sogut-buyuk-cami-konya/03.webp",
+          "alt": {
+            "tr": "Söğüt Büyük Cami, fotoğraf 3",
+            "en": "Söğüt Great Mosque, photo 3"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 55%"
+        },
+        {
           "dosya": "/gorseller/konya/sogut-buyuk-cami-konya/01.webp",
           "alt": {
             "tr": "Söğüt Büyük Cami, fotoğraf 1",
@@ -25698,16 +25724,6 @@
           "alt": {
             "tr": "Söğüt Büyük Cami, fotoğraf 2",
             "en": "Söğüt Great Mosque, photo 2"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/konya/sogut-buyuk-cami-konya/03.webp",
-          "alt": {
-            "tr": "Söğüt Büyük Cami, fotoğraf 3",
-            "en": "Söğüt Great Mosque, photo 3"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -26917,20 +26933,21 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/orta-camii-konya/01.webp",
-          "alt": {
-            "tr": "Orta Camii, fotoğraf 1",
-            "en": "Orta Mosque, photo 1"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
           "dosya": "/gorseller/konya/orta-camii-konya/02.webp",
           "alt": {
             "tr": "Orta Camii, fotoğraf 2",
             "en": "Orta Mosque, photo 2"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 55%"
+        },
+        {
+          "dosya": "/gorseller/konya/orta-camii-konya/01.webp",
+          "alt": {
+            "tr": "Orta Camii, fotoğraf 1",
+            "en": "Orta Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -27308,20 +27325,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/ayaslar-ulu-yukari-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/ayaslar-ulu-yukari-camii-konya/02.webp",
           "alt": {
-            "tr": "Ayaslar Ulu (Yukarı) Camii, fotoğraf 1",
-            "en": "Ayaslar Grand (Yukarı) Mosque, photo 1"
+            "tr": "Ayaslar Ulu (Yukarı) Camii, fotoğraf 2",
+            "en": "Ayaslar Grand (Yukarı) Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/ayaslar-ulu-yukari-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/ayaslar-ulu-yukari-camii-konya/01.webp",
           "alt": {
-            "tr": "Ayaslar Ulu (Yukarı) Camii, fotoğraf 2",
-            "en": "Ayaslar Grand (Yukarı) Mosque, photo 2"
+            "tr": "Ayaslar Ulu (Yukarı) Camii, fotoğraf 1",
+            "en": "Ayaslar Grand (Yukarı) Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -27913,20 +27930,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/agalar-boyaci-ali-mescidi-konya/01.webp",
+          "dosya": "/gorseller/konya/agalar-boyaci-ali-mescidi-konya/02.webp",
           "alt": {
-            "tr": "Ağalar (Boyacı Ali) Mescidi, fotoğraf 1",
-            "en": "Ağalar (Boyacı Ali) Masjid, photo 1"
+            "tr": "Ağalar (Boyacı Ali) Mescidi, fotoğraf 2",
+            "en": "Ağalar (Boyacı Ali) Masjid, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/agalar-boyaci-ali-mescidi-konya/02.webp",
+          "dosya": "/gorseller/konya/agalar-boyaci-ali-mescidi-konya/01.webp",
           "alt": {
-            "tr": "Ağalar (Boyacı Ali) Mescidi, fotoğraf 2",
-            "en": "Ağalar (Boyacı Ali) Masjid, photo 2"
+            "tr": "Ağalar (Boyacı Ali) Mescidi, fotoğraf 1",
+            "en": "Ağalar (Boyacı Ali) Masjid, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -28530,20 +28547,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/ulu-kible-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/ulu-kible-camii-konya/02.webp",
           "alt": {
-            "tr": "Ulu (Kıble) Camii, fotoğraf 1",
-            "en": "Grand (Kıble) Mosque, photo 1"
+            "tr": "Ulu (Kıble) Camii, fotoğraf 2",
+            "en": "Grand (Kıble) Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/ulu-kible-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/ulu-kible-camii-konya/01.webp",
           "alt": {
-            "tr": "Ulu (Kıble) Camii, fotoğraf 2",
-            "en": "Grand (Kıble) Mosque, photo 2"
+            "tr": "Ulu (Kıble) Camii, fotoğraf 1",
+            "en": "Grand (Kıble) Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -29836,6 +29853,17 @@
       ],
       "gorseller": [
         {
+          "dosya": "/gorseller/konya/pir-huseyin-ulu-cukur-camii-konya/03.webp",
+          "alt": {
+            "tr": "Pir Hüseyin (Ulu - Çukur) Camii, fotoğraf 3",
+            "en": "Pir Hüseyin (Grand - Çukur) Mosque, photo 3"
+          },
+          "lisans": "Tüm hakları saklıdır",
+          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
+          "kaynak_id": "vk-konya-envanter-c1",
+          "odak": "50% 65%"
+        },
+        {
           "dosya": "/gorseller/konya/pir-huseyin-ulu-cukur-camii-konya/01.webp",
           "alt": {
             "tr": "Pir Hüseyin (Ulu - Çukur) Camii, fotoğraf 1",
@@ -29850,16 +29878,6 @@
           "alt": {
             "tr": "Pir Hüseyin (Ulu - Çukur) Camii, fotoğraf 2",
             "en": "Pir Hüseyin (Grand - Çukur) Mosque, photo 2"
-          },
-          "lisans": "Tüm hakları saklıdır",
-          "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
-          "kaynak_id": "vk-konya-envanter-c1"
-        },
-        {
-          "dosya": "/gorseller/konya/pir-huseyin-ulu-cukur-camii-konya/03.webp",
-          "alt": {
-            "tr": "Pir Hüseyin (Ulu - Çukur) Camii, fotoğraf 3",
-            "en": "Pir Hüseyin (Grand - Çukur) Mosque, photo 3"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -30372,20 +30390,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/cavundur-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/cavundur-camii-konya/02.webp",
           "alt": {
-            "tr": "Çavundur Camii, fotoğraf 1",
-            "en": "Çavundur Mosque, photo 1"
+            "tr": "Çavundur Camii, fotoğraf 2",
+            "en": "Çavundur Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/cavundur-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/cavundur-camii-konya/01.webp",
           "alt": {
-            "tr": "Çavundur Camii, fotoğraf 2",
-            "en": "Çavundur Mosque, photo 2"
+            "tr": "Çavundur Camii, fotoğraf 1",
+            "en": "Çavundur Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -30988,20 +31006,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/kabacali-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/kabacali-camii-konya/02.webp",
           "alt": {
-            "tr": "Kabacalı Camii, fotoğraf 1",
-            "en": "Kabacalı Mosque, photo 1"
+            "tr": "Kabacalı Camii, fotoğraf 2",
+            "en": "Kabacalı Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/kabacali-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/kabacali-camii-konya/01.webp",
           "alt": {
-            "tr": "Kabacalı Camii, fotoğraf 2",
-            "en": "Kabacalı Mosque, photo 2"
+            "tr": "Kabacalı Camii, fotoğraf 1",
+            "en": "Kabacalı Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -31389,20 +31407,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/pinarbasi-camii-konya/01.webp",
+          "dosya": "/gorseller/konya/pinarbasi-camii-konya/02.webp",
           "alt": {
-            "tr": "Pınarbaşı Camii, fotoğraf 1",
-            "en": "Pınarbaşı Mosque, photo 1"
+            "tr": "Pınarbaşı Camii, fotoğraf 2",
+            "en": "Pınarbaşı Mosque, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c1"
         },
         {
-          "dosya": "/gorseller/konya/pinarbasi-camii-konya/02.webp",
+          "dosya": "/gorseller/konya/pinarbasi-camii-konya/01.webp",
           "alt": {
-            "tr": "Pınarbaşı Camii, fotoğraf 2",
-            "en": "Pınarbaşı Mosque, photo 2"
+            "tr": "Pınarbaşı Camii, fotoğraf 1",
+            "en": "Pınarbaşı Mosque, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -34073,20 +34091,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/sircali-medrese-konya/01.webp",
+          "dosya": "/gorseller/konya/sircali-medrese-konya/02.webp",
           "alt": {
-            "tr": "Sırçalı Medrese, fotoğraf 1",
-            "en": "Sırçalı Madrasa, photo 1"
+            "tr": "Sırçalı Medrese, fotoğraf 2",
+            "en": "Sırçalı Madrasa, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c2"
         },
         {
-          "dosya": "/gorseller/konya/sircali-medrese-konya/02.webp",
+          "dosya": "/gorseller/konya/sircali-medrese-konya/01.webp",
           "alt": {
-            "tr": "Sırçalı Medrese, fotoğraf 2",
-            "en": "Sırçalı Madrasa, photo 2"
+            "tr": "Sırçalı Medrese, fotoğraf 1",
+            "en": "Sırçalı Madrasa, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -37866,20 +37884,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/arap-dede-turbesi-konya/01.webp",
+          "dosya": "/gorseller/konya/arap-dede-turbesi-konya/02.webp",
           "alt": {
-            "tr": "Arap Dede Türbesi, fotoğraf 1",
-            "en": "Arap Dede Tomb, photo 1"
+            "tr": "Arap Dede Türbesi, fotoğraf 2",
+            "en": "Arap Dede Tomb, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c2"
         },
         {
-          "dosya": "/gorseller/konya/arap-dede-turbesi-konya/02.webp",
+          "dosya": "/gorseller/konya/arap-dede-turbesi-konya/01.webp",
           "alt": {
-            "tr": "Arap Dede Türbesi, fotoğraf 2",
-            "en": "Arap Dede Tomb, photo 2"
+            "tr": "Arap Dede Türbesi, fotoğraf 1",
+            "en": "Arap Dede Tomb, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -38168,20 +38186,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/ishak-pasa-turbesi-konya/01.webp",
+          "dosya": "/gorseller/konya/ishak-pasa-turbesi-konya/02.webp",
           "alt": {
-            "tr": "İshak Paşa Türbesi, fotoğraf 1",
-            "en": "İshak Paşa Tomb, photo 1"
+            "tr": "İshak Paşa Türbesi, fotoğraf 2",
+            "en": "İshak Paşa Tomb, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c2"
         },
         {
-          "dosya": "/gorseller/konya/ishak-pasa-turbesi-konya/02.webp",
+          "dosya": "/gorseller/konya/ishak-pasa-turbesi-konya/01.webp",
           "alt": {
-            "tr": "İshak Paşa Türbesi, fotoğraf 2",
-            "en": "İshak Paşa Tomb, photo 2"
+            "tr": "İshak Paşa Türbesi, fotoğraf 1",
+            "en": "İshak Paşa Tomb, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
@@ -47265,20 +47283,20 @@
       ],
       "gorseller": [
         {
-          "dosya": "/gorseller/konya/cagalzade-bedesteni-konya/01.webp",
+          "dosya": "/gorseller/konya/cagalzade-bedesteni-konya/02.webp",
           "alt": {
-            "tr": "Cağalzade Bedesteni, fotoğraf 1",
-            "en": "Cağalzade Bedesten, photo 1"
+            "tr": "Cağalzade Bedesteni, fotoğraf 2",
+            "en": "Cağalzade Bedesten, photo 2"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",
           "kaynak_id": "vk-konya-envanter-c2"
         },
         {
-          "dosya": "/gorseller/konya/cagalzade-bedesteni-konya/02.webp",
+          "dosya": "/gorseller/konya/cagalzade-bedesteni-konya/01.webp",
           "alt": {
-            "tr": "Cağalzade Bedesteni, fotoğraf 2",
-            "en": "Cağalzade Bedesten, photo 2"
+            "tr": "Cağalzade Bedesteni, fotoğraf 1",
+            "en": "Cağalzade Bedesten, photo 1"
           },
           "lisans": "Tüm hakları saklıdır",
           "atif": "Vakıf Katılım, Konya Vakıf Eserleri Envanteri",

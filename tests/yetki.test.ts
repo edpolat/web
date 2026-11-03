@@ -12,7 +12,9 @@ describe("roller ve izinler", () => {
     // 015 tarihçiyi ekler ve kaynak doğrulamayı editörden alır.
     const tarihci = oku("015_tarihci_onayi.sql");
     const silinen = [...tarihci.matchAll(/where rol = '(\w+)' and izin = '([\w.]+)'/g)].map((m) => `${m[1]} ${m[2]}`);
-    const satirlar = [...ciftler(oku("001_roller.sql")), ...ciftler(tarihci.split("-- Sürümde tarihçi aşaması")[0])]
+    // 017 sergi.yonet iznini ekler (yalnız dosyanın başındaki izin satırları).
+    const sergi = oku("017_sergiler.sql").split("create table")[0];
+    const satirlar = [...ciftler(oku("001_roller.sql")), ...ciftler(tarihci.split("-- Sürümde tarihçi aşaması")[0]), ...ciftler(sergi)]
       .filter((x) => !silinen.includes(x))
       .sort();
     const kod = ROLLER.flatMap((r) => ROL_IZINLERI[r].map((i) => `${r} ${i}`)).sort();
@@ -29,6 +31,10 @@ describe("roller ve izinler", () => {
     expect(izinli(kisi("tarihci"), "eser.onayla")).toBe(false);
     expect(izinli(kisi("editor"), "eser.incele")).toBe(false);
     expect(izinli(kisi("editor"), "kaynak.dogrula")).toBe(false);
+    expect(izinli(kisi("editor"), "sergi.yonet")).toBe(true);
+    expect(izinli(kisi("super_admin"), "sergi.yonet")).toBe(true);
+    expect(izinli(kisi("katkici"), "sergi.yonet")).toBe(false);
+    expect(izinli(kisi("tarihci"), "sergi.yonet")).toBe(false);
     expect(IZINLER.some((i) => izinli(kisi("goruntuleyici"), i))).toBe(false);
   });
 

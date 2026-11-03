@@ -28,6 +28,8 @@ export type Gorsel = {
   lisans: string;
   atif: string;
   kaynak_id?: string;
+  /** Kart/kapakta kırpma odağı (CSS object-position), ör. "50% 70%". Yoksa ortası. */
+  odak?: string;
 };
 
 export type Eser = {
@@ -73,7 +75,7 @@ export type IlliEser = Eser & { il: string };
 /** Keşfet kartı için hafif eser: tarihçe ve olgular tarayıcıya gönderilmez. */
 export type KesifEseri = Pick<IlliEser, "id" | "il" | "ad" | "tur" | "ilce" | "banisi" | "konum"> & {
   yil?: number;
-  gorsel?: Pick<Gorsel, "dosya" | "alt">;
+  gorsel?: Pick<Gorsel, "dosya" | "alt" | "odak">;
   gorselSayisi: number;
   kaynakliSayisi: number;
 };

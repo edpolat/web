@@ -84,7 +84,7 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
       {!filtreli && (
         <section className="vitrin" aria-label={v.oneCikan}>
           {oneCikan && (
-            <Link href={`/${dil}/eser/${oneCikan.id}`} className="vitrin-one-cikan" style={{ backgroundImage: `url("${kucukGorsel(oneCikan.gorsel!.dosya)}")` }}>
+            <Link href={`/${dil}/eser/${oneCikan.id}`} className="vitrin-one-cikan" style={{ backgroundImage: `url("${kucukGorsel(oneCikan.gorsel!.dosya)}")`, backgroundPosition: oneCikan.gorsel!.odak }}>
               <small>{v.bugun}</small>
               <b>{metin(oneCikan.ad, dil)}</b>
               <span>{[turAdi(oneCikan.tur), metin(iller.find((i) => i.id === oneCikan.il)?.ad, dil), oneCikan.ilce].filter(Boolean).join(" · ")}</span>
@@ -106,7 +106,7 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
                   key={il.id}
                   type="button"
                   className="vitrin-sehir"
-                  style={foto ? { backgroundImage: `url("${kucukGorsel(foto.dosya)}")` } : undefined}
+                  style={foto ? { backgroundImage: `url("${kucukGorsel(foto.dosya)}")`, backgroundPosition: foto.odak } : undefined}
                   onClick={() => guncelle("il", il.id)}
                 >
                   <b>{metin(il.ad, dil)}</b>
@@ -183,7 +183,7 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
                   >
                     <span className="eser-karti-gorsel">
                       {e.gorsel ? (
-                        <img src={kucukGorsel(e.gorsel.dosya)} alt="" loading="lazy" width={480} height={270} />
+                        <img src={kucukGorsel(e.gorsel.dosya)} alt="" loading="lazy" width={480} height={270} style={e.gorsel.odak ? { objectPosition: e.gorsel.odak } : undefined} />
                       ) : (
                         <span className="gorsel-yok">
                           <Simge ad="yapi" boyut={44} />

@@ -5,11 +5,14 @@
 // İki uygulama oyuna aynı araçları verir; böylece oyun webde ve telefonda aynı davranır:
 //   pullar   → aynı Supabase "pullar" tablosu (telefonda alınan pul webde de görünür, level ve bölge açar)
 //   kaydet/oku → "vakfiye:oyun:" önekiyle cihazda (mobildeki kayitYaz ile aynı anahtarlar)
-//   eserAc   → sitedeki eser sayfası (mobilde Keşfet'teki eser kartı)
+//   eserAc   → sitedeki eser sayfası, yeni sekmede (mobilde Keşfet'teki eser kartı)
 //   eserler  → bu sitenin /api/eserler ucu (aynı köken; yerelde ve önizlemede de o sitenin verisi)
 //   dil      → sayfanın dili; /en/oyun İngilizce açılır (oyuncu oyun içinden değiştirebilir)
 // Tam ekran: oyunun köşesindeki düğme. Tarayıcı destekliyorsa gerçek tam ekran (Fullscreen API),
 // desteklemiyorsa (iPhone Safari) oyun kutusu sayfanın tamamını kaplar. Esc ile çıkılır.
+// Klavye: YouTube'daki gibi F tam ekranı açar/kapatır. Oyun F'yi kullanmıyor; oyun iframe değil, aynı
+// sayfada çizildiği için odak oyunun içindeyken de tuş yakalanır. Yazı alanına yazılırken (ör. oyuncu adı)
+// ve Ctrl/Cmd/Alt kısayollarında devreye girmez.
 // Paketi güncellemek için oyun reposunda `npm run build:gomulu`, çıkan dosyayı public/oyun/'a kopyala.
 import { useRouter } from "next/navigation";
 import Script from "next/script";
@@ -87,6 +90,18 @@ function tamEkrandakiOge(): Element | null {
   return b.fullscreenElement ?? b.webkitFullscreenElement ?? null;
 }
 
+// Yazı yazılan yerlerde F harfi tam ekranı değil, metni değiştirmeli.
+function yaziAlaniMi(hedef: EventTarget | null): boolean {
+  if (!(hedef instanceof HTMLElement)) return false;
+  if (hedef.isContentEditable) return true;
+  if (hedef instanceof HTMLTextAreaElement || hedef instanceof HTMLSelectElement) return true;
+  if (hedef instanceof HTMLInputElement) {
+    // Kaydırıcı, onay kutusu, düğme gibi girişlerde F yazılmaz; oralarda kısayol çalışabilir.
+    return !["range", "checkbox", "radio", "button", "submit", "reset", "color", "file", "image"].includes(hedef.type);
+  }
+  return false;
+}
+
 function TamEkranSimgesi({ acik }: { acik: boolean }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -142,9 +157,17 @@ export default function OyunGomulu({ dil }: { dil: Dil }) {
       kaydet,
       oku,
       eserler: (turler) => eserler(turler, dil),
+      // Eser kartı yeni sekmede açılır; oyun bu sekmede kaldığı yerde bekler.
+      // Tarayıcı açılır pencereyi engellerse aynı sekmede eser sayfasına gidilir.
       eserAc: (id) => {
+        const adres = `/${dil}/eser/${encodeURIComponent(id)}`;
+        const sekme = window.open(adres, "_blank");
+        if (sekme) {
+          sekme.opener = null;
+          return;
+        }
         tamEkrandanCik();
-        router.push(`/${dil}/eser/${encodeURIComponent(id)}`);
+        router.push(adres);
       },
       dil,
     });
@@ -175,6 +198,20 @@ export default function OyunGomulu({ dil }: { dil: Dil }) {
     };
   }, [sayfaTam]);
 
+  // F tuşu: düğmeyle aynı işi yapar. Klavye olayı kullanıcı etkileşimi sayıldığından tarayıcı izin verir.
+  const fTusu = useRef<() => void>(() => {});
+  useEffect(() => {
+    const tus = (e: KeyboardEvent) => {
+      if (e.key.toLocaleLowerCase("tr") !== "f" || e.repeat || e.defaultPrevented || e.isComposing) return;
+      if (e.ctrlKey || e.metaKey || e.altKey) return; // Ctrl/Cmd+F: tarayıcının "sayfada bul"u
+      if (yaziAlaniMi(e.target)) return;
+      e.preventDefault();
+      fTusu.current();
+    };
+    window.addEventListener("keydown", tus);
+    return () => window.removeEventListener("keydown", tus);
+  }, []);
+
   async function tamEkranDegistir() {
     if (tam) return tamEkrandanCik();
     const oge = sahne.current as OnekliOge | null;
@@ -187,6 +224,8 @@ export default function OyunGomulu({ dil }: { dil: Dil }) {
       setSayfaTam(true); // iPhone Safari gibi tarayıcılarda öğe tam ekranı yok
     }
   }
+
+  fTusu.current = () => void tamEkranDegistir();
 
   return (
     <>

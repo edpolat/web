@@ -12,13 +12,9 @@ import { s } from "@/lib/sozluk";
 import { katkilar } from "@/lib/sunucu/kuyruk";
 import { panelKimligi } from "@/lib/sunucu/oturum";
 import { yonetimSifresi } from "@/lib/sunucu/yonetim";
-import { formTaslaklarim } from "@/lib/sunucu/taslak-depo";
 import { izinli, paneldeMi } from "@/lib/yetki";
-import { kaynakListesi } from "@/lib/sunucu/kaynak-depo";
-import { oneriler } from "@/lib/sunucu/oneri-depo";
-import { talepler } from "@/lib/sunucu/talep-depo";
-import { denetimKaydi, surumler } from "@/lib/sunucu/surum-depo";
-import { benimSurumlerim } from "@/lib/sunucu/panel";
+import { denetimKaydi } from "@/lib/sunucu/surum-depo";
+import { panelSayilari } from "@/lib/sunucu/panel-sayilari";
 import { yayindakiIller, yayindakiKaynaklar } from "@/lib/veri";
 
 export const metadata: Metadata = { robots: { index: false } };
@@ -63,19 +59,9 @@ export default async function Yonetim({ params }: { params: Promise<{ dil: strin
     );
   }
   const bekleyen = katkilar().filter((k) => k.durum === "bekliyor").length;
-  const say = <T,>(izin: boolean, sorgu: () => Promise<T[]>) => (izin ? sorgu().then((x) => x.length).catch(() => undefined) : undefined);
   const onaylayan = izinli(ben, "eser.onayla");
-  const tarihci = izinli(ben, "eser.incele");
-  const katkici = izinli(ben, "eser.ekle") || izinli(ben, "eser.duzenle");
-  const [tarihcide, editorde, oneriSayisi, talepSayisi, dogrulanacak, taslaklarim, eserIlleri, kaynakMap, sonKayitlar] = await Promise.all([
-    say(tarihci, () => surumler({ durum: "incelemede" })),
-    say(onaylayan, () => surumler({ durum: "editorde" })),
-    say(tarihci, () => oneriler({ durum: "bekliyor" })),
-    say(tarihci, () => talepler(false)),
-    say(izinli(ben, "kaynak.dogrula"), () => kaynakListesi({ durum: "dogrulanmamis" })),
-    say(katkici, () =>
-      Promise.all([benimSurumlerim().then((x) => x.filter((y) => y.durum === "taslak")), formTaslaklarim()]).then(([a, b]) => [...a, ...b]),
-    ),
+  const [{ tarihcide, editorde, oneri: oneriSayisi, talep: talepSayisi, dogrulanacak, taslaklarim }, eserIlleri, kaynakMap, sonKayitlar] = await Promise.all([
+    panelSayilari(ben),
     yayindakiIller(),
     yayindakiKaynaklar(),
     denetimKaydi(undefined, 8).catch(() => undefined),
@@ -96,7 +82,6 @@ export default async function Yonetim({ params }: { params: Promise<{ dil: strin
   return (
     <section>
       <h1>{t.yonetim}</h1>
-      {kim}
       <p className="not">{t.yonetimAciklama}</p>
       {kutular.length > 0 && (
         <div className="ozet-kutulari">
@@ -109,17 +94,6 @@ export default async function Yonetim({ params }: { params: Promise<{ dil: strin
         </div>
       )}
       <p className="dugmeler">
-        {izinli(ben, "eser.ekle") && (
-          <Link className="dugme" href={`/${dil}/yonetim/eser/yeni`}>
-            + {t.yeniEser}
-          </Link>
-        )}
-        <Link className="dugme ikincil" href={`/${dil}/yonetim/eserler`}>
-          {p.eserler}
-        </Link>
-        <Link className="dugme ikincil" href={`/${dil}/yonetim/kaynaklar`}>
-          {t.kutuphane.baslik}
-        </Link>
         {onaylayan && bekleyen > 0 && (
           <Link className="dugme ikincil" href={`/${dil}/yonetim/onay`}>
             {p.eskiKuyruk}: {t.bekleyen(bekleyen)}
@@ -158,7 +132,6 @@ export default async function Yonetim({ params }: { params: Promise<{ dil: strin
         </>
       )}
       {onaylayan && <DemoDugmeleri dil={dil} kayitZamani={demoKaydiZamani()} />}
-      <CikisDugmesi dil={dil} />
     </section>
   );
 }
