@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { s } from "@/lib/sozluk";
 import Tara from "@/components/Tara";
 import { gecerliDil } from "@/lib/metin";
 import type { Dil } from "@/lib/tipler";
@@ -15,6 +17,9 @@ export default async function TaraSayfasi({ params }: { params: Promise<{ dil: s
   if (!gecerliDil(dil)) notFound();
   return (
     <div className="dar-sayfa">
+      <p className="geri-baglanti">
+        <Link href={`/${dil}/hesap`} scroll={false}>← {s(dil as Dil).hesabim}</Link>
+      </p>
       <Tara
         dil={dil as Dil}
         rotalar={rotalar()}

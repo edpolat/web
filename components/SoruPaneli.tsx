@@ -69,7 +69,11 @@ export default function SoruPaneli({
       <h2 id="sor-baslik">
         <Simge ad="sor" /> {t.sor.baslik}
       </h2>
-      <p className="not">{t.sor.aciklama}</p>
+      <p className="not">{t.sor.kisa}</p>
+      <details className="sor-nasil">
+        <summary>{t.sor.nasil}</summary>
+        <p className="not">{t.sor.aciklama}</p>
+      </details>
 
       <ol className="sohbet" ref={sohbet} aria-live="polite">
         {mesajlar.map((m, i) => (

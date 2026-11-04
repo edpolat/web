@@ -15,9 +15,12 @@ export type Depo = { iller: IlDosyasi[]; tanimlar: Tanimlar };
 const KIMLIK = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 export const gecerliKimlik = (s: unknown): s is string => typeof s === "string" && KIMLIK.test(s);
 
-/** Yönetim panelinde düzenlenebilen üst düzey alanlar. id, olgular ve gorseller düzenlemeyle değişmez. */
+/**
+ * Yönetim panelinde düzenlenebilen üst düzey alanlar. id ve gorseller düzenlemeyle değişmez.
+ * olgular: yalnız mevcut bilgilerin metni düzeltilir ya da bilgi kaldırılır (olgulariDuzenle); kaynak, sayfa, kategori, durum korunur.
+ */
 export const DUZENLENEBILIR = [
-  "ad", "tur", "ilce", "adres", "konum", "donem", "banisi", "mimar", "tarihce", "mimari", "taslak",
+  "ad", "tur", "ilce", "adres", "konum", "donem", "banisi", "mimar", "tarihce", "mimari", "olgular", "taslak",
 ] as const satisfies readonly (keyof Eser)[];
 
 const HARFLER: Record<string, string> = { ç: "c", ğ: "g", ı: "i", ö: "o", ş: "s", ü: "u", â: "a", î: "i", û: "u" };
@@ -53,6 +56,32 @@ function sirali(x: unknown): unknown {
 export const esit = (a: unknown, b: unknown) => JSON.stringify(sirali(a ?? null)) === JSON.stringify(sirali(b ?? null));
 const nesne = (x: unknown): x is Record<string, unknown> => typeof x === "object" && x !== null && !Array.isArray(x);
 const yazi = (x: unknown) => (typeof x === "string" && x.trim() ? x.trim() : undefined);
+
+/**
+ * Eser formundan gelen bilgi listesi: eserdeki olgularla aynı sırada, her öğe { metin: { tr, en? } } ya da null (kaldır).
+ * Yalnız metin değişir; diğer alanlar eserdeki hâlinden alınır. Boşluk farkı değişiklik sayılmaz.
+ * İngilizce değiştiyse "YZ çevirisi" işareti düşer.
+ */
+export function olgulariDuzenle(mevcut: Olgu[], gelen: unknown): Olgu[] {
+  if (!Array.isArray(gelen) || gelen.length !== mevcut.length) {
+    throw new KatkiHatasi("Bilgi listesi eserin şu anki hâliyle uyuşmuyor; sayfayı yenileyip yeniden dene.");
+  }
+  const sonuc: Olgu[] = [];
+  gelen.forEach((g, i) => {
+    if (g === null) return;
+    const o = mevcut[i];
+    const m = nesne(g) && nesne(g.metin) ? g.metin : {};
+    const tr = yazi(m.tr);
+    if (!tr) throw new KatkiHatasi(`${i + 1}. bilginin Türkçe metni boş olamaz; bilgiyi silmek için "kaldır"ı işaretle.`);
+    const en = yazi(m.en);
+    const eskiEn = o.metin.en?.trim();
+    const metin: CokDilli = { tr: tr === o.metin.tr.trim() ? o.metin.tr : tr, ...(en ? { en: en === eskiEn ? o.metin.en! : en } : {}) };
+    const yeni: Olgu = { ...o, metin };
+    if (en !== eskiEn) delete yeni.en_ceviri;
+    sonuc.push(yeni);
+  });
+  return sonuc;
+}
 
 type Secenekler = { yonetici: boolean; simdi: Date; ek: string };
 
@@ -103,7 +132,7 @@ export function katkiOlustur(istek: unknown, depo: Depo, { yonetici, simdi, ek }
       const mevcut = bulunan.eser as Record<string, unknown>;
       for (const alan of DUZENLENEBILIR) {
         if (!(alan in istek.degisiklik)) continue;
-        const yeni = istek.degisiklik[alan];
+        const yeni = alan === "olgular" ? olgulariDuzenle(bulunan.eser.olgular ?? [], istek.degisiklik[alan]) : istek.degisiklik[alan];
         if (esit(yeni, mevcut[alan])) continue;
         degisiklik[alan] = yeni ?? null;
         onceki[alan] = mevcut[alan] ?? null;
@@ -121,7 +150,7 @@ export function katkiOlustur(istek: unknown, depo: Depo, { yonetici, simdi, ek }
     let id = kimlikUret(ad);
     for (let n = 2; eserBul(depo, id); n++) id = `${kimlikUret(ad)}-${n}`;
     const eser: Record<string, unknown> = { id };
-    for (const alan of DUZENLENEBILIR) if (yeni[alan] !== undefined && yeni[alan] !== null) eser[alan] = yeni[alan];
+    for (const alan of DUZENLENEBILIR) if (alan !== "olgular" && yeni[alan] !== undefined && yeni[alan] !== null) eser[alan] = yeni[alan];
     eser.olgular = [];
     eser.envanter = { kaynak_id, ...(sayfa ? { sayfa } : {}) };
     katki.eser_id = id;

@@ -11,6 +11,8 @@ const metinler = {
   tr: {
     tara: {
       sekme: "Tara",
+      pulTara: "Pul tara",
+      buradaysan: "Buradaysan tara",
       baslik: "QR kodu okut",
       alt: "Eserdeki ya da pasaportundaki QR kodu kameraya göster.",
       kameraAc: "Kamerayı aç",
@@ -144,6 +146,8 @@ const metinler = {
   en: {
     tara: {
       sekme: "Scan",
+      pulTara: "Scan a stamp",
+      buradaysan: "At the site? Scan the QR",
       baslik: "Scan a QR code",
       alt: "Hold the QR code on the monument or your passport up to the camera.",
       kameraAc: "Open camera",

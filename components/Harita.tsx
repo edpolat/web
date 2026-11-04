@@ -77,8 +77,6 @@ type IsaretProps = {
   vurgulu: boolean;
   ziyaretli: boolean;
   acik: boolean;
-  /** Yakınlaştırılmış haritada ad sürekli görünür. */
-  adSurekli: boolean;
   ziyaretYazi: string;
   onUzerinde: (id: string) => void;
   onAyrildi: () => void;
@@ -86,7 +84,8 @@ type IsaretProps = {
 };
 
 /**
- * Tek eser işareti. Fare üzerine gelince eser adı hemen görünür; noktaya ya da ada tek tıklamak eser sayfasını açar.
+ * Tek eser işareti. Ad yalnızca fare üzerine gelince (dokunmatikte ilk dokunuşta) görünür; hiçbir yakınlaştırmada
+ * adlar sürekli yazmaz. Noktaya ya da ada tıklamak eser sayfasını açar.
  * Ad kutusu ayrı tutulur (Leaflet'in kendi hover kapatması fare ada geçerken kutuyu kapattığı için).
  */
 const EserIsareti = memo(function EserIsareti(p: IsaretProps) {
@@ -109,13 +108,13 @@ const EserIsareti = memo(function EserIsareti(p: IsaretProps) {
         click: () => p.onTikla(p.id),
       }}
     >
-      {(p.acik || p.adSurekli) && (
+      {p.acik && (
         <Tooltip
           permanent
           interactive
           direction="top"
           offset={[0, p.vurgulu ? -11 : -6]}
-          className={p.adSurekli && !p.acik ? "harita-ad harita-ad-surekli" : "harita-ad"}
+          className="harita-ad"
         >
           <Link
             href={`/${p.dil}/eser/${p.id}`}
@@ -137,15 +136,6 @@ function dokunmatikMi() {
   return typeof window !== "undefined" && window.matchMedia("(hover: none)").matches;
 }
 
-/** Bu yakınlaştırmadan itibaren (mahalle ölçeği) eser adları noktaların üstünde sürekli yazar. */
-const AD_SINIRI = 14;
-
-/** Haritanın yakınlaştırma düzeyini izler. */
-function YakinlikIzle({ onDegisti }: { onDegisti: (z: number) => void }) {
-  useMapEvents({ zoomend: (e) => onDegisti(e.target.getZoom()) });
-  return null;
-}
-
 /** Haritada boş bir yere dokunulunca açık ad kutusunu kapatır (dokunmatik ekranlar için). */
 function BosTiklama({ onTikla }: { onTikla: () => void }) {
   useMapEvents({ click: onTikla });
@@ -160,10 +150,6 @@ export default function Harita({ dil, eserler, merkez, yakinlastirma, yukseklik 
   const [acik, setAcik] = useState<string>();
   const acikRef = useRef<string | undefined>(undefined);
   acikRef.current = acik;
-  const [zoom, setZoom] = useState(yakinlastirma);
-  const adSurekli = zoom >= AD_SINIRI;
-  const adSurekliRef = useRef(adSurekli);
-  adSurekliRef.current = adSurekli;
   const kapatSaati = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(kapatSaati.current), []);
 
@@ -181,8 +167,8 @@ export default function Harita({ dil, eserler, merkez, yakinlastirma, yukseklik 
   }, []);
   const onTikla = useCallback(
     (id: string) => {
-      // Dokunmatik ekranda fare yok: ad zaten yazmıyorsa ilk dokunuş adı gösterir, ada ya da aynı noktaya ikinci dokunuş sayfayı açar.
-      if (dokunmatikMi() && !adSurekliRef.current && acikRef.current !== id) {
+      // Dokunmatik ekranda fare yok: ilk dokunuş adı gösterir, ada ya da aynı noktaya ikinci dokunuş sayfayı açar.
+      if (dokunmatikMi() && acikRef.current !== id) {
         clearTimeout(kapatSaati.current);
         setAcik(id);
         return;
@@ -227,7 +213,6 @@ export default function Harita({ dil, eserler, merkez, yakinlastirma, yukseklik 
       )}
       {araclar && <Konumum dil={dil} />}
       <BosTiklama onTikla={bosTikla} />
-      <YakinlikIzle onDegisti={setZoom} />
       {konumlu.map((e) => (
         <EserIsareti
           key={e.id}
@@ -241,7 +226,6 @@ export default function Harita({ dil, eserler, merkez, yakinlastirma, yukseklik 
           vurgulu={e.id === vurgulu}
           ziyaretli={ziyaret.has(e.id)}
           acik={e.id === acik}
-          adSurekli={adSurekli && !(e.konum!.hassasiyet === "mahalle" || e.konum!.hassasiyet === "ilce")}
           ziyaretYazi={t.ziyaret}
           onUzerinde={onUzerinde}
           onAyrildi={onAyrildi}

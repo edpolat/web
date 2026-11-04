@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import DemoDugmeleri from "@/components/DemoDugmeleri";
+import Muhur from "@/components/Muhur";
 import DenetimTablosu from "@/components/DenetimTablosu";
 import EserSecici from "@/components/EserSecici";
 import { demoKaydiZamani } from "@/lib/sunucu/demo";
@@ -13,7 +14,7 @@ import { katkilar } from "@/lib/sunucu/kuyruk";
 import { panelKimligi } from "@/lib/sunucu/oturum";
 import { yonetimSifresi } from "@/lib/sunucu/yonetim";
 import { izinli, paneldeMi } from "@/lib/yetki";
-import { denetimKaydi } from "@/lib/sunucu/surum-depo";
+import { denetimKaydi, kisiAdlari } from "@/lib/sunucu/surum-depo";
 import { panelSayilari } from "@/lib/sunucu/panel-sayilari";
 import { yayindakiIller, yayindakiKaynaklar } from "@/lib/veri";
 
@@ -26,8 +27,10 @@ export default async function Yonetim({ params }: { params: Promise<{ dil: strin
   const ben = await panelKimligi();
   if (!ben) {
     return (
-      <section className="kart">
+      <section className="kart panel-giris-karti">
         <PanelGirisi dil={dil}>
+          <Muhur boyut={64} className="panel-giris-muhur" />
+          <p className="panel-giris-marka">{t.site}</p>
           <h1>{t.yonetimGiris}</h1>
           <PanelGirisFormu dil={dil} />
           {yonetimSifresi() && (
@@ -66,10 +69,11 @@ export default async function Yonetim({ params }: { params: Promise<{ dil: strin
     yayindakiKaynaklar(),
     denetimKaydi(undefined, 8).catch(() => undefined),
   ]);
-  const hedefler = new Map<string, { ad: string; yol: string }>();
+  const hedefler = new Map<string, { ad: string; yol?: string }>();
   for (const { eserler } of eserIlleri) for (const e of eserler) hedefler.set(e.id, { ad: metin(e.ad, dil), yol: `/${dil}/yonetim/eser/${e.id}/gecmis` });
   for (const k of kaynakMap.values()) hedefler.set(k.id, { ad: k.baslik, yol: `/${dil}/yonetim/kaynaklar/${k.id}` });
   for (const { il } of eserIlleri) hedefler.set(`il:${il.id}`, { ad: metin(il.ad, dil), yol: `/${dil}/yonetim/iller` });
+  if (sonKayitlar) for (const [id, ad] of await kisiAdlari(sonKayitlar)) hedefler.set(id, { ad });
   const p = t.pano;
   const kutular = [
     { sayi: tarihcide, ad: p.tarihciBekleyen, yol: `/${dil}/yonetim/inceleme?tur=eser` },

@@ -14,6 +14,8 @@ type Props = { dil: Dil; eser?: Eser; iller: Secenek[]; turler: Secenek[]; kayna
   ilceler?: Record<string, string[]>;
   /** Tarihçi modu: incelemedeki sürüm düzeltilip editöre gönderilir (taslak yok). */
   tarihciSurum?: { id: number; kaynak_id: string };
+  /** Bilgi kategorisi kimliği → ekrandaki adı (Kaynaklı bilgiler sekmesi). */
+  kategoriler?: Record<string, string>;
 };
 
 const SEKMELER = ["temel", "konum", "gorseller", "kaynaklar"] as const;
@@ -33,9 +35,10 @@ const doluysa = <T extends object>(o: T): T | null => (Object.keys(o).length ? o
  * Yönetim panelinde eser ekleme (eser yoksa) ve düzenleme formu. Yayındaki hâli değiştirmez: düzenleme taslak
  * olarak kaydedilir ya da incelemeye gider; editör onaylayınca yayına geçer (/api/surum). Gönderen, giriş yapan hesaptır.
  * Sekmeler: temel bilgiler, konum, görseller (yalnız görüntüleme) ve kaynaklı bilgiler; hepsi tek formdur.
- * Formda olmayan alanlar (olgular, görseller, mimari künye) olduğu gibi kalır.
+ * Kaynaklı bilgilerin (olgular) metni düzeltilebilir ya da bilgi kaldırılabilir; kaynağı, sayfası, kategorisi değişmez.
+ * Formda olmayan alanlar (görseller, mimari künye) olduğu gibi kalır.
  */
-export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayilanIl, eserIl, ilceler = {}, tarihciSurum }: Props) {
+export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayilanIl, eserIl, ilceler = {}, tarihciSurum, kategoriler = {} }: Props) {
   const t = s(dil);
   const router = useRouter();
   const [kaynak, setKaynak] = useState(tarihciSurum?.kaynak_id ?? "");
@@ -85,6 +88,14 @@ export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayi
       donem: doluysa(donem),
       tarihce: cokDilli(v, "tarihce"),
       mimari: doluysa(mimari),
+      // Eserdeki sırayla: kaldırılan bilgi null, diğerleri yalnız metniyle (sunucu kaynağı vb. eserden alır).
+      ...(eser
+        ? {
+            olgular: eser.olgular.map((_, i) =>
+              v.get(`olgu_${i}_sil`) ? null : { metin: { tr: yazi(v, `olgu_${i}_tr`), en: yazi(v, `olgu_${i}_en`) } },
+            ),
+          }
+        : {}),
       taslak: v.get("taslak") ? true : eser?.taslak === false ? false : null,
     };
   }
@@ -235,6 +246,14 @@ export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayi
         {alan("banisi", t.banisi, eser?.banisi)}
         {alan("mimar", t.mimar, eser?.mimar)}
       </fieldset>
+      {eser && eser.olgular.length > 0 && (
+        <p className="not">
+          {p.metinBilgilerde}{" "}
+          <button type="button" className="ikincil" onClick={() => setSekme("kaynaklar")}>
+            {p.sekmeler.kaynaklar} →
+          </button>
+        </p>
+      )}
       <fieldset>
         <legend>{t.tarihce}</legend>
         {uzun("tarihce_tr", t.tarihceTr, eser?.tarihce?.tr)}
@@ -308,17 +327,31 @@ export default function EserFormu({ dil, eser, iller, turler, kaynaklar, varsayi
       <div role="tabpanel" id="bolum-kaynaklar" aria-labelledby="sekme-kaynaklar" hidden={sekme !== "kaynaklar"}>
         <h2>{p.bilgiler}</h2>
         {eser?.olgular.length ? (
-          <ul className="bilgi-listesi">
+          <>
+            <p className="not">{p.bilgiDuzenleNot}</p>
             {eser.olgular.map((o, i) => (
-              <li key={i}>
-                {o.metin.tr}
-                <br />
-                <small>
-                  {o.kaynak_id ? `${kaynakAdi.get(o.kaynak_id) ?? o.kaynak_id}${o.sayfa ? `, ${t.sayfa} ${o.sayfa}` : ""}` : o.durum}
-                </small>
-              </li>
+              <fieldset key={i} className="form">
+                <legend>
+                  {`${i + 1}. ${kategoriler[o.kategori] ?? o.kategori}`}
+                  {" · "}
+                  <small>
+                    {o.kaynak_id ? `${kaynakAdi.get(o.kaynak_id) ?? o.kaynak_id}${o.sayfa ? `, ${t.sayfa} ${o.sayfa}` : ""}` : o.durum}
+                  </small>
+                </legend>
+                <label>
+                  {p.olguTr}
+                  <textarea name={`olgu_${i}_tr`} defaultValue={o.metin.tr} rows={4} />
+                </label>
+                <label>
+                  {p.olguEn}
+                  <textarea name={`olgu_${i}_en`} defaultValue={o.metin.en ?? ""} rows={4} lang="en" />
+                </label>
+                <label className="secim">
+                  <input type="checkbox" name={`olgu_${i}_sil`} /> {p.olguKaldir}
+                </label>
+              </fieldset>
             ))}
-          </ul>
+          </>
         ) : (
           <p>{p.bilgiYok}</p>
         )}

@@ -74,6 +74,7 @@ export default async function EserDuzenle({
         eserIl={eserIl}
         ilceler={ilceler}
         tarihciSurum={tarihciSurum}
+        kategoriler={Object.fromEntries(ayarlar().olgu_kategorileri.map((k) => [k.id, metin(k.ad, dil)]))}
       />
     </section>
   );

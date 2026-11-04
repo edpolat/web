@@ -56,6 +56,8 @@ export default function ErisimPaneli({ dil }: { dil: Dil }) {
     { alan: "buyukYazi", ad: t.buyukYazi },
     { alan: "kontrast", ad: t.kontrast },
     { alan: "altyazi", ad: t.altyazi, aciklama: t.altyaziAciklama },
+    { alan: "azHareket", ad: t.azHareket, aciklama: t.azHareketAciklama },
+    { alan: "genisSatir", ad: t.genisSatir },
   ];
 
   return (
@@ -73,7 +75,12 @@ export default function ErisimPaneli({ dil }: { dil: Dil }) {
       </button>
       {acik && (
         <div ref={panel} id="erisim-paneli" className="erisim-paneli" role="group" aria-labelledby="erisim-baslik">
-          <h2 id="erisim-baslik">{t.baslik}</h2>
+          <div className="erisim-ust">
+            <h2 id="erisim-baslik">{t.baslik}</h2>
+            <button type="button" className="erisim-kapat" aria-label={t.kapat} onClick={() => { setAcik(false); dugme.current?.focus(); }}>
+              ✕
+            </button>
+          </div>
           <ul>
             {secenekler.map((x) => (
               <li key={x.alan}>
@@ -96,9 +103,6 @@ export default function ErisimPaneli({ dil }: { dil: Dil }) {
             ))}
           </ul>
           <p className="not">{t.hatirlanir}</p>
-          <button type="button" className="dugme ikincil" onClick={() => { setAcik(false); dugme.current?.focus(); }}>
-            {t.kapat}
-          </button>
         </div>
       )}
     </div>

@@ -356,8 +356,9 @@ Mobil uygulama entegrasyonu: `/api/eserler`, `/api/eserler/<id>`, `/api/sor`, `/
 |---|---|
 | `super_admin` | eser.ekle, eser.duzenle, eser.onayla, eser.arsivle, kaynak.dogrula, kullanici.yonet |
 | `editor` | eser.ekle, eser.duzenle, eser.onayla, kaynak.dogrula |
-| `katkici` | eser.ekle, eser.duzenle |
-| `goruntuleyici` | (yok; panel sayfalarını görür) |
+| `tarihci` | eser.incele, kaynak.dogrula (015) |
+
+Araştırmacı (`katkici`) ve Okur (`goruntuleyici`) 3 Kas'ta kaldırıldı (`supabase/021_rolleri_sadelestir.sql`).
 
 Rolü olmayan hesap panelde "rolün yok" görür. eda super_admin.
 

@@ -62,6 +62,9 @@ export default function PanelMenu({
         <Link href={kok} className="panel-logo">
           Vakfiye<small>{yazilar.panelAdi}</small>
         </Link>
+        <Link href={`/${dil}`} className="panel-siteye-don">
+          <span aria-hidden="true">←</span> {yazilar.siteyeDon}
+        </Link>
         <button type="button" className="panel-menu-dugme" aria-expanded={acik} aria-controls="panel-menu" onClick={() => setAcik(!acik)}>
           <span aria-hidden="true">{acik ? "✕" : "☰"}</span>
           <span className="gizli">{acik ? yazilar.menuKapat : yazilar.menuAc}</span>
@@ -95,7 +98,6 @@ export default function PanelMenu({
           <strong>{kisi.ad}</strong>
           {kisi.eposta && <small>{kisi.eposta}</small>}
           <span className="rozet">{kisi.rol}</span>
-          <Link href={`/${dil}`}>↗ {yazilar.siteyeDon}</Link>
           <CikisDugmesi dil={dil} />
         </div>
       </div>

@@ -5,6 +5,7 @@ import { metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import type { CokDilli, Dil, Rota } from "@/lib/tipler";
 import HikayeKarti from "./HikayeKarti";
+import PulTaraDugmesi from "./PulTaraDugmesi";
 
 type Durak = Rota["duraklar"][number];
 
@@ -108,6 +109,7 @@ export default function Pasaport({
             </li>
           ))}
         </ul>
+        <PulTaraDugmesi dil={dil} />
         {sayi === toplam && <HikayeKarti dil={dil} sehir={ilAdi(rota.il)} rota={rota} ad={ad} />}
       </div>
 

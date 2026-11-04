@@ -10,13 +10,14 @@
 //   dil      → sayfanın dili; /en/oyun İngilizce açılır (oyuncu oyun içinden değiştirebilir)
 // Tam ekran: oyunun köşesindeki düğme. Tarayıcı destekliyorsa gerçek tam ekran (Fullscreen API),
 // desteklemiyorsa (iPhone Safari) oyun kutusu sayfanın tamamını kaplar. Esc ile çıkılır.
+// Tam ekranda oyun, sayfadaki en/boy oranını korur ve ortalanır; boş kalan kenarlar siyahtır.
 // Klavye: YouTube'daki gibi F tam ekranı açar/kapatır. Oyun F'yi kullanmıyor; oyun iframe değil, aynı
 // sayfada çizildiği için odak oyunun içindeyken de tuş yakalanır. Yazı alanına yazılırken (ör. oyuncu adı)
 // ve Ctrl/Cmd/Alt kısayollarında devreye girmez.
 // Paketi güncellemek için oyun reposunda `npm run build:gomulu`, çıkan dosyayı public/oyun/'a kopyala.
 import { useRouter } from "next/navigation";
 import Script from "next/script";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { type CSSProperties, useCallback, useEffect, useRef, useState } from "react";
 import { bulutHazir, oturumIzle, pullariGetir } from "@/lib/bulut";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
@@ -123,6 +124,9 @@ export default function OyunGomulu({ dil }: { dil: Dil }) {
   const [gercekTam, setGercekTam] = useState(false); // Fullscreen API ile
   const [sayfaTam, setSayfaTam] = useState(false); // API yoksa: sayfayı kaplayan kutu
   const tam = gercekTam || sayfaTam;
+  // Tam ekrandan önceki en/boy oranı: tam ekranda oyun bu oranla ortalanır, artan kenarlar siyah kalır
+  // (oyun sahnesi ekranı doldurmak için yakınlaştırılmaz/kırpılmaz).
+  const [oran, setOran] = useState<number | null>(null);
   const t = s(dil).oyun;
 
   // Giriş yapmış ziyaretçinin pulları; giriş/çıkışta yeniden okunur. Oyuna "vakfiye:pullar" olayıyla haber verilir.
@@ -230,6 +234,8 @@ export default function OyunGomulu({ dil }: { dil: Dil }) {
     if (tam) return tamEkrandanCik();
     const oge = sahne.current as OnekliOge | null;
     if (!oge) return;
+    const olcu = kutu.current?.getBoundingClientRect();
+    if (olcu && olcu.width > 0 && olcu.height > 0) setOran(olcu.width / olcu.height);
     try {
       if (oge.requestFullscreen) await oge.requestFullscreen({ navigationUI: "hide" });
       else if (oge.webkitRequestFullscreen) await oge.webkitRequestFullscreen();
@@ -244,7 +250,11 @@ export default function OyunGomulu({ dil }: { dil: Dil }) {
   return (
     <>
       <Script src="/oyun/vakfiye-oyun.js" strategy="afterInteractive" onReady={() => setHazir(true)} />
-      <div ref={sahne} className={`oyun-sahne${tam ? " oyun-sahne--tam" : ""}`}>
+      <div
+        ref={sahne}
+        className={`oyun-sahne${tam ? " oyun-sahne--tam" : ""}`}
+        style={oran ? ({ "--oyun-oran": oran.toFixed(4) } as CSSProperties) : undefined}
+      >
         <div ref={kutu} className="oyun-kutusu" />
         <button
           type="button"

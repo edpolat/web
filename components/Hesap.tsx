@@ -17,6 +17,7 @@ import {
   type BulutOturumu,
 } from "@/lib/bulut";
 import Pasaport from "@/components/Pasaport";
+import PulTaraDugmesi from "@/components/PulTaraDugmesi";
 import Planlarim, { type PlanEseri } from "@/components/Planlarim";
 import { s } from "@/lib/sozluk";
 import type { CokDilli, Dil, Rota } from "@/lib/tipler";
@@ -271,6 +272,7 @@ export default function Hesap({
         </button>
       </p>
       <p className="not">{u.misafir}</p>
+      <PulTaraDugmesi dil={dil} />
       {kagitKarti}
       <Planlarim dil={dil} eserler={eserler} turAdlari={turAdlari} iller={iller} pullar={yerelPullar()} />
     </section>

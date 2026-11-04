@@ -90,6 +90,25 @@ export async function denetimKaydi(hedef?: string, sinir = 200): Promise<Denetim
   return (data ?? []) as DenetimSatiri[];
 }
 
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+export const kimlikMi = (x: string | null | undefined): x is string => !!x && UUID.test(x);
+
+/**
+ * Denetim kaydında hedefi kullanıcı olan satırlar için kimlik → ad (020_denetim_kisi_adlari.sql).
+ * Fonksiyon kurulmamışsa ya da hata verirse boş döner; tablo kimliği kısaltarak gösterir.
+ */
+export async function kisiAdlari(kayitlar: DenetimSatiri[]): Promise<Map<string, string>> {
+  const kimlikler = [...new Set(kayitlar.map((k) => k.hedef).filter(kimlikMi))];
+  const adlar = new Map<string, string>();
+  if (!kimlikler.length) return adlar;
+  try {
+    const { data, error } = await (await vt()).rpc("denetim_kisi_adlari", { kimlikler });
+    if (error) return adlar;
+    for (const r of (data ?? []) as { id: string; ad: string | null }[]) if (r.ad) adlar.set(r.id, r.ad);
+  } catch {}
+  return adlar;
+}
+
 /** dilUyumu: gönderen "diğer dildeki metne uyum için" dedi. Parametre yalnız işaretliyse gider (009 çalıştırılmadan da gönderme çalışsın). */
 export async function surumGonder(s: HazirSurum, temel: number | null, taslak: boolean, dilUyumu = false): Promise<number> {
   const { data, error } = await (await vt()).rpc("surum_gonder", {

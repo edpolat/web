@@ -5,7 +5,7 @@ import { gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import { panelKimligi } from "@/lib/sunucu/oturum";
 import { yayindakiSergiler } from "@/lib/sunucu/sergi-depo";
-import { denetimKaydi, type DenetimSatiri } from "@/lib/sunucu/surum-depo";
+import { denetimKaydi, kisiAdlari, type DenetimSatiri } from "@/lib/sunucu/surum-depo";
 import { yayindakiEserler, yayindakiKaynaklar, yayindakiIller } from "@/lib/veri";
 import { paneldeMi } from "@/lib/yetki";
 
@@ -31,7 +31,7 @@ export default async function Denetim({
   const q = (arama.q ?? "").trim().toLocaleLowerCase("tr");
 
   const [eserler, kaynakMap, ilDosyalari, sergiMap] = await Promise.all([yayindakiEserler(), yayindakiKaynaklar(), yayindakiIller(), yayindakiSergiler()]);
-  const hedefler = new Map<string, { ad: string; yol: string }>();
+  const hedefler = new Map<string, { ad: string; yol?: string }>();
   for (const e of eserler) hedefler.set(e.id, { ad: metin(e.ad, dil), yol: `/${dil}/yonetim/eser/${e.id}/gecmis` });
   for (const k of kaynakMap.values()) hedefler.set(k.id, { ad: k.baslik, yol: `/${dil}/yonetim/kaynaklar/${k.id}` });
   for (const { il } of ilDosyalari) hedefler.set(`il:${il.id}`, { ad: metin(il.ad, dil), yol: `/${dil}/yonetim/iller` });
@@ -40,7 +40,9 @@ export default async function Denetim({
   let kayitlar: DenetimSatiri[] | undefined;
   let hataMetni = "";
   try {
-    kayitlar = (await denetimKaydi(undefined, SINIR)).filter(
+    const tumu = await denetimKaydi(undefined, SINIR);
+    for (const [id, ad] of await kisiAdlari(tumu)) hedefler.set(id, { ad });
+    kayitlar = tumu.filter(
       (k) =>
         (!arama.islem || k.islem === arama.islem) &&
         (!kim || (k.kim_ad ?? "").toLocaleLowerCase("tr").includes(kim)) &&

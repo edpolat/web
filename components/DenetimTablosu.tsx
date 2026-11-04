@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { s } from "@/lib/sozluk";
 import { goster } from "@/lib/sunucu/goster";
-import type { DenetimSatiri } from "@/lib/sunucu/surum-depo";
+import { kimlikMi, type DenetimSatiri } from "@/lib/sunucu/surum-depo";
 import type { Sozluk } from "@/lib/sozluk";
 import type { Dil, Kaynak } from "@/lib/tipler";
 
@@ -55,7 +55,7 @@ const yzKarar = (gerekce: string | null, t: Sozluk) =>
 
 /**
  * Denetim kaydı tablosu: zaman, kim, işlem ve alan alan eski → yeni. hedefler verilirse "Hedef" sütunu da çıkar
- * (eser adı ya da kaynak başlığı, kendi sayfasına bağlı).
+ * (eser adı ya da kaynak başlığı, kendi sayfasına bağlı; kullanıcıysa adı). Adı bulunamayan kullanıcı kimliği kısaltılır.
  */
 export default function DenetimTablosu({
   dil,
@@ -66,7 +66,7 @@ export default function DenetimTablosu({
   dil: Dil;
   kayitlar: DenetimSatiri[];
   kaynakMap: Map<string, Kaynak>;
-  hedefler?: Map<string, { ad: string; yol: string }>;
+  hedefler?: Map<string, { ad: string; yol?: string }>;
 }) {
   const t = s(dil);
   const u = t.surum;
@@ -88,7 +88,17 @@ export default function DenetimTablosu({
             <tr key={k.id}>
               <td>{tarih(k.ne_zaman, dil)}</td>
               <td>{k.kim_ad}</td>
-              {hedefler && <td>{hedef ? <Link href={hedef.yol}>{hedef.ad}</Link> : k.hedef}</td>}
+              {hedefler && (
+                <td>
+                  {hedef ? (
+                    hedef.yol ? <Link href={hedef.yol}>{hedef.ad}</Link> : hedef.ad
+                  ) : kimlikMi(k.hedef) ? (
+                    <span title={k.hedef}>{k.hedef.slice(0, 8)}…</span>
+                  ) : (
+                    k.hedef
+                  )}
+                </td>
+              )}
               <td className="denetim-islem">
                 {k.islem === "yz_onerisi" ? (
                   <>

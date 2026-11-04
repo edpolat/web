@@ -4,11 +4,11 @@ import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { DILLER, gecerliDil } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
-import { z } from "@/lib/ziyaret";
 import DilDegistir from "@/components/DilDegistir";
 import UstMenu from "@/components/UstMenu";
 import YonetimBaglantisi from "@/components/YonetimBaglantisi";
 import ErisimPaneli from "@/components/ErisimPaneli";
+import Muhur from "@/components/Muhur";
 import { ERISIM_BETIGI } from "@/lib/erisim";
 import "leaflet/dist/leaflet.css";
 import "../globals.css";
@@ -30,9 +30,12 @@ export async function generateMetadata({ params }: { params: Promise<{ dil: stri
 
 export default async function Yerlesim({
   children,
+  hesap,
   params,
 }: {
   children: React.ReactNode;
+  /** Hesabım açılır kartı (@hesap bölmesi); yalnız site içinden Hesabım'a gidilince dolu. */
+  hesap: React.ReactNode;
   params: Promise<{ dil: string }>;
 }) {
   const { dil } = await params;
@@ -51,6 +54,7 @@ export default async function Yerlesim({
         <header className="ust">
           <div className="ust-sol">
             <Link href={`/${dil}`} className="logo">
+              <Muhur boyut={34} className="logo-muhur" />
               {t.site}
             </Link>
             <UstMenu
@@ -58,24 +62,29 @@ export default async function Yerlesim({
               etiket={t.anaMenu}
               sekmeler={[
                 { yol: "", ad: t.kesfet, simge: "kesfet" },
-                { yol: "/tara", ad: z(dil).tara.sekme, simge: "tara" },
                 { yol: "/sergiler", ad: t.sergilerSekme, simge: "sergi" },
                 { yol: "/oyun", ad: t.oyunSekme, simge: "oyun" },
               ]}
             />
           </div>
           <div className="ust-sag">
-            <ErisimPaneli dil={dil} />
-            <Link href={`/${dil}/hesap`} className="sekme-yonetim">
-              {t.hesabim}
-            </Link>
             <YonetimBaglantisi dil={dil} ad={t.yonetim} />
+            {/* Hesabım, Erişilebilirlik gibi sağ üstte açılan bir kart; bağlantı da bu yüzden sağda. */}
+            <Link href={`/${dil}/hesap`} className="sekme-hesap" scroll={false}>
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" />
+              </svg>
+              <span className="sekme-hesap-yazi">{t.hesabim}</span>
+            </Link>
+            <ErisimPaneli dil={dil} />
             <Suspense>
               <DilDegistir dil={dil} etiket={t.dilDegistir} />
             </Suspense>
           </div>
         </header>
         <main id="icerik">{children}</main>
+        {hesap}
       </body>
     </html>
   );

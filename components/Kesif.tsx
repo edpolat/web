@@ -16,6 +16,8 @@ import type { Dil, Il, KesifEseri, Tanim } from "@/lib/tipler";
 import HaritaYukle from "./HaritaYukle";
 import Simge from "./Simge";
 
+const SAYFA_BOYU = 24;
+
 type Props = { dil: Dil; eserler: KesifEseri[]; iller: Il[]; turler: Tanim[] };
 
 export default function Kesif({ dil, eserler, iller, turler }: Props) {
@@ -70,6 +72,11 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
     setKonum(n);
     setSira("yakin");
   }
+  // Uzun listede ilk SAYFA_BOYU kart; "Daha fazla göster" ile artar, süzgeç ya da sıra değişince başa döner.
+  const [gosterilen, setGosterilen] = useState(SAYFA_BOYU);
+  // Telefonda liste ile harita arasında geçiş (masaüstünde ikisi yan yana, düğmeler gizli).
+  const [gorunum, setGorunum] = useState<"liste" | "harita">("liste");
+  useEffect(() => setGosterilen(SAYFA_BOYU), [f.il, f.tur, f.ara, sira]);
   const sonuc = useMemo(() => {
     const l = filtrele(eserler, f, dil);
     const ad = (e: KesifEseri) => metin(e.ad, dil);
@@ -217,13 +224,21 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
         </p>
       )}
 
-      <div className="kesif">
+      <span className="gorunum-secici" role="group" aria-label={`${t.liste} / ${t.harita}`}>
+        <button type="button" aria-pressed={gorunum === "liste"} onClick={() => setGorunum("liste")}>
+          {t.liste}
+        </button>
+        <button type="button" aria-pressed={gorunum === "harita"} onClick={() => setGorunum("harita")}>
+          {t.harita}
+        </button>
+      </span>
+      <div className={`kesif gorunum-${gorunum}`}>
         <section aria-label={t.liste}>
           {sonuc.length === 0 ? (
             <p className="bos-sonuc">{t.sonucYok}</p>
           ) : (
             <ul className="eser-kartlari">
-              {sonuc.map((e) => (
+              {sonuc.slice(0, gosterilen).map((e) => (
                 <li key={e.id} onMouseEnter={() => setVurgulu(e.id)} onMouseLeave={() => setVurgulu(undefined)}>
                   <Link
                     href={`/${dil}/eser/${e.id}`}
@@ -249,11 +264,17 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
                     <span className="eser-karti-govde">
                       <strong>{metin(e.ad, dil)}</strong>
                       <small>
-                        {[e.ilce, metin(iller.find((i) => i.id === e.il)?.ad, dil), e.yil].filter(Boolean).join(" · ")}
+                        {[e.ilce, metin(iller.find((i) => i.id === e.il)?.ad, dil)].filter(Boolean).join(" · ")}
                       </small>
-                      {e.kaynakliSayisi > 0 && (
-                        <span className="kaynakli-not">
-                          <Simge ad="kaynak" boyut={15} /> {t.kaynakliBilgi(e.kaynakliSayisi)}
+                      {/* Kartı ayırt eden yapım yılı öne çıkar; kaynaklı bilgi sayısı yanında küçük kalır. */}
+                      {(e.yil || e.kaynakliSayisi > 0) && (
+                        <span className="kart-alt">
+                          {e.yil ? <span className="yil-rozeti">{e.yil}</span> : null}
+                          {e.kaynakliSayisi > 0 && (
+                            <span className="kaynakli-not">
+                              <Simge ad="kaynak" boyut={14} /> {t.kaynakliBilgi(e.kaynakliSayisi)}
+                            </span>
+                          )}
                         </span>
                       )}
                     </span>
@@ -262,10 +283,17 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
               ))}
             </ul>
           )}
+          {sonuc.length > gosterilen && (
+            <p className="daha-fazla">
+              <button type="button" className="dugme ikincil" onClick={() => setGosterilen((n) => n + SAYFA_BOYU)}>
+                {t.dahaFazla(sonuc.length - gosterilen)}
+              </button>
+            </p>
+          )}
         </section>
         <section aria-label={t.harita} className="kesif-harita">
           <HaritaYukle
-            key={f.il || "tum"}
+            key={`${f.il || "tum"}-${gorunum}`}
             dil={dil}
             eserler={sonuc}
             merkez={merkez}

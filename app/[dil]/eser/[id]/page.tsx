@@ -6,7 +6,7 @@ import { ayarlar, kaynakAdresi, tumEserler, vakiflar, yayindakiEser, yayindakiIl
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
 import HaritaYukle from "@/components/HaritaYukle";
-import Galeri from "@/components/Galeri";
+import KapakGaleri from "@/components/KapakGaleri";
 import Dinle, { type OkunacakParca } from "@/components/Dinle";
 import SoruPaneli from "@/components/SoruPaneli";
 import TalepFormu from "@/components/TalepFormu";
@@ -14,6 +14,8 @@ import TerimliMetin from "@/components/TerimliMetin";
 import ZiyaretAdabi from "@/components/ZiyaretAdabi";
 import ZiyaretBilgisi from "@/components/ZiyaretBilgisi";
 import EserPlan, { EserMesafesi } from "@/components/EserPlan";
+import Simge from "@/components/Simge";
+import { z } from "@/lib/ziyaret";
 import { konumEksik } from "@/lib/filtre";
 import { g, kesikleriDuzelt } from "@/lib/gezi";
 import { katkilar } from "@/lib/sunucu/kuyruk";
@@ -69,7 +71,6 @@ export default async function EserKarti({ params }: { params: Params }) {
     [...olgular.map((o) => o.kaynak_id), eser.envanter?.kaynak_id].filter(Boolean) as string[],
   );
 
-  const kapak = eser.gorseller?.[0];
   const durumAdlari = Object.fromEntries(ay.olgu_durumlari.map((d) => [d.id, metin(d.ad, dil)]));
   // Dinle önce kaynaklı bilgileri okur; bilgi yoksa tarihçe paragraflarını.
   const tarihceParagraflari = eser.tarihce ? metin(eser.tarihce, dil).split(/\n{2,}/) : [];
@@ -102,16 +103,7 @@ export default async function EserKarti({ params }: { params: Params }) {
         </p>
       )}
 
-      {kapak && (
-        <figure className="eser-kapak">
-          <img src={kapak.dosya} alt={metin(kapak.alt, dil)} width={1600} height={900} style={kapak.odak ? { objectPosition: kapak.odak } : undefined} />
-          {(eser.gorseller?.length ?? 0) > 1 && (
-            <figcaption>
-              <a href="#galeri">{t.galeri} ({eser.gorseller!.length})</a>
-            </figcaption>
-          )}
-        </figure>
-      )}
+      <KapakGaleri dil={dil} gorseller={eser.gorseller ?? []} galeriAdi={t.galeri} />
 
       <dl className="kunye-kutulari">
         {(eser.donem?.yapim_yili || eser.donem?.metin) && (
@@ -170,20 +162,22 @@ export default async function EserKarti({ params }: { params: Params }) {
         )}
       </dl>
 
+      {/* Tek dolu düğme (Dinle); yanında çerçevesiz, sakin eylemler. Öneri formları kaynaklı bilgilerin altındaki kartta. */}
       <div className="eser-eylemler">
         <Dinle dil={dil} parcalar={okunacak} />
-        <Link className="dugme ikincil" href={`/${dil}/eser/${eser.id}/oner`}>
-          + {t.bilgiEkle}
+        <EserPlan dil={dil} eserId={eser.id} eserAdi={metin(eser.ad, dil)} sehir={metin(il?.ad, dil)} />
+        <Link className="dugme sade-eylem" href={`/${dil}/tara`}>
+          <Simge ad="tara" /> {z(dil).tara.buradaysan}
         </Link>
-        <TalepFormu dil={dil} eserId={eser.id} eserAdi={metin(eser.ad, dil)} />
-        <a className="dugme ikincil sor-baglanti" href="#sor-baslik">
-          {t.sor.baslik}
+        <a className="dugme sade-eylem sor-baglanti" href="#sor-baslik">
+          <Simge ad="sor" /> {t.sor.baslik}
         </a>
       </div>
-      <EserPlan dil={dil} eserId={eser.id} eserAdi={metin(eser.ad, dil)} sehir={metin(il?.ad, dil)} />
       {!olgular.length && !eser.tarihce && <p className="not bilgisiz">{g(dil).bilgisiz}</p>}
-      <ZiyaretBilgisi dil={dil} tur={eser.tur} olgular={olgular} yaklasik={yaklasik} />
-      <ZiyaretAdabi dil={dil} tur={eser.tur} konum={eser.konum ? { enlem: eser.konum.enlem, boylam: eser.konum.boylam } : undefined} />
+      <div className="ziyaret-ikili">
+        <ZiyaretBilgisi dil={dil} tur={eser.tur} olgular={olgular} yaklasik={yaklasik} />
+        <ZiyaretAdabi dil={dil} tur={eser.tur} konum={eser.konum ? { enlem: eser.konum.enlem, boylam: eser.konum.boylam } : undefined} />
+      </div>
       {sonOnay && (
         <p className="not">
           {t.sonGuncelleme}: {new Date(sonOnay).toLocaleDateString(dil === "tr" ? "tr-TR" : "en-GB", { dateStyle: "long" })}
@@ -227,6 +221,22 @@ export default async function EserKarti({ params }: { params: Params }) {
         </section>
       )}
 
+      {/* Katkı: bilgilerin hemen altında, sakin bir kartta. */}
+      <section className="katki-karti" aria-labelledby="katki-baslik">
+        <div>
+          <h2 id="katki-baslik">{t.katkiBaslik}</h2>
+          <p>{t.katkiAciklama}</p>
+        </div>
+        <div className="katki-dugmeler">
+          <Link className="dugme ikincil" href={`/${dil}/eser/${eser.id}/oner`}>
+            {t.bilgiEkle}
+          </Link>
+          <TalepFormu dil={dil} eserId={eser.id} eserAdi={metin(eser.ad, dil)} />
+        </div>
+      </section>
+
+      {/* Ziyaret kartları asıl içerikten (kaynaklı bilgiler) sonra gelir. */}
+
       {eser.tarihce && (
         <section aria-labelledby="tarihce">
           <h2 id="tarihce">{t.tarihce}</h2>
@@ -251,88 +261,44 @@ export default async function EserKarti({ params }: { params: Params }) {
               dil={dil}
             />
           )}
-          <dl className="kunye">
-            {eser.mimari.plan && (
-              <>
-                <dt>{t.plan}</dt>
-                <dd>{eser.mimari.plan}</dd>
-              </>
-            )}
-            {eser.mimari.malzeme?.length ? (
-              <>
-                <dt>{t.malzeme}</dt>
-                <dd>{eser.mimari.malzeme.join(", ")}</dd>
-              </>
-            ) : null}
-            {eser.mimari.ust_ortu && (
-              <>
-                <dt>{t.ustOrtu}</dt>
-                <dd>{eser.mimari.ust_ortu}</dd>
-              </>
-            )}
-          </dl>
+          {(eser.mimari.plan || eser.mimari.malzeme?.length || eser.mimari.ust_ortu) && (
+            <dl className="kunye-kutulari mimari-kunye">
+              {eser.mimari.plan && (
+                <div>
+                  <dt>{t.plan}</dt>
+                  <dd>{eser.mimari.plan}</dd>
+                </div>
+              )}
+              {eser.mimari.malzeme?.length ? (
+                <div>
+                  <dt>{t.malzeme}</dt>
+                  <dd>{eser.mimari.malzeme.join(", ")}</dd>
+                </div>
+              ) : null}
+              {eser.mimari.ust_ortu && (
+                <div>
+                  <dt>{t.ustOrtu}</dt>
+                  <dd>{eser.mimari.ust_ortu}</dd>
+                </div>
+              )}
+            </dl>
+          )}
           {eser.mimari.onarimlar?.length ? (
             <>
               <h3>{t.onarimlar}</h3>
-              <ul>
-                {eser.mimari.onarimlar.map((o) => (
-                  <li key={o.yil}>
-                    {o.yil}
-                    {o.aciklama ? `: ${metin(o.aciklama, dil)}` : ""}
+              <ol className="onarim-cizelgesi">
+                {eser.mimari.onarimlar.map((o, i) => (
+                  <li key={`${o.yil}-${i}`}>
+                    <b>{o.yil}</b>
+                    {o.aciklama ? <span>{metin(o.aciklama, dil)}</span> : null}
                   </li>
                 ))}
-              </ul>
+              </ol>
             </>
           ) : null}
         </section>
       )}
 
-      <section aria-labelledby="galeri">
-        <h2 id="galeri">{t.galeri}</h2>
-        <Galeri dil={dil} gorseller={eser.gorseller ?? []} bosMetin={t.galeriBos} atifEtiketi={t.fotografAtfi} />
-      </section>
-
-      {eser.konum && (
-        <section aria-labelledby="harita">
-          <h2 id="harita">{t.harita}</h2>
-          {!eser.konum.dogrulandi && (
-            <p className="not">
-              {eser.konum.hassasiyet === "ilce"
-                ? t.konumIlce
-                : eser.konum.hassasiyet === "mahalle"
-                  ? t.konumMahalle
-                  : t.konumDogrulanmadi}
-            </p>
-          )}
-          <HaritaYukle dil={dil} eserler={[eser]} merkez={eser.konum} yakinlastirma={eser.konum.hassasiyet === "ilce" ? 13 : 16} yukseklik={280} />
-          {eser.konum.hassasiyet !== "ilce" && (
-            <details className="yol-tarifi">
-              {/* Mobil uygulamadaki gibi yürüyerek yol tarifi; tıklayınca harita uygulaması seçilir */}
-              <summary className="dugme">{t.yolTarifi}</summary>
-              <ul>
-                <li>
-                  <a
-                    href={`https://www.google.com/maps/dir/?api=1&destination=${eser.konum.enlem},${eser.konum.boylam}&travelmode=walking`}
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    {t.googleHaritalar}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={`https://maps.apple.com/?daddr=${eser.konum.enlem},${eser.konum.boylam}&dirflg=w`}
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    {t.appleHaritalar}
-                  </a>
-                </li>
-              </ul>
-            </details>
-          )}
-        </section>
-      )}
 
       {eser.sergi_idleri?.length ? (
         <section aria-labelledby="sergiler">
@@ -382,6 +348,47 @@ export default async function EserKarti({ params }: { params: Params }) {
         durumAdlari={durumAdlari}
         ornekler={t.sor.ornekler.filter((o) => cevapla(eser, o, dil).bulundu)}
       />
+      {eser.konum && (
+        <section aria-labelledby="harita" className="yan-harita">
+          <h2 id="harita">{t.harita}</h2>
+          {!eser.konum.dogrulandi && (
+            <p className="not">
+              {eser.konum.hassasiyet === "ilce"
+                ? t.konumIlce
+                : eser.konum.hassasiyet === "mahalle"
+                  ? t.konumMahalle
+                  : t.konumDogrulanmadi}
+            </p>
+          )}
+          <HaritaYukle dil={dil} eserler={[eser]} merkez={eser.konum} yakinlastirma={eser.konum.hassasiyet === "ilce" ? 13 : 16} yukseklik={220} />
+          {eser.konum.hassasiyet !== "ilce" && (
+            <details className="yol-tarifi">
+              {/* Mobil uygulamadaki gibi yürüyerek yol tarifi; tıklayınca harita uygulaması seçilir */}
+              <summary className="dugme">{t.yolTarifi}</summary>
+              <ul>
+                <li>
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${eser.konum.enlem},${eser.konum.boylam}&travelmode=walking`}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    {t.googleHaritalar}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`https://maps.apple.com/?daddr=${eser.konum.enlem},${eser.konum.boylam}&dirflg=w`}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    {t.appleHaritalar}
+                  </a>
+                </li>
+              </ul>
+            </details>
+          )}
+        </section>
+      )}
     </aside>
     </div>
   );

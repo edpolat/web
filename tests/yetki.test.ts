@@ -14,8 +14,10 @@ describe("roller ve izinler", () => {
     const silinen = [...tarihci.matchAll(/where rol = '(\w+)' and izin = '([\w.]+)'/g)].map((m) => `${m[1]} ${m[2]}`);
     // 017 sergi.yonet iznini ekler (yalnız dosyanın başındaki izin satırları).
     const sergi = oku("017_sergiler.sql").split("create table")[0];
+    // 021 katkici ve goruntuleyici rollerini kaldırır.
+    const kaldirilan = [...(oku("021_rolleri_sadelestir.sql").match(/delete from public.rol_izinleri where rol in \(([^)]*)\)/)?.[1] ?? "").matchAll(/'(\w+)'/g)].map((m) => m[1]);
     const satirlar = [...ciftler(oku("001_roller.sql")), ...ciftler(tarihci.split("-- Sürümde tarihçi aşaması")[0]), ...ciftler(sergi)]
-      .filter((x) => !silinen.includes(x))
+      .filter((x) => !silinen.includes(x) && !kaldirilan.includes(x.split(" ")[0]))
       .sort();
     const kod = ROLLER.flatMap((r) => ROL_IZINLERI[r].map((i) => `${r} ${i}`)).sort();
     expect(satirlar).toEqual(kod);
@@ -24,8 +26,6 @@ describe("roller ve izinler", () => {
   it("tablodaki yetkiler", () => {
     expect(izinli(kisi("editor"), "eser.onayla")).toBe(true);
     expect(izinli(kisi("editor"), "kullanici.yonet")).toBe(false);
-    expect(izinli(kisi("katkici"), "eser.duzenle")).toBe(true);
-    expect(izinli(kisi("katkici"), "eser.onayla")).toBe(false);
     expect(izinli(kisi("super_admin"), "eser.arsivle")).toBe(true);
     expect(izinli(kisi("tarihci"), "eser.incele")).toBe(true);
     expect(izinli(kisi("tarihci"), "eser.onayla")).toBe(false);
@@ -33,13 +33,12 @@ describe("roller ve izinler", () => {
     expect(izinli(kisi("editor"), "kaynak.dogrula")).toBe(false);
     expect(izinli(kisi("editor"), "sergi.yonet")).toBe(true);
     expect(izinli(kisi("super_admin"), "sergi.yonet")).toBe(true);
-    expect(izinli(kisi("katkici"), "sergi.yonet")).toBe(false);
     expect(izinli(kisi("tarihci"), "sergi.yonet")).toBe(false);
-    expect(IZINLER.some((i) => izinli(kisi("goruntuleyici"), i))).toBe(false);
+    expect(IZINLER.some((i) => izinli(kisi(null), i))).toBe(false);
   });
 
-  it("görüntüleyici panele girer, rolsüz hesap ve girişsiz giremez", () => {
-    expect(paneldeMi(kisi("goruntuleyici"))).toBe(true);
+  it("rolü olan panele girer, rolsüz hesap ve girişsiz giremez", () => {
+    expect(paneldeMi(kisi("tarihci"))).toBe(true);
     expect(paneldeMi(kisi(null))).toBe(false);
     expect(paneldeMi(null)).toBe(false);
   });
@@ -47,6 +46,8 @@ describe("roller ve izinler", () => {
   it("benim_izinlerim yanıtı denetlenir", () => {
     expect(yetkiCoz(null)).toEqual({ rol: null, izinler: [] });
     expect(yetkiCoz({ rol: "kral", izinler: ["eser.onayla"] })).toEqual({ rol: null, izinler: [] });
-    expect(yetkiCoz({ rol: "katkici", izinler: ["eser.ekle", "uydurma"] })).toEqual({ rol: "katkici", izinler: ["eser.ekle"] });
+    expect(yetkiCoz({ rol: "tarihci", izinler: ["eser.incele", "uydurma"] })).toEqual({ rol: "tarihci", izinler: ["eser.incele"] });
+    // Kaldırılan roller (021) artık tanınmaz.
+    expect(yetkiCoz({ rol: "katkici", izinler: ["eser.ekle"] })).toEqual({ rol: null, izinler: [] });
   });
 });

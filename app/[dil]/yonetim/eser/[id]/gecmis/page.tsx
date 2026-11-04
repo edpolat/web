@@ -160,7 +160,7 @@ export default async function Gecmis({
               dil={dil}
               eserId={id}
               taslak={bilgiTaslagi?.hedef === id ? bilgiTaslagi : undefined}
-              alanlar={DUZENLENEBILIR.filter((a) => a !== "taslak").map((a) => ({ id: a, ad: t.alanlar[a] ?? a }))}
+              alanlar={DUZENLENEBILIR.filter((a) => a !== "taslak" && a !== "olgular").map((a) => ({ id: a, ad: t.alanlar[a] ?? a }))}
               kaynaklar={[...kaynakMap.values()].map((k) => ({ id: k.id, ad: k.baslik }))}
             />
           )}

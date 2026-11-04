@@ -8,15 +8,15 @@ export default function Muhur({ boyut = 120, className }: { boyut?: number; clas
   return (
     <svg viewBox="0 0 100 100" width={boyut} height={boyut} className={className} aria-hidden="true" focusable="false">
       <g fill="none" stroke="currentColor" strokeWidth="1.2">
-        <circle cx="50" cy="50" r="48" />
+        <circle cx="50" cy="50" r="48" pathLength={1} />
         {cizgiler.map((c, i) => (
           <line key={i} {...c} strokeWidth="0.8" />
         ))}
-        <rect x="27" y="27" width="46" height="46" />
-        <rect x="27" y="27" width="46" height="46" transform="rotate(45 50 50)" />
-        <polygon points="50,30 68,50 50,70 32,50" strokeWidth="0.8" />
-        <circle cx="50" cy="50" r="10" />
-        <circle cx="50" cy="50" r="7" strokeWidth="0.8" />
+        <rect x="27" y="27" width="46" height="46" pathLength={1} />
+        <rect x="27" y="27" width="46" height="46" transform="rotate(45 50 50)" pathLength={1} />
+        <polygon points="50,30 68,50 50,70 32,50" strokeWidth="0.8" pathLength={1} />
+        <circle cx="50" cy="50" r="10" pathLength={1} />
+        <circle cx="50" cy="50" r="7" strokeWidth="0.8" pathLength={1} />
       </g>
       <polygon
         fill="currentColor"
