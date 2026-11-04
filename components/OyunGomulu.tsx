@@ -4,7 +4,10 @@
 //   VakfiyeOyun.baslat(kutu, araclar) / durdur()
 // İki uygulama oyuna aynı araçları verir; böylece oyun webde ve telefonda aynı davranır:
 //   pullar   → aynı Supabase "pullar" tablosu (telefonda alınan pul webde de görünür, level ve bölge açar)
-//   kaydet/oku → "vakfiye:oyun:" önekiyle cihazda (mobildeki kayitYaz ile aynı anahtarlar)
+//   kaydet/oku → "vakfiye:oyun:" önekiyle cihazda (mobildeki kayitYaz ile aynı anahtarlar). Giriş yapılmışsa
+//                oyunun ilerlemesi ("vakfiye.ilerleme") Supabase "oyun_kayitlari" tablosuyla da eşitlenir
+//                (mobil uygulamayla ortak; kural lib/oyun-ilerleme.ts). Oyun açılmadan önce buluttaki kayıt
+//                cihazdakiyle birleştirilir; oyun içinde giriş yapılırsa ve kayıt değişirse oyun yeniden başlar.
 //   eserAc   → sitedeki eser sayfası, yeni sekmede (mobilde Keşfet'teki eser kartı)
 //   eserler  → bu sitenin /api/eserler ucu (aynı köken; yerelde ve önizlemede de o sitenin verisi)
 //   dil      → sayfanın dili; /en/oyun İngilizce açılır (oyuncu oyun içinden değiştirebilir)
@@ -18,7 +21,8 @@
 import { useRouter } from "next/navigation";
 import Script from "next/script";
 import { type CSSProperties, useCallback, useEffect, useRef, useState } from "react";
-import { bulutHazir, oturumIzle, pullariGetir } from "@/lib/bulut";
+import { bulutHazir, oturumIzle, oyunKaydiGetir, oyunKaydiYaz, pullariGetir } from "@/lib/bulut";
+import { ayniMi, ILERLEME_ANAHTARI, ilerlemeleriBirlestir } from "@/lib/oyun-ilerleme";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
 
@@ -82,6 +86,30 @@ function oku<T>(anahtar: string, varsayilan: T): T {
   }
 }
 
+/**
+ * Oyunun ilerlemesini hesaptakiyle birleştirir: sonucu cihaza ve (farklıysa) buluta yazar.
+ * Cihazdaki kayıt değiştiyse true döner (o zaman açık oyunun yeniden başlaması gerekir).
+ * Giriş yoksa, tablo yoksa ya da bağlantı yoksa hiçbir şey yapmaz.
+ */
+async function ilerlemeyiEsitle(): Promise<boolean> {
+  try {
+    const bulut = await oyunKaydiGetir(ILERLEME_ANAHTARI);
+    if (!bulut) return false;
+    const yerel = oku<unknown>(ILERLEME_ANAHTARI, null);
+    const birlesik = ilerlemeleriBirlestir(yerel, bulut.deger);
+    const yerelDegisti = !ayniMi(birlesik, yerel ?? {});
+    if (yerelDegisti) kaydet(ILERLEME_ANAHTARI, birlesik);
+    if (!ayniMi(birlesik, bulut.deger ?? {})) await oyunKaydiYaz(bulut.kullanici, ILERLEME_ANAHTARI, birlesik);
+    return yerelDegisti;
+  } catch {
+    return false; // kayıt cihazda kalır, bir dahaki açılışta yine denenir
+  }
+}
+
+// Buluta en çok bu kadar beklenir; bağlantı yavaşsa oyun cihazdaki kayıtla açılır.
+const BULUT_BEKLEME_MS = 3000;
+const zamanAsimi = (ms: number) => new Promise<false>((coz) => setTimeout(() => coz(false), ms));
+
 // Safari eski sürümleri webkit önekli adları kullanır.
 type OnekliBelge = Document & { webkitFullscreenElement?: Element | null; webkitExitFullscreen?: () => Promise<void> | void };
 type OnekliOge = HTMLElement & { webkitRequestFullscreen?: () => Promise<void> | void };
@@ -121,6 +149,10 @@ export default function OyunGomulu({ dil }: { dil: Dil }) {
   const router = useRouter();
   const [hazir, setHazir] = useState(false);
   const pullar = useRef<string[]>([]);
+  // Oyun, buluttaki kayıt cihazdakiyle birleştirildikten sonra açılır (Supabase yoksa hemen).
+  const [kayitHazir, setKayitHazir] = useState(!bulutHazir);
+  const [yeniden, setYeniden] = useState(0); // artınca oyun güncel kayıtla yeniden başlar
+  const oyunAcik = useRef(false);
   const [gercekTam, setGercekTam] = useState(false); // Fullscreen API ile
   const [sayfaTam, setSayfaTam] = useState(false); // API yoksa: sayfayı kaplayan kutu
   const tam = gercekTam || sayfaTam;
@@ -138,7 +170,43 @@ export default function OyunGomulu({ dil }: { dil: Dil }) {
         .catch(() => (pullar.current = []))
         .finally(() => window.dispatchEvent(new Event("vakfiye:pullar")));
     yenile();
-    return oturumIzle(() => yenile());
+    let iptal = false;
+    void Promise.race([ilerlemeyiEsitle(), zamanAsimi(BULUT_BEKLEME_MS)]).finally(() => !iptal && setKayitHazir(true));
+    const birak = oturumIzle(() => {
+      yenile();
+      // Giriş/çıkış ya da oturum yenilemesi: hesaptaki ilerleme daha ileriyse açık oyun onunla yeniden başlar.
+      void ilerlemeyiEsitle().then((degisti) => degisti && oyunAcik.current && !iptal && setYeniden((n) => n + 1));
+    });
+    return () => {
+      iptal = true;
+      birak();
+    };
+  }, []);
+
+  // Oyun ilerlemeyi kaydettikçe (oyun sonu, level, albüm) hesaba da yazılır; art arda kayıtlar tek istekte toplanır.
+  const gonderZamani = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const kaydetVeGonder = useCallback((anahtar: string, deger: unknown) => {
+    kaydet(anahtar, deger);
+    if (!bulutHazir || anahtar !== ILERLEME_ANAHTARI) return;
+    if (gonderZamani.current) clearTimeout(gonderZamani.current);
+    gonderZamani.current = setTimeout(() => {
+      gonderZamani.current = null;
+      void ilerlemeyiEsitle();
+    }, 1500);
+  }, []);
+  // Sayfadan çıkarken bekleyen kayıt varsa hemen gönderilir.
+  useEffect(() => {
+    const hemenGonder = () => {
+      if (!gonderZamani.current) return;
+      clearTimeout(gonderZamani.current);
+      gonderZamani.current = null;
+      void ilerlemeyiEsitle();
+    };
+    window.addEventListener("pagehide", hemenGonder);
+    return () => {
+      window.removeEventListener("pagehide", hemenGonder);
+      hemenGonder();
+    };
   }, []);
 
   const tamEkrandanCik = useCallback(() => {
@@ -154,11 +222,12 @@ export default function OyunGomulu({ dil }: { dil: Dil }) {
   }, []);
 
   useEffect(() => {
-    if (!hazir || !kutu.current || !window.VakfiyeOyun) return;
+    if (!hazir || !kayitHazir || !kutu.current || !window.VakfiyeOyun) return;
     const oyun = window.VakfiyeOyun;
+    oyunAcik.current = true;
     oyun.baslat(kutu.current, {
       pullar: () => pullar.current.slice(),
-      kaydet,
+      kaydet: kaydetVeGonder,
       oku,
       eserler: (turler) => eserler(turler, dil),
       // Eser kartı yeni sekmede açılır; oyun bu sekmede kaldığı yerde bekler.
@@ -175,8 +244,11 @@ export default function OyunGomulu({ dil }: { dil: Dil }) {
       },
       dil,
     });
-    return () => oyun.durdur();
-  }, [hazir, dil, router, tamEkrandanCik]);
+    return () => {
+      oyunAcik.current = false;
+      oyun.durdur();
+    };
+  }, [hazir, kayitHazir, yeniden, dil, router, tamEkrandanCik, kaydetVeGonder]);
 
   // Tarayıcının kendi tam ekranı (Esc, sistem hareketi) kapanınca düğmeyi eşitle.
   useEffect(() => {

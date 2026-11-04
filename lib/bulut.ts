@@ -191,3 +191,21 @@ export async function rotalariEsitle(eserVarMi?: (id: string) => boolean): Promi
     rotalarimiYaz(sonuc.rotalar, sonuc.silinenler);
   return true;
 }
+
+/**
+ * Oyun kaydı hesapta (supabase/022_oyun_kayitlari.sql; mobil uygulama da aynı tabloyu kullanır).
+ * Giriş yoksa null döner. Tablo yoksa ya da bağlantı yoksa hata fırlatır; çağıran sessizce yutar, kayıt cihazda kalır.
+ */
+export async function oyunKaydiGetir(anahtar: string): Promise<{ kullanici: string; deger: unknown } | null> {
+  const { data: o } = await vt().auth.getSession();
+  const kullanici = o.session?.user.id;
+  if (!kullanici) return null;
+  const { data, error } = await vt().from("oyun_kayitlari").select("deger").eq("anahtar", anahtar).maybeSingle();
+  denetle(error);
+  return { kullanici, deger: (data?.deger as unknown) ?? null };
+}
+
+export async function oyunKaydiYaz(kullanici: string, anahtar: string, deger: unknown): Promise<void> {
+  const satir = { kullanici, anahtar, deger, guncelleme: new Date().toISOString() };
+  denetle((await vt().from("oyun_kayitlari").upsert(satir, { onConflict: "kullanici,anahtar" })).error);
+}
