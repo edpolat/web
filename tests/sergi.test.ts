@@ -48,6 +48,21 @@ describe("sergi formu doğrulaması", () => {
 });
 
 describe("satır ↔ sergi", () => {
+  it("şehir 81 ilden, ilçe o ilden; resmî yazıma çevrilir", () => {
+    const x = sergiIstegi({ ...temel, sehir: "bursa", ilce: "OSMANGAZİ" }, true);
+    expect([x.sehir, x.ilce]).toEqual(["Bursa", "Osmangazi"]);
+    expect(sergiIstegi({ ...temel, sehir: "İstanbul" }, true).ilce).toBeNull();
+    expect(() => sergiIstegi({ ...temel, sehir: "Paris" }, true)).toThrow(SergiHatasi);
+    expect(() => sergiIstegi({ ...temel, sehir: "Bursa", ilce: "Kadıköy" }, true)).toThrow(SergiHatasi);
+    expect(() => sergiIstegi({ ...temel, ilce: "Osmangazi" }, true)).toThrow(SergiHatasi);
+  });
+
+  it("düzenlemede listede olmayan eski şehir/ilçe korunur", () => {
+    const x = sergiIstegi({ ...temel, id: "eski-sergi", sehir: "Bursa", ilce: "Eski Bölge" }, false);
+    expect([x.sehir, x.ilce]).toEqual(["Bursa", "Eski Bölge"]);
+    expect(sergiIstegi({ ...temel, id: "eski-sergi", sehir: "Saraybosna" }, false).sehir).toBe("Saraybosna");
+  });
+
   it("veri/sergiler.json'daki her sergi tablo satırına ve geri aynı çevrilir", () => {
     const json = JSON.parse(fs.readFileSync(path.join(__dirname, "../veri/sergiler.json"), "utf-8")) as Sergi[];
     for (const x of json) {

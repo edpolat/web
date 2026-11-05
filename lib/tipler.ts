@@ -107,6 +107,7 @@ export type Sergi = {
   id: string;
   ad: CokDilli;
   sehir?: string;
+  ilce?: string;
   harita?: string;
   yer?: string;
   baslangic?: string;

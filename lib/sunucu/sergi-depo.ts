@@ -47,6 +47,7 @@ function denetle(error: { message: string; code?: string } | null): void {
   if (!error) return;
   if (error.code === "42501") throw new SergiHatasi("Bu işlem için yetkin yok.");
   if (error.code === "23505") throw new SergiHatasi("Bu kimlikte bir sergi zaten var; kimliği değiştir.");
+  if (/p_ilce/.test(error.message)) throw new SergiHatasi("Sergiye ilçe kaydetmek için Supabase'de supabase/023_sergi_ilce.sql çalıştırılmalı.");
   if (/sergiler|sergi_kaydet|sergi_sil/.test(error.message) && /exist|find|schema cache/i.test(error.message)) {
     throw new SergiHatasi("Sergi tablosu yok: Supabase'de supabase/017_sergiler.sql çalıştırılmalı.");
   }
@@ -74,6 +75,8 @@ export async function sergiKaydet(s: SergiIstegi, yeni: boolean): Promise<string
     p_aciklama_tr: s.aciklama_tr,
     p_aciklama_en: s.aciklama_en,
     p_url: s.url,
+    // p_ilce yalnız doluysa gönderilir: 023 çalıştırılmadıysa ilçesiz kayıt eski fonksiyonla yine çalışır.
+    ...(s.ilce ? { p_ilce: s.ilce } : {}),
   });
   denetle(error);
   sergileriYenile();

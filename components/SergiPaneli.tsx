@@ -1,9 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { ilinIlceleri, tumIller } from "@/lib/il-ilce";
 import { SINIRLAR } from "@/lib/sergi";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
+
+const ILLER = tumIller().sort((a, b) => a.localeCompare(b, "tr"));
 
 async function istek(govde: Record<string, unknown>): Promise<Record<string, unknown>> {
   const yanit = await fetch("/api/sergi", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(govde) });
@@ -23,6 +26,11 @@ export function SergiFormu({ dil, ilk }: { dil: Dil; ilk?: Record<string, string
   const d = ilk ?? {};
   const [durum, setDurum] = useState<{ tamam: boolean; metin: string }>();
   const [bekle, setBekle] = useState(false);
+  // Şehir ve ilçe eser formundaki gibi açılır liste: il değişince ilçe sıfırlanır,
+  // eski kayıttaki değer listede yoksa "(listede yok)" diye korunur.
+  const [sehir, setSehir] = useState(d.sehir ?? "");
+  const [ilce, setIlce] = useState(d.ilce ?? "");
+  const ilceListesi = sehir ? ilinIlceleri(sehir) : undefined;
 
   async function gonder(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -32,7 +40,11 @@ export function SergiFormu({ dil, ilk }: { dil: Dil; ilk?: Record<string, string
     try {
       const alanlar = Object.fromEntries(new FormData(form));
       await istek({ islem: yeni ? "ekle" : "duzenle", ...alanlar, ...(yeni ? {} : { id: d.id }) });
-      if (yeni) form.reset();
+      if (yeni) {
+        form.reset();
+        setSehir("");
+        setIlce("");
+      }
       setDurum({ tamam: true, metin: yeni ? t.eklendi : t.kaydedildi });
       router.refresh();
     } catch (h) {
@@ -67,8 +79,41 @@ export function SergiFormu({ dil, ilk }: { dil: Dil; ilk?: Record<string, string
       <div className="form-satir">
         <label>
           {t.sehir}
-          <input name="sehir" maxLength={SINIRLAR.sehir} defaultValue={d.sehir} />
+          <select
+            name="sehir"
+            value={sehir}
+            onChange={(e) => {
+              setSehir(e.target.value);
+              setIlce("");
+            }}
+          >
+            <option value="">{t.sehirSec}</option>
+            {sehir && !ILLER.includes(sehir) && <option value={sehir}>{`${sehir} (${t.listedeYok})`}</option>}
+            {ILLER.map((x) => (
+              <option key={x} value={x}>
+                {x}
+              </option>
+            ))}
+          </select>
         </label>
+        <label>
+          {t.ilce}
+          {ilceListesi || !sehir ? (
+            <select name="ilce" value={ilce} onChange={(e) => setIlce(e.target.value)} disabled={!sehir}>
+              <option value="">{t.ilceSec}</option>
+              {ilce && !ilceListesi?.includes(ilce) && <option value={ilce}>{`${ilce} (${t.listedeYok})`}</option>}
+              {ilceListesi?.map((x) => (
+                <option key={x} value={x}>
+                  {x}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <input name="ilce" maxLength={SINIRLAR.ilce} value={ilce} onChange={(e) => setIlce(e.target.value)} />
+          )}
+        </label>
+      </div>
+      <div className="form-satir">
         <label>
           {t.yer}
           <input name="yer" maxLength={SINIRLAR.yer} defaultValue={d.yer} />

@@ -81,7 +81,7 @@ export default async function Sergiler({ params }: { params: Promise<{ dil: stri
                   <strong>{metin(sergi.ad, dil)}</strong> <small>({sergi.id})</small>
                 </p>
                 <p className="not">
-                  {[sergi.sehir, sergi.yer].filter(Boolean).join(" · ")}
+                  {[sergi.ilce && sergi.sehir ? `${sergi.ilce}, ${sergi.sehir}` : sergi.sehir, sergi.yer].filter(Boolean).join(" · ")}
                   {sergi.baslangic && (
                     <>
                       <br />

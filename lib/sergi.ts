@@ -1,5 +1,6 @@
 // Sergilerin ortak kuralları (tarayıcı ve sunucu): panel formunun doğrulaması ve Supabase satırı ↔ Sergi dönüşümü.
 // Tablo ve aynı sınırların veritabanı tarafı: supabase/017_sergiler.sql.
+import { ilAdiBul, ilceBul } from "./il-ilce";
 import type { Sergi } from "./tipler";
 
 export class SergiHatasi extends Error {}
@@ -10,6 +11,7 @@ export type SergiSatiri = {
   ad_tr: string;
   ad_en: string | null;
   sehir: string | null;
+  ilce?: string | null;
   yer: string | null;
   harita: string | null;
   baslangic: string | null;
@@ -27,7 +29,7 @@ export type SergiSatiri = {
 /** Panel formundan gelen, doğrulanmış istek (boş alanlar null). */
 export type SergiIstegi = Omit<SergiSatiri, "kaynak_id" | "ekleyen_ad" | "olusturuldu" | "guncelleyen_ad" | "guncellendi">;
 
-export const SINIRLAR = { ad: 150, sehir: 60, yer: 300, harita: 200, aciklama: 1500, url: 500 } as const;
+export const SINIRLAR = { ad: 150, sehir: 60, ilce: 60, yer: 300, harita: 200, aciklama: 1500, url: 500 } as const;
 
 const bosMu = (x: unknown) => x === undefined || x === null || (typeof x === "string" && x.trim() === "");
 
@@ -78,6 +80,29 @@ export function sergiKimligi(ad: string): string {
 
 export const KIMLIK_KALIBI = /^[a-z0-9][a-z0-9-]{1,79}$/;
 
+/**
+ * Şehir 81 ilden biri, ilçe o ilin ilçelerinden biri olmalı (resmî yazıma çevrilir: "bursa" → "Bursa").
+ * Yeni sergide listede olmayan değer reddedilir; düzenlemede eski kayıttan kalan değer olduğu gibi korunur.
+ */
+function sehirIlce(g: Record<string, unknown>, yeni: boolean): { sehir: string | null; ilce: string | null } {
+  const hamSehir = yazi(g, "sehir", SINIRLAR.sehir, "Şehir");
+  const hamIlce = yazi(g, "ilce", SINIRLAR.ilce, "İlçe");
+  if (hamIlce && !hamSehir) throw new SergiHatasi("İlçe seçildiyse şehir de seçilmeli.");
+  if (!hamSehir) return { sehir: null, ilce: null };
+  const sehir = ilAdiBul(hamSehir);
+  if (!sehir) {
+    if (yeni) throw new SergiHatasi("Şehir 81 ilden biri olmalı.");
+    return { sehir: hamSehir, ilce: hamIlce };
+  }
+  if (!hamIlce) return { sehir, ilce: null };
+  const ilce = ilceBul(sehir, hamIlce);
+  if (!ilce) {
+    if (yeni) throw new SergiHatasi(`İlçe ${sehir} ilinin ilçelerinden biri olmalı.`);
+    return { sehir, ilce: hamIlce };
+  }
+  return { sehir, ilce };
+}
+
 /** Panel formunu denetler. Yeni sergide kimlik boşsa Türkçe addan üretilir. */
 export function sergiIstegi(g: Record<string, unknown>, yeni: boolean): SergiIstegi {
   const ad_tr = yazi(g, "ad_tr", SINIRLAR.ad, "Türkçe ad");
@@ -100,11 +125,13 @@ export function sergiIstegi(g: Record<string, unknown>, yeni: boolean): SergiIst
   const bitis = gun(g, "bitis", "Bitiş tarihi");
   if (bitis && !baslangic) throw new SergiHatasi("Bitiş tarihi girildiyse başlangıç tarihi de girilmeli.");
   if (baslangic && bitis && bitis < baslangic) throw new SergiHatasi("Bitiş tarihi başlangıçtan önce olamaz.");
+  const { sehir, ilce } = sehirIlce(g, yeni);
   return {
     id,
     ad_tr,
     ad_en: yazi(g, "ad_en", SINIRLAR.ad, "İngilizce ad"),
-    sehir: yazi(g, "sehir", SINIRLAR.sehir, "Şehir"),
+    sehir,
+    ilce,
     yer: yazi(g, "yer", SINIRLAR.yer, "Yer"),
     harita: yazi(g, "harita", SINIRLAR.harita, "Harita araması"),
     baslangic,
@@ -121,6 +148,7 @@ const varsa = <T>(x: T | null | undefined) => (x === null || x === undefined || 
 export function satirdanSergi(r: SergiSatiri): Sergi {
   const s: Sergi = { id: r.id, ad: { tr: r.ad_tr, ...(varsa(r.ad_en) ? { en: r.ad_en! } : {}) } };
   if (varsa(r.sehir)) s.sehir = r.sehir!;
+  if (varsa(r.ilce)) s.ilce = r.ilce!;
   if (varsa(r.yer)) s.yer = r.yer!;
   if (varsa(r.harita)) s.harita = r.harita!;
   if (varsa(r.baslangic)) s.baslangic = r.baslangic!.slice(0, 10);
@@ -138,6 +166,7 @@ export function sergidenForm(s: Sergi): Record<string, string> {
     ad_tr: s.ad.tr,
     ad_en: s.ad.en ?? "",
     sehir: s.sehir ?? "",
+    ilce: s.ilce ?? "",
     yer: s.yer ?? "",
     harita: s.harita ?? "",
     baslangic: s.baslangic ?? "",

@@ -39,7 +39,7 @@ export default async function SergilerSayfasi({ params }: { params: Promise<{ di
           <li key={x.id} className={`sergi-kart sergi-${x.durum}`}>
             <p className="sergi-ust">
               <span className={`sergi-durum sergi-durum-${x.durum}`}>{t.durum[x.durum]}</span>
-              {x.sehir && <span>{x.sehir}</span>}
+              {x.sehir && <span>{x.ilce ? `${x.ilce}, ${x.sehir}` : x.sehir}</span>}
             </p>
             <h2>{metin(x.ad, dil)}</h2>
             <p>
