@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { bulutHazir, erisimJetonu, oturumIzle } from "@/lib/bulut";
 
@@ -9,6 +10,7 @@ import { bulutHazir, erisimJetonu, oturumIzle } from "@/lib/bulut";
  */
 export default function YonetimBaglantisi({ dil, ad }: { dil: string; ad: string }) {
   const [goster, setGoster] = useState(false);
+  const yol = usePathname();
   useEffect(() => {
     let iptal = false;
     async function sor(jeton: string | null) {
@@ -30,8 +32,15 @@ export default function YonetimBaglantisi({ dil, ad }: { dil: string; ad: string
   }, []);
   if (!goster) return null;
   return (
-    <Link href={`/${dil}/yonetim`} className="sekme-yonetim">
-      {ad}
+    <Link href={`/${dil}/yonetim`} className="sekme-yonetim" aria-current={yol.startsWith(`/${dil}/yonetim`) ? "page" : undefined}>
+      {/* Hesabım düğmesiyle aynı biçim: 20px çizgi simge + yazı (dar ekranda yalnız simge) */}
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+        <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      </svg>
+      <span className="sekme-hesap-yazi">{ad}</span>
     </Link>
   );
 }

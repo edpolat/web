@@ -4,6 +4,8 @@ import { type FormEvent, useEffect, useRef, useState } from "react";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
 import { ROLLER, type Rol } from "@/lib/yetki";
+import { Kisi } from "./PanelTablo";
+import PanelTablo, { type PanelSatir } from "./PanelTabloGovde";
 
 export type PanelKullanicisi = { id: string; eposta: string; ad: string | null; rol: Rol | null };
 
@@ -13,7 +15,6 @@ export default function KullaniciYonetimi({ dil, kullanicilar, benim }: { dil: D
   const t = s(dil).panel;
   const router = useRouter();
   const [mesaj, setMesaj] = useState("");
-  const [arama, setArama] = useState("");
   const [bekleyen, setBekleyen] = useState<PanelKullanicisi | null>(null);
   const [sifre, setSifre] = useState("");
   const [sifreHatasi, setSifreHatasi] = useState("");
@@ -60,49 +61,52 @@ export default function KullaniciYonetimi({ dil, kullanicilar, benim }: { dil: D
     setMesaj(sonuc.ok ? t.kaydedildi : sonuc.hata);
     router.refresh();
   }
-  const q = arama.trim().toLocaleLowerCase("tr");
-  const gorunen = kullanicilar.filter((k) => !q || `${k.ad ?? ""} ${k.eposta}`.toLocaleLowerCase("tr").includes(q));
+  const satirlar: PanelSatir[] = kullanicilar.map((k) => {
+    const ad = k.ad || k.eposta.split("@")[0];
+    return {
+      id: k.id,
+      hucreler: [
+        <Kisi key="k" ad={ad} alt={k.eposta} />,
+        <select
+          key="r"
+          className="pt-secim"
+          aria-label={`${t.rol}: ${k.eposta}`}
+          value={k.rol ?? ""}
+          disabled={k.id === benim}
+          onChange={(e) => ata(k, (e.target.value || null) as Rol | null)}
+        >
+          <option value="">{t.rolsuz}</option>
+          {ROLLER.map((r) => (
+            <option key={r} value={r}>
+              {t.roller[r]}
+            </option>
+          ))}
+        </select>,
+      ],
+      sira: [ad, k.rol ? t.roller[k.rol] : t.rolsuz],
+      ara: `${k.ad ?? ""} ${k.eposta}`,
+      grup: [k.rol ?? "yok"],
+    };
+  });
+  const ROL_SIMGESI = { super_admin: "rol", editor: "duzenle", tarihci: "kitap" } as const;
   return (
     <>
-      <label>
-        {t.ara}
-        <input type="search" value={arama} onChange={(e) => setArama(e.target.value)} />
-      </label>
       <p role="status">{mesaj}</p>
-      <table className="tablo">
-        <thead>
-          <tr>
-            <th>{t.kisi}</th>
-            <th>{t.rol}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {gorunen.map((k) => (
-            <tr key={k.id}>
-              <td>
-                {k.ad || k.eposta.split("@")[0]}
-                <br />
-                <small>{k.eposta}</small>
-              </td>
-              <td>
-                <select
-                  aria-label={`${t.rol}: ${k.eposta}`}
-                  value={k.rol ?? ""}
-                  disabled={k.id === benim}
-                  onChange={(e) => ata(k, (e.target.value || null) as Rol | null)}
-                >
-                  <option value="">{t.rolsuz}</option>
-                  {ROLLER.map((r) => (
-                    <option key={r} value={r}>
-                      {t.roller[r]}
-                    </option>
-                  ))}
-                </select>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <PanelTablo
+        dil={dil}
+        sutunlar={[
+          { ad: t.kisi, simge: "kisi" },
+          { ad: t.rol, simge: "rol" },
+        ]}
+        satirlar={satirlar}
+        haplar={[
+          { ad: s(dil).tablo.herkes, simge: "kisiler", deger: "", secili: true },
+          ...ROLLER.filter((r) => kullanicilar.some((k) => k.rol === r)).map((r) => ({ ad: t.roller[r], simge: ROL_SIMGESI[r], deger: r })),
+          ...(kullanicilar.some((k) => !k.rol) ? [{ ad: t.rolsuz, simge: "kisi" as const, deger: "yok" }] : []),
+        ]}
+        ara={t.ara}
+        birim={s(dil).tablo.birim.kisi}
+      />
       <dialog ref={pencere} className="sifre-onayi" aria-labelledby="sifre-onayi-baslik" onClose={() => setBekleyen(null)}>
         {bekleyen && (
           <form onSubmit={onayla}>

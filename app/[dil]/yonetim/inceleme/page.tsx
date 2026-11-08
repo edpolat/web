@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { Bolum } from "@/components/IncelemeBolum";
 import KaynakKunye from "@/components/KaynakKunye";
 import { KaynakDogrula } from "@/components/KaynakPaneli";
 import OneriKarti from "@/components/OneriKarti";
@@ -27,6 +28,7 @@ import { sonAnalizler, sonDuzeltmeler, type AnalizSatiri, type EtiketDuzeltmesi 
 import { yzAcik } from "@/lib/sunucu/yz-servis";
 import { ayarlar, yayindakiEserler, yayindakiKaynaklar } from "@/lib/veri";
 import { izinli } from "@/lib/yetki";
+import { kucukGorsel } from "@/lib/gorsel";
 import { ETIKETLER, benzerOneriler, siraPuani, type ElemeCevabi, type Etiket, type GecerliEtiket } from "@/lib/yz";
 
 export const metadata: Metadata = { robots: { index: false } };
@@ -54,7 +56,7 @@ export default async function Inceleme({
   searchParams,
 }: {
   params: Promise<{ dil: string }>;
-  searchParams: Promise<{ tur?: string; sira?: string; etiket?: string }>;
+  searchParams: Promise<{ tur?: string; sira?: string; etiket?: string; sec?: string }>;
 }) {
   const { dil } = await params;
   if (!gecerliDil(dil)) notFound();
@@ -68,7 +70,7 @@ export default async function Inceleme({
   const surumEylemleri = [...(tarihciYetkisi ? (["tarihci"] as const) : []), ...(editorYetkisi ? (["karar"] as const) : [])];
   const t = s(dil);
   const u = t.kutuphane;
-  const { tur, sira, etiket } = await searchParams;
+  const { tur, sira, etiket, sec } = await searchParams;
   const yeniOnce = sira === "yeni";
   const oncelikle = sira === "oncelik";
   // YZ etiketine göre süzme yalnız öneriler içindir.
@@ -176,6 +178,7 @@ export default async function Inceleme({
     a && { id: a.id, durum: a.durum, sonuc: a.sonuc as GosterilenAnaliz["sonuc"], hata: a.hata, model: a.model };
   const yzKutusu = (tur: "oneri" | "surum", id: number, a?: AnalizSatiri) => (
     <YzKaynakKutusu
+      key={`yz-${tur}-${id}`}
       dil={dil}
       hedefTur={tur}
       hedefId={id}
@@ -210,11 +213,12 @@ export default async function Inceleme({
     if (benzerler.get(o.id)?.length) etiketSayilari.set("benzer", (etiketSayilari.get("benzer") ?? 0) + 1);
   }
 
-  const adres = (x: { tur?: Tur; sira?: string; etiket?: string }) => {
+  const adres = (x: { tur?: Tur; sira?: string; etiket?: string; sec?: string }) => {
     const q = new URLSearchParams();
     if (x.tur && !x.etiket) q.set("tur", x.tur);
     if (x.sira) q.set("sira", x.sira);
     if (x.etiket) q.set("etiket", x.etiket);
+    if (x.sec) q.set("sec", x.sec);
     const yazi = q.toString();
     return `/${dil}/yonetim/inceleme${yazi ? `?${yazi}` : ""}`;
   };
@@ -225,50 +229,239 @@ export default async function Inceleme({
   if (tarihciYetkisi) cipler.push(["talep", t.surum.onayTurleri.talep, sayi.talep]);
   const yeniSira = yeniOnce ? "yeni" : oncelikle ? "oncelik" : undefined;
   const y = t.yz;
+  const ib = t.surum.ib;
+
+  // Aşamalar (üst bant) ve aşama sütunları: danışmanda = tarihçideki sürümler + öneriler; editörde = editördeki sürümler.
+  const asamaSayisi = {
+    danisman: (eserler ?? []).filter((x) => x.durum === "incelemede").length + sayi.oneri,
+    editor: (eserler ?? []).filter((x) => x.durum === "editorde").length,
+    kaynak: sayi.kaynak,
+    talep: sayi.talep,
+  };
+  type Sutun = keyof typeof asamaSayisi;
+  const sutunu = (x: Kayit): Sutun =>
+    x.tur === "eser" ? (x.surum.durum === "editorde" ? "editor" : "danisman") : x.tur === "oneri" ? "danisman" : x.tur === "kaynak" ? "kaynak" : "talep";
+  // Dört sütun hep görünür; kişinin yetkisi olmayan aşamanın sütunu boş kalır (sayısı okunmaz, "—").
+  const sutunlar: Sutun[] = ["danisman", "editor", "kaynak", "talep"];
+  const yetkili: Record<Sutun, boolean> = { danisman: tarihciYetkisi, editor: editorYetkisi, kaynak: kaynakYetkisi, talep: tarihciYetkisi };
+  const anahtar = (x: Kayit) =>
+    x.tur === "eser" ? `e-${x.surum.id}` : x.tur === "oneri" ? `o-${x.oneri.id}` : x.tur === "kaynak" ? `k-${x.kaynak.id}` : `t-${x.talep.id}`;
+  const secilen = kayitlar.find((x) => anahtar(x) === sec) ?? kayitlar[0];
+  const rol =
+    tarihciYetkisi && editorYetkisi ? ib.rol.ikisi : tarihciYetkisi ? ib.rol.danisman : editorYetkisi ? ib.rol.editor : ib.rol.kaynak;
+  const ne = (iso: string) => {
+    const dk = Math.max(0, Math.round((Date.now() - Date.parse(iso)) / 60000));
+    return dk < 60 ? ib.once.dk(dk) : dk < 60 * 24 ? ib.once.sa(Math.round(dk / 60)) : ib.once.gun(Math.round(dk / 1440));
+  };
+  const eserAdi = (id: string, yedek?: string | null) => metin(eserMap.get(id)?.ad, dil) || yedek || id;
+  const basliklar = { eser: ib.eser, bilgi: ib.bilgi, karar: ib.karar };
+
+  /** Seçili işin aşama adımları: [ad, alt yazı][] ve şu anki adımın sırası. */
+  const surecAdimlari = (x: Kayit): { adimlar: [string, string][]; simdi: number } => {
+    if (x.tur === "kaynak")
+      return {
+        adimlar: [
+          [ib.adim.eklendi, [x.kaynak.ekleyen_ad, tarih(x.kaynak.eklendi, dil)].filter(Boolean).join(" · ")],
+          [ib.adim.dogrulama, ib.simdi],
+          [ib.adim.kutuphanede, "—"],
+        ],
+        simdi: 1,
+      };
+    if (x.tur === "talep")
+      return {
+        adimlar: [
+          [ib.adim.gonderildi, [x.talep.gonderen_ad, tarih(x.talep.olusturuldu, dil)].filter(Boolean).join(" · ")],
+          [ib.adim.inceleme, ib.simdi],
+          [ib.adim.sonuc, "—"],
+        ],
+        simdi: 1,
+      };
+    const kim = x.tur === "eser" ? x.surum.ekleyen : x.oneri.kullanici_ad;
+    const simdi = x.tur === "eser" && x.surum.durum === "editorde" ? 2 : 1;
+    return {
+      adimlar: [
+        [ib.adim.gonderildi, [kim, tarih(x.zaman, dil)].filter(Boolean).join(" · ")],
+        [ib.adim.danisman, simdi === 1 ? ib.simdi : (x.tur === "eser" && x.surum.tarihci) || "✓"],
+        [ib.adim.editor, simdi === 2 ? ib.simdi : ib.sirada],
+        [ib.adim.sitede, "—"],
+      ],
+      simdi,
+    };
+  };
+
+  /** Sol sütun: seçili işin YZ çıktısı. */
+  const yzSutunu = (x: Kayit) => {
+    if (x.tur === "eser")
+      return kaynakliSurumler.has(x.surum.id) ? yzKutusu("surum", x.surum.id, surumAnalizleri.get(x.surum.id)) : <p className="ib-yz-bos">{ib.yzYok}</p>;
+    if (x.tur === "oneri")
+      return (
+        <>
+          <YzElemeKutusu
+            dil={dil}
+            oneriId={x.oneri.id}
+            analiz={elemeKutusuAnalizi(elemeAnalizleri.get(x.oneri.id))}
+            gecerli={gecerliEtiket(x.oneri.id)}
+            duzelten={duzeltmeler.get(x.oneri.id)?.kim_ad}
+            benzer={benzerler.get(x.oneri.id) ?? []}
+            acik={yzAcikMi}
+            basladi={baslatilan.has(`eleme-oneri-${x.oneri.id}`)}
+            yetkili={eserYetkisi}
+          />
+          {x.oneri.kaynaksiz ? <p className="ib-yz-bos">{ib.yzKaynaksiz}</p> : yzKutusu("oneri", x.oneri.id, oneriAnalizleri.get(x.oneri.id))}
+        </>
+      );
+    return <p className="ib-yz-bos">{ib.yzYok}</p>;
+  };
+
+  /** Sağ sütun: seçili işin kartı, Eser / Bilgi / Karar bölümleriyle. */
+  const kart = (x: Kayit) =>
+    x.tur === "talep" ? (
+      <TalepKarti
+        key={`t-${x.talep.id}`}
+        dil={dil}
+        talep={x.talep}
+        eserAd={eserAdi(x.talep.eser_id, x.talep.eser_adi)}
+        duzenleyebilir={izinli(ben, "eser.duzenle") && eserMap.has(x.talep.eser_id)}
+        panel={basliklar}
+      />
+    ) : x.tur === "oneri" ? (
+      <OneriKarti
+        key={`o-${x.oneri.id}`}
+        dil={dil}
+        oneri={x.oneri}
+        eserAd={eserAdi(x.oneri.eser_id)}
+        mevcut={mevcutDeger(eserMap.get(x.oneri.eser_id), x.oneri.alan)}
+        mevcutMetin={mevcutMetinler(eserMap.get(x.oneri.eser_id))}
+        yzAcik={yzAcikMi}
+        kaynakAd={x.oneri.kaynak_id ? kaynakAdlari.get(x.oneri.kaynak_id)?.baslik : undefined}
+        kategoriler={kategoriler}
+        kutuphaneYetkisi={kaynakYetkisi}
+        yzAnalizleri={[...tamamlanan(oneriAnalizleri.get(x.oneri.id)), ...tamamlanan(elemeAnalizleri.get(x.oneri.id))]}
+        panel={basliklar}
+      />
+    ) : x.tur === "eser" ? (
+      <SurumKarti
+        key={`e-${x.surum.id}`}
+        dil={dil}
+        k={x.surum}
+        eylemler={surumEylemleri}
+        benimId={ben?.id}
+        eserAdresi
+        turEtiketi={t.surum.onayTuru.eser}
+        yzAnalizleri={tamamlanan(surumAnalizleri.get(x.surum.id))}
+        yzAcik={yzAcikMi}
+        panel={basliklar}
+      />
+    ) : (
+      <article key={`k-${x.kaynak.id}`} className="katki ib-kart" aria-labelledby={`kaynak-${x.kaynak.id}`}>
+        <Bolum baslik={ib.kaynak}>
+          <p className="katki-ust">
+            <span className="tur-etiketi">{t.surum.onayTuru.kaynak}</span>
+            <span className={`etiket etiket-kaynak-${x.kaynak.durum}`}>{u.durumlar[x.kaynak.durum]}</span>
+            {x.kaynak.ekleyen_ad && <span>· {x.kaynak.ekleyen_ad}</span>}
+            <span>· {tarih(x.kaynak.eklendi, dil)}</span>
+          </p>
+          <h3 id={`kaynak-${x.kaynak.id}`}>
+            <Link href={`/${dil}/yonetim/kaynaklar/${x.kaynak.id}`}>{x.kaynak.baslik}</Link>
+            {x.kaynak.dosya_yolu && (
+              <small>
+                {" "}
+                · <Link href={`/${dil}/yonetim/kaynaklar/${x.kaynak.id}`}>{u.onizleme} →</Link>
+              </small>
+            )}
+          </h3>
+        </Bolum>
+        <Bolum baslik={ib.bilgi}>
+          <KaynakKunye dil={dil} kaynak={x.kaynak} />
+        </Bolum>
+        <Bolum baslik={ib.karar} sinif="ib-karar">
+          <KaynakDogrula dil={dil} id={x.kaynak.id} durum={x.kaynak.durum} herkeseAcik={x.kaynak.herkese_acik} />
+        </Bolum>
+      </article>
+    );
+
+  /** Aşama sütunundaki kart: eserin kapak fotoğrafı ve ili, tür etiketi, aşama çubuğu, YZ etiketi. */
+  const isKarti = (x: Kayit) => {
+    const eserId = x.tur === "eser" ? x.surum.eserId : x.tur === "oneri" ? x.oneri.eser_id : x.tur === "talep" ? x.talep.eser_id : undefined;
+    const e = eserId ? eserMap.get(eserId) : undefined;
+    const g = e?.gorseller?.[0];
+    const ilId = e?.il ?? (x.tur === "eser" ? x.surum.il : undefined);
+    const ilAdi = ilId ? ilId.charAt(0).toLocaleUpperCase("tr-TR") + ilId.slice(1) : "";
+    const fotoSayisi = x.tur === "talep" ? x.talep.foto_yollari.length : 0;
+    const [tur, ad, kim] =
+      x.tur === "eser"
+        ? [t.surum.onayTuru.eser, x.surum.eser, x.surum.ekleyen]
+        : x.tur === "oneri"
+          ? [t.surum.onayTuru.oneri, eserAdi(x.oneri.eser_id), x.oneri.kullanici_ad ?? ""]
+          : x.tur === "kaynak"
+            ? [x.kaynak.dosya_yolu ? ib.pdfEkli : t.surum.onayTuru.kaynak, x.kaynak.baslik, x.kaynak.ekleyen_ad ?? ""]
+            : [t.surum.onayTuru.talep, eserAdi(x.talep.eser_id, x.talep.eser_adi), x.talep.gonderen_ad ?? ""];
+    const etiketler = x.tur === "oneri" ? (gecerliEtiket(x.oneri.id)?.etiketler ?? []) : [];
+    const spam = etiketler.includes("spam");
+    const yzEtiket = etiketler[0];
+    // Aşama çubuğu (yalnız iki aşamalı işler): danışmanda yarı, editörde dörtte üç.
+    const ilerleme = x.tur === "eser" ? (x.surum.durum === "editorde" ? 75 : 50) : x.tur === "oneri" ? 50 : undefined;
+    return (
+      <li key={anahtar(x)}>
+        <Link
+          className={`ib-is ib-is-${x.tur}${spam ? " ib-is-soluk" : ""}`}
+          aria-current={x === secilen || undefined}
+          href={adres({ tur: secili, sira: yeniSira, etiket: seciliEtiket, sec: anahtar(x) })}
+          scroll={false}
+        >
+          {eserId && !spam && (
+            <span className="ib-is-foto" style={g ? { backgroundImage: `url("${kucukGorsel(g.dosya)}")`, backgroundPosition: g.odak } : undefined}>
+              <span>
+                {ilAdi}
+                {fotoSayisi > 0 && ` · ${ib.foto(fotoSayisi)}`}
+              </span>
+            </span>
+          )}
+          <span className="ib-is-ic">
+            <span className={`ib-rozet ib-r-${spam ? "spam" : x.tur}`}>{spam ? `${ib.yzKisa}: ${y.etiketler.spam}` : tur}</span>
+            <span className="ib-is-ad">{ad}</span>
+            {ilerleme !== undefined && !spam && (
+              <span className="ib-is-cubuk" aria-hidden="true">
+                <b style={{ width: `${ilerleme}%` }} />
+              </span>
+            )}
+            <span className="ib-is-alt">
+              {yzEtiket && !spam ? (
+                <span className={`ib-rozet ib-r-yz-${yzEtiket === "degerli" ? "iyi" : "notr"}`}>
+                  {ib.yzKisa}: {y.etiketler[yzEtiket]}
+                </span>
+              ) : (
+                <span>{kim}</span>
+              )}
+              <span>{ne(x.zaman)}</span>
+            </span>
+          </span>
+        </Link>
+      </li>
+    );
+  };
+
+  const surec = secilen && surecAdimlari(secilen);
 
   return (
-    <section>
-      <p>
-        <Link href={`/${dil}/yonetim`}>← {t.yonetim}</Link>
-      </p>
-      <h1>{t.surum.inceleme}</h1>
-      <p className="not">{t.surum.incelemeAciklama}</p>
-      <nav className="cipler" aria-label={u.suz}>
-        {cipler.map(([cipTuru, ad, n]) => (
-          <Link key={ad} className="cip" aria-pressed={!seciliEtiket && secili === cipTuru} href={adres({ tur: cipTuru, sira: yeniSira })}>
-            {ad} ({n})
-          </Link>
-        ))}
-      </nav>
-      <p className="not">
-        {t.surum.sira}:{" "}
-        <Link aria-current={(!yeniOnce && !oncelikle) || undefined} href={adres({ tur: secili, etiket: seciliEtiket })}>
-          {t.surum.eskidenYeniye}
-        </Link>
-        {" · "}
-        <Link aria-current={yeniOnce || undefined} href={adres({ tur: secili, sira: "yeni", etiket: seciliEtiket })}>
-          {t.surum.yenidenEskiye}
-        </Link>
-        {eserYetkisi && (
-          <>
-            {" · "}
-            <Link aria-current={oncelikle || undefined} href={adres({ tur: secili, sira: "oncelik", etiket: seciliEtiket })}>
-              {y.siraOncelik}
-            </Link>
-          </>
-        )}
-      </p>
-      {eserYetkisi && (oneriler?.length ?? 0) > 0 && (
-        <nav className="cipler" aria-label={y.etiketSuz}>
-          <span className="not">{y.etiketSuz}:</span>
-          {[...ETIKETLER, "benzer" as const].map((e) => (
-            <Link key={e} className="cip" aria-pressed={seciliEtiket === e} href={adres({ sira: yeniSira, etiket: seciliEtiket === e ? undefined : e })}>
-              {y.etiketler[e]} ({etiketSayilari.get(e) ?? 0})
-            </Link>
+    <section className="ib-sayfa">
+      <header className="ib-bant">
+        <div>
+          <h1>{t.surum.inceleme}</h1>
+          <p>
+            {ib.rolun}: <b>{rol}</b> · {ib.kural}
+          </p>
+        </div>
+        <ul className="ib-asamalar">
+          {sutunlar.map((x) => (
+            <li key={x}>
+              <b>{yetkili[x] ? asamaSayisi[x] : "—"}</b>
+              <span>{ib.asamalar[x]}</span>
+            </li>
           ))}
-        </nav>
-      )}
-      {(etiketSayilari.get("spam") ?? 0) > 0 && <p className="not">{y.spamNot}</p>}
+        </ul>
+      </header>
+
       {eserHatasi && (
         <p className="hata">
           {t.surum.tabloYok} <small>({eserHatasi})</small>
@@ -289,79 +482,85 @@ export default async function Inceleme({
           {u.tabloYok} <small>({kaynakHatasi})</small>
         </p>
       )}
-      {!kayitlar.length && <p>{t.surum.hepsiOnaylandi}</p>}
-      {kayitlar.map((x) =>
-        x.tur === "talep" ? (
-          <TalepKarti
-            key={`t-${x.talep.id}`}
-            dil={dil}
-            talep={x.talep}
-            eserAd={metin(eserMap.get(x.talep.eser_id)?.ad, dil) || x.talep.eser_adi || x.talep.eser_id}
-            duzenleyebilir={izinli(ben, "eser.duzenle") && eserMap.has(x.talep.eser_id)}
-          />
-        ) : x.tur === "oneri" ? (
-          <OneriKarti
-            key={`o-${x.oneri.id}`}
-            dil={dil}
-            oneri={x.oneri}
-            eserAd={metin(eserMap.get(x.oneri.eser_id)?.ad, dil) || x.oneri.eser_id}
-            mevcut={mevcutDeger(eserMap.get(x.oneri.eser_id), x.oneri.alan)}
-            mevcutMetin={mevcutMetinler(eserMap.get(x.oneri.eser_id))}
-            yzAcik={yzAcikMi}
-            kaynakAd={x.oneri.kaynak_id ? kaynakAdlari.get(x.oneri.kaynak_id)?.baslik : undefined}
-            kategoriler={kategoriler}
-            kutuphaneYetkisi={kaynakYetkisi}
-            yz={x.oneri.kaynaksiz ? undefined : yzKutusu("oneri", x.oneri.id, oneriAnalizleri.get(x.oneri.id))}
-            yzAnalizleri={[...tamamlanan(oneriAnalizleri.get(x.oneri.id)), ...tamamlanan(elemeAnalizleri.get(x.oneri.id))]}
-            yzEleme={
-              <YzElemeKutusu
-                dil={dil}
-                oneriId={x.oneri.id}
-                analiz={elemeKutusuAnalizi(elemeAnalizleri.get(x.oneri.id))}
-                gecerli={gecerliEtiket(x.oneri.id)}
-                duzelten={duzeltmeler.get(x.oneri.id)?.kim_ad}
-                benzer={benzerler.get(x.oneri.id) ?? []}
-                acik={yzAcikMi}
-                basladi={baslatilan.has(`eleme-oneri-${x.oneri.id}`)}
-                yetkili={eserYetkisi}
-              />
-            }
-          />
-        ) : x.tur === "eser" ? (
-          <SurumKarti
-            key={`e-${x.surum.id}`}
-            dil={dil}
-            k={x.surum}
-            eylemler={surumEylemleri}
-            benimId={ben?.id}
-            eserAdresi
-            turEtiketi={t.surum.onayTuru.eser}
-            ek={kaynakliSurumler.has(x.surum.id) ? yzKutusu("surum", x.surum.id, surumAnalizleri.get(x.surum.id)) : undefined}
-            yzAnalizleri={tamamlanan(surumAnalizleri.get(x.surum.id))}
-            yzAcik={yzAcikMi}
-          />
-        ) : (
-          <article key={`k-${x.kaynak.id}`} className="katki" aria-labelledby={`kaynak-${x.kaynak.id}`}>
-            <p className="katki-ust">
-              <span className="tur-etiketi">{t.surum.onayTuru.kaynak}</span>
-              <span className={`etiket etiket-kaynak-${x.kaynak.durum}`}>{u.durumlar[x.kaynak.durum]}</span>
-              {x.kaynak.ekleyen_ad && <span>· {x.kaynak.ekleyen_ad}</span>}
-              <span>· {tarih(x.kaynak.eklendi, dil)}</span>
-            </p>
-            <h3 id={`kaynak-${x.kaynak.id}`}>
-              <Link href={`/${dil}/yonetim/kaynaklar/${x.kaynak.id}`}>{x.kaynak.baslik}</Link>
-              {x.kaynak.dosya_yolu && (
-                <small>
-                  {" "}
-                  · <Link href={`/${dil}/yonetim/kaynaklar/${x.kaynak.id}`}>{u.onizleme} →</Link>
-                </small>
-              )}
-            </h3>
-            <KaynakKunye dil={dil} kaynak={x.kaynak} />
-            <KaynakDogrula dil={dil} id={x.kaynak.id} durum={x.kaynak.durum} herkeseAcik={x.kaynak.herkese_acik} />
-          </article>
-        ),
+      {!kayitlar.length && <p className="ib-hepsi">{t.surum.hepsiOnaylandi}</p>}
+
+      {secilen && surec && (
+        <div className="ib-masa" id="secili">
+          <aside className="ib-yz" aria-label={ib.yzBaslik}>
+            <p className="ib-serit">{ib.yzBaslik}</p>
+            <div className="ib-yz-ic">{yzSutunu(secilen)}</div>
+          </aside>
+          <div className="ib-sag">
+            <Bolum baslik={ib.surec}>
+              <ol className="ib-surec">
+                {surec.adimlar.map(([ad, alt], i) => (
+                  <li key={ad} className={i < surec.simdi ? "gecti" : i === surec.simdi ? "simdi" : undefined} aria-current={i === surec.simdi ? "step" : undefined}>
+                    <b>{i < surec.simdi ? "✓" : i + 1}</b>
+                    {ad}
+                    <small>{alt}</small>
+                  </li>
+                ))}
+              </ol>
+            </Bolum>
+            {kart(secilen)}
+          </div>
+        </div>
       )}
+
+      <div className="ib-pano-ust">
+        <h2>{ib.siradaki}</h2>
+        <nav className="cipler" aria-label={u.suz}>
+          {cipler.map(([cipTuru, ad, n]) => (
+            <Link key={ad} className="cip" aria-pressed={!seciliEtiket && secili === cipTuru} href={adres({ tur: cipTuru, sira: yeniSira })}>
+              {ad} ({n})
+            </Link>
+          ))}
+        </nav>
+        <p className="not">
+          {t.surum.sira}:{" "}
+          <Link aria-current={(!yeniOnce && !oncelikle) || undefined} href={adres({ tur: secili, etiket: seciliEtiket })}>
+            {t.surum.eskidenYeniye}
+          </Link>
+          {" · "}
+          <Link aria-current={yeniOnce || undefined} href={adres({ tur: secili, sira: "yeni", etiket: seciliEtiket })}>
+            {t.surum.yenidenEskiye}
+          </Link>
+          {eserYetkisi && (
+            <>
+              {" · "}
+              <Link aria-current={oncelikle || undefined} href={adres({ tur: secili, sira: "oncelik", etiket: seciliEtiket })}>
+                {y.siraOncelik}
+              </Link>
+            </>
+          )}
+        </p>
+        {eserYetkisi && (oneriler?.length ?? 0) > 0 && (
+          <nav className="cipler" aria-label={y.etiketSuz}>
+            <span className="not">{y.etiketSuz}:</span>
+            {[...ETIKETLER, "benzer" as const].map((e) => (
+              <Link key={e} className="cip" aria-pressed={seciliEtiket === e} href={adres({ sira: yeniSira, etiket: seciliEtiket === e ? undefined : e })}>
+                {y.etiketler[e]} ({etiketSayilari.get(e) ?? 0})
+              </Link>
+            ))}
+          </nav>
+        )}
+        {(etiketSayilari.get("spam") ?? 0) > 0 && <p className="not">{y.spamNot}</p>}
+      </div>
+      <div className="ib-pano-sar">
+        <div className="ib-pano" style={{ ["--ib-sutun" as string]: String(sutunlar.length) }}>
+          {sutunlar.map((sutun) => {
+            const isler = kayitlar.filter((x) => sutunu(x) === sutun);
+            return (
+              <section key={sutun} className="ib-sutun" aria-label={ib.sutunlar[sutun]}>
+                <p className="ib-sutun-bas">
+                  {ib.sutunlar[sutun]} <b>{yetkili[sutun] ? isler.length : "—"}</b>
+                </p>
+                {isler.length ? <ul>{isler.map(isKarti)}</ul> : <p className="ib-sutun-bos">{yetkili[sutun] ? ib.bos : ib.yetkiDisi}</p>}
+              </section>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }

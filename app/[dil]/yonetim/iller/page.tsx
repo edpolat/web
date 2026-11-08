@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { IlFormu, IlKaldir, IlKarari } from "@/components/IlPaneli";
+import { IslemMetni, PanelBaslik, YuvarlakDugme } from "@/components/PanelTablo";
+import PanelTablo from "@/components/PanelTabloGovde";
 import { adAnahtari, tumIller } from "@/lib/il-ilce";
 import { gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
@@ -45,8 +47,7 @@ export default async function Iller({ params, searchParams }: { params: Promise<
       <p>
         <Link href={`/${dil}/yonetim`}>← {t.yonetim}</Link>
       </p>
-      <h1>{u.baslik}</h1>
-      <p className="not">{u.aciklama}</p>
+      <PanelBaslik simge="harita" baslik={u.baslik} alt={u.aciklama} />
       {ekleyebilir && <IlFormu dil={dil} kaynaklar={[...kaynakMap.values()].map((k) => ({ id: k.id, ad: k.baslik }))} secilebilirIller={secilebilirIller} taslak={taslak} />}
 
       <h2>{u.bekleyen}</h2>
@@ -75,37 +76,39 @@ export default async function Iller({ params, searchParams }: { params: Promise<
       )}
 
       <h2>{u.mevcut}</h2>
-      <table className="tablo">
-        <thead>
-          <tr>
-            <th>{u.adTr}</th>
-            <th>{u.eserSayisi}</th>
-            <th>{u.kaynak}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {yayindaki.map(({ il, eserler }) => (
-            <tr key={il.id}>
-              <td>
-                {metin(il.ad, dil)}
-                {ekleyebilir && (
-                  <>
-                    <br />
-                    <small>
-                      <Link href={`/${dil}/yonetim/eser/yeni?il=${il.id}`}>{u.eserEkle}</Link>
-                    </small>
-                  </>
-                )}
-              </td>
-              <td>{eserler.length}</td>
-              <td>
-                {jsonda.has(il.id) ? u.json : u.panelden}
-                {!jsonda.has(il.id) && izinli(ben, "eser.arsivle") && <IlKaldir dil={dil} ilId={il.id} ad={metin(il.ad, dil)} />}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <PanelTablo
+        dil={dil}
+        sutunlar={[
+          { ad: u.adTr, simge: "harita" },
+          { ad: u.eserSayisi, simge: "cami" },
+          { ad: u.kaynak, simge: "belge" },
+        ]}
+        satirlar={yayindaki.map(({ il, eserler }) => {
+          const ad = metin(il.ad, dil);
+          const dosyada = jsonda.has(il.id);
+          return {
+            id: il.id,
+            hucreler: [
+              <IslemMetni key="a" baslik={ad} />,
+              <span key="s" className="pt-sayi">
+                {eserler.length}
+              </span>,
+              dosyada ? u.json : u.panelden,
+            ],
+            eylem:
+              (!dosyada && izinli(ben, "eser.arsivle")) || ekleyebilir ? (
+                <>
+                  {!dosyada && izinli(ben, "eser.arsivle") && <IlKaldir dil={dil} ilId={il.id} ad={ad} />}
+                  {ekleyebilir && <YuvarlakDugme href={`/${dil}/yonetim/eser/yeni?il=${il.id}`} simge="ekle" etiket={`${u.eserEkle}: ${ad}`} />}
+                </>
+              ) : undefined,
+            sira: [ad, eserler.length, dosyada ? u.json : u.panelden],
+            ara: ad,
+          };
+        })}
+        ara=""
+        birim={t.tablo.birim.il}
+      />
 
       {gecmis.length > 0 && (
         <>

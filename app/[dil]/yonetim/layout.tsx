@@ -27,8 +27,9 @@ export default async function YonetimDuzeni({ children, params }: { children: Re
   const sayilar = await panelSayilari(ben);
   const ogeler = (x: ({ yol: string; ad: string; ayrica?: string; sayi?: number } | false)[]) => x.filter((o) => o !== false);
   const gruplar: PanelGrubu[] = [
-    { ogeler: [{ yol: k, ad: p.anaSayfa }] },
+    { anahtar: "pano", ogeler: [{ yol: k, ad: p.anaSayfa }] },
     {
+      anahtar: "is",
       baslik: p.gruplar.is,
       ogeler: ogeler([
         (izinli(ben, "eser.incele") || izinli(ben, "eser.onayla") || izinli(ben, "kaynak.dogrula")) && {
@@ -40,6 +41,7 @@ export default async function YonetimDuzeni({ children, params }: { children: Re
       ]),
     },
     {
+      anahtar: "icerik",
       baslik: p.gruplar.icerik,
       ogeler: [
         { yol: `${k}/eserler`, ad: p.eserler, ayrica: `${k}/eser` },
@@ -49,6 +51,7 @@ export default async function YonetimDuzeni({ children, params }: { children: Re
       ],
     },
     {
+      anahtar: "yonetim",
       baslik: p.gruplar.yonetim,
       ogeler: ogeler([
         izinli(ben, "kullanici.yonet") && { yol: `${k}/kullanicilar`, ad: p.kullanicilar },

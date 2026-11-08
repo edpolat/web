@@ -304,8 +304,8 @@ export function yolTarifiAdresi(noktalar: { enlem: number; boylam: number }[]): 
    Uygulamada (madde 13) cami ile külliye neredeyse aynı renkteydi ve 11 türden yalnızca 3'ü lejanttaydı.
    Artık dört ayrı renk var, geri kalan türler "Diğer" gri. Altın "ziyaret ettiğin" için ayrılmış. */
 export const HARITA_RENKLERI: Record<string, string> = {
-  cami: "#17488f",
-  mescit: "#0077b6",
+  cami: "#0b2540",
+  mescit: "#4f86c6",
   kulliye: "#2f6b5b",
   medrese: "#8a4b3c",
 };

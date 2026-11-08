@@ -1,15 +1,18 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { memo, useCallback, useEffect, useRef, useState } from "react";
-import { CircleMarker, LayerGroup, LayersControl, MapContainer, Popup, TileLayer, Tooltip, useMap, useMapEvents } from "react-leaflet";
+import L from "leaflet";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { CircleMarker, MapContainer, Marker, Popup, TileLayer, Tooltip, ZoomControl, useMap, useMapEvents } from "react-leaflet";
 import { metin } from "@/lib/metin";
 import type { Dil, IlliEser, Konum } from "@/lib/tipler";
 import { z } from "@/lib/ziyaret";
 import { ALTIN, turRengi } from "@/lib/gezi";
 
-// Mobil uygulamadaki işaret renkleri: türün rengi (lib/gezi.ts, Keşfet'teki lejantla aynı); yaklaşık konumda içi boş
-// ve kesik çizgili; pulu alınmış eser altın.
+// Mobil uygulamadaki harita (Desktop/vakfiye uygulama.js + stil.css) webe taşındı:
+// Esri sokak haritası, sol üstte "Harita | Uydu" seçici, sağ üstte yuvarlak ◎ Konumum, sağ altta yakınlaştırma,
+// damla biçimli işaretler (içinde türün baş harfi, yaklaşık konumda içi boş kesik çizgi, pulu alınmış eser altın ✓),
+// birbirine yakın işaretler lacivert, altın halkalı sayı dairesinde toplanır (yakınlaşınca ayrılır).
 
 type Props = {
   dil: Dil;
@@ -21,23 +24,75 @@ type Props = {
   yukseklik?: number;
   /** Ziyaret edilmiş (pulu alınmış) eserler altın işaretlenir. */
   ziyaretli?: string[];
-  /** Uydu katmanı ve "Konumum" düğmesi (Keşfet haritası). */
+  /** Uydu katmanı, "Konumum" düğmesi ve kümeleme (Keşfet haritası). */
   araclar?: boolean;
 };
 
-/** "Konumum": tarayıcıdan konumu alır, haritayı oraya götürür ve mavi nokta koyar (uygulamadaki ◎ düğmesi). */
+const BAS_HARF: Record<string, string> = { cesme: "Ç", sebil: "S", turbe: "T", kumbet: "K", hamam: "H", han: "H", kulliye: "K" };
+const basHarf = (tur: string) => BAS_HARF[tur] ?? tur.charAt(0).toLocaleUpperCase("tr");
+
+/** Uygulamadaki damla işaret (uygulama.js isaretYap). */
+function damla(tur: string, yaklasik: boolean, ziyaretli: boolean, vurgulu: boolean) {
+  const renk = ziyaretli ? ALTIN : turRengi(tur);
+  const sinif = ["pin", yaklasik && !ziyaretli ? "yaklasik" : "", ziyaretli ? "ziyaret" : "", vurgulu ? "vurgulu" : ""].filter(Boolean).join(" ");
+  const boy = vurgulu ? 38 : ziyaretli ? 34 : 30;
+  return L.divIcon({
+    className: "pin-kap",
+    iconSize: [boy, boy + 8],
+    iconAnchor: [boy / 2, boy + 6],
+    tooltipAnchor: [0, -(boy + 4)],
+    html: `<div class="${sinif}" style="--renk:${renk}"><span>${ziyaretli ? "✓" : basHarf(tur)}</span></div>`,
+  });
+}
+
+/** Uygulamadaki küme dairesi (leaflet.markercluster iconCreateFunction). */
+function kumeIkonu(sayi: number, ziyaretli: boolean) {
+  const boy = sayi >= 100 ? 46 : 40;
+  return L.divIcon({
+    className: "pin-kap",
+    iconSize: [boy, boy],
+    html: `<div class="kume${ziyaretli ? " ziyaretli" : ""}">${sayi}</div>`,
+  });
+}
+
+/** Haritanın üstündeki düğmeler tıklayınca haritayı kaydırmasın/yakınlaştırmasın. */
+function useDurdur() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (ref.current) {
+      L.DomEvent.disableClickPropagation(ref.current);
+      L.DomEvent.disableScrollPropagation(ref.current);
+    }
+  }, []);
+  return ref;
+}
+
+/** Sol üst: "Harita | Uydu" (uygulamadaki .katman-secici). */
+function KatmanSecici({ dil, katman, sec }: { dil: Dil; katman: "sokak" | "uydu"; sec: (k: "sokak" | "uydu") => void }) {
+  const t = z(dil).harita;
+  const ref = useDurdur();
+  return (
+    <div ref={ref} className="harita-katman-secici" role="group" aria-label={`${t.sokak} / ${t.uydu}`}>
+      <button type="button" aria-pressed={katman === "sokak"} onClick={() => sec("sokak")}>{t.sokak}</button>
+      <button type="button" aria-pressed={katman === "uydu"} onClick={() => sec("uydu")}>{t.uydu}</button>
+    </div>
+  );
+}
+
+/** Sağ üst: yuvarlak ◎ "Konumum" (uygulamadaki .konumum). Konumu alınca mavi nokta koyar. */
 function Konumum({ dil }: { dil: Dil }) {
   const harita = useMap();
   const t = z(dil).harita;
   const [yer, setYer] = useState<[number, number]>();
   const [hata, setHata] = useState(false);
+  const ref = useDurdur();
   function bul() {
     setHata(false);
     navigator.geolocation?.getCurrentPosition(
       (p) => {
         const k: [number, number] = [p.coords.latitude, p.coords.longitude];
         setYer(k);
-        harita.setView(k, 15);
+        harita.setView(k, 16);
       },
       () => setHata(true),
       { enableHighAccuracy: true, timeout: 10000 },
@@ -45,20 +100,18 @@ function Konumum({ dil }: { dil: Dil }) {
   }
   return (
     <>
-      <div className="leaflet-top leaflet-left harita-konumum">
-        <div className="leaflet-control leaflet-bar">
-          <button type="button" onClick={bul} title={t.konumum} aria-label={t.konumum}>
-            ◎
-          </button>
-        </div>
+      <div ref={ref} className="harita-konumum-kutu">
+        <button type="button" className="harita-konumum-dugme" onClick={bul} title={t.konumum} aria-label={t.konumum}>
+          ◎
+        </button>
         {hata && (
-          <p className="leaflet-control harita-hata" role="alert">
+          <p className="harita-hata" role="alert">
             {t.konumYok}
           </p>
         )}
       </div>
       {yer && (
-        <CircleMarker center={yer} radius={8} pathOptions={{ color: "#ffffff", fillColor: "#0077b6", fillOpacity: 1, weight: 3 }}>
+        <CircleMarker center={yer} radius={9} pathOptions={{ color: "#ffffff", fillColor: "#1A73E8", fillOpacity: 1, weight: 3 }}>
           <Popup>{t.buradasin}</Popup>
         </CircleMarker>
       )}
@@ -84,23 +137,17 @@ type IsaretProps = {
 };
 
 /**
- * Tek eser işareti. Ad yalnızca fare üzerine gelince (dokunmatikte ilk dokunuşta) görünür; hiçbir yakınlaştırmada
- * adlar sürekli yazmaz. Noktaya ya da ada tıklamak eser sayfasını açar.
- * Ad kutusu ayrı tutulur (Leaflet'in kendi hover kapatması fare ada geçerken kutuyu kapattığı için).
+ * Tek eser işareti (damla). Ad yalnızca fare üzerine gelince (dokunmatikte ilk dokunuşta) görünür.
+ * Noktaya ya da ada tıklamak eser sayfasını açar.
  */
 const EserIsareti = memo(function EserIsareti(p: IsaretProps) {
-  const stil = p.vurgulu
-    ? { color: "#17488f", fillColor: "#fcbd00", fillOpacity: 1, weight: 3 }
-    : p.ziyaretli
-      ? { color: "#ffffff", fillColor: ALTIN, fillOpacity: 1, weight: 2 }
-      : p.yaklasik
-        ? { color: turRengi(p.tur), fillColor: "#ffffff", fillOpacity: 0.8, weight: 2, dashArray: "3 3" }
-        : { color: "#ffffff", fillColor: turRengi(p.tur), fillOpacity: 0.95, weight: 2 };
+  const ikon = useMemo(() => damla(p.tur, p.yaklasik, p.ziyaretli, p.vurgulu), [p.tur, p.yaklasik, p.ziyaretli, p.vurgulu]);
   return (
-    <CircleMarker
-      center={[p.enlem, p.boylam]}
-      radius={p.vurgulu ? 13 : 8}
-      pathOptions={stil}
+    <Marker
+      position={[p.enlem, p.boylam]}
+      icon={ikon}
+      title={p.ad}
+      zIndexOffset={p.vurgulu ? 1000 : p.ziyaretli ? 500 : 0}
       bubblingMouseEvents={false}
       eventHandlers={{
         mouseover: () => p.onUzerinde(p.id),
@@ -109,27 +156,70 @@ const EserIsareti = memo(function EserIsareti(p: IsaretProps) {
       }}
     >
       {p.acik && (
-        <Tooltip
-          permanent
-          interactive
-          direction="top"
-          offset={[0, p.vurgulu ? -11 : -6]}
-          className="harita-ad"
-        >
-          <Link
-            href={`/${p.dil}/eser/${p.id}`}
-            onMouseEnter={() => p.onUzerinde(p.id)}
-            onMouseLeave={p.onAyrildi}
-          >
+        <Tooltip permanent interactive direction="top" className="harita-ad">
+          <Link href={`/${p.dil}/eser/${p.id}`} onMouseEnter={() => p.onUzerinde(p.id)} onMouseLeave={p.onAyrildi}>
             {p.ad}
             {p.ziyaretli && <small> · {p.ziyaretYazi}</small>}
             <span aria-hidden="true"> ›</span>
           </Link>
         </Tooltip>
       )}
-    </CircleMarker>
+    </Marker>
   );
 });
+
+type Nokta = { id: string; ad: string; enlem: number; boylam: number; tur: string; yaklasik: boolean };
+type Kume = { enlem: number; boylam: number; uyeler: Nokta[] };
+
+/** Yakın işaretleri ekrandaki uzaklığa göre toplar (uygulamadaki maxClusterRadius: 40). Ek paket gerekmez. */
+const KUMESIZ_ZOOM = 17;
+
+function kumele(harita: L.Map, noktalar: Nokta[], yaricap = 40): Kume[] {
+  const zoom = harita.getZoom();
+  // Çok yakında artık toplanmaz; aynı noktadaki eserler (ör. ilçe merkezindeki yaklaşık konumlar) küçük bir çembere açılır.
+  if (zoom >= KUMESIZ_ZOOM) {
+    const gruplar = new Map<string, Nokta[]>();
+    for (const n of noktalar) {
+      const a = `${n.enlem.toFixed(6)},${n.boylam.toFixed(6)}`;
+      gruplar.set(a, [...(gruplar.get(a) ?? []), n]);
+    }
+    return [...gruplar.values()].flatMap((g) =>
+      g.map((n, i) => {
+        if (g.length === 1) return { enlem: n.enlem, boylam: n.boylam, uyeler: [n] };
+        const p = harita.project([n.enlem, n.boylam], zoom);
+        const r = 22 + g.length * 2.5;
+        const aci = (2 * Math.PI * i) / g.length;
+        const m = harita.unproject([p.x + r * Math.cos(aci), p.y + r * Math.sin(aci)], zoom);
+        return { enlem: m.lat, boylam: m.lng, uyeler: [{ ...n, enlem: m.lat, boylam: m.lng }] };
+      }),
+    );
+  }
+  const kumeler: (Kume & { x: number; y: number })[] = [];
+  for (const n of noktalar) {
+    const p = harita.project([n.enlem, n.boylam], zoom);
+    const k = kumeler.find((c) => Math.abs(c.x - p.x) < yaricap && Math.abs(c.y - p.y) < yaricap);
+    if (k) {
+      k.uyeler.push(n);
+      const s = k.uyeler.length;
+      k.x += (p.x - k.x) / s;
+      k.y += (p.y - k.y) / s;
+    } else kumeler.push({ x: p.x, y: p.y, enlem: n.enlem, boylam: n.boylam, uyeler: [n] });
+  }
+  return kumeler.map((k) => {
+    const m = harita.unproject([k.x, k.y], zoom);
+    return { enlem: m.lat, boylam: m.lng, uyeler: k.uyeler };
+  });
+}
+
+/** Kümeleri yakınlaştırma/kaydırma değiştikçe yeniden hesaplar. */
+function Kumeler({ noktalar, children }: { noktalar: Nokta[]; children: (k: Kume[]) => React.ReactNode }) {
+  const harita = useMap();
+  const [surum, setSurum] = useState(0);
+  useMapEvents({ zoomend: () => setSurum((s) => s + 1) });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const kumeler = useMemo(() => kumele(harita, noktalar), [harita, noktalar, surum]);
+  return <>{children(kumeler)}</>;
+}
 
 /** Fare ile üzerine gelinemeyen (dokunmatik) cihaz mı? */
 function dokunmatikMi() {
@@ -142,24 +232,57 @@ function BosTiklama({ onTikla }: { onTikla: () => void }) {
   return null;
 }
 
+/** Küme dairesine tıklayınca o kümenin eserlerini gösterecek kadar yakınlaşır. */
+function KumeIsareti({ kume, ziyaretli }: { kume: Kume; ziyaretli: boolean }) {
+  const harita = useMap();
+  const ikon = useMemo(() => kumeIkonu(kume.uyeler.length, ziyaretli), [kume.uyeler.length, ziyaretli]);
+  return (
+    <Marker
+      position={[kume.enlem, kume.boylam]}
+      icon={ikon}
+      bubblingMouseEvents={false}
+      eventHandlers={{
+        click: () => {
+          const sinir = L.latLngBounds(kume.uyeler.map((u) => [u.enlem, u.boylam] as [number, number]));
+          if (sinir.getNorthEast().equals(sinir.getSouthWest())) harita.setView(sinir.getCenter(), Math.max(harita.getZoom() + 2, KUMESIZ_ZOOM));
+          else harita.fitBounds(sinir, { padding: [48, 48], maxZoom: 18 });
+        },
+      }}
+    />
+  );
+}
+
 export default function Harita({ dil, eserler, merkez, yakinlastirma, yukseklik = 420, vurgulu, ziyaretli = [], araclar }: Props) {
-  const konumlu = eserler.filter((e) => e.konum);
   const t = z(dil).harita;
-  const ziyaret = new Set(ziyaretli);
+  const ziyaret = useMemo(() => new Set(ziyaretli), [ziyaretli]);
   const router = useRouter();
+  const [katman, setKatman] = useState<"sokak" | "uydu">("sokak");
   const [acik, setAcik] = useState<string>();
   const acikRef = useRef<string | undefined>(undefined);
   acikRef.current = acik;
   const kapatSaati = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(kapatSaati.current), []);
 
+  const noktalar = useMemo<Nokta[]>(
+    () =>
+      eserler
+        .filter((e) => e.konum)
+        .map((e) => ({
+          id: e.id,
+          ad: metin(e.ad, dil),
+          enlem: e.konum!.enlem,
+          boylam: e.konum!.boylam,
+          tur: e.tur,
+          yaklasik: e.konum!.hassasiyet === "mahalle" || e.konum!.hassasiyet === "ilce",
+        })),
+    [eserler, dil],
+  );
+
   const onUzerinde = useCallback((id: string) => {
-    // Dokunmatik ekranda taklit fare olayları yok sayılır; ad ilk dokunuşta açılır (onTikla).
     if (dokunmatikMi()) return;
     clearTimeout(kapatSaati.current);
     setAcik(id);
   }, []);
-  // Fare noktadan ada geçerken kutu kapanmasın diye kısa bir bekleme.
   const onAyrildi = useCallback(() => {
     if (dokunmatikMi()) return;
     clearTimeout(kapatSaati.current);
@@ -167,7 +290,6 @@ export default function Harita({ dil, eserler, merkez, yakinlastirma, yukseklik 
   }, []);
   const onTikla = useCallback(
     (id: string) => {
-      // Dokunmatik ekranda fare yok: ilk dokunuş adı gösterir, ada ya da aynı noktaya ikinci dokunuş sayfayı açar.
       if (dokunmatikMi() && acikRef.current !== id) {
         clearTimeout(kapatSaati.current);
         setAcik(id);
@@ -179,59 +301,67 @@ export default function Harita({ dil, eserler, merkez, yakinlastirma, yukseklik 
   );
   const bosTikla = useCallback(() => setAcik(undefined), []);
 
-  const sokak = (
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  const isaret = (n: Nokta) => (
+    <EserIsareti
+      key={n.id}
+      dil={dil}
+      id={n.id}
+      ad={n.ad}
+      enlem={n.enlem}
+      boylam={n.boylam}
+      tur={n.tur}
+      yaklasik={n.yaklasik}
+      vurgulu={n.id === vurgulu}
+      ziyaretli={ziyaret.has(n.id)}
+      acik={n.id === acik}
+      ziyaretYazi={t.ziyaret}
+      onUzerinde={onUzerinde}
+      onAyrildi={onAyrildi}
+      onTikla={onTikla}
     />
   );
+
   return (
     <MapContainer
       center={[merkez.enlem, merkez.boylam]}
       zoom={yakinlastirma}
       style={{ height: yukseklik }}
-      className="harita"
+      className="harita harita-uygulama"
       scrollWheelZoom={false}
+      zoomControl={false}
     >
-      {araclar ? (
-        <LayersControl position="topright">
-          <LayersControl.BaseLayer checked name={t.sokak}>
-            {sokak}
-          </LayersControl.BaseLayer>
-          <LayersControl.BaseLayer name={t.uydu}>
-            <LayerGroup>
-              <TileLayer
-                attribution="Tiles &copy; Esri"
-                url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-              />
-              <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}" />
-            </LayerGroup>
-          </LayersControl.BaseLayer>
-        </LayersControl>
+      {katman === "sokak" ? (
+        <TileLayer
+          key="sokak"
+          maxZoom={19}
+          attribution="Harita &copy; Esri, HERE, OpenStreetMap"
+          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+        />
       ) : (
-        sokak
+        <>
+          <TileLayer key="uydu" maxZoom={19} attribution="Uydu &copy; Esri, Maxar" url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
+          <TileLayer key="uydu-ad" maxZoom={19} url="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}" />
+        </>
       )}
+      <ZoomControl position="bottomright" />
+      {araclar && <KatmanSecici dil={dil} katman={katman} sec={setKatman} />}
       {araclar && <Konumum dil={dil} />}
       <BosTiklama onTikla={bosTikla} />
-      {konumlu.map((e) => (
-        <EserIsareti
-          key={e.id}
-          dil={dil}
-          id={e.id}
-          ad={metin(e.ad, dil)}
-          enlem={e.konum!.enlem}
-          boylam={e.konum!.boylam}
-          tur={e.tur}
-          yaklasik={e.konum!.hassasiyet === "mahalle" || e.konum!.hassasiyet === "ilce"}
-          vurgulu={e.id === vurgulu}
-          ziyaretli={ziyaret.has(e.id)}
-          acik={e.id === acik}
-          ziyaretYazi={t.ziyaret}
-          onUzerinde={onUzerinde}
-          onAyrildi={onAyrildi}
-          onTikla={onTikla}
-        />
-      ))}
+      {araclar ? (
+        <Kumeler noktalar={noktalar}>
+          {(kumeler) =>
+            kumeler.map((k) =>
+              k.uyeler.length === 1 || k.uyeler.some((u) => u.id === vurgulu) ? (
+                k.uyeler.map(isaret)
+              ) : (
+                <KumeIsareti key={k.uyeler[0].id + ":" + k.uyeler.length} kume={k} ziyaretli={k.uyeler.some((u) => ziyaret.has(u.id))} />
+              ),
+            )
+          }
+        </Kumeler>
+      ) : (
+        noktalar.map(isaret)
+      )}
     </MapContainer>
   );
 }

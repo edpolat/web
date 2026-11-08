@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import DenetimTablosu from "@/components/DenetimTablosu";
+import { PanelBaslik } from "@/components/PanelTablo";
 import { gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import { panelKimligi } from "@/lib/sunucu/oturum";
@@ -54,38 +55,10 @@ export default async function Denetim({
 
   return (
     <section>
-      <h1>{p.denetim}</h1>
-      <p className="not">{p.denetimAciklama}</p>
-      <form className="panel-filtre" method="get">
-        <label>
-          {p.islem}
-          <select name="islem" defaultValue={arama.islem ?? ""}>
-            <option value="">{p.tumu}</option>
-            {Object.entries(t.surum.denetimIslem).map(([k, ad]) => (
-              <option key={k} value={k}>
-                {ad}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          {p.kim}
-          <input name="kim" defaultValue={arama.kim ?? ""} />
-        </label>
-        <label>
-          {p.hedef}
-          <input type="search" name="q" defaultValue={arama.q ?? ""} />
-        </label>
-        <div className="dugmeler">
-          <button type="submit" className="ikincil">
-            {p.filtrele}
-          </button>
-        </div>
-      </form>
+      <PanelBaslik simge="belge" baslik={p.denetim} alt={`${p.denetimAciklama} ${p.son(SINIR)}.`} />
       {kayitlar ? (
         <>
-          <p className="not">{p.son(SINIR)}</p>
-          <DenetimTablosu dil={dil} kayitlar={kayitlar} kaynakMap={kaynakMap} hedefler={hedefler} />
+          <DenetimTablosu dil={dil} kayitlar={kayitlar} kaynakMap={kaynakMap} hedefler={hedefler} suzgec="islem" />
         </>
       ) : (
         <p className="hata">

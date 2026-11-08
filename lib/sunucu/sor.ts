@@ -9,9 +9,8 @@ import type { CokDilli, Dil, Eser, Olgu } from "../tipler";
 
 /** durum "not": kaynağa dayanmayan, sistemin kendi kısa açıklaması ("Kaynaklarda mimarın adı geçmiyor."). */
 /** adres: kaynağın bağlantısı (PDF ise o sayfada açılır); uç noktada eklenir, bu dosya dosya okumaz. */
-/** durum "vikipedi": kayıtlarda olmayan, Vikipedi maddesinden gelen cümle; adres madde bağlantısı, baslik madde adı. */
 export type CevapCumlesi = { metin: string; durum: string; kaynak_id?: string; sayfa?: string; adres?: string; baslik?: string };
-export type Cevap = { bulundu: boolean; cumleler: CevapCumlesi[]; yontem: "eslesme" | "yapay_zeka" | "vikipedi" };
+export type Cevap = { bulundu: boolean; cumleler: CevapCumlesi[]; yontem: "eslesme" | "yapay_zeka" };
 
 const YAYINDA = new Set(["kaynakli", "ai_yorumu", "belirsiz"]);
 
@@ -251,8 +250,7 @@ export function kayitlar(eser: Eser): Kayit[] {
 }
 
 /** Modelin yapılandırılmış çıktısı (sor-yz.ts içindeki JSON şeması). */
-/** arama: kayıtlar cevaplamadığında modelin önerdiği Vikipedi sorgusu (boş olabilir). */
-export type YzCiktisi = { bulundu: boolean; cumleler: { metin: string; kayitlar: number[] }[]; arama?: string };
+export type YzCiktisi = { bulundu: boolean; cumleler: { metin: string; kayitlar: number[] }[] };
 
 const DURUM_SIRASI = ["kaynakli", "ai_yorumu", "belirsiz"];
 

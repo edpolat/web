@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import SurumListesi, { type GosterilenSurum } from "@/components/SurumListesi";
 import TaslakSil from "@/components/TaslakSil";
+import { Cip, IslemMetni, YuvarlakDugme, Zaman } from "@/components/PanelTablo";
+import PanelTablo from "@/components/PanelTabloGovde";
 import { gecerliDil } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
 import { kimlik } from "@/lib/sunucu/kimlik";
@@ -31,7 +33,6 @@ export default async function Katkilarim({
   const kaynakMap = await yayindakiKaynaklar();
   const formTaslaklari = yalnizTaslak ? await formTaslaklarim() : [];
   const ft = t.formTaslagi;
-  const tarih = (x: string) => new Date(x).toLocaleString(dil === "tr" ? "tr-TR" : "en-GB", { dateStyle: "medium", timeStyle: "short" });
   let liste: GosterilenSurum[] | undefined;
   let hataMetni = "";
   try {
@@ -63,31 +64,33 @@ export default async function Katkilarim({
         <>
           <h2>{ft.baslik}</h2>
           <p className="not">{ft.aciklama}</p>
-          <table className="tablo">
-            <thead>
-              <tr>
-                <th>{ft.tur}</th>
-                <th>{ft.ad}</th>
-                <th>{ft.guncellendi}</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              {formTaslaklari.map((x) => (
-                <tr key={x.id}>
-                  <td>{ft.turler[x.tur] ?? x.tur}</td>
-                  <td>{x.baslik}</td>
-                  <td>{tarih(x.guncellendi)}</td>
-                  <td>
-                    <Link className="dugme" href={taslakAdresi(dil, x)}>
-                      {ft.devamEt}
-                    </Link>{" "}
-                    <TaslakSil dil={dil} id={x.id} />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <PanelTablo
+            dil={dil}
+            sutunlar={[
+              { ad: ft.tur, simge: "etiket" },
+              { ad: ft.ad, simge: "sayfa" },
+              { ad: ft.guncellendi, simge: "takvim" },
+            ]}
+            satirlar={formTaslaklari.map((x) => ({
+              id: x.id,
+              hucreler: [
+                <Cip key="t" simge={x.tur === "il" ? "harita" : x.tur === "kaynak" ? "kitap" : "belge"}>
+                  {ft.turler[x.tur as keyof typeof ft.turler] ?? x.tur}
+                </Cip>,
+                <IslemMetni key="b" baslik={x.baslik} />,
+                <Zaman key="z" iso={x.guncellendi} dil={dil} />,
+              ],
+              eylem: (
+                <>
+                  <TaslakSil dil={dil} id={x.id} />
+                  <YuvarlakDugme href={taslakAdresi(dil, x)} etiket={ft.devamEt} />
+                </>
+              ),
+              sira: [x.tur, x.baslik, x.guncellendi],
+            }))}
+            birim={t.tablo.birim.taslak}
+            ilkSira={{ sutun: 2, yon: -1 }}
+          />
           {liste && liste.length > 0 && <h2>{t.surum.taslaklarim}</h2>}
         </>
       )}

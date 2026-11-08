@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import DenetimTablosu from "@/components/DenetimTablosu";
+import { Cip, IslemMetni, YuvarlakDugme } from "@/components/PanelTablo";
+import PanelTablo from "@/components/PanelTabloGovde";
 import { BilgiKaynagiFormu } from "@/components/KaynakPaneli";
 import SurumListesi, { ArsivDugmesi, type GosterilenSurum } from "@/components/SurumListesi";
 import { gecerliDil, metin } from "@/lib/metin";
@@ -125,34 +127,34 @@ export default async function Gecmis({
           <h2>{t.kutuphane.bilgiKaynaklari}</h2>
           <p className="not">{t.kutuphane.bilgiAciklama}</p>
           {bilgiler.length > 0 && (
-            <table className="tablo">
-              <thead>
-                <tr>
-                  <th>{t.kutuphane.alan}</th>
-                  <th>{t.kaynak}</th>
-                  <th>{t.kutuphane.konum}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {bilgiler.map((b) => (
-                  <tr key={b.id}>
-                    <td>
-                      {t.alanlar[b.alan] ?? b.alan}
-                      {b.deger && (
-                        <>
-                          <br />
-                          <small>{b.deger.slice(0, 200)}</small>
-                        </>
-                      )}
-                    </td>
-                    <td>
-                      <Link href={`/${dil}/yonetim/kaynaklar/${b.kaynak_id}`}>{kaynakMap.get(b.kaynak_id)?.baslik ?? b.kaynak_id}</Link>
-                    </td>
-                    <td>{b.konum}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <PanelTablo
+              dil={dil}
+              sutunlar={[
+                { ad: t.kutuphane.alan, simge: "belge" },
+                { ad: t.kaynak, simge: "kitap" },
+                { ad: t.kutuphane.konum, simge: "sayfa" },
+              ]}
+              satirlar={bilgiler.map((b) => {
+                const alan = t.alanlar[b.alan] ?? b.alan;
+                const kaynak = kaynakMap.get(b.kaynak_id)?.baslik ?? b.kaynak_id;
+                return {
+                  id: b.id,
+                  hucreler: [
+                    <IslemMetni key="a" baslik={alan} aciklama={b.deger ? b.deger.slice(0, 200) : undefined} />,
+                    <Cip key="k" simge="kitap" href={`/${dil}/yonetim/kaynaklar/${b.kaynak_id}`}>
+                      {kaynak}
+                    </Cip>,
+                    <span key="ko" className="pt-sayi">
+                      {b.konum}
+                    </span>,
+                  ],
+                  eylem: <YuvarlakDugme href={`/${dil}/yonetim/kaynaklar/${b.kaynak_id}`} etiket={`${t.tablo.ac}: ${kaynak}`} />,
+                  sira: [alan, kaynak, b.konum ?? ""],
+                }
+              })}
+              birim={t.tablo.birim.bilgi}
+              genis
+            />
           )}
           {izinli(ben, "eser.duzenle") && (
             <BilgiKaynagiFormu
@@ -165,7 +167,7 @@ export default async function Gecmis({
             />
           )}
           <h2>{u.denetim}</h2>
-          <DenetimTablosu dil={dil} kayitlar={kayitlar} kaynakMap={kaynakMap} />
+          <DenetimTablosu dil={dil} kayitlar={kayitlar} kaynakMap={kaynakMap} suzgec="islem" />
         </>
       ) : (
         <p className="hata">

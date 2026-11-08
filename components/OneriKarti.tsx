@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { DilNotu, useDilDenetimi } from "@/components/DilUyarisi";
+import { Bolum, type PanelBasliklari } from "@/components/IncelemeBolum";
 import { metinFarki, type DilFarki } from "@/lib/dil-uyumu";
 import { KAYNAK_TURLERI, NITELIKLER, VARSAYILAN_NITELIK, type KaynakTuru } from "@/lib/kaynak";
 import { UYGULANABILIR, ikiDilli, type OneriSatiri, type UygulanacakAlan } from "@/lib/oneri";
@@ -30,6 +31,8 @@ type Props = {
   yzEleme?: React.ReactNode;
   /** Editörün gördüğü YZ analizleri: kararla birlikte denetim kaydına "YZ önerisi görüldü" yazılır. */
   yzAnalizleri?: number[];
+  /** Onay bekleyenler panelinde Eser / Bilgi / Karar bölümlerine ayrılmış düzen (YZ kutuları o zaman sol sütunda). */
+  panel?: PanelBasliklari;
 };
 
 const tarih = (iso: string, dil: Dil) =>
@@ -56,6 +59,7 @@ export default function OneriKarti({
   yz,
   yzEleme,
   yzAnalizleri = [],
+  panel,
 }: Props) {
   const t = s(dil);
   const u = t.oneri;
@@ -124,8 +128,8 @@ export default function OneriKarti({
     });
   }
 
-  return (
-    <article className="katki" aria-labelledby={baslikId}>
+  const ust = (
+    <>
       <p className="katki-ust">
         <span className="tur-etiketi">{t.surum.onayTuru.oneri}</span>
         <span className="etiket etiket-oneri-bekliyor">{u.durumlar[o.durum]}</span>
@@ -137,6 +141,10 @@ export default function OneriKarti({
       <h3 id={baslikId}>
         <Link href={`/${dil}/eser/${o.eser_id}`}>{eserAd}</Link> <small>· {u.alanlar[o.alan]}</small>
       </h3>
+    </>
+  );
+  const bilgi = (
+    <>
       <dl className="kunye">
         <dt>{u.mevcut}</dt>
         <dd>{mevcut || "—"}</dd>
@@ -164,6 +172,10 @@ export default function OneriKarti({
         </dd>
       </dl>
       <DilNotu dil={dil} farklar={oneriFarki ? [oneriFarki] : []} dilUyumu={o.dil_uyumu === true} alanAdi={alanAdi} yzAcik={yzAcik} />
+    </>
+  );
+  const karar = (
+    <>
       {yzEleme}
       {yz}
 
@@ -270,6 +282,24 @@ export default function OneriKarti({
       </form>
       <RetFormu u={u} bekle={bekle} reddet={(gerekce) => yap({ islem: "reddet", id: o.id, gerekce, yz_analizleri: yzAnalizleri })} />
       {hata && <p role="alert">{hata}</p>}
+    </>
+  );
+
+  if (panel)
+    return (
+      <article className="katki ib-kart" aria-labelledby={baslikId}>
+        <Bolum baslik={panel.eser}>{ust}</Bolum>
+        <Bolum baslik={panel.bilgi}>{bilgi}</Bolum>
+        <Bolum baslik={panel.karar} sinif="ib-karar">
+          {karar}
+        </Bolum>
+      </article>
+    );
+  return (
+    <article className="katki" aria-labelledby={baslikId}>
+      {ust}
+      {bilgi}
+      {karar}
     </article>
   );
 }

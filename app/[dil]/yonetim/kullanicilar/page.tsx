@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { PanelBaslik } from "@/components/PanelTablo";
 import KullaniciYonetimi, { type PanelKullanicisi } from "@/components/KullaniciYonetimi";
 import { gecerliDil } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
@@ -20,12 +21,11 @@ export default async function Kullanicilar({ params }: { params: Promise<{ dil: 
   const vt = await hesapIstemcisi();
   const { data, error } = vt ? await vt.rpc("kullanicilari_listele") : { data: null, error: true };
   return (
-    <section className="kart">
+    <section>
       <p>
         <Link href={`/${dil}/yonetim`}>← {t.yonetim}</Link>
       </p>
-      <h1>{t.panel.kullanicilar}</h1>
-      <p className="not">{t.panel.kullaniciAciklama}</p>
+      <PanelBaslik simge="kisiler" baslik={t.panel.kullanicilar} alt={t.panel.kullaniciAciklama} />
       {error ? (
         <p className="hata">{t.panel.listeHatasi}</p>
       ) : (

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import KaynakKunye from "@/components/KaynakKunye";
+import { Cip, IslemMetni, YuvarlakDugme } from "@/components/PanelTablo";
+import PanelTablo from "@/components/PanelTabloGovde";
 import { KaynakDogrula } from "@/components/KaynakPaneli";
 import { gecerliDil, metin } from "@/lib/metin";
 import { s } from "@/lib/sozluk";
@@ -63,34 +65,36 @@ export default async function KaynakSayfasi({ params }: { params: Promise<{ dil:
       )}
       <h2>{u.bagliBilgiler}</h2>
       {bagli.length ? (
-        <table className="tablo">
-          <thead>
-            <tr>
-              <th>{u.eser}</th>
-              <th>{u.alan}</th>
-              <th>{u.konum}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bagli.map((b) => (
-              <tr key={b.id}>
-                <td>
-                  <Link href={`/${dil}/yonetim/eser/${b.eser_id}/gecmis`}>{adlar.get(b.eser_id) ?? b.eser_id}</Link>
-                </td>
-                <td>
-                  {t.alanlar[b.alan] ?? b.alan}
-                  {b.deger && (
-                    <>
-                      <br />
-                      <small>{b.deger.slice(0, 200)}</small>
-                    </>
-                  )}
-                </td>
-                <td>{b.konum}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <PanelTablo
+          dil={dil}
+          sutunlar={[
+            { ad: u.eser, simge: "cami" },
+            { ad: u.alan, simge: "belge" },
+            { ad: u.konum, simge: "sayfa" },
+          ]}
+          satirlar={bagli.map((b) => {
+            const ad = adlar.get(b.eser_id) ?? b.eser_id;
+            const alan = t.alanlar[b.alan] ?? b.alan;
+            return {
+              id: b.id,
+              hucreler: [
+                <Cip key="e" simge="cami" href={`/${dil}/yonetim/eser/${b.eser_id}/gecmis`}>
+                  {ad}
+                </Cip>,
+                <IslemMetni key="a" baslik={alan} aciklama={b.deger ? b.deger.slice(0, 200) : undefined} />,
+                <span key="k" className="pt-sayi">
+                  {b.konum}
+                </span>,
+              ],
+              eylem: <YuvarlakDugme href={`/${dil}/yonetim/eser/${b.eser_id}/gecmis`} etiket={`${t.tablo.ac}: ${ad}`} />,
+              sira: [ad, alan, b.konum ?? ""],
+              ara: `${ad} ${alan} ${b.deger ?? ""} ${b.konum ?? ""}`,
+            };
+          })}
+          ara=""
+          birim={t.tablo.birim.bilgi}
+          genis
+        />
       ) : (
         <p>{t.surum.hicYok}</p>
       )}

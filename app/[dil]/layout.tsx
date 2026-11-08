@@ -45,6 +45,13 @@ export default async function Yerlesim({
     <html lang={dil} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: ERISIM_BETIGI }} />
+        {/* Tasarım rehberi (Feyza, 7 Kas): başlıklar Playfair Display, metin Inter. */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        />
       </head>
       {/* Tarayıcı eklentileri (ör. Video Speed Controller) body'ye sınıf ekliyor; bu uyarıyı bastır. */}
       <body suppressHydrationWarning>

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Bolum, type PanelBasliklari } from "@/components/IncelemeBolum";
 import { s } from "@/lib/sozluk";
 import type { TalepSatiri } from "@/lib/talep";
 import type { Dil } from "@/lib/tipler";
@@ -10,7 +11,20 @@ const tarih = (iso: string, dil: Dil) =>
   new Date(iso).toLocaleString(dil === "tr" ? "tr-TR" : "en-GB", { dateStyle: "medium", timeStyle: "short" });
 
 /** Onay bekleyenler listesindeki mobil uygulama talebi: serbest metin, fotoğraflar, kabul/ret. */
-export default function TalepKarti({ dil, talep: x, eserAd, duzenleyebilir }: { dil: Dil; talep: TalepSatiri; eserAd: string; duzenleyebilir: boolean }) {
+export default function TalepKarti({
+  dil,
+  talep: x,
+  eserAd,
+  duzenleyebilir,
+  panel,
+}: {
+  dil: Dil;
+  talep: TalepSatiri;
+  eserAd: string;
+  duzenleyebilir: boolean;
+  /** Onay bekleyenler panelinde Eser / Bilgi / Karar bölümlerine ayrılmış düzen. */
+  panel?: PanelBasliklari;
+}) {
   const t = s(dil);
   const u = t.talep;
   const router = useRouter();
@@ -34,8 +48,8 @@ export default function TalepKarti({ dil, talep: x, eserAd, duzenleyebilir }: { 
     setHata(veri.hata ?? String(yanit.status));
   }
 
-  return (
-    <article className="katki" aria-labelledby={baslikId}>
+  const ust = (
+    <>
       <p className="katki-ust">
         <span className="tur-etiketi">{t.surum.onayTuru.talep}</span>
         <span className="etiket etiket-oneri-bekliyor">{t.oneri.durumlar[x.durum]}</span>
@@ -51,6 +65,10 @@ export default function TalepKarti({ dil, talep: x, eserAd, duzenleyebilir }: { 
           </small>
         )}
       </h3>
+    </>
+  );
+  const bilgi = (
+    <>
       {x.bilgi && <p style={{ whiteSpace: "pre-wrap" }}>{x.bilgi}</p>}
       {x.foto_yollari.length > 0 &&
         (x.fotolar.length ? (
@@ -68,6 +86,10 @@ export default function TalepKarti({ dil, talep: x, eserAd, duzenleyebilir }: { 
           <p className="not">{u.fotoYok}</p>
         ))}
       <p className="not">{u.aciklama}</p>
+    </>
+  );
+  const karar = (
+    <>
       <div className="form">
         <label>
           {u.not}
@@ -91,6 +113,24 @@ export default function TalepKarti({ dil, talep: x, eserAd, duzenleyebilir }: { 
         </div>
       </div>
       {hata && <p role="alert">{hata}</p>}
+    </>
+  );
+
+  if (panel)
+    return (
+      <article className="katki ib-kart" aria-labelledby={baslikId}>
+        <Bolum baslik={panel.eser}>{ust}</Bolum>
+        <Bolum baslik={panel.bilgi}>{bilgi}</Bolum>
+        <Bolum baslik={panel.karar} sinif="ib-karar">
+          {karar}
+        </Bolum>
+      </article>
+    );
+  return (
+    <article className="katki" aria-labelledby={baslikId}>
+      {ust}
+      {bilgi}
+      {karar}
     </article>
   );
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { DilNotu, useDilDenetimi } from "@/components/DilUyarisi";
+import { Bolum, type PanelBasliklari } from "@/components/IncelemeBolum";
 import type { DilFarki } from "@/lib/dil-uyumu";
 import { s } from "@/lib/sozluk";
 import type { Dil } from "@/lib/tipler";
@@ -100,6 +101,7 @@ export function SurumKarti({
   yzAnalizleri = [],
   yzAcik = false,
   benimId,
+  panel,
 }: {
   dil: Dil;
   k: GosterilenSurum;
@@ -115,6 +117,8 @@ export function SurumKarti({
   yzAnalizleri?: number[];
   /** YZ açık: onaylarken iki dil karşılaştırılır. */
   yzAcik?: boolean;
+  /** Onay bekleyenler panelinde Eser / Bilgi / Karar bölümlerine ayrılmış düzen. */
+  panel?: PanelBasliklari;
 }) {
   const t = s(dil);
   const u = t.surum;
@@ -136,8 +140,8 @@ export function SurumKarti({
     setHata(h);
   }
 
-  return (
-    <article className="katki" aria-labelledby={baslikId}>
+  const ust = (
+    <>
       <p className="katki-ust">
         {turEtiketi && <span className="tur-etiketi">{turEtiketi}</span>}
         <span className={`etiket etiket-surum-${k.durum}`}>{u.durum[k.durum]}</span>
@@ -155,6 +159,10 @@ export function SurumKarti({
         </p>
       )}
       {k.aciklama && <p className="not">“{k.aciklama}”</p>}
+    </>
+  );
+  const bilgi = (
+    <>
       {k.araDegisti && <p className="uyari">{u.araDegisti}</p>}
       {k.farklar.length > 0 && <FarkTablosu farklar={k.farklar} alanBaslik={t.alan} eskiBaslik={u.onceki} yeniBaslik={u.yeni} />}
       {k.editorNotu && k.durum === "incelemede" && (
@@ -193,6 +201,10 @@ export function SurumKarti({
           )}
         </p>
       )}
+    </>
+  );
+  const karar = (
+    <>
       {eylemler.includes("karar") && k.durum === "editorde" && k.dilFarklari && (
         <DilNotu dil={dil} farklar={k.dilFarklari} dilUyumu={k.dilUyumu ?? false} alanAdi={alanAdi} yzAcik={yzAcik} />
       )}
@@ -275,6 +287,24 @@ export function SurumKarti({
         </details>
       )}
       <p role="alert">{hata}</p>
+    </>
+  );
+
+  if (panel)
+    return (
+      <article className="katki ib-kart" aria-labelledby={baslikId}>
+        <Bolum baslik={panel.eser}>{ust}</Bolum>
+        <Bolum baslik={panel.bilgi}>{bilgi}</Bolum>
+        <Bolum baslik={panel.karar} sinif="ib-karar">
+          {karar}
+        </Bolum>
+      </article>
+    );
+  return (
+    <article className="katki" aria-labelledby={baslikId}>
+      {ust}
+      {bilgi}
+      {karar}
     </article>
   );
 }

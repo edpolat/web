@@ -18,6 +18,14 @@ import Simge from "./Simge";
 
 const SAYFA_BOYU = 24;
 
+/** Şehir kartlarının arkasındaki sabit tarihî eser fotoğrafı: her şehre kendi simge eseri, aynı görsel tekrar edilmez.
+ *  Listede olmayan (sonradan eklenen) şehirde güne göre o şehrin bir eser fotoğrafı kullanılır. */
+const SEHIR_KAPAKLARI: Record<string, { dosya: string; eser: string; odak?: string }> = {
+  bursa: { dosya: "/gorseller/bursa/emir-sultan-kulliyesi/01.webp", eser: "emir-sultan-kulliyesi", odak: "50% 45%" },
+  hatay: { dosya: "/gorseller/hatay/habib-i-neccar-camii-ve-kulliyesi-hatay/03.webp", eser: "habib-i-neccar-camii-ve-kulliyesi-hatay", odak: "50% 40%" },
+  konya: { dosya: "/gorseller/konya/mevlana-turbesi-muze-konya/01.webp", eser: "mevlana-turbesi-muze-konya", odak: "40% 50%" },
+};
+
 type Props = { dil: Dil; eserler: KesifEseri[]; iller: Il[]; turler: Tanim[] };
 
 export default function Kesif({ dil, eserler, iller, turler }: Props) {
@@ -112,7 +120,15 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
   const kategoriler = ["cami", "mescit", "kulliye", "medrese"].filter((id) => turler.some((tr) => tr.id === id));
   const sehirKartlari = iller.map((i) => {
     const ilinkiler = fotolu.filter((e) => e.il === i.id);
-    return { il: i, sayi: eserler.filter((e) => e.il === i.id).length, foto: ilinkiler[gununSirasi(ilinkiler.length)]?.gorsel };
+    const sabit = SEHIR_KAPAKLARI[i.id];
+    const yedek = ilinkiler[gununSirasi(ilinkiler.length)];
+    const eser = sabit ? eserler.find((e) => e.id === sabit.eser) : yedek;
+    return {
+      il: i,
+      sayi: eserler.filter((e) => e.il === i.id).length,
+      foto: sabit ? { dosya: sabit.dosya, odak: sabit.odak } : yedek?.gorsel ? { dosya: kucukGorsel(yedek.gorsel.dosya), odak: yedek.gorsel.odak } : undefined,
+      eserAdi: eser ? metin(eser.ad, dil) : undefined,
+    };
   });
 
   return (
@@ -138,16 +154,20 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
             </div>
             <h2 className="kart-baslik">{v.sehirler}</h2>
             <div className="vitrin-sehirler">
-              {sehirKartlari.map(({ il, sayi, foto }) => (
-                <button
-                  key={il.id}
-                  type="button"
-                  className="vitrin-sehir"
-                  style={foto ? { backgroundImage: `url("${kucukGorsel(foto.dosya)}")`, backgroundPosition: foto.odak } : undefined}
-                  onClick={() => guncelle("il", il.id)}
-                >
-                  <b>{metin(il.ad, dil)}</b>
-                  <small>{v.eser(sayi)}</small>
+              {sehirKartlari.map(({ il, sayi, foto, eserAdi }) => (
+                <button key={il.id} type="button" className="vitrin-sehir" onClick={() => guncelle("il", il.id)}>
+                  {foto && (
+                    <span
+                      className="vitrin-sehir-foto"
+                      aria-hidden="true"
+                      style={{ backgroundImage: `url("${foto.dosya}")`, backgroundPosition: foto.odak }}
+                    />
+                  )}
+                  <span className="vitrin-sehir-cam">
+                    <b>{metin(il.ad, dil)}</b>
+                    <small>{v.eser(sayi)}</small>
+                    {eserAdi && <span className="vitrin-sehir-eser">{eserAdi}</span>}
+                  </span>
                 </button>
               ))}
             </div>
@@ -303,24 +323,41 @@ export default function Kesif({ dil, eserler, iller, turler }: Props) {
             ziyaretli={ziyaretli}
             araclar
           />
-          <p className="lejant" aria-label={t.harita}>
-            {Object.entries(HARITA_RENKLERI).map(([id, renk]) => (
-              <span key={id}>
-                <i style={{ background: renk }} aria-hidden="true" />
-                {turAdi(id)}
+          {/* Lejant: üstte tür renkleri, altta konum işaretleri; noktalar haritadaki işaretlerle aynı biçimde. */}
+          <div className="lejant-kutu" aria-label={t.harita}>
+            <p className="lejant">
+              <span className="lejant-ad">{t.lejant.tur}</span>
+              {Object.entries(HARITA_RENKLERI).map(([id, renk]) => (
+                <span key={id}>
+                  <i style={{ background: renk }} aria-hidden="true" />
+                  {turAdi(id)}
+                </span>
+              ))}
+              <span>
+                <i style={{ background: DIGER_RENK }} aria-hidden="true" />
+                {metin(turler.find((tr) => tr.id === "diger")?.ad, dil) || "Diğer"}
               </span>
-            ))}
-            <span>
-              <i style={{ background: DIGER_RENK }} aria-hidden="true" />
-              {metin(turler.find((tr) => tr.id === "diger")?.ad, dil) || "Diğer"}
-            </span>
-          </p>
-          {yaklasikVar && <p className="not">○ {t.konumYaklasik}</p>}
-          {ziyaretli.length > 0 && (
-            <p className="not">
-              <span className="ziyaret-nokta" aria-hidden="true" /> {z(dil).harita.ziyaret}
             </p>
-          )}
+            <p className="lejant">
+              <span className="lejant-ad">{t.lejant.konum}</span>
+              <span>
+                <i className="lejant-kesin" aria-hidden="true" />
+                {t.lejant.kesin}
+              </span>
+              {yaklasikVar && (
+                <span title={t.konumYaklasik}>
+                  <i className="lejant-yaklasik" aria-hidden="true" />
+                  {t.lejant.yaklasik}
+                </span>
+              )}
+              {ziyaretli.length > 0 && (
+                <span title={z(dil).harita.ziyaret}>
+                  <i className="lejant-ziyaret" aria-hidden="true" />
+                  {t.lejant.ziyaret}
+                </span>
+              )}
+            </p>
+          </div>
         </section>
       </div>
     </div>
