@@ -51,6 +51,9 @@ type Kayit =
  * editör (eser.onayla) tarihçiden geçmiş sürümleri görür; doğrulanmamış kaynaklar (kaynak.dogrula) da aynı listede,
  * talep tarihine göre eskiden yeniye. ?tur=eser|kaynak|oneri|talep türe göre süzer, ?sira=yeni sırayı çevirir.
  */
+/** YZ etiketi menüsündeki sıra: olumludan olumsuza. */
+const ETIKET_SIRASI = ["degerli", "benzer", "mevcut_bilgiyle_celisiyor", "mevcut_bilgiyle_ayni", "kaynaksiz", "kaynak_alakasiz", "anlamsiz", "spam"] as const;
+
 export default async function Inceleme({
   params,
   searchParams,
@@ -230,6 +233,11 @@ export default async function Inceleme({
   const yeniSira = yeniOnce ? "yeni" : oncelikle ? "oncelik" : undefined;
   const y = t.yz;
   const ib = t.surum.ib;
+  const siraSecenekleri: [string | undefined, string][] = [
+    [undefined, t.surum.eskidenYeniye],
+    ["yeni", t.surum.yenidenEskiye],
+    ...(eserYetkisi ? ([["oncelik", y.siraOncelik]] as [string, string][]) : []),
+  ];
 
   // Aşamalar (üst bant) ve aşama sütunları: danışmanda = tarihçideki sürümler + öneriler; editörde = editördeki sürümler.
   const asamaSayisi = {
@@ -509,41 +517,46 @@ export default async function Inceleme({
 
       <div className="ib-pano-ust">
         <h2>{ib.siradaki}</h2>
-        <nav className="cipler" aria-label={u.suz}>
-          {cipler.map(([cipTuru, ad, n]) => (
-            <Link key={ad} className="cip" aria-pressed={!seciliEtiket && secili === cipTuru} href={adres({ tur: cipTuru, sira: yeniSira })}>
-              {ad} ({n})
-            </Link>
-          ))}
-        </nav>
-        <p className="not">
-          {t.surum.sira}:{" "}
-          <Link aria-current={(!yeniOnce && !oncelikle) || undefined} href={adres({ tur: secili, etiket: seciliEtiket })}>
-            {t.surum.eskidenYeniye}
-          </Link>
-          {" · "}
-          <Link aria-current={yeniOnce || undefined} href={adres({ tur: secili, sira: "yeni", etiket: seciliEtiket })}>
-            {t.surum.yenidenEskiye}
-          </Link>
-          {eserYetkisi && (
-            <>
-              {" · "}
-              <Link aria-current={oncelikle || undefined} href={adres({ tur: secili, sira: "oncelik", etiket: seciliEtiket })}>
-                {y.siraOncelik}
-              </Link>
-            </>
-          )}
-        </p>
-        {eserYetkisi && (oneriler?.length ?? 0) > 0 && (
-          <nav className="cipler" aria-label={y.etiketSuz}>
-            <span className="not">{y.etiketSuz}:</span>
-            {[...ETIKETLER, "benzer" as const].map((e) => (
-              <Link key={e} className="cip" aria-pressed={seciliEtiket === e} href={adres({ sira: yeniSira, etiket: seciliEtiket === e ? undefined : e })}>
-                {y.etiketler[e]} ({etiketSayilari.get(e) ?? 0})
+        <div className="ib-filtre-satiri">
+          <nav className="cipler" aria-label={u.suz}>
+            {cipler.map(([cipTuru, ad, n]) => (
+              <Link key={ad} className="cip" aria-pressed={!seciliEtiket && secili === cipTuru} href={adres({ tur: cipTuru, sira: yeniSira })}>
+                {ad} ({n})
               </Link>
             ))}
           </nav>
-        )}
+          <div className="ib-menuler">
+            <details className="ib-menu" key={`sira-${yeniSira ?? "eski"}`}>
+              <summary>
+                {y.sirala} <small>· {oncelikle ? y.siraOncelik : yeniOnce ? t.surum.yenidenEskiye : t.surum.eskidenYeniye}</small>
+              </summary>
+              <div className="ib-menu-ic" role="menu" aria-label={t.surum.sira}>
+                {siraSecenekleri.map(([deger, ad]) => (
+                  <Link key={ad} role="menuitemradio" aria-checked={yeniSira === deger} href={adres({ tur: secili, sira: deger, etiket: seciliEtiket })}>
+                    {ad}
+                  </Link>
+                ))}
+              </div>
+            </details>
+            {eserYetkisi && (oneriler?.length ?? 0) > 0 && (
+              <details className="ib-menu" key={`etiket-${seciliEtiket ?? "hepsi"}`}>
+                <summary>
+                  {y.etiketSuz} <small>· {seciliEtiket ? y.etiketler[seciliEtiket] : u.tumu}</small>
+                </summary>
+                <div className="ib-menu-ic" role="menu" aria-label={y.etiketSuz}>
+                  <Link role="menuitemradio" aria-checked={!seciliEtiket} href={adres({ tur: secili, sira: yeniSira })}>
+                    {u.tumu}
+                  </Link>
+                  {ETIKET_SIRASI.map((e) => (
+                    <Link key={e} role="menuitemradio" aria-checked={seciliEtiket === e} href={adres({ sira: yeniSira, etiket: e })}>
+                      {y.etiketler[e]} <span className="ib-menu-n">{etiketSayilari.get(e) ?? 0}</span>
+                    </Link>
+                  ))}
+                </div>
+              </details>
+            )}
+          </div>
+        </div>
         {(etiketSayilari.get("spam") ?? 0) > 0 && <p className="not">{y.spamNot}</p>}
       </div>
       <div className="ib-pano-sar">

@@ -1980,6 +1980,29 @@ a.pt-cip:hover { border-color: var(--pt-cizgi-koyu); background: var(--pt-krem);
 .ib-pano-ust { display: grid; gap: 8px; margin-top: 10px; }
 .ib-pano-ust h2 { margin: 0; font-family: var(--baslik-yazi); font-size: 1.3rem; color: var(--ib-lac); }
 .ib-pano-ust p, .ib-pano-ust nav { margin: 0; }
+/* İnceleme: Sırala ve YZ etiketi açılır menüleri */
+.ib-filtre-satiri { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.ib-menuler { display: flex; flex-wrap: wrap; gap: 10px; align-items: start; margin-left: auto; }
+.ib-menuler .ib-menu:last-child .ib-menu-ic { left: auto; right: 0; }
+/* Çip satırı: çipler ve iki menü düğmesi aynı ölçekte, tek satırda */
+.ib-filtre-satiri { flex-wrap: nowrap; gap: 8px; }
+.ib-filtre-satiri .cipler { flex-wrap: nowrap; gap: 6px; }
+.ib-filtre-satiri .ib-menuler { flex-wrap: nowrap; gap: 6px; flex-shrink: 0; }
+.ib-filtre-satiri .cip, .ib-filtre-satiri .ib-menu summary { min-height: 34px; padding: .2rem .75rem; font-size: .85rem; line-height: 1.2; white-space: nowrap; }
+.ib-filtre-satiri .ib-menu summary small { font-size: inherit; }
+@media (max-width: 900px) { .ib-filtre-satiri, .ib-filtre-satiri .cipler { flex-wrap: wrap; } }
+.ib-menu { position: relative; }
+.ib-menu summary { list-style: none; cursor: pointer; min-height: 40px; padding: .3rem .9rem; border-radius: 999px; border: 1px solid var(--ib-altin); background: var(--ib-altin-acik); color: var(--ib-lac); font-weight: 600; display: inline-flex; align-items: center; gap: .4rem; }
+.ib-menu summary::-webkit-details-marker { display: none; }
+.ib-menu summary::after { content: "▾"; font-size: .8em; }
+.ib-menu summary small { font-weight: 500; color: var(--soluk); }
+.ib-menu summary:focus-visible { outline: 2px solid var(--ib-lac); outline-offset: 2px; }
+.ib-menu-ic { position: absolute; z-index: 20; top: calc(100% + 6px); left: 0; width: max-content; min-width: 220px; max-width: min(300px, 90vw); background: #fff; border: 1px solid #E2D5B8; border-radius: 10px; box-shadow: 0 8px 24px rgba(11,37,64,.12); padding: 6px; display: grid; }
+.ib-menu-ic a { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 10px 8px 28px; border-radius: 6px; color: var(--metin); text-decoration: none; position: relative; }
+.ib-menu-ic a:hover, .ib-menu-ic a:focus-visible { background: var(--ib-krem); }
+.ib-menu-ic a[aria-checked="true"] { background: var(--ib-zemin); font-weight: 600; }
+.ib-menu-ic a[aria-checked="true"]::before { content: "✓"; position: absolute; left: 10px; color: var(--ib-lac); }
+.ib-menu-n { font-variant-numeric: tabular-nums; color: var(--soluk); font-size: .85rem; }
 .ib-pano-sar { overflow-x: auto; padding-bottom: 4px; }
 .ib-pano { display: grid; grid-template-columns: repeat(var(--ib-sutun, 4), minmax(220px, 1fr)); gap: 10px; min-width: calc(var(--ib-sutun, 4) * 230px); }
 .ib-sutun { background: var(--ib-zemin); border-radius: 10px; padding: 8px; display: grid; gap: 8px; align-content: start; }
@@ -2029,3 +2052,15 @@ a.pt-cip:hover { border-color: var(--pt-cizgi-koyu); background: var(--pt-krem);
 .ib-surec { position: relative; z-index: 0; }
 .ib-surec li::before { z-index: 0; }
 .ib-surec b { z-index: 1; }
+
+/* Oyun kutusu masaüstünde haritanın oranında (3:2): sayfa 90rem'e açılınca yükseklik 720px'te kalıp
+   harita üstten/alttan kırpılıyordu. Kutu genişliğe göre uzar, ekran yüksekliğinin %88'ini geçmez, ortalanır.
+   Telefonda (≤760px) ve tam ekranda eski davranış sürer. */
+@media (min-width: 761px) {
+  .oyun-sahne:not(.oyun-sahne--tam) {
+    max-width: min(100%, calc(88dvh * 1.5));
+    margin-inline: auto;
+    container-type: inline-size;
+    --vakfiye-oyun-yukseklik: calc(100cqi / 1.5);
+  }
+}
