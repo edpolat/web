@@ -624,6 +624,7 @@ const sozluk = {
       etiketYok: "Etiket yok",
       etiketSuz: "YZ etiketi",
       siraOncelik: "Önceliğe göre",
+      sirala: "Sırala",
       spamNot: "Spam etiketli öneriler silinmez ve gizlenmez, yalnız listenin sonuna düşer.",
     },
     dilUyumu: {
@@ -1486,6 +1487,7 @@ const sozluk = {
       etiketYok: "No labels",
       etiketSuz: "AI label",
       siraOncelik: "By priority",
+      sirala: "Sort",
       spamNot: "Spam-labelled suggestions are never deleted or hidden; they only move to the end of the list.",
     },
     dilUyumu: {
